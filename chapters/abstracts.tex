@@ -1,0 +1,26 @@
+% Abstract page(s) are in two separate files to simplify word counting with e.g. ' wc abstract-ger.tex'
+
+\thispagestyle{plain}
+    \begin{center}
+        \begin{minipage}[c][0.48\textheight][b]{0.9\textwidth}
+            \small
+            \begin{center}
+            \normalsize
+            \textbf{Zusammenfassung}
+            \end{center}
+            \par
+            \vspace{\baselineskip}
+            \input{chapters/abstract-ger}
+        \end{minipage}\par
+        \vfill
+        \begin{minipage}[c][0.48\textheight][b]{0.9\textwidth}
+            \small
+            \begin{center}
+            \normalsize
+            \textbf{Abstract}
+            \end{center}
+            \par
+            \vspace{\baselineskip}
+            \input{chapters/abstract-eng}
+            \end{minipage}
+    \end{center}

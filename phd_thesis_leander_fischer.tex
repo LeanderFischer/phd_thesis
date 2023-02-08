@@ -1,0 +1,52 @@
+\documentclass[
+    a4paper,
+    10pt,
+    twoside,
+    hidelinks,
+    numbers=noenddot,
+]{kaobook}
+
+\input{auxiliary/packages_and_formatting.tex}
+
+\begin{document} 
+
+\frontmatter
+
+\include{auxiliary/titlepage}
+\cleardoublepage
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Abstract}
+\include{chapters/abstracts}
+\cleardoublepage
+
+\tableofcontents
+
+\mainmatter
+
+\include{chapters/introduction}
+\cleardoublepage
+
+\pagenumbering{Roman}
+
+\bibliographystyle{apsrev4-1}
+{\small
+\bibliography{auxiliary/MyBibFile}{}
+}
+
+\cleardoublepage 
+\input{chapters/appendix}
+
+\cleardoublepage 
+\listoffigures
+
+\cleardoublepage 
+\listoftables
+
+\listoftodos
+
+\include{auxiliary/acknowledgements}
+
+\backmatter
+
+\end{document}
