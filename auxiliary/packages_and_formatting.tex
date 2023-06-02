@@ -1,84 +1,131 @@
-\usepackage[utf8]{inputenc}
-\usepackage[ngerman,english]{babel}
+% clean start
 
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{amsfonts}
+% Choose the language
+\ifxetexorluatex
+	\usepackage{polyglossia}
+	\setmainlanguage{english}
+\else
+	\usepackage[ngerman, english]{babel} % Load characters and hyphenation
+\fi
+\usepackage[english=american]{csquotes}	% English quotes
 
-\usepackage{textcomp, gensymb}
-\usepackage[T1]{fontenc}
-
-\usepackage{graphicx}
-\usepackage{graphbox}
-\usepackage{tikz}
-
-\usepackage{array}
+\usepackage{longtable}
 \usepackage{booktabs}
-\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\sisetup{
+   separate-uncertainty
+}
+\usepackage{physics}
 
+% Load the bibliography package
+\usepackage{kaobiblio}
+\addbibresource{auxiliary/MyBibFile.bib} % Bibliography file
+
+\ifdefined\rm
+\renewcommand{\rm}{\mathrm}
+\else
+\newcommand{\rm}{\mathrm}
+\fi
+
+% Load mathematical packages for theorems and related environments
+\usepackage[framed=true]{kaotheorems}
+\usepackage{amsmath}
+
+% Load the package for hyperreferences
+\usepackage{kaorefs}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{subfloat}
+
+\graphicspath{{./}{figures/}} % Paths in which to look for images
+
+\makeindex[columns=3, title=Alphabetical Index, intoc] % Make LaTeX produce the files required to compile the index
+
+% not written, yet
+% \makeglossaries % Make LaTeX produce the files required to compile the glossary
+% \input{glossary.tex} % Include the glossary definitions
+
+
+
+
+
+
+
+
+
+% % old stuff
+
+% % Choose the language
+% \ifxetexorluatex
+% \usepackage{polyglossia}
+% \setmainlanguage{english}
+% \else
+% \usepackage[ngerman,english]{babel}
+% \fi
+% \usepackage[english=american]{csquotes}
+
+
+% \let\openbox\relax
+
+% \usepackage{kaorefs}
+% % \usepackage{aas_macros}
+% \usepackage[giveninits=true]{kaobiblio}
+% \addbibresource{MyBibFile.bib}
+
+% \ifdefined\rm
+% \renewcommand{\rm}{\mathrm}
+% \else
+% \newcommand{\rm}{\mathrm}
+% \fi
+
+% % \usepackage{amssymb}
+% \usepackage{amsmath}
+% % \usepackage{amsfonts}
+
+% % \usepackage{textcomp, gensymb}
+% % \usepackage[T1]{fontenc}
+
+% % \usepackage{graphicx}
+% % \usepackage{graphbox}
+% % \usepackage{tikz}
+
+% % \usepackage{array}
+% % \usepackage{multirow}
+% \usepackage{longtable}
+% \usepackage{booktabs}
+% \usepackage{tabularx}
 % \usepackage{siunitx}
 % \sisetup{
 %    separate-uncertainty
 % }
 % \usepackage{physics}
 
-\usepackage{enumitem}
-\usepackage{braket}
+% % \usepackage{enumitem}
+% % \usepackage{braket}
 
-\usepackage{lmodern}
-\usepackage[toc,page]{appendix}
+% % \usepackage{lmodern}
+% % \usepackage[toc,page]{appendix}
 
-\usepackage[font=small,labelfont=bf]{caption}
+% % \usepackage[font=small,labelfont=bf]{caption}
 
-\usepackage{setspace}
-\onehalfspacing
+% % \usepackage{setspace}
+% % \onehalfspacing
 
-% all stuff I had to kick out ot use kaobook
-% \usepackage[a4paper,top=35mm,bottom=35mm,inner=30mm,outer=20mm]{geometry}
-% \usepackage{fancyhdr}
-% \pagestyle{fancy}
-% \fancyhead{}
-% \fancyhead[LE]{\leftmark}
-% \fancyhead[RO]{\rightmark}
 
-% \fancyfoot{}
-% \fancyfoot[C]{}
-% \fancyfoot[LE,RO]{\thepage}
+% \usepackage{todonotes}
 
-% % % Redefine the plain page style
-% \fancypagestyle{plain}{
-%   \fancyhf{}
-%   \renewcommand{\headrulewidth}{0pt}% header line invisible
-% }
+% \usepackage{ccicons}
 
-\usepackage{todonotes}
-\usepackage{lipsum}
+% % \usepackage[lofdepth=1,lotdepth]{subfig}
+% % \usepackage{xcolor}
 
-\usepackage[numbers,sort&compress]{natbib}
+% % \usepackage{emptypage}
 
-\usepackage{ccicons}
+% % \usepackage{tocbibind}
 
-\usepackage[lofdepth=1,lotdepth]{subfig}
-\usepackage{xcolor}
+% % \definecolor{darkgreen}{rgb}{0.0,0.4,0.0}
+% % \definecolor{darkblue}{rgb}{0.0,0.0,0.5}
 
-% \usepackage{emptypage}
-
-% \usepackage{tocbibind}
-
-% \definecolor{darkgreen}{rgb}{0.0,0.4,0.0}
-% \definecolor{darkblue}{rgb}{0.0,0.0,0.5}
-
-% \usepackage[
-%     pdfauthor={Leander Fischer},
-%     pdftitle={Search for Heavy Neutral Lepton Production and Decay with the IceCube Neutrino Observatory},
-%     pdfsubject={Search for Heavy Neutral Lepton Production and Decay with the IceCube Neutrino Observatory},
-%     pdfkeywords={icecube, deepcore, hnl, sterile, bsm},
-%     pdftex,
-%     colorlinks=true,
-%     linkcolor=black,
-%     citecolor=darkgreen,
-%     urlcolor=darkgreen,
-%     linktoc=all,
-% ]{hyperref}
-    
-\usepackage{doi}
+% % \usepackage{doi}
