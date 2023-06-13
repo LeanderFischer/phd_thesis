@@ -2,6 +2,38 @@
 \setchapterpreamble[u]{\margintoc}
 
 \chapter{Introduction}
+\labch{intro}
 
-Introduction \dots + test reference \cite{IceCube:2011ucd}
+\todo{(Re-)write introduction for PhD thesis (just copy paste from M.Sc.).}
 
+The neutrino was postulated by Wolfgang Pauli \sidecite{Pauli:1930pc} in 1930 to explain the continuous energy spectrum of electrons originating from beta decay.
+Cowan and Reines confirmed this prediction of a light, neutral particle in 1956 when they discovered the electron neutrino using inverse beta decay \sidecite{Cowan103}.
+Two additional neutrino flavors were found in the following years, and with the discovery of the muon neutrino in 1962 \sidecite{PhysRevLett.9.36} and the tau neutrino in 2001 \sidecite{KODAMA2001218}, the current theory of neutrinos in the standard model (SM) was established.
+
+Although neutrinos were first believed to be massless, experimental evidence showing the existence of mixed neutrino states started to appear in the 1960s \sidecite{homestake}.
+Mixing between different physical representations of neutrinos is proof for differences in their masses.
+The resulting phenomenon of neutrino oscillations can be incorporated into the standard model by extending it to include massive neutrinos.
+How massive they are and how strong is the mixing between neutrino states has to be obtained from measurement.
+Today there are a variety of precision oscillation experiments using solar, reactor and atmospheric neutrinos to tighten the constraints on the neutrino oscillation parameters.
+IceCube is one of those leading experiments probing the oscillation theory with atmospheric neutrinos.
+
+The IceCube Neutrino Observatory \sidecite{2017JInst..12P3012A_Instrumentation_Systems} was constructed between 2004 and 2010 at the geographic South Pole.
+It is the first cubic kilometer Cherenkov neutrino detector and consists of 5160 optical sensors attached to 86 strings, drilled down to a maximum depth of $\sim2500$\,m into the Antarctic ice.
+Neutrinos are detected by the Cherenkov light that is emitted by secondary particles produced in neutrino-nucleon scattering interactions in the ice.
+With DeepCore, a more densely instrumented sub-array of IceCube, the neutrino detection energy threshold can be lowered to approximately 5\,GeV.
+
+At these energies, the similarity in event signatures poses difficulties in identifying different neutrino flavor interactions.
+Muon neutrino charged-current interactions produce light tracks as opposed to charged-current interactions of electron and tau neutrinos as well as neutral-current interactions of all neutrinos that produce light cascades.
+The sparse instrumentation of IceCube makes it more challenging to separate track- and cascade-like events.
+In this thesis, a novel method to distinguish those two event types is developed.
+In contrast to previously used univariate separation techniques, the multivariate machine learning method applied here maximizes the use of information from the detector response.
+Through the use of a Gradient Tree Boosting algorithm the separation of events in track and cascade is improved.
+As a result of the improved separation, the uncertainty to the atmospheric neutrino oscillation parameters $\Delta \mathrm{m}^{2}_{32}$ and $\theta_{23}$ is significantly reduced.
+
+This thesis is structured as follows. 
+
+% Chapter~\ref{chap:theoretical_background} starts with an introduction to neutrino properties and their SM interactions followed by the description of atmospheric neutrinos and the formulation of standard oscillations.
+% Chapter~\ref{chap:neutrino_detection} introduces the IceCube Neutrino Observatory, its detection principle along with the observed event signatures and the reconstruction method used for this work.
+% Chapter~\ref{chap:improving_pid} describes the machine learning technique that was utilized to develop a novel particle identification variable.
+% Chapter~\ref{chap:oscillation_parameter_measurement} applies this method to achieve improved sensitivities in the measurement of atmospheric neutrino oscillations.
+% Finally, Chapter~\ref{chap:summary} gives a concluding summary and a short outlook.
