@@ -4,8 +4,9 @@
 \chapter{Beyond the Standard Model Neutrinos}
 \labch{bsm_neutrinos}
 
+\todo{(Re-)write BSM chapter for PhD thesis (just copy paste from M.Sc.).}
 
-\section{Neutrino Oscillations}
+\section{Neutrino Oscillations} \labsec{neutrino_oscillations}
 
 \subsection{Vacuum Oscillations}
 
@@ -41,7 +42,7 @@ Additionally, kaon decays start to contribute which also increases the number of
     \centering
     \includegraphics[width=1.0\textwidth]{figures/neutrinos_properties/Honda_alldir-spl_copy.pdf}
     \caption[Atmospheric neutrino fluxes, taken from \cite{PhysRevD.92.023004_Honda_Flux}]{Atmospheric neutrino fluxes of the different flavors as a function of energy (left) and ratios between muon- and electron-neutrinos as well as ratios between neutrinos and antineutrinos for both flavors (right). Calculations are done for the geographic South Pole. Taken from \cite{PhysRevD.92.023004_Honda_Flux}.}
-    \label{fig:honda_flux}
+    \labfig{honda_flux}
 \end{figure}
 
 In cosmic ray interactions, charged mesons or tau particles can also be produced, which leads to the formation of tau neutrinos.
@@ -142,6 +143,58 @@ Additionally, there must be a mass-squared difference $\Delta m^2$ and nonzero m
 Since we assumed propagation in vacuum in Equation \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing.
 
 
+% \subsubsection{Two-Neutrino Approximation}
+
+% Looking at Equation~\eqref{eq:probability_detailed} it can be noted, that the oscillation frequency for a neutrino with a given energy depends on the mass-squared splitting.
+% From experiments, we know that the mass splittings $\Delta m^2_{21}$ and $\Delta m^2_{23}$ differ by two orders of magnitude \cite{PhysRevD.98.030001}.
+% As a result, neutrino oscillation experiments are usually designed to measure at the scale of one of the two mass splittings.
+% When observing one of the two oscillation frequencies, the other will either be too fast or too slow to be observed.
+% The oscillations seen in an experiment can, therefore, be described in a simplified two-neutrino scheme, where we only assume two mass eigenstates $\nu_1$, $\nu_2$ that are connected to two flavor eigenstates $\nu_\alpha$, $\nu_\beta$ by the mixing matrix
+% \begin{equation} 
+%     U=\left( 
+%         \begin{matrix}
+%             \mathrm{cos}\theta & \mathrm{sin}\theta \\
+%             -\mathrm{sin}\theta & \mathrm{cos}\theta \\
+%         \end{matrix}
+%         \right),
+%     \end{equation}
+% which is a two-dimensional rotation matrix that depends only on one mixing angle $\theta$ between the two states.
+% Consequently, the resulting survival/transition probability from Equation~\eqref{eq:probability_detailed} only depends on one mass-squared splitting $\Delta m^2$ and one mixing angle.
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[trim=40 10 60 60, clip, width=0.6\textwidth]{figures/oscillation_probabilities.pdf}
+%     \caption[Vacuum oscillation probabilities in the two-neutrino approximation]
+%     {Transition and survival probability for muon neutrinos in the two-neutrino approximation in vacuum (equations \eqref{eq:transition_probability} and~\eqref{eq:survival_probability}) plotted as a function of $L/E$ for $\Delta m^{2}_{32}=2.54\cdot 10^{-3}\,\mathrm{eV}^2$ and $\sin^{2}(\theta_{23}) = 0.8$.}
+%     \labfig{oscillation_probabilities}
+% \end{figure}
+
+% DeepCore is sensitive to the fast atmospheric oscillations caused by the bigger mass splitting $\Delta m^2_{23}$, because it is optimized for neutrinos at energies of $\mathcal{O}$(25\,GeV), which have an oscillation length related to $\Delta m^2_{23}$ on the order of the Earth's diameter.
+% The current global best fit value is $\Delta m^2_{23}=2.54\cdot 10^{-3}\mathrm{eV}^2$ \cite{PhysRevD.98.030001}.
+% Here the dominant oscillation happens between the flavor states $\nu_\mu$ and $\nu_\tau$.
+% Formulating the neutrino oscillation phase of Equation~\eqref{eq:probability_detailed} in appropriate units used by the experiment, we get 
+% \begin{equation}
+%     \frac{c^3\Delta m^2L}{4E\hbar} \approx 1.267\frac{\Delta m^2\,[\mathrm{eV}^2]\cdot L\,[\mathrm{km}]}{E\,[\mathrm{GeV}]}.
+% \end{equation}
+% Inserting this for the two-flavor approximation into the transition probability, we end up with
+% \begin{equation}
+%     P_{\nu_\mu \rightarrow \nu_\tau}(L)
+%     = 
+%     \textrm{sin}^2(2\theta)\textrm{sin}^2\Big( 1.267 \cdot \frac{\Delta m^2\,[\mathrm{eV}^2]\cdot L\,[\mathrm{km}]}{E\,[\mathrm{GeV}]} \Big),
+%     \label{eq:transition_probability}
+% \end{equation}
+% whereas the survival probability becomes
+% \begin{equation}
+%     P_{\nu_\mu \rightarrow \nu_\mu}(L)
+%     = 1 - P_{\nu_\mu \rightarrow \nu_\tau}(L)
+%     =
+%     1 - \textrm{sin}^2(2\theta)\textrm{sin}^2\Big( 1.267 \cdot \frac{\Delta m^2\,[\mathrm{eV}^2]\cdot L\,[\mathrm{km}]}{E\,[\mathrm{GeV}]} \Big).
+%     \label{eq:survival_probability}
+% \end{equation}
+% The transition and survival probability in the two-neutrino approximation are plotted against the traveled neutrino distance divided by the energy in Figure~\ref{fig:oscillation_probabilities}.
+% The mixing angle in $\sin^{2}(\theta_{23})$ dictates the amplitude of the oscillation while the oscillation length (distance between extrema) is governed by the mass splitting $\Delta m^{2}_{32}$.
+
+
 \subsubsection{Matter Effects}
 
 % \subsection{Solar neutrinos}
@@ -180,7 +233,7 @@ Since we assumed propagation in vacuum in Equation \refeq{flavor_time_evol}, the
 \end{figure}
 
 
-\subsection{Global Constraints on  mixing}
+\subsection{Global Constraints on Mixing}
 
 
 \section{Open Questions in Neutrino Particle Physics}
