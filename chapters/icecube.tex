@@ -1,76 +1,79 @@
 \setchapterstyle{kao}
 \setchapterpreamble[u]{\margintoc}
 
+
 \chapter{The IceCube Neutrino Observatory}
 \labch{icecube}
 
-\todo{(Re-)write IceCube chapter for PhD thesis (just copy paste from M.Sc.).}
+\todo{add fancy icecube picture}
 
-This chapter explains the detection principle of the IceCube Neutrino Observatory as well as one of the reconstruction algorithms applied to extract information from the raw detector signals.
-Section \ref{sec:icecube_array} first presents the layout of IceCube and DeepCore before Section \refsec{cherenkov_effect} and \ref{sec:energy_loss} explain the Cherenkov effect and the propagation of particles through ice.
-Finally, Section \refsec{event_reconstruction} outlines the reconstruction algorithm itself in detail.
+The IceCube Neutrino Observatory \sidecite[6cm]{2017JInst..12P3012A_Instrumentation_Systems} is a cubic-kilometer, ice-Cherenkov detector located at the geographic South Pole. IceCube utilizes the Antarctic glacial ice as detector medium to observe neutrinos by measuring the Cherenkov light produced from secondary charged particles with optical modules. It was deployed between 2006 and 2011 and has been taking data since the installation of the first modules. The primary goal of IceCube is the observation of astrophysical neutrinos as a telescope, but it can also be used to study fundamental particle physics properties by measuring atmospheric neutrinos as well as studying cosmic rays.
 
-\section{The IceCube In-Ice Array} \labsec{icecube_array}
+This chapter first describes the main- and sub-array of the detector and its detection module in \refsec{icecube_array}, the propagation of particles through ice is explained in \refsec{icecube_propagation}, and finally, the signatures that IceCube can observer of the different particles are introduced in \refsec{icecube_signatures}.
 
-\begin{figure}[ht]
-	\centering
-    \subfloat[IceCube Neutrino Observatory][Schematic sketch]{ \labfig{icecube_array}
-    \includegraphics[width=0.55\linewidth]{figures/icecube_deepcore/IceCubeArray_slim.png}
-    }
-    \subfloat[Digital Optical Module (DOM)][Design and components of a DOM]{ \labfig{DOM_design}
-    \includegraphics[width=0.4\linewidth]{figures/icecube_deepcore/DOM_schematic.png}
-    }
-	\caption[IceCube Neutrino Observatory and Digital Optical Module]{The IceCube Neutrino Observatory and a schematic view of the Digital Optical Module (DOM). More detailed information can be found in \cite{2017JInst..12P3012A_Instrumentation_Systems}.}
-\end{figure}
 
-The IceCube Neutrino Observatory \sidecite{2017JInst..12P3012A_Instrumentation_Systems} is a cubic-kilometer particle detector located at the geographic south pole.
-The detector consists of 86 vertical strings with 5160 optical sensors called digital optical modules (DOMs) \sidecite{ABBASI2009294_data_acquisition}.
-Figure \ref{fig:icecube_array} shows a schematic overview of the detector layout with its main components.
-The strings were drilled down into the Antarctic ice in a hexagonal arrangement shown in Figure \reffig{icecube_top_view}.
-60 optical sensors are placed on each string at depths of 1450-2450\,m below the ice.
-IceCube is designed to detect neutrinos in the energy range $\mathcal{O}$(GeV)-$\mathcal{O}$(PeV).
-Neutrinos can only be detected by the secondary charged particles created when they interact in the ice.
-The optical sensors detect Cherenkov light produced by these charged particles (see Section \refsec{cherenkov_effect}).
-Using the observed light pattern, the neutrino energy, direction, and flavor can be reconstructed as described in Section \refsec{event_reconstruction}.
-The DOMs are made of a spherical glass housing containing a 10\," photomultiplier tube (PMT) in addition to the readout and processing electronics.
-The modules are made to collect light, digitize the resulting PMT signal and send the data to the central data acquisition at the surface if a trigger condition is met.
-The design of a DOM and its components is shown in Figure \reffig{DOM_design}.
+\section{IceCube Detector Components} \labsec{icecube_array}
 
 \begin{figure}[h]
-    \begin{center}
-        \includegraphics[trim={2.0cm, 1.5cm, 0, 0}, clip, width=0.65\linewidth]{figures/icecube_deepcore/icecube_top_view_bw.pdf}
-    \end{center}
+    \includegraphics{figures/icecube_deepcore/IceCubeArray_slim.png}
+	\caption[IceCube overview]{Overview of the IceCube detector showing the in-ice main- and sub-array IceCube and DeepCore, IceTop, and the IceCube Lab. From \cite{2017JInst..12P3012A_Instrumentation_Systems}.}
+    \labfig{icecube_array}
+\end{figure}
+
+The full IceCube detector array consists of 86 vertical, in-ice strings and 81 surface stations as shown in \reffig{icecube_array}. The in-ice part is composed of 60 optical modules per string deployed at depths of \SIrange[range-phrase=-]{1450}{2450}{\metre} below the ice, while the surface stations of the comic air-shower array, \textit{IceTop}, are ice-filled tanks. The surface stations and the majority of the strings are arranged in a hexagonal grid with the operations building, the \textit{IceCube Laboratory} (ICL), central to the grid on the surface. A top view of the hexagonal arrangement is shown in \reffig{icecube_top_view}. The in-ice array is designed to detect neutrinos in the energy range from $\mathcal{O}$({GeV}) to $\mathcal{O}$(PeV).
+
+
+\subsection{Digital Optical Modules and the Antarctic Ice} \labsec{ice_and_DOMs}
+
+The IceCube detection medium is the Antarctic glacial ice, which was formed over \SI{100000}{years} by accumulation of snow that was subsequently compressed by its own weight to form a dense crystal structure \sidecite{glacial_ice}. As a result of this formation process, the optical properties, scattering and absorption, primarily change with depth. Within the detector volume the absorption length ranges from \SIrange[range-phrase=-]{100}{400}{\metre}, while the scattering length lies between \SIrange[range-phrase=-]{20}{100}{\metre}. They are correlated, with the absorption length being roughly four times the scattering length \sidecite{ice_calibration}. The vertical distribution of scattering and absorption length can be seen in \reffig{ic_dc_sidecut}, where one dominant feature is the \textit{dust layer} between \SIrange{2000}{2100}{\metre} depth. This region has a higher concentration of dust particles that where deposited in a period of high volcanic activity, which leads to bad optical properties in form of larger scattering and absorption.
+
+\begin{figure}[h]
+    \includegraphics{figures/icecube_deepcore/DeepCore_sideview.pdf}
+	\caption[IceCube sideview]{xx}
+    \labfig{ic_dc_sidecut}
+\end{figure}
+
+\todo{exchange for figure with scattering (check abs/sca is cocrrect)}
+\todo{mention/cite dust logger paper/procedure?}
+
+
+The ice is instrumented by 5160 optical sensors called Digital Optical Modules (DOMs) \sidecite{ABBASI2009294_data_acquisition}, which can detect the Cherenkov light produced by charged particles traveling through the ice. Each DOM is made of a spherical glass housing, containing a downward-facing Photomultiplier Tube (PMT), the main board with control, readout, and processing-electronics, and a LED flasher board for calibration purposes. The design and the individual components of a DOM can be seen in \reffig{DOM_design}.
+
+The majority of PMTs are the \SI{10}{"} Hamamatsu R7081-02, which have a bialkali photocathode and are sensitive to wavelengths in the range of \SIrange{300}{650}{\nano\metre}, with a peak quantum efficiency (quantum efficiency  of 25\% at \SI{390}{\nano\metre}. In the central part of the IceCube array the peak efficiency reaches 34\%. The dark count rate in the temperature range of \SIrange{-40}{-20}{\degreeCelsius} is $\sim$\SI{300}{\hertz}. The DOM electronics measure the PMT voltage and control the gain. At a voltage crossing of the equivalent to \SI{0.25}{PE} the waveform readout is activated \sidecite{ABBASI2009294_data_acquisition}. Only when either one of the nearest or next to nearest DOMs above or below also saw a voltage crossing within a \SI{1}{\micro\second} time window \sidenote{This is referred to as a \textit{hard local coincidence (HLC)}.}, the voltages are digitized and send to the ICL. Through the application of a waveform unfolding algorithm, called \textit{WaveDeform} \sidecite{IceCube:2013dkx}, the waveforms are compressed and the results are the reconstructed times and charges of the photo-electrons. This is the basis for all further IceCube data processing.
+
+\begin{marginfigure}
+    \includegraphics{figures/icecube_deepcore/DOM_schematic.png}
+	\caption[Digital Optical Module (DOM)]{Design and components of a Digital Optical Module (DOM) \cite{ABBASI2009294_data_acquisition}}
+    \labfig{DOM_design}
+\end{marginfigure}
+
+The PMT is covered with a mu-metal grid (made from wire mesh), shielding the photocathode from Earth's magnetic field and it is optically coupled to the glass sphere by RTV silicone gel. The glass sphere is a pressure vessel, designed to withstand both the constant ice pressure and the temporary pressure during the refreezing process of the water in the drill hole during deployment (peaking at around \SI{690}{\bar}). The sphere is held by a harness that connects the DOMs along a string and also guides the cable beside them.
+
+The flasher board controls 12 LEDs that produce optical pulses in bright UV. The LEDs can be pulsed separately or in combination with variable output levels and pulse lengths. Using the known information of the light source positions and times this can be used for in-situ calibration of the detector by measuring absorption and scattering properties of the ice. Calibrating the optical efficiency of the DOMs itself is more accurately done using minimum ionizing muons \sidecite{domeff_nick}, since the total amplitude of the LED light is not well known.
+
+
+\subsection{IceCube}
+
+The 78 strings that are arranged in a hexagonal pattern from the main part of the in-ice array, which is called \textit{IceCube}. With a $\sim$\SI{125}{\metre} horizontal spacing between the strings and a $\sim$\SI{17}{\metre} vertical spacing between DOMs, IceCube has a lower energy threshold of around \SI{100}{GeV}. IceCube was designed to detect astrophysical neutrinos with energies above \SI{1}{\tera\electronvolt}.
+
+The coordinate system that is used in IceCube is centered at 46500'E, 52200'N at an elevation of \SI{883.9}{\metre} \sidecite{2017JInst..12P3012A_Instrumentation_Systems}. Per definition, it's a right-handed coordinate system where the y-axis points along the Prime Meridian (Grid North) towards Greenwich, UK, and the x-axis points \SI{90}{\degree} clockwise from the y-axis (Grid East). The z-axis is normal to the ice surface, pointing upwards. For IceCube analyses depth is defined as the distance along the z axis from the ice surface, assumed to be at an elevation of \SI{2832}{\metre}.
+
+\begin{figure}
+    \includegraphics[trim={2.0cm, 1.5cm, 0, 0}, clip, width=0.65\linewidth]{figures/icecube_deepcore/icecube_top_view_bw.pdf}
     \caption[IceCube top view]{Top view of the IceCube array.}
     \labfig{icecube_top_view}
 \end{figure}
 
-The main part of IceCube is formed by 78 strings with 125\,m horizontal spacing and 17\,m vertical spacing between DOMs.
-This results in a neutrino detection energy threshold of 100\,GeV. There are 8 additional strings that form a denser sub-array of IceCube called DeepCore \sidecite{DeepCore_design_Abbasi2012615}.
-DeepCore is at the bottom-center of the detector and includes these 8 strings as well as the 7 surrounding IceCube strings in the fiducial volume shown in Figure \reffig{icecube_top_view}.
-The strings in this volume have an average distance of about 70\,m.
-The majority of the DeepCore DOMs are placed between 2100\,m and 2450\,m below the ice and the vertical spacing is 7\,m.
-Around 2050\,m there is a dust layer with bad optical properties. Above the dust layer, there are a few additional DeepCore modules used as a veto cap.
-The denser spacing and the application of high quantum efficiency DOMs in DeepCore as well as the fact that the ice between 2100\,m and 2450\,m has the best optical properties leads to a lowered neutrino detection energy threshold of around 5\,GeV.
-DeepCore is optimized for the observation of neutrinos in the energy range of $10-100$\,GeV.
-This is the energy range where the oscillation signal from atmospheric neutrinos can be observed and studied.
-The surrounding IceCube strings and the veto cap are used to reject atmospheric muons that are the main background in neutrino oscillation measurements.
 
-The coordinate system \sidecite{2017JInst..12P3012A_Instrumentation_Systems} used in IceCube is centered at 46500'E, 52200'N at an elevation of 883.9\,m.
-It is defined as a right-handed coordinate system with the y-axis pointing along the Prime Meridian (Grid North) towards Greenwich, UK and the x-axis pointing 90\,degrees clockwise from the y-axis (Grid East).
-The z-axis is normal to the  Earth's surface, pointing away from the surface.
-Additionally, the depth in IceCube is defined as the vertical distance from the ice surface, set to be at an elevation of 2832\,m.
+\subsection{DeepCore}
+
+The additional 8 strings form a denser sub-array of IceCube called \textit{DeepCore} \sidecite{DeepCore_design_Abbasi2012615}. It's located at the bottom-center of the in-ice array and its \textit{fiducial volume} also includes the 7 surrounding IceCube strings as shown in \reffig{icecube_top_view}. The strings in this region have a closer average horizontal distance of about \SI{70}{\metre}. Th lower 50 DeepCore DOMs on each string are placed in the region of clear ice below the dust layer between \SIrange{2100}{2450}{\metre} depth, where their vertical spacing is $\sim$\SI{7}{\metre}. The remaining 10 modules on each string are placed above the dust layer to be used as veto against atmospheric muons. Additionally, the DeepCore DOMs are equipped with higher quantum efficiency PMTs. The combination of the denser spacing and the high quantum efficiency modules, leads to a lower energy detection threshold of around \SI{5}{GeV}, allowing the observation of atmospheric neutrinos, which are mostly in the energy range of \SIrange{10}{100}{\giga\electronvolt}. The main analysis performed with DeepCore is an atmospheric neutrino oscillation measurement, but the large flux of atmospheric neutrinos allows for many other Beyond Standard Model searches, such as searches for dark matter, non-standard interactions, or sterile neutrinos. 
 
 
-\subsection{In-Ice Array}
-
-\subsubsection{DeepCore}
-
-\subsection{IceTop}
-
-\subsection{Digital Optical Modules}
+\section{Propagation of Particles in Ice} \labsec{icecube_propagation}
 
 
-\section{Propagation of Particles in Ice}
+\todo{(Re-)write introduction for PhD thesis (just copy paste from M.Sc.). (everything below)}
 
 When charged particles travel through matter they interact and lose energy by several interaction processes.
 The Cherenkov light emitted by the particles as described in Section \refsec{cherenkov_effect} only contributes a small amount to the total energy loss.
@@ -89,7 +92,7 @@ For the energy range of interest for this work, the parameters $a_I(E)$ and $b_R
     \labeq{radiative_losses_simple}
 \end{equation}
 This description results in a critical energy $E_{crit}=a/b$ separating the two energy regimes where ionization or radiative losses are dominant.
-Typical values are $a \approx 2.59$\,MeV/cm and $b \approx 3.63 \cdot 10^{-6}$\,cm$^{-1}$ \cite{2004hep.ph....7075C} leading to a critical energy of $\sim 770$\,GeV.
+Typical values are $a \approx 2.59$\,MeV/cm and $b \approx 3.63 \cdot 10^{-6}$\,cm$^{-1}$ \sidecite{2004hep.ph....7075C} leading to a critical energy of $\sim 770$\,GeV.
 Since the considered energy range for atmospheric neutrino oscillations is below the critical energy we only consider ionization losses by setting $b=0$ which easily relates the range of a muon $R_\mu$ to its initial energy by
 \begin{equation}
     R = \frac{E_0}{a}.
@@ -195,7 +198,7 @@ The ratio $F(E)$ is always smaller than 1, but increases with energy as the elec
 A more detailed parameterization of $F(E)$, as well as fitted values for several particle types, can be found in \sidecite{LRaedel}.
 
 
-\section{Particle Signatures in IceCube}
+\section{Particle Signatures in IceCube} \labsec{icecube_signatures}
 
 \subsection{Neutrinos}
 

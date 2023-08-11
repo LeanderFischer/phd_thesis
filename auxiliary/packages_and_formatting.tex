@@ -18,8 +18,9 @@
 }
 \usepackage{physics}
 
+
 % Load the bibliography package
-\usepackage{kaobiblio}
+\usepackage[giveninits=true]{kaobiblio}
 \addbibresource{auxiliary/MyBibFile.bib} % Bibliography file
 
 \ifdefined\rm
@@ -37,18 +38,16 @@
 
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{subfloat}
 
 \graphicspath{{./}{figures/}} % Paths in which to look for images
 
 \makeindex[columns=3, title=Alphabetical Index, intoc] % Make LaTeX produce the files required to compile the index
 
-% not written, yet
-% \makeglossaries % Make LaTeX produce the files required to compile the glossary
-% \input{glossary.tex} % Include the glossary definitions
-
-
-
+\ifdefined\rm
+\renewcommand{\rm}{\mathrm}
+\else
+\newcommand{\rm}{\mathrm}
+\fi
 
 
 
@@ -73,12 +72,6 @@
 % % \usepackage{aas_macros}
 % \usepackage[giveninits=true]{kaobiblio}
 % \addbibresource{MyBibFile.bib}
-
-% \ifdefined\rm
-% \renewcommand{\rm}{\mathrm}
-% \else
-% \newcommand{\rm}{\mathrm}
-% \fi
 
 % % \usepackage{amssymb}
 % \usepackage{amsmath}
