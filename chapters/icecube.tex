@@ -9,10 +9,10 @@
 
 The IceCube Neutrino Observatory \sidecite[6cm]{2017JInst..12P3012A_Instrumentation_Systems} is a cubic-kilometer, ice-Cherenkov detector located at the geographic South Pole. IceCube utilizes the Antarctic glacial ice as detector medium to observe neutrinos by measuring the Cherenkov light produced from secondary charged particles with optical modules. It was deployed between 2006 and 2011 and has been taking data since the installation of the first modules. The primary goal of IceCube is the observation of astrophysical neutrinos as a telescope, but it can also be used to study fundamental particle physics properties by measuring atmospheric neutrinos as well as studying cosmic rays.
 
-This chapter first describes the main- and sub-array of the detector and its detection module in \refsec{icecube_array}, the propagation of particles through ice is explained in \refsec{icecube_propagation}, and finally, the signatures that IceCube can observer of the different particles are introduced in \refsec{icecube_signatures}.
+This chapter first describes the main- and sub-array of the detector and its detection module in \refsec{icecube_array}, the propagation of particles through ice is explained in \refsec{icecube_propagation}, and finally, the signatures that IceCube can observe of the different particles are introduced in \refsec{icecube_signatures}.
 
 
-\section{IceCube Detector Components} \labsec{icecube_array}
+\section{Detector Components} \labsec{icecube_array}
 
 \begin{figure}[h]
     \includegraphics{figures/icecube_deepcore/IceCubeArray_slim.png}
@@ -20,16 +20,16 @@ This chapter first describes the main- and sub-array of the detector and its det
     \labfig{icecube_array}
 \end{figure}
 
-The full IceCube detector array consists of 86 vertical, in-ice strings and 81 surface stations as shown in \reffig{icecube_array}. The in-ice part is composed of 60 optical modules per string deployed at depths of \SIrange[range-phrase=-]{1450}{2450}{\metre} below the ice, while the surface stations of the comic air-shower array, \textit{IceTop}, are ice-filled tanks. The surface stations and the majority of the strings are arranged in a hexagonal grid with the operations building, the \textit{IceCube Laboratory} (ICL), central to the grid on the surface. A top view of the hexagonal arrangement is shown in \reffig{icecube_top_view}. The in-ice array is designed to detect neutrinos in the energy range from $\mathcal{O}$({GeV}) to $\mathcal{O}$(PeV).
+The full IceCube detector array consists of 86 vertical, in-ice strings and 81 surface stations as shown in \reffig{icecube_array}. The in-ice part is composed of 60 optical modules per string deployed at depths of \SIrange[range-phrase=-]{1450}{2450}{\metre} below the ice, while the surface stations of the comic air-shower array, \textit{IceTop}, are ice-filled tanks. The surface stations and the majority of the strings are arranged in a hexagonal grid with the operations building, the \textit{IceCube Laboratory} (ICL), central to the grid on the surface. A top view of the hexagonal arrangement is shown in \reffig{icecube_top_view}. The in-ice array is designed to detect neutrinos in the energy range from \si{\giga\electronvolt} to \si{\peta\electronvolt}.
 
 
 \subsection{Digital Optical Modules and the Antarctic Ice} \labsec{ice_and_DOMs}
 
-The IceCube detection medium is the Antarctic glacial ice, which was formed over \SI{100000}{years} by accumulation of snow that was subsequently compressed by its own weight to form a dense crystal structure \sidecite{glacial_ice}. As a result of this formation process, the optical properties, scattering and absorption, primarily change with depth. Within the detector volume the absorption length ranges from \SIrange[range-phrase=-]{100}{400}{\metre}, while the scattering length lies between \SIrange[range-phrase=-]{20}{100}{\metre}. They are correlated, with the absorption length being roughly four times the scattering length \sidecite{ice_calibration}. The vertical distribution of scattering and absorption length can be seen in \reffig{ic_dc_sidecut}, where one dominant feature is the \textit{dust layer} between \SIrange{2000}{2100}{\metre} depth. This region has a higher concentration of dust particles that where deposited in a period of high volcanic activity, which leads to bad optical properties in form of larger scattering and absorption.
+The IceCube detection medium is the Antarctic glacial ice itself, which was formed over \SI{100000}{years} by accumulation of snow that was subsequently compressed by its own weight to form a dense crystal structure \sidecite{glacial_ice}. As a result of this formation process, the optical properties, scattering and absorption, primarily change with depth. Within the detector volume the absorption length ranges from \SIrange[range-phrase=-]{100}{400}{\metre}, while the scattering length lies between \SIrange[range-phrase={~and~}]{20}{100}{\metre}. They are correlated, with the absorption length being roughly four times the scattering length \sidecite{ice_calibration}. The vertical distribution of scattering and absorption length can be seen in \reffig{ic_dc_sidecut}, where one dominant feature is the \textit{dust layer} between \SIrange[range-phrase={~and~}]{2000}{2100}{\metre} depth. This region has a higher concentration of dust particles that where deposited in a period of high volcanic activity, which leads to bad optical properties in form of larger scattering and absorption.
 
 \begin{figure}[h]
     \includegraphics{figures/icecube_deepcore/DeepCore_sideview.pdf}
-	\caption[IceCube sideview]{xx}
+	\caption[IceCube sideview]{Side view of IceCube and DeepCore showing the depth dependent scattering and absorption length (left panel) and the DOM positions around the dust layer.}
     \labfig{ic_dc_sidecut}
 \end{figure}
 
@@ -37,9 +37,9 @@ The IceCube detection medium is the Antarctic glacial ice, which was formed over
 \todo{mention/cite dust logger paper/procedure?}
 
 
-The ice is instrumented by 5160 optical sensors called Digital Optical Modules (DOMs) \sidecite{ABBASI2009294_data_acquisition}, which can detect the Cherenkov light produced by charged particles traveling through the ice. Each DOM is made of a spherical glass housing, containing a downward-facing Photomultiplier Tube (PMT), the main board with control, readout, and processing-electronics, and a LED flasher board for calibration purposes. The design and the individual components of a DOM can be seen in \reffig{DOM_design}.
+The ice is instrumented by 5160 optical sensors called Digital Optical Modules (DOMs) \sidecite{ABBASI2009294_data_acquisition}, which can detect the Cherenkov light produced by charged particles traveling through the ice. Each DOM is made of a spherical glass housing, containing a downward-facing Photomultiplier Tube (PMT), the main-board with control, readout, and processing-electronics, and a LED flasher-board for calibration purposes. The design and the individual components of a DOM can be seen in \reffig{DOM_design}.
 
-The majority of PMTs are the \SI{10}{"} Hamamatsu R7081-02, which have a bialkali photocathode and are sensitive to wavelengths in the range of \SIrange{300}{650}{\nano\metre}, with a peak quantum efficiency (quantum efficiency  of 25\% at \SI{390}{\nano\metre}. In the central part of the IceCube array the peak efficiency reaches 34\%. The dark count rate in the temperature range of \SIrange{-40}{-20}{\degreeCelsius} is $\sim$\SI{300}{\hertz}. The DOM electronics measure the PMT voltage and control the gain. At a voltage crossing of the equivalent to \SI{0.25}{PE} the waveform readout is activated \sidecite{ABBASI2009294_data_acquisition}. Only when either one of the nearest or next to nearest DOMs above or below also saw a voltage crossing within a \SI{1}{\micro\second} time window \sidenote{This is referred to as a \textit{hard local coincidence (HLC)}.}, the voltages are digitized and send to the ICL. Through the application of a waveform unfolding algorithm, called \textit{WaveDeform} \sidecite{IceCube:2013dkx}, the waveforms are compressed and the results are the reconstructed times and charges of the photo-electrons. This is the basis for all further IceCube data processing.
+The majority of PMTs are the \SI{10}{"} Hamamatsu R7081-02, which have a bialkali photocathode and are sensitive to wavelengths in the range of \SIrange{300}{650}{\nano\metre}, with a peak quantum efficiency of 25\% at \SI{390}{\nano\metre}. In the central part of the IceCube array the peak efficiency reaches 34\%. The dark count rate in the temperature range of \SIrange{-40}{-20}{\degreeCelsius} is $\sim$\SI{300}{\hertz}. The DOM electronics measure the PMT voltage and control the gain. At a voltage crossing of the equivalent to \SI{0.25}{PE} the waveform readout is activated \sidecite{ABBASI2009294_data_acquisition}. Only when either one of the nearest or next to nearest DOMs above or below also saw a voltage crossing within a \SI{1}{\micro\second} time window \sidenote{This is referred to as a \textit{hard local coincidence (HLC)}.}, the voltages are digitized and send to the ICL. Through the application of a waveform unfolding algorithm, called \textit{WaveDeform} \sidecite{IceCube:2013dkx}, the waveforms are compressed and the results are the reconstructed times and charges of the photo-electrons. This is the basis for all further IceCube data processing.
 
 \begin{marginfigure}
     \includegraphics{figures/icecube_deepcore/DOM_schematic.png}
@@ -49,7 +49,7 @@ The majority of PMTs are the \SI{10}{"} Hamamatsu R7081-02, which have a bialkal
 
 The PMT is covered with a mu-metal grid (made from wire mesh), shielding the photocathode from Earth's magnetic field and it is optically coupled to the glass sphere by RTV silicone gel. The glass sphere is a pressure vessel, designed to withstand both the constant ice pressure and the temporary pressure during the refreezing process of the water in the drill hole during deployment (peaking at around \SI{690}{\bar}). The sphere is held by a harness that connects the DOMs along a string and also guides the cable beside them.
 
-The flasher board controls 12 LEDs that produce optical pulses in bright UV. The LEDs can be pulsed separately or in combination with variable output levels and pulse lengths. Using the known information of the light source positions and times this can be used for in-situ calibration of the detector by measuring absorption and scattering properties of the ice. Calibrating the optical efficiency of the DOMs itself is more accurately done using minimum ionizing muons \sidecite{domeff_nick}, since the total amplitude of the LED light is not well known.
+The flasher-board controls 12 LEDs that produce optical pulses in bright UV. The LEDs can be pulsed separately or in combination with variable output levels and pulse lengths. Using the known information of the light source positions and times this can be used for in-situ calibration of the detector by measuring absorption and scattering properties of the ice. Calibrating the optical efficiency of the DOMs itself is more accurately done using minimum ionizing muons \sidecite{domeff_nick}, since the total amplitude of the LED light is not well known.
 
 
 \subsection{IceCube}
@@ -57,6 +57,14 @@ The flasher board controls 12 LEDs that produce optical pulses in bright UV. The
 The 78 strings that are arranged in a hexagonal pattern from the main part of the in-ice array, which is called \textit{IceCube}. With a $\sim$\SI{125}{\metre} horizontal spacing between the strings and a $\sim$\SI{17}{\metre} vertical spacing between DOMs, IceCube has a lower energy threshold of around \SI{100}{GeV}. IceCube was designed to detect astrophysical neutrinos with energies above \SI{1}{\tera\electronvolt}.
 
 The coordinate system that is used in IceCube is centered at 46500'E, 52200'N at an elevation of \SI{883.9}{\metre} \sidecite{2017JInst..12P3012A_Instrumentation_Systems}. Per definition, it's a right-handed coordinate system where the y-axis points along the Prime Meridian (Grid North) towards Greenwich, UK, and the x-axis points \SI{90}{\degree} clockwise from the y-axis (Grid East). The z-axis is normal to the ice surface, pointing upwards. For IceCube analyses depth is defined as the distance along the z axis from the ice surface, assumed to be at an elevation of \SI{2832}{\metre}.
+
+\todo{Throw this in a box}
+
+% \marginnote{
+%   \begin{kaobox}[frametitle=Title]
+%     Blablabla
+%   \end{kaobox}
+% }
 
 \begin{figure}
     \includegraphics[trim={2.0cm, 1.5cm, 0, 0}, clip, width=0.65\linewidth]{figures/icecube_deepcore/icecube_top_view_bw.pdf}
@@ -67,59 +75,50 @@ The coordinate system that is used in IceCube is centered at 46500'E, 52200'N at
 
 \subsection{DeepCore}
 
-The additional 8 strings form a denser sub-array of IceCube called \textit{DeepCore} \sidecite{DeepCore_design_Abbasi2012615}. It's located at the bottom-center of the in-ice array and its \textit{fiducial volume} also includes the 7 surrounding IceCube strings as shown in \reffig{icecube_top_view}. The strings in this region have a closer average horizontal distance of about \SI{70}{\metre}. Th lower 50 DeepCore DOMs on each string are placed in the region of clear ice below the dust layer between \SIrange{2100}{2450}{\metre} depth, where their vertical spacing is $\sim$\SI{7}{\metre}. The remaining 10 modules on each string are placed above the dust layer to be used as veto against atmospheric muons. Additionally, the DeepCore DOMs are equipped with higher quantum efficiency PMTs. The combination of the denser spacing and the high quantum efficiency modules, leads to a lower energy detection threshold of around \SI{5}{GeV}, allowing the observation of atmospheric neutrinos, which are mostly in the energy range of \SIrange{10}{100}{\giga\electronvolt}. The main analysis performed with DeepCore is an atmospheric neutrino oscillation measurement, but the large flux of atmospheric neutrinos allows for many other Beyond Standard Model searches, such as searches for dark matter, non-standard interactions, or sterile neutrinos. 
+The additional 8 strings form a denser sub-array of IceCube called \textit{DeepCore} \sidecite{DeepCore_design_Abbasi2012615}. It's located at the bottom-center of the in-ice array and its \textit{fiducial volume} also includes the 7 surrounding IceCube strings as shown in \reffig{icecube_top_view}. The strings in this region have a closer average horizontal distance of about \SI{70}{\metre}. The lower 50 DeepCore DOMs on each string are placed in the region of clear ice below the dust layer between \SIrange{2100}{2450}{\metre} depth, where their vertical spacing is $\sim$\SI{7}{\metre}. The remaining 10 modules on each string are placed above the dust layer to be used as veto against atmospheric muons as can be seen in \reffig{ic_dc_sidecut}. Additionally, the DeepCore DOMs are equipped with higher quantum efficiency PMTs. The combination of the denser spacing and the high quantum efficiency modules, leads to a lower energy detection threshold of around \SI{5}{GeV}, allowing the observation of atmospheric neutrinos, which are mostly in the energy range of \SIrange{10}{100}{\giga\electronvolt}. The main analysis performed with DeepCore is an atmospheric neutrino oscillation measurement, but the large flux of atmospheric neutrinos allows for many other Beyond Standard Model searches, such as searches for dark matter, non-standard interactions, or sterile neutrinos. 
 
 
-\section{Propagation of Particles in Ice} \labsec{icecube_propagation}
+\section{Particles Propagation in Ice} \labsec{icecube_propagation}
 
-
-\todo{(Re-)write introduction for PhD thesis (just copy paste from M.Sc.). (everything below)}
-
-When charged particles travel through matter they interact and lose energy by several interaction processes.
-The Cherenkov light emitted by the particles as described in Section \refsec{cherenkov_effect} only contributes a small amount to the total energy loss.
-The dominant processes depend on the type of Cherenkov light source, which we can broadly categorize into the three groups: quasi-continuous energy loss by muons, electromagnetic cascades, and hadronic cascades.
-
-\paragraph{Muons} lose their energy mainly by \textit{ionization}, \textit{bremsstrahlung}, \textit{pair production} and the \textit{photo-nuclear interaction}.
-Considering that ionization only has a weak energy dependence for muons above 1\,GeV and combining the other three components into one, the total energy loss is given by
-\begin{equation}
-    -\frac{\mathrm{d}E}{\mathrm{d}x} = a_I(E) + b_R(E) \cdot E,
-    \labeq{radiative_losses}
-\end{equation}
-where $E$ is the energy and $a_I(E)$ and $b_R(E) \cdot E$ are the energy loss by ionization and the combined radiative losses, respectively.
-For the energy range of interest for this work, the parameters $a_I(E)$ and $b_R(E)$ only have a weak energy dependence and equation \refeq{radiative_losses} reduces to
-\begin{equation}
-    -\frac{\mathrm{d}E}{\mathrm{d}x} = a + b \cdot E.
-    \labeq{radiative_losses_simple}
-\end{equation}
-This description results in a critical energy $E_{crit}=a/b$ separating the two energy regimes where ionization or radiative losses are dominant.
-Typical values are $a \approx 2.59$\,MeV/cm and $b \approx 3.63 \cdot 10^{-6}$\,cm$^{-1}$ \sidecite{2004hep.ph....7075C} leading to a critical energy of $\sim 770$\,GeV.
-Since the considered energy range for atmospheric neutrino oscillations is below the critical energy we only consider ionization losses by setting $b=0$ which easily relates the range of a muon $R_\mu$ to its initial energy by
-\begin{equation}
-    R = \frac{E_0}{a}.
-    \labeq{muon_range_approx}
-\end{equation}
-With equation \refeq{muon_range_approx} it is clear that by measuring the length of a muon track, its energy can be estimated if the full track is contained in IceCube.
-This treatment is only an approximation and does not take into account the stochastic nature of some of the energy losses.
-Especially bremsstrahlung and photo-nuclear interactions occur rarely, but when they happen, they deposit a large amount of energy. More detailed information is found in \sidecite{LRaedel}.
+Neutrinos interacting in the ice via DIS produce muons, electromagnetic showers, and hadronic showers, depending on their flavor and the interaction type. The particles produced in those processes mainly lose their energy through \textit{ionization}, \textit{bremsstrahlung}, \textit{pair production}, and the \textit{photo-nuclear interaction}. Electrically charged particles also emit Cherenkov light when traveling through the ice, which is the main observable in IceCube, but only contributes a small amount to the total energy loss. The Cherenkov effect and the energy losses of the particles are described in the following sections, followed by an overview of the different particle signatures in IceCube.
 
 
 \subsection{Cherenkov Effect} \labsec{cherenkov_effect}
 
-Cherenkov radiation is emitted when a charged particle moves through a medium with a velocity that is greater than the speed of light in that medium.
-The continuous energy loss due to the emission of Cherenkov radiation is small, at the order of $\mathcal{O}$($10^{-4}$), as compared to the main energy losses that will be described in Section \refsec{energy_loss}.
-The observation of this radiation in IceCube and DeepCore, however, is fundamental for the detection of the charged particles originating from the neutrino interactions that were outlined in Section \refsec{neutrino_interactions}.
-The Cherenkov effect was first observed by Pavel Cherenkov in 1934 \sidecite{CherenkovPhysRev.52.378}.
-As can be derived from trigonometry, the Cherenkov light is emitted in a parallel wavefront at the Cherenkov angle
-\begin{equation}
-    \theta_c = \arccos\Big(\frac{1}{\beta n}\Big),
-    \labeq{cherenkov_angle}
-\end{equation}
-with $n$ being the refractive index of the medium and $\beta$ the speed of the particle in units of the speed of light.
-A sketch of the wavefront is shown in Figure \reffig{cherenkov_light_front}, where the black circles depict spherically emitted light and the blue line is the formed Cherenkov light front.
-\begin{figure}[h]
+When a charged particle moves through a medium with a velocity that is greater than the speed of light in that medium, it emits Cherenkov radiation, losing a very small amount of energy ($\mathcal{O}$($10^{-4}$) of the total energy loss). The detection principle of IceCube and DeepCore however, is based fundamentally on the observation of resulting Cherenkov photons that are emitted by the charged secondary particles produced in the neutrino interactions that were introduced in \refsec{neutrino_interactions}. The Cherenkov effect was first observed by Pavel Cherenkov in 1934 \sidecite{CherenkovPhysRev.52.378} and occurs when the charged particle travels faster than the phase velocity of light, therefore polarizing the medium. Upon de-excitation the molecules emit the received energy as photons in a spherical wavefront. Since the particle moves past this wavefront, the superposition of the spherical light emissions form a cone which is shown in blue in the bottom of \reffig{cherenkov_light_front}.
+
+\begin{marginfigure}
     \centering
-    \begin{tikzpicture}[scale=0.9]
-        \draw[draw=none,fill=gray!60] (8,0) circle (0.1);
+    \begin{tikzpicture}[scale=0.6]
+
+        % slower than speed of light
+        \draw[draw=none,fill=gray!60] (10,8) circle (0.1);
+        \draw[draw=none,fill=gray!60] (10.5,8) circle (0.1);
+        \draw[draw=none,fill=gray!60] (11,8) circle (0.1);
+        \draw[draw=none,fill=gray!60] (11.5,8) circle (0.1);
+        \draw[draw=none,fill=gray!60] (11.7,8) circle (0.1);
+            
+        \draw[blue, line width=0.3mm] (10,8) circle (3.5);
+        \draw[line width=0.3mm] (10.25,8) circle (3);
+        \draw[line width=0.3mm] (10.5,8) circle (2.5);
+        \draw[line width=0.3mm] (10.75,8) circle (2);
+        \draw[line width=0.3mm] (11,8) circle (1.5);
+        \draw[line width=0.3mm] (11.25,8) circle (1);
+        \draw[line width=0.3mm] (11.5,8) circle (0.5);
+        \draw[line width=0.3mm] (11.7,8) circle (0.1);
+
+        \draw[orange, line width=0.6mm] (10,8) -- (11.7,8);
+        \draw[draw=none,fill=orange] (11.8,8) -- +(210:0.45cm)arc (210:150:0.45cm) -- cycle;
+
+        \draw[orange, line width=0.6mm] (10,8) -- (11.9,11.00);
+
+        \node[draw=orange,line width=0.3mm] at (10.8,7.5) {$vt$};
+        \node[draw=orange,line width=0.3mm,, rotate=59] at (10.5,9.7) {$ct$};
+
+        \node[line width=0.3mm] at (10,4) {$v<c$};
+
+
+        % faster than speed of light
         \draw[draw=none,fill=gray!60] (9,0) circle (0.1);
         \draw[draw=none,fill=gray!60] (10,0) circle (0.1);
         \draw[draw=none,fill=gray!60] (11,0) circle (0.1);
@@ -127,9 +126,6 @@ A sketch of the wavefront is shown in Figure \reffig{cherenkov_light_front}, whe
         \draw[draw=none,fill=gray!60] (13,0) circle (0.1);
         \draw[draw=none,fill=gray!60] (13.5,0) circle (0.1);
         
-        \draw[line width=0.3mm, gray!60] (2,0)--(14,0);
-        
-        \draw[line width=0.3mm] (8,0) circle (3);
         \draw[line width=0.3mm] (9,0) circle (2.5);
         \draw[line width=0.3mm] (10,0) circle (2);
         \draw[line width=0.3mm] (11,0) circle (1.5);
@@ -137,69 +133,181 @@ A sketch of the wavefront is shown in Figure \reffig{cherenkov_light_front}, whe
         \draw[line width=0.3mm] (13,0) circle (0.5);
         \draw[line width=0.3mm] (13.5,0) circle (0.25);
         
-        \draw[orange, line width=0.6mm] (8,0)--(14,0);
-        \draw[orange, line width=0.6mm] (8,0)--(9.65,2.5);
+        \draw[orange, line width=0.6mm] (9,0) -- (14,0);
+        \draw[draw=none,fill=orange] (14.1,0) -- +(210:0.45cm)arc (210:150:0.45cm) -- cycle;
+
+        \draw[orange, line width=0.6mm] (9,0) -- (10.3,2.15);
         
-        \draw[orange, line width=0.6mm] (8.8,0) arc (0:55:0.8cm);
+        \draw[orange, line width=0.6mm] (9.8,0) arc (0:55:0.8cm);
         
         \draw[blue, line width=0.3mm] (8,3.45) -- (14,0);
         \draw[blue, line width=0.3mm] (8,-3.45) -- (14,0);
         
-        \draw[draw=none,fill=orange] (14.1,0)-- +(210:0.45cm)arc (210:150:0.45cm) -- cycle;
         
-        \node[] at (8.5,0.25) {$\theta_c$};
+        \node[] at (8.7,-0.6) {$\theta_c$};
+        \draw[line width=0.2mm] (8.9,-0.4) -- (9.5,0.25);
 
-        \node[draw=orange,line width=0.3mm] at (10.5,0.4) {$\beta \cdot c$};
-        \node[draw=orange,line width=0.3mm,, rotate=57] at (9.2,1.1) {$c/n$};
+        \node[draw=orange,line width=0.3mm] at (10.5,-0.5) {$vt$};
+        \node[draw=orange,line width=0.3mm,, rotate=59] at (9.0,1.0) {$ct$};
+
+        \node[line width=0.3mm] at (10,-3.5) {$v>c$};
+
     \end{tikzpicture}
-    \caption[Cherenkov light front]{Schematic formation of the Cherenkov light front (blue) produced by a charged particle traveling faster than the speed of light in the medium. The black circles are spherically emitted light and the orange arrow shows the direction of the particle.}
+    \caption[Cherenkov light front]{Schematic depiction of the spherical light front produced by a particle traveling slower than the speed of light in the medium (top) and the formation of the Cherenkov light front produced by a charged particle traveling faster than the speed of light in the medium (bottom). Blue is the resulting wavefront, while the black circles are spherically emitted light at each position and the orange arrows show the direction of the particle.}
     \labfig{cherenkov_light_front}
-\end{figure}
-Typical values for the Antarctic ice are $n \approx 1.3$ and as a result $\theta_c \approx 41^\circ$ \sidecite{SEuler}.
-Additionally, one can calculate the number of photons produced by a Cherenkov emitter based on the description in \sidecite{Frank_Tamm}.
-For a wavelength $\lambda$ with (300\,nm < $\lambda$ < 500\,nm) 250 photons per cm are emitted assuming a very relativistic particle with $\beta \simeq 1$ \sidecite{raedel_wiebusch_cherenkov_yield}.
+\end{marginfigure}
+
+Using trigonometry, the angle $\theta_c$ at which the Cherenkov light is emitted can be calculated as
+\begin{equation}
+    \theta_c = \arccos\Big(\frac{1}{\beta n}\Big)
+    \;,
+    \labeq{cherenkov_angle}
+\end{equation}
+where $\beta$ is the velocity of the particle in units of the speed of light and $n$ is the refractive index of the medium. When the particle velocity is close to the speed of light, the equation holds and the angle is only dependent on the refractive index of the medium. For the Antarctic ice, the refractive index is $n \approx 1.3$ and as a result $\theta_c \approx 41^\circ$ \sidecite{SEuler}.
+
+The frequency of the emission depends on the charge $z$ and the wavelength-dependent index of refraction $n(\omega)$ and is given by the Frank-Tamm formula \sidecite{frank, tamm}
+\begin{equation}
+    \frac{d^2N}{dxd\lambda} = \frac{2\pi\alpha z^2}{\lambda^2} \Big(1 - \frac{1}{\beta^2n(\omega)^2}\Big)
+    \;,
+    \labeq{frank_tamm}
+\end{equation}
+with $\alpha\approx1/137$ the fine structure constant, $\lambda$ the wavelength of the emitted light, and $x$ the path length traversed by the particle. Relativistic particles in ice produce roughly 250 photons per cm in the wavelength range of \SIrange[range-phrase=-]{300}{500}{\nano\metre} \sidecite{raedel_wiebusch_cherenkov_yield}.
 
 
 \subsection{Energy Losses} \labsec{energy_loss}
 
+Even though relativistic, charged particles traveling through matter produce Cherenkov radiation, their energy is mainly lost through other processes that are dependent on the particle type and energy. The exact principles of energy loss for the different types can broadly be categorized into the three groups: quasi-continuous energy loss by muons, electromagnetic cascades, and hadronic cascades.
+
 
 \subsubsection{Muons}
+
+Muons lose their energy by ionization, bremsstrahlung, pair production, and the photo-nuclear effect. The energy loss by ionization is the dominant process for muons above \SI{1}{\giga\electronvolt} and has a weak energy dependence given by
+\begin{equation}
+    \Bigl \langle -\frac{\mathrm{d}E}{\mathrm{d}x} \Bigr \rangle = a_I(E) + b_R(E) \cdot E
+    \;,
+    \labeq{radiative_losses}
+\end{equation}
+where $E$ is the energy and $a_I(E)$ and $b_R(E) \cdot E$ are the energy loss by ionization and the combined radiative losses, respectively. In the energy range relevant for this work (\SIrange[range-phrase=-]{10}{100}{\giga\electronvolt}), the parameters $a_I$ and $b_R$ only depend on energy very weakly and can be approximated by constants. The energy loss is then given by
+\begin{equation}
+    \Bigl \langle -\frac{\mathrm{d}E}{\mathrm{d}x} \Bigr \rangle = a + b \cdot E
+    \;.
+    \labeq{radiative_losses_simple}
+\end{equation}
+Based on this description, there is a critical energy which divides the regimes where ionization and radiative losses dominate. The critical energy is given by $E_{crit} = a/b$ and for muons in ice it is $\sim$\SI{713}{\giga\electronvolt} (using $a \approx$ \SI{2.59}{\mega\electronvolt} and $b \approx$ \SI{3.63e-6}{\cm^{-1}} \sidecite{2004hep.ph....7075C}). Since the energy range of interest is well below this critical energy the range of a muon can easily related to its energy by
+\begin{equation}
+    \langle L \rangle = \frac{E_0}{a}
+    \;,
+    \labeq{muon_range_approx}
+\end{equation}
+Measuring the length of a muon track therefore allows for an estimation of its energy if the full track is contained in IceCube. Using the given numbers a \SI{30}{\giga\electronvolt} muon travels $\sim$\SI{116}{\metre}. This approximate treatment does not take into account the stochastic nature of some energy losses. Bremstrahlung and photo-nuclear interactions for example occur rarely, but when they do, they deposit a large chunk of energy. A thorough investigation of the energy losses of muons in ice can be found in \sidecite{LRaedel}.
 
 
 \subsubsection{Electromagnetic Showers}
 
-Electromagnetic cascades are induced by electrons and positrons or photons.
-All of them are either produced directly in the neutrino interactions or in interactions of secondary particles.
-Photons lose energy via pair production whereas for electrons and positrons the dominant energy loss is due to bremsstrahlung.
-For both cases, the interaction process happens repeatedly and an electromagnetic shower is formed when pair production and bremsstrahlung take place in turn.
-Every time one of the interactions takes place, more electrons and positrons or photons are produced with smaller energy. 
-This proceeds until the energy of the particles falls below the critical energy $E_c$ and the remaining energy is quickly lost.
-For electrons and positrons, this happens through ionization and excitation of the surrounding atoms.
-For photons, the Compton effect and the photoelectric effect become the dominant energy losses.
-Electromagnetic showers are characterized by the radiation length $X_0$ at which the energy of electrons or positrons is reduced to $1/e$ of their initial energy.
-For photons, $X_0$ is $7/9$ of the mean free path for pair production. For ice, the critical energy is $E_c \approx 78$\,MeV and the radiation length is $X_0 \approx 39.3$\,cm \sidecite{PhysRevD.98.030001}.
+Photons as well as electrons and positrons are produced either directly in neutrino interactions or in secondary particle interactions. Above a critical energy $E_c$, they lose their energy through pair production and bremsstrahlung, respectively, where the resulting photons and the electron/positron pairs can both produce further particles through repeated pair production and bremsstrahlung emission forming an expanding, electromagnetic shower profile. The particles' energy reduces with every interaction and their number increases until they fall below the critical energy where ionization and excitation of surrounding atoms become the dominant energy loss processes for electrons and positrons. For photons the remaining energy is lost through the Compton effect and the photoelectric effect. \todo{Add reference for these processes.} Below the critical energy no new shower particles are produced. Electromagnetic cascades can be characterized by the radiation length, $X_0$, after which electrons/positrons reduced their energy to $1/e$ of their initial energy. For photons, it's equivalent to $7/9$ of the mean free path of pair production. The critical energy for ice is $E_c \approx$ \SI{78}{\mega\electronvolt}, with a radiation length of $X_0 \approx$ \SI{39.3}{\centi\metre} \sidecite{PhysRevD.98.030001}.
+
+The radiation length governs the longitudinal shower profile and using $t=x/X_{0}$, the shower intensity can be described by \todo{cite em shower distribution}
+\begin{equation}
+    \frac{dE}{dt} = E_0b \frac{({bt})^{a-1} e^{-bt}}{\Gamma(a)}
+    \;,
+    \labeq{gamma_distribution}
+\end{equation}
+where $a$ and $b$ are parameters that have to be estimated from experiment. Based on the work from \sidecite{LRaedel}, performed with Geant4 \sidecite{geant4}, the parameters for electromagnetic showers in ice are
+\begin{subequations}
+    \begin{align}
+        e^-: \; a \approx 2.01 + 1.45 \log_{10} (E_0/\si{\giga\electronvolt}),\; & b \approx 0.63 \;, \\
+        e^+: \; a \approx 2.00 + 1.46 \log_{10} (E_0/\si{\giga\electronvolt}),\; & b \approx 0.63 \;, \\
+        \gamma: \; a \approx 2.84 + 1.34 \log_{10} (E_0/\si{\giga\electronvolt}),\; & b \approx 0.65 \;.
+        \labeq{gamma_distribution_parameter}
+    \end{align}
+\end{subequations}
+The maximum of the shower is at $t_{max} = (a-1)/b$ and the Cherenkov emission of the charged particles produced in the shower is peaked around the Cherenkov angle, since they are produced in the forward direction.
+\todo{add angular profile plot? (create one based on leif Rädel as alex did)}
 
 
 \subsubsection{Hadronic Showers}
 
-Hadronic cascades are always produced in the neutrino interactions described in Section \refsec{neutrino_interactions}, either from the breaking nucleus or as decay products.
-Similar to an electromagnetic cascade, a hadronic cascade forms as a result of the production of secondary particles from the strong interactions of hadrons with the traversed matter.
-Hadronic cascades also contain an electromagnetic component, for example through the decay of neutral pions into two photons. 
-The shower profile and the light emission are very dependent on the produced particle type, which leads to larger fluctuations between individual showers with the same energy.
-The observed energy also varies, because energy gets lost in the hadronic binding process and muons and neutral particles produce less light and no light, respectively.
-On top of that, hadrons have a higher energy threshold for Cherenkov light production, due to their higher mass.
-The relative brightness of hadronic showers as compared to electromagnetic showers is given by \sidecite{LRaedel}
+The breaking nucleus or any hadronic decay products from the neutrino DIS interactions always create a hadronic cascade. It is a result of secondary particles produced in strong interactions between the hadrons and the traversed matter. The charged particles produced in the shower will emit Cherenkov radiation, while neutral particles will be invisible to the detector. There is also an electromagnetic component of the shower, due to for example the decay of neutral pions into photons. Hadronic showers of the same energy as electromagnetic showers have larger fluctuations in energy deposition and shape, since they depend on the produced particle types. Hadrons also have a higher energy threshold for Cherenkov light production, because of their higher mass. Based on \sidecite{GABRIEL1994336, LRaedel}, the visible electromagnetic fraction of hadronic showers can be parameterized as
 \begin{equation}
-    F(E) = \frac{T_\mathrm{hadron}}{T_\mathrm{EM}},% = 1 - (1 - f_0)\Big(\frac{E}{E_s}\Big)^{-m}
-    \labeq{relative_shower_brighness}
+    F(E_0) = \frac{T_\mathrm{hadron}}{T_\mathrm{EM}} = 1 - (1 - f_0)\Big(\frac{E_0}{E_s}\Big)^{-m}
+    \;,
+    \labeq{hadronic_shower_fraction}
 \end{equation}
-where $T_\mathrm{hadron/EM}$ is the total track length of a hadronic/electromagnetic shower with the same energy.
-The ratio $F(E)$ is always smaller than 1, but increases with energy as the electromagnetic fraction of the hadronic cascade becomes larger.
-A more detailed parameterization of $F(E)$, as well as fitted values for several particle types, can be found in \sidecite{LRaedel}.
+where $T_\mathrm{hadron/EM}$ is the total track length of a hadronic/electromagnetic shower with the same energy, $f_0$ is the ratio of hadronic and electromagnetic light yield, $E_0$ is the initial energy, and $E_s$ is an energy scale. The parameter $m$ is an arbitrary parameter. The ration $F(E_0)$ increases with energy, but is always smaller than $1$. The variance of this distribution is given by
+\begin{equation}
+    \sigma_F(E_0) = \sigma_0 \log(E_0)^{-\gamma}
+    \;.
+    \labeq{hadronic_shower_fraction_variance}
+\end{equation}
+The parameters $m$, $E_s$, and $f_0$ are fit from simulation. Cherenkof light from hadronic showers also peaks around the Cherenkov angle, but the angular distribution is more smeared out, due to the variations in particle type and their energy depositions.
 
 
-\section{Particle Signatures in IceCube} \labsec{icecube_signatures}
+\section{Event Morphologies} \labsec{icecube_signatures}
 
-\subsection{Neutrinos}
+The event morphologies produced by particles detected in IceCube are combinations of the three energy loss types described in \refsec{energy_loss}, e.g. \textit{cascades} from electromagnetic and hadronic showers and elongated \textit{tracks} from muons traveling through the detector. \reftab{interactions_vs_signatures} gives an overview of the possible event signatures.
 
-\subsection{Atmospheric muons}
+\begin{table}[h]
+    \small
+    \begin{center}
+        \begin{tabular}{ m{1.8cm} m{2.0cm} m{3.0cm} m{1.8cm} }
+
+            \hline\hline
+
+            \textbf{Interaction} & \multicolumn{2}{c}{\textbf{Secondary particles}} &\textbf{Signature} \\
+
+            \hline\hline
+
+            \multirow{2}{*}[-1.5em]{CC $\overset{(-)}{\nu_\mu}$ }
+            & \includegraphics[width=2cm]{figures/neutrinos_properties/interaction_schematics/numu_CC_muon_only.pdf} 
+            & $\mu^\pm$ track 
+            & Track-only \\
+
+            \cmidrule{2-4} 
+            &\includegraphics[width=2cm]{figures/neutrinos_properties/interaction_schematics/numu_CC_track_cascade.pdf}  
+            & $\mu^\pm$ track and hadrons 
+            & Track with cascade \\
+
+            % & \multirow{2}{*}[-2em]{Track with cascade} \\
+
+            \cmidrule{1-4}
+
+            \multirow{2}{*}[-1.5em]{CC $\overset{(-)}{\nu_\tau}$ }
+            &\includegraphics[width=2cm]{figures/neutrinos_properties/interaction_schematics/nutau_CC_track_cascade.pdf} 
+            & $\tau^\pm$ decaying into $\mu^\pm$ ($\sim$17\% BR), hadrons 
+            % & {} \\
+            & Cascade with track \\
+
+            \cmidrule{2-4}
+
+            & \includegraphics[width=2cm]{figures/neutrinos_properties/interaction_schematics/nutau_CC_cascadeonly.pdf}
+            & $\tau^\pm$ decaying into $e^\pm$ or hadrons ($\sim$83\% BR)  
+            & {} \\
+
+            \cmidrule{1-3} CC $\overset{(-)}{\nu_e}$ 
+            & \includegraphics[width=2cm]{figures/neutrinos_properties/interaction_schematics/nue_CC_cascadeonly.pdf}
+            & $e^\pm$, hadrons & {Cascade-only} \\
+
+            \cmidrule{1-3}
+
+            NC $\overset{(-)}{\nu_\ell}$ 
+            & \includegraphics[width=2cm]{figures/neutrinos_properties/interaction_schematics/nuall_NC_cascadeonly.pdf} 
+            & hadrons &  {} \\
+
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption[IceCube event signatures and underlying interactions]{IceCube event signatures, their underlying interaction type, and the particles that produce them. Also shown are the secondary particles produced in the interactions. Black dashed lines represent neutrinos, green lines muons, orange line leptons, and blue and red lines are particles in electromagnetic and hadronic cascades, respectively. Adapted from \cite{ATerliuk}.}
+    \labtab{interactions_vs_signatures}
+\end{table}
+
+
+\paragraph{Neutrino} interactions are observed as cascades, tracks, or a combination of both, depending on the initial flavor and the interaction type for the specific event.
+
+In $\nu_\mu$ - CC interactions, a muon is produced in addition to a hadronic shower from the breaking nucleus. If the interaction happens outside the detector, but the muon passes through the detector, this will create a track-like signature. Same happens if the interaction happens inside, but the energy transfer to the nucleus is small ($y \approx 0$). At energies relevant for this work, tracks have length at the same order of the distance between DOMs, so they can be observed as such.
+
+If the interaction happens inside the detector and the energy transfer to the hadronic part of the shower is larger, it will create a cascade with a track leaving it. A similar signature occurs if a $\nu_\tau$ - CC interaction happens, creating a tau that decays into a muon (happening with a branching ratio of $\SI{17}{\percent}$). In those cases the muon usually has a lower energy and the track will be fainter and harder to observe.
+
+The other $\SI{83}{\percent}$ of $\nu_\tau$ - CC interactions produce a tau that decays into an electron or hadrons, leaving a cascade-only signature through the electromagnetic or hadronic shower. All $\nu_e$ - CC interactions also produce pure cascades, since the electron quickly loses its energy in an electromagnetic shower. In all $\nu$ - NC interactions, the produced neutrino escapes and only the hadronic shower is observable. Since the size of the cascades at the energy range of interest is smaller than the spacing of the DOMs, they are approximately observed as point-like, spherical light sources. Considering the short effective scattering length (\SIrange[range-phrase=-]{20}{50}{\metre}), the light is almost isotopically emitted.
+
+
+\paragraph{Atmospheric muons} also produce pure track like signatures, similar to $\nu_\mu$ - CC interactions happening outside the detector. They are one of the main backgrounds for analyses using atmospheric neutrinos and are therefore the target of many filter steps described in. \todo{cite selection/filtering section}
