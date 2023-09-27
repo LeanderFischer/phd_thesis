@@ -9,6 +9,21 @@
 
 \subsection{Test Statistic}
 
+- measurement by comparing weighted MC to Data
+- uses modified chi2 defined as
+
+
+\begin{equation}
+    \chi^2_{\mathrm{mod}} = 
+    \sum_{i \in \mathrm{bins}}^{}\frac{(N^{\mathrm{\nu}}_i + N^{\mathrm{\mu}}_i + N^{\mathrm{HNL}}_i - N^{\mathrm{obs}}_i)^2}
+    {N^{\mathrm{\nu}}_i + N^{\mathrm{\mu}}_i + N^{\mathrm{HNL}}_i + (\sigma^{\mathrm{\nu}}_i)^2 + (\sigma^{\mathrm{\mu}}_i)^2 + (\sigma^{\mathrm{HNL}}_i)^2}
+     + \sum_{j \in \mathrm{syst}}^{}\frac{(s_j - \hat{s_j})^2}{\sigma^2_{s_j}}
+    \;,
+    \labeq{mod-chi2-hnl}
+\end{equation}
+where $N^{\mathrm{\nu}}_i$, $N^{\mathrm{\mu}}_i$, and $N^{\mathrm{HNL}}_i$ are the expected number of events in bin $i$ from neutrinos, atmospheric muons, and HNL, while $N^{\mathrm{obs}}_i$ is the observed number of events in bin $i$. The expected number of events from each particle type is calculated by summing the weights of all events in the bin $N^{\mathrm{type}}_i = \sum_i^{\rm type}\omega_i$, with the statistical uncertainty being $(\sigma^{\mathrm{type}}_i)^2 = \sum_i^{\rm type}\omega_i^2$ 
+
+
 \subsection{Free Parameter Selection}
 
 \subsection{Signal and Background in Analysis Binning}
