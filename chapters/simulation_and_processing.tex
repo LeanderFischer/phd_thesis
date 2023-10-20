@@ -265,40 +265,31 @@ Level 5 is the final selection level, before event reconstructions are applied. 
 
 \section{Reconstruction} \labsec{reconstruction}
 
-- there are several methods to reconstruct events at energies relevant for this work (\SIrange{10}{100}{\giga\electronvolt})
-- at these energies the light deposition is very low and only a few DOMs detect light, making reconstructions difficult
-- \sidecite{low_energy_reco_IC} describes two classical methods, which have partly been applied in \sidecite{OVS_PRD}
-- the algorithm used in this work is a newer method that applies a \textit{convolutional neural network (CNN)} to reconstruct the events
+Several methods exist to reconstruct events at the energies relevant for this work (\SIrange{10}{100}{\giga\electronvolt}). At these energies, the light deposition is very low and only a few DOMs detect light, making the reconstructions difficult. \sidecite{low_energy_reco_IC} describes two classical methods, which have partly been applied in one recent IceCube atmospheric neutrino oscillation measurement using a golden\sidenote{add description of what makes this a golden smaple} sub-sample of the DeepCore sample \sidecite{OVS_PRD}. The algorithm used in this work on the other hand, is a newer method that applies a \textit{convolutional neural network (CNN)} to reconstruct the events and determine some discriminating quantities. The latest muon neutrino disappearance result from IceCube \sidecite{flercnn_analysis} is based on this reconstruction.
 
 
 \subsection{Fast Low Energy Reconstruction using Convolutional Neural Networks} \labsec{flercnn_reconstruction}
 
-first:
-- additional high level variables are computed at this level
-- the variables are from fast and inexpensive algorithms
-- these variables which are used in the final analysis cuts described in \refsec{analysis_cuts}
+As the name \textit{Fast Low Energy Reconstruction using Convolutional Neural Networks (FLERCNN)} already indicates, the FLERCNN reconstruction \sidecite{flercnn_proceedings, flercnn} is a CNN optimized to reconstruct IceCube events at low energies ($<$\SI{100}{\giga\electronvolt}) in a fast and efficient manner. The network is trained to find the connection between the hit pattern and the events properties by identifying patterns similar to how CNNs are applied effectively in image classification. The patterns are an imprint of the neutrino interactions that can happen anywhere in the detector, which should result in translational invariance of the events. CNNs were shown to have very good performance in identifying patterns in images, independent of their location. By combining several layers of filters of different dimensions, a map of spatial features is created from the input data and more complex features can be reconstructed. The architecture of the network is very similar to the preexisting IceCube CNN event reconstruction \sidecite{dnn_reco_mirco}, but optimized on low energy events and specifically tailored to include the DeepCore sub-array. Only the eight DeepCore strings and the central 19 IceCube strings are used for the reconstruction (compare to \reffig{icecube_top_view}). Because of the different z-positions of the DeepCore and IceCube DOMs, they are divided into two networks that are combined at the end (shown in \reffig{flercnn_network_structure}). The first dimension of the network is the string index, while the second dimension is the order of the DOMs along the vertical axis. The horizontal position of the DOMs is not used, since the strings are arranged in an irregular pattern. The information from the DOM hits is summarized into five charge and time variables, which make up the last dimension of the input layer. The variables are the total summed charge, the time of the first hit, the charge weighted mean time of the hits, the time of the last hit, and the charge weighted standard deviation of the hit times.
+
+\todo{add image with selected strings used for flernn IC and DC}
+\todo{add FLERCNN architecture image?}
+
+Five different networks are trained using this architecture. Three networks do the regression of the events' energy, zenith angle, and the starting vertex ($x,y,z$ position), while two of them are used for classification. One to predict the probability of the event being a track (used as PID) and the other to predict the probability of the event being a muon. Each network is trained with a modified training sample, optimized for the task it is performing, but unbiased for the training variable and ideally extending outside the target reconstruction region. Additionally, the activation function and the loss function are adapted, according to the wanted output of the network. For the classification tasks the loss function is the \textit{binary cross entropy} and the activation function is a \textit{sigmoid}. For the regression of zenith and vertex position the loss function is the \textit{mean squared error (MSE)}, while for the energy it is the \textit{mean absolulte percentage error}. For all regressions the activation is \textit{linear}.
 
 
-then:
-- as the name \textit{Fast Low Energy Reconstruction using Convolutional Neural Networks (FLERCNN)} indicates, FLERCNN is a CNN optimized to reconstruct IceCube events at low energies ($<$\SI{100}{\giga\electronvolt})
-- five different networks are trained with the same architecture
-- three networks do the regression of the events' energy, zenith angle, and the starting vertex ($x,y,z$ position)
-- two of the networks are used for classification, one to predict the probability of the event being a track (used as PID), and the other to predict the probability of the event being a muon
+Before the reconstruction is applied a few additional high level variables are computed. These variables are from fast and inexpensive algorithms and are used in the final analysis cuts described in \refsec{analysis_cuts}.Then the reconstruction is applied by applying the trained FLERCNN networks to get the output quantities.After the reconstruction is applied, another BDT classifier is trained to further reduce the muon background for the final sample. The BDT is trained on five high level variables, where three are FLERCNN reconstruction variables (vertex $z$, $\rho_{36}$, and muon probability) and two are lower level variables (L4 muon classifier output and L5 corridor cut variable). To train the BDT, the FLERCNN nominal simulation set is used, only using events with $\cos(\theta_{zenith})\leq 0.3$.
+
+\todo{There is more information on pre-processing the samples and preparing the input features, and training each cnn, but I'm not sure if that might be too much detail?}
 
 
-finally:
-- another BDT classifier is trained to further reduce the muon background
-- it is trained on five high level variables from L6 and L7, 
-- three FLERCNN variables: vertex $z$, $\rho_{36}$, and muon ID
-- two lower level variables: L4 muon classifier output and the L5 corridor cut variable
-- to train the BDT, the FLERCNN (L7) nominal set is used (removing $\cos(\theta_{zenith})\leq 0.3$)
-
+\todo{add some performance plots of the FLERCNN reconstruction}
 
 Copy paste from OscNext FLERCNN technote:
 
-\textit{INFO on resolutions:} Note that all analysis cuts are included in these resolution calculations, which results in an artificial  resolution decrease near $E_{true} \approx 100$ GeV in Figure \ref{fig:EnergyResolution} due to the cut at $E_{reco} < 100$ GeV.
+% \textit{INFO on resolutions:} Note that all analysis cuts are included in these resolution calculations, which results in an artificial  resolution decrease near $E_{true} \approx 100$ GeV in Figure \ref{fig:EnergyResolution} due to the cut at $E_{reco} < 100$ GeV.
 
-The output of the BDT is the neutrino probability, as shown in the left plot in Figure~\ref{fig:muon_bdt_id}. The neutrinos in both training and testing sets are gathered at 1 and muons are around 0, which shows a great distinguish power.
+% The output of the BDT is the neutrino probability, as shown in the left plot in Figure~\ref{fig:muon_bdt_id}. The neutrinos in both training and testing sets are gathered at 1 and muons are around 0, which shows a great distinguish power.
 
 % \begin{figure}[htbp]
 % \centering 
@@ -319,7 +310,7 @@ The output of the BDT is the neutrino probability, as shown in the left plot in 
 \todo{add table with final analysis cuts}
 
 
-- there is some more information in Elisas thesis about the motivation for the cuts and another full section with the final sample composition
+\todo{there is some more information in Elisas thesis about the motivation for the cuts and another full section with the final sample composition}
 
 
 
