@@ -7,23 +7,21 @@
 \chapter{Standard Model Background Simulation and Data Processing}
 \labch{simulation_and_processing}
 
-The analysis presented in this thesis is highly dependent on an efficient event selection to reduce the raw IceCube trigger data to a usable atmospheric neutrino sample and on a precise estimation of both expected SM background and BSM signal events through MC simulations. This chapter describes the current simulation and event selection chain used for state-of-the-art IceCube neutrino oscillation measurements like \sidecite[0.3cm]{OVS_PRD}. The whole chain can be broadly split into 4 steps:
+The analysis presented in this thesis is highly dependent on an efficient event selection to reduce the raw IceCube trigger data to a usable atmospheric neutrino sample. Based on this selection a precise estimation of both expected SM background and expected BSM signal events can be made using MC simulations. This chapter describes the current simulation and event selection chain used for state-of-the-art IceCube neutrino oscillation measurements like \sidecite[0.3cm]{OVS_PRD}. The whole chain can be broadly split into 4 steps:
 
 \begin{enumerate}[wide]
     
-    \item[]{\textbf{Step 1 Event Generation:}} The initial step for all particle (non-noise) simulation is the generation of events using chosen initial distributions and fluxes. Events are usually the primary particle and the particles produced in the interaction with the ice.
+    \item[]{\textbf{Step 1 Event Generation:}} The initial step for all particle (non-noise) simulation is the generation of events from selected initial distributions and fluxes. Events are the primary particle and the particles produced in the interaction with the ice.
     \vspace{0.2cm} 
 
-    \item[]{\textbf{Step 2 Detector Simulation:}} The particles from the first step are propagated through the ice, producing Cherenkov photons, which are then propagated further until they reach a DOM or are absorbed. If they hit a DOM the detector response (accepatance and PMT) is simulated.
+    \item[]{\textbf{Step 2 Detector Simulation:}} The particles from the first step are propagated through the ice, producing Cherenkov photons, which are then propagated further until they reach a DOM or are absorbed. If they hit a DOM the detector response (acceptance and PMT) is simulated.
     \vspace{0.2cm} 
         
     \item[]{\textbf{Step 3 Processing:}} Starting from the PMT output, both real data and simulation are processed through the in-ice trigger, the online filter and processing, and the low energy event selection to produce a neutrino dominated sample.
     \vspace{0.2cm} 
 
-    \item[]{\textbf{Step 4 Reconstruction:}} FLERCNN bliblablub
+    \item[]{\textbf{Step 4 Reconstruction:}} Once the sample is small enough for more sophisticated reconstruction techniques to be feasible to run, the events are reconstructed using a CNN and some high level variables are computed. Based on these variables the final event selection is applied.
     
-    \todo{add short description of the reconstruction (L6 to final?)}
-
 \end{enumerate}
 
 This chapter only describes the event generation for the SM background simulation (neutrinos and muons), while the signal simulation is described in \refch{signal_simulation}. The detector simulation is identical for both signal and background events while processing and reconstruction are applied to all simulation and data in the same way. Splitting the simulation steps has the advantage of reusing the outputs of for example the generation step to propagate the particles with different ice model, in order to estimate the systematic impacts of uncertainties of the ice properties. Similar approach can be taken for varying detector response and through this a more efficient (reduced) use of computing resources can be achieved. The following sections describe the different steps in more detail and the last section, \refsec{systematic_uncertainties}, describes the related systematic uncertainties considered for this work.
@@ -265,7 +263,7 @@ Level 5 is the final selection level, before event reconstructions are applied. 
 
 \section{Reconstruction} \labsec{reconstruction}
 
-Several methods exist to reconstruct events at the energies relevant for this work (\SIrange{10}{100}{\giga\electronvolt}). At these energies, the light deposition is very low and only a few DOMs detect light, making the reconstructions difficult. \sidecite{low_energy_reco_IC} describes two classical methods, which have partly been applied in one recent IceCube atmospheric neutrino oscillation measurement using a golden\sidenote{add description of what makes this a golden smaple} sub-sample of the DeepCore sample \sidecite{OVS_PRD}. The algorithm used in this work on the other hand, is a newer method that applies a \textit{convolutional neural network (CNN)} to reconstruct the events and determine some discriminating quantities. The latest muon neutrino disappearance result from IceCube \sidecite{flercnn_analysis} is based on this reconstruction.
+Several methods exist to reconstruct events at the energies relevant for this work (\SIrange{10}{100}{\giga\electronvolt}). At these energies, the light deposition is very low and only a few DOMs detect light, making the reconstructions difficult. \sidecite{low_energy_reco_IC} describes two classical methods, which have partly been applied in one recent IceCube atmospheric neutrino oscillation measurement using a golden\sidenote{add description of what makes this a golden smaple} sub-sample of the DeepCore sample \sidecite{OVS_PRD}. The algorithm used in this work on the other hand, is a newer method that applies a \textit{convolutional neural network (CNN)} to reconstruct the events and determine some discriminating quantities. The latest muon neutrino disappearance result from IceCube \sidecite{flercnn_analysis_result} is based on this reconstruction.
 
 
 \subsection{Fast Low Energy Reconstruction using Convolutional Neural Networks} \labsec{flercnn_reconstruction}
@@ -275,17 +273,15 @@ As the name \textit{Fast Low Energy Reconstruction using Convolutional Neural Ne
 \todo{add image with selected strings used for flernn IC and DC}
 \todo{add FLERCNN architecture image?}
 
-Five different networks are trained using this architecture. Three networks do the regression of the events' energy, zenith angle, and the starting vertex ($x,y,z$ position), while two of them are used for classification. One to predict the probability of the event being a track (used as PID) and the other to predict the probability of the event being a muon. Each network is trained with a modified training sample, optimized for the task it is performing, but unbiased for the training variable and ideally extending outside the target reconstruction region. Additionally, the activation function and the loss function are adapted, according to the wanted output of the network. For the classification tasks the loss function is the \textit{binary cross entropy} and the activation function is a \textit{sigmoid}. For the regression of zenith and vertex position the loss function is the \textit{mean squared error (MSE)}, while for the energy it is the \textit{mean absolulte percentage error}. For all regressions the activation is \textit{linear}.
+Five different networks are trained using this architecture. Three networks do the regression of the events' energy, zenith angle, and the starting vertex ($x,y,z$ position), while two of them are used for classification. One to predict the probability of the event being a track (used as PID) and the other to predict the probability of the event being a muon. Each network is trained with a modified training sample, optimized for the task it is performing, but unbiased for the training variable and ideally extending outside the target reconstruction region. Additionally, the activation function and the loss function are adapted, according to the wanted output of the network. For the classification tasks the loss function is the \textit{binary cross entropy} and the activation function is a \textit{sigmoid}. To perfom the regression of zenith and vertex position, the loss function is the \textit{mean squared error (MSE)}, while for the energy it is the \textit{mean absolute percentage error}. The activation for all regression tasks is \textit{linear}.
 
 
-Before the reconstruction is applied a few additional high level variables are computed. These variables are from fast and inexpensive algorithms and are used in the final analysis cuts described in \refsec{analysis_cuts}.Then the reconstruction is applied by applying the trained FLERCNN networks to get the output quantities.After the reconstruction is applied, another BDT classifier is trained to further reduce the muon background for the final sample. The BDT is trained on five high level variables, where three are FLERCNN reconstruction variables (vertex $z$, $\rho_{36}$, and muon probability) and two are lower level variables (L4 muon classifier output and L5 corridor cut variable). To train the BDT, the FLERCNN nominal simulation set is used, only using events with $\cos(\theta_{zenith})\leq 0.3$.
+Before the reconstruction is applied a few additional high level variables are computed. These variables are from fast and inexpensive algorithms and are used in the final analysis cuts described in \refsec{analysis_cuts}. Then the reconstruction is applied by applying the trained FLERCNN networks to get the output quantities. After the reconstruction is applied, another BDT classifier is trained to further reduce the muon background for the final sample. The BDT is trained on five high level variables, where three are FLERCNN reconstruction variables (vertex $z$, $\rho_{36}$, and muon probability) and two are lower level variables (L4 muon classifier output and L5 corridor cut variable). To train the BDT, the FLERCNN nominal simulation set is used, only using events with $\cos(\theta_{zenith})\leq 0.3$.
 
 \todo{There is more information on pre-processing the samples and preparing the input features, and training each cnn, but I'm not sure if that might be too much detail?}
 
 
 \todo{add some performance plots of the FLERCNN reconstruction}
-
-Copy paste from OscNext FLERCNN technote:
 
 % \textit{INFO on resolutions:} Note that all analysis cuts are included in these resolution calculations, which results in an artificial  resolution decrease near $E_{true} \approx 100$ GeV in Figure \ref{fig:EnergyResolution} due to the cut at $E_{reco} < 100$ GeV.
 
