@@ -275,17 +275,18 @@ As the name \textit{Fast Low Energy Reconstruction using Convolutional Neural Ne
 
 Five different networks are trained using this architecture. Three networks do the regression of the events' energy, zenith angle, and the starting vertex ($x,y,z$ position), while two of them are used for classification. One to predict the probability of the event being a track (used as PID) and the other to predict the probability of the event being a muon. Each network is trained with a modified training sample, optimized for the task it is performing, but unbiased for the training variable and ideally extending outside the target reconstruction region. Additionally, the activation function and the loss function are adapted, according to the wanted output of the network. For the classification tasks the loss function is the \textit{binary cross entropy} and the activation function is a \textit{sigmoid}. To perfom the regression of zenith and vertex position, the loss function is the \textit{mean squared error (MSE)}, while for the energy it is the \textit{mean absolute percentage error}. The activation for all regression tasks is \textit{linear}.
 
-
-Before the reconstruction is applied a few additional high level variables are computed. These variables are from fast and inexpensive algorithms and are used in the final analysis cuts described in \refsec{analysis_cuts}. Then the reconstruction is applied by applying the trained FLERCNN networks to get the output quantities. After the reconstruction is applied, another BDT classifier is trained to further reduce the muon background for the final sample. The BDT is trained on five high level variables, where three are FLERCNN reconstruction variables (vertex $z$, $\rho_{36}$, and muon probability) and two are lower level variables (L4 muon classifier output and L5 corridor cut variable). To train the BDT, the FLERCNN nominal simulation set is used, only using events with $\cos(\theta_{zenith})\leq 0.3$.
+\todo{add some performance plots of the FLERCNN reconstruction}
 
 \todo{There is more information on pre-processing the samples and preparing the input features, and training each cnn, but I'm not sure if that might be too much detail?}
 
+% \textit{INFO on resolutions:} Note that all analysis cuts are included in these resolution calculations, which results in an artificial resolution decrease near $E_{true} \approx 100$ GeV in Figure \ref{fig:EnergyResolution} due to the cut at $E_{reco} < 100$ GeV.
 
-\todo{add some performance plots of the FLERCNN reconstruction}
 
-% \textit{INFO on resolutions:} Note that all analysis cuts are included in these resolution calculations, which results in an artificial  resolution decrease near $E_{true} \approx 100$ GeV in Figure \ref{fig:EnergyResolution} due to the cut at $E_{reco} < 100$ GeV.
+\subsection{Analysis Selection} \labsec{analysis_cuts}
 
-% The output of the BDT is the neutrino probability, as shown in the left plot in Figure~\ref{fig:muon_bdt_id}. The neutrinos in both training and testing sets are gathered at 1 and muons are around 0, which shows a great distinguish power.
+Before the reconstruction is applied a few additional high level variables are computed, which are from fast and inexpensive algorithms. Then the reconstruction is applied by applying the trained FLERCNN networks to get the output quantities. After that, another BDT classifier is trained to further reduce the muon background for the final sample. The BDT is trained on five high level variables, where three are FLERCNN reconstruction variables (vertex $z$, $\rho_{36}$, and muon probability) and two are lower level variables (L4 muon classifier output and L5 corridor cut variable). To train the BDT, the FLERCNN nominal simulation set is used, only using events with $\cos(\theta_{zenith})\leq 0.3$. The output of the BDT is the neutrino probability and a cut at 0.8 is applied to reject events with a high probability of being a muon.
+
+% \reffig{muon_bdt_id} shows the output of the BDT classifier, where the neutrinos in both training and testing sets are gathered at 1 and muons are around 0, which shows a great distinguish power.
 
 % \begin{figure}[htbp]
 % \centering 
@@ -294,20 +295,15 @@ Before the reconstruction is applied a few additional high level variables are c
 % \caption{\label{fig:muon_bdt_id} Left is output of muon BDT classifier under area normalization; right is rates of neutrinos and muons as a fuction of muon BDT cuts. }
 % \end{figure}
 
+To get the final, pure sample of well reconstructed neutrinos another set of cuts is applied. The first cuts are meant to reject events with poor reconstruction quality, by requiring the events to fall into the DeepCore volume, where the denser, better instrumented detector leads to better resolution. The cuts are applied on the reconstructed radius (distance to string 36 in the cetner) and z-position of the starting vertex and are listed in \reftab{analysis_cuts}. Additionally rejecting events with fewer than seven hits in the selected DOMs used for the FLERCNN reconstruction showed to increase the resolution. The FLERCNN reconstruction was optimized for atmospheric neutrino analyses which are mainly in the region below \SI{100}{\giga\electronvolt}. On top of that, there are very few events with energies below \SI{5}{\giga\electronvolt}, so the reconstructed energy is required to be in that range.
 
-\subsubsection{Analysis Cuts} \labsec{analysis_cuts}
-
-- apply cuts to get final, pure neutrino sample
-- also reject events that have a poor reconstruction quality (how evaluated?)
-- also make sure that data/MC agreement is good in all regions of the parameter space
-- the applied cuts are shown in \reftab{analysis_cuts}
-
+Another set of cuts is applied to make sure the agreement between data and MC is good. To remove coincident muon and neutrino events, cuts are applied to the number of hits in the top 15 layers of IceCube DOMs and the number of hits in the outermost IceCube strings. Coincident random noise events are removed by requiring more than three hit DOMs from direct photons\sidenote{\textit{Direct photons} are photons that were not scattered on their way from the interaction vertex to the DOM.}. Neither of the two coincident event types are simulated, which can be seen as bad agreement between data and MC. The last cut is on the reconstructed cosine zenith, which is required to be smaller than 0.04 to reject down-going muons.
 
 \todo{add table with final analysis cuts}
 
+\todo{there is some more information in Elisas thesis about the  final sample composition}
 
-\todo{there is some more information in Elisas thesis about the motivation for the cuts and another full section with the final sample composition}
-
+\todo{at some place I will want a selection efficiency for SM BG and HNL signal, but I'm not sure where to put it yet}
 
 
 \section{Systematic Uncertainties} \labsec{systematic_uncertainties}
