@@ -49,7 +49,7 @@ The majority of PMTs are the \SI{10}{"} Hamamatsu R7081-02, which have a bialkal
 
 The PMT is covered with a mu-metal grid (made from wire mesh), shielding the photocathode from Earth's magnetic field and it is optically coupled to the glass sphere by RTV silicone gel. The glass sphere is a pressure vessel, designed to withstand both the constant ice pressure and the temporary pressure during the refreezing process of the water in the drill hole during deployment (peaking at around \SI{690}{\bar}). The sphere is held by a harness that connects the DOMs along a string and also guides the cable beside them.
 
-The flasher-board controls 12 LEDs that produce optical pulses in bright UV. The LEDs can be pulsed separately or in combination with variable output levels and pulse lengths. Using the known information of the light source positions and times this can be used for in-situ calibration of the detector by measuring absorption and scattering properties of the ice. Calibrating the optical efficiency of the DOMs itself is more accurately done using minimum ionizing muons \sidecite{domeff_nick}, since the total amplitude of the LED light is not well known.
+The flasher-board controls 12 LEDs that produce optical pulses in bright UV. The LEDs can be pulsed separately or in combination with variable output levels and pulse lengths. Using the known information of the light source positions and times this can be used for in-situ calibration of the detector by measuring absorption and scattering properties of the ice. Calibrating the absolute efficiency of the DOMsitself is more accurately done using minimum ionizing muons \sidecite{JFeintzeig_phd, domeff_nick}, since the total amplitude of the LED light is not well known.
 
 
 \subsection{IceCube}
@@ -66,11 +66,14 @@ The coordinate system that is used in IceCube is centered at 46500'E, 52200'N at
 %   \end{kaobox}
 % }
 
-\begin{figure}
-    \includegraphics[trim={2.0cm, 1.5cm, 0, 0}, clip, width=0.65\linewidth]{figures/icecube_deepcore/icecube_top_view_bw.pdf}
+\begin{marginfigure}
+    % \includegraphics[trim={2.0cm, 1.5cm, 0, 0}, clip, width=0.65\linewidth]{figures/icecube_deepcore/icecube_top_view_bw.pdf}
+    \includegraphics[trim={2.0cm, 1.5cm, 0, 0}, clip, width=1.0\linewidth]{figures/icecube_deepcore/icecube_top_view_bw.pdf}
     \caption[IceCube top view]{Top view of the IceCube array.}
     \labfig{icecube_top_view}
-\end{figure}
+\end{marginfigure}
+
+\todo{Blow up this image a bit, so it's better readable as marginfigure.}
 
 
 \subsection{DeepCore}
