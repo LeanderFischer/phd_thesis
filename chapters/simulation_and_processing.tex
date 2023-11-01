@@ -24,7 +24,7 @@ The analysis presented in this thesis is highly dependent on an efficient event 
     
 \end{enumerate}
 
-This chapter only describes the event generation for the SM background simulation (neutrinos and muons), while the signal simulation is described in \refch{signal_simulation}. The detector simulation is identical for both signal and background events while processing and reconstruction are applied to all simulation and data in the same way. Splitting the simulation steps has the advantage of reusing the outputs of for example the generation step to propagate the particles with different ice model, in order to estimate the systematic impacts of uncertainties of the ice properties. Similar approach can be taken for varying detector response and through this a more efficient (reduced) use of computing resources can be achieved. The following sections describe the different steps in more detail and the last section, \refsec{systematic_uncertainties}, describes the related systematic uncertainties considered for this work.
+% This chapter only describes the event generation for the SM background simulation (neutrinos and muons), while the signal simulation is described in \refch{signal_simulation}. The detector simulation is identical for both signal and background events while processing and reconstruction are applied to all simulation and data in the same way. Splitting the simulation steps has the advantage of reusing the outputs of for example the generation step to propagate the particles with different ice model, in order to estimate the systematic impacts of uncertainties of the ice properties. Similar approach can be taken for varying detector response and through this a more efficient (reduced) use of computing resources can be achieved. The following sections describe the different steps in more detail and the last section, \refsec{systematic_uncertainties}, describes the related systematic uncertainties considered for this work.
 
 
 \section{Event Generation} \labch{sm_event_generation}
@@ -47,8 +47,10 @@ where $F_{\rm{sim}}$ is the number of neutrino events per energy, time, area, an
 The chosen simulation volume is a cylinder centered in DeepCore with radius and height chosen such that all events possibly producing a signal are contained. The different sizes are chosen depending on energy and neutrino flavor are shown in \reftab{genie_sampling_cylinder}.
 \begin{table}[h]
     \begin{center}
-        \small
-        \begin{tabular}{ p{1.0cm} p{1.8cm} p{1.3cm} p{1.3cm} p{1.4cm} p{0.6cm} }
+        % \small
+        \footnotesize
+        % \begin{tabular}{ p{1.0cm} p{1.8cm} p{1.3cm} p{1.3cm} p{1.4cm} p{0.6cm} }
+        \begin{tabular}{ l l l l l l }
 
             \hline\hline
 
@@ -174,7 +176,7 @@ The chosen simulation volume is a cylinder centered in DeepCore with radius and 
 \end{table}
 The directions of the neutrinos are sampled isotropically in zenith and azimuth and the energies are sampled from a power law $E^{-2}$. The number of simulated events is chosen such that the livetime is more than \SI{70}{years} for each flavor. Neutrinos and antineutrinos are simulated with ratios of 70\% and 30\%, respectively.
 
-To simulate the neutrino interaction with the ice the \textsc{Genie} event generator \sidecite{genie} is used resulting in the secondary particles and the kinematic and cross-section parameters. Muons produced in these interactions are propagated using \textsc{Proposal} \sidecite{proposal}, also simulating their Cherenkov light output. The shower development of gamma rays, electrons, and positrons below \SI{100}{\mega\electronvolt} and hadronic showers below \SI{30}{\giga\electronvolt} is simulated using \textsc{Geant4} \sidecite{geant4} while for higher energies an analytical approximation from \sidecite{raedel_wiebusch_cherenkov_yield} is used.
+To simulate the neutrino interaction with the ice the \textsc{Genie} event generator \sidecite{genie} is used, resulting in the secondary particles and the kinematic and cross-section parameters. As input, the outdated GRV98 \sidecite{grv98_pdf} \textit{parton distribution functions (PDFs)} was used, because it was the only option that could incorporate extrapolations to lower $Q^2$ \sidecite{grv98_effective_low_q2}. Muons produced in these interactions are propagated using \textsc{Proposal} \sidecite{proposal}, also simulating their Cherenkov light output. The shower development of gamma rays, electrons, and positrons below \SI{100}{\mega\electronvolt} and hadronic showers below \SI{30}{\giga\electronvolt} is simulated using \textsc{Geant4} \sidecite{geant4} while for higher energies an analytical approximation from \sidecite{raedel_wiebusch_cherenkov_yield} is used.
 
 
 \subsection{Muons}
@@ -203,7 +205,8 @@ The second part of simulating the IceCube detector is the DOM response itself, b
 
 \begin{margintable}
 \small
-    \begin{tabular}{ p{0.48\textwidth} p{0.35\textwidth} }
+    % \begin{tabular}{ p{0.48\textwidth} p{0.35\textwidth} }
+    \begin{tabular}{ ll }
     \hline\hline
 
     \textbf{Parameter} & \textbf{Value} \\ 
@@ -345,23 +348,24 @@ Another set of cuts is applied to make sure the agreement between data and MC is
 
 \begin{table}
     \small
-        \begin{tabular}{ p{0.36\textwidth} p{0.26\textwidth} p{0.25\textwidth} }
+        % \begin{tabular}{ p{0.36\textwidth} p{0.26\textwidth} p{0.25\textwidth} }
+        \begin{tabular}{ lll }
         \hline\hline
     
-        \textbf{Variable} & \textbf{Threshold} & \textbf{\si{\percent} removed} \\ 
+        \textbf{Variable} & \textbf{Threshold} & \textbf{Removed} \\ 
     
         \hline\hline
     
-        Number of hit DOMs & $\geq 7$ & \\
-        Radial distance & < \SI{200}{\meter} & \\
-        Vertical position & \SI{-495}{\meter} < z < \SI{-225}{\meter} & \\
-        Energy & \SI{5}{\giga\electronvolt} < E < \SI{100}{\giga\electronvolt} & \\
+        Number of hit DOMs & $\geq 7$ & \SI{1.05}{\percent} \\
+        Radial distance & < \SI{200}{\meter} & \SI{0.09}{\percent} \\
+        Vertical position & \SI{-495}{\meter} < z < \SI{-225}{\meter} & \SI{5.48}{\percent} \\
+        Energy & \SI{5}{\giga\electronvolt} < E < \SI{100}{\giga\electronvolt} & \SI{20.70}{\percent} \\
     
-        Cosine of zenith angle & < 0.04 & \\
-        Number of direct hits & > 2.5 & \\
-        Number of hits in top layers & < 0.5 & \\
-        Number of hits in outer layer & < 7.5 & \\
-        Muon classifier score & $\geq 0.8$ & \\
+        Cosine of zenith angle & < 0.04 & \SI{19.66}{\percent} \\
+        Number of direct hits & > 2.5 & \SI{10.50}{\percent} \\
+        Number of hits in top layers & < 0.5 & \SI{0.03}{\percent} \\
+        Number of hits in outer layer & < 7.5 & \SI{0.001}{\percent} \\
+        Muon classifier score & $\geq 0.8$ & \SI{23.90}{\percent} \\
 
         \hline
         \end{tabular}
@@ -388,31 +392,24 @@ There are multiple sources of systematic uncertainties related to the event gene
 
 \subsubsection{Neutrino Cross-Section Systematic Uncertainties}
 
+The uncertainties related to the cross-sections are split into low and high energy components, since there is no coherent model to explain both DIS interactions, which are the dominant processes above \SI{20}{\giga\electronvolt}, and \textit{charged current resonance production (CCRES)} and \textit{charged current quasi elastic scattering {CCQE}}, which are relevant below \SI{20}{\giga\electronvolt} where interactions with the nucleons as a whole are important. Three parameters are included to account for all relevant cross-sections uncertainties.
 
-- three cross-section uncertainties are included, two for uncertainties in form factors of charged-current quasi-elastic (CCQE) and charged-current resonance (CCRES) events and for uncertainties in deep inelastic scattering (DIS) events
-
-- the uncertainties in the form factors are due to uncertainties in the \textit{axial mass} $M_\rm{A}$ which enters the form factor as in 
-
+At low energies two parameters are included accounting for uncertainties in form factors of CCQE and CCRES events. These uncertainties are due to uncertainties in the \textit{axial mass} $M_\rm{A}$, which enters the form factor as in
 \begin{equation}
     F(Q^2) \sim \frac{1}{(1 - (\frac{Q}{M_\rm{A}})^2)^2}
     \;,
 \end{equation}
-where $Q^2$ is the momentum transfer squared
+where $Q^2$ is the momentum transfer squared. The axial mass can be determined experimentally\todo{which experiments measure the axial mass?} and to include uncertainties on the values of $M_\rm{A}^\rm{CCQE}$ and $M_\rm{A}^\rm{CCRES}$, the cross-sections are computed with GENIE, where the form factors are calculated varying the axial mass by $\pm 20\% (1\sigma)$/$\pm 40\% (1\sigma)$ around the nominal value. This is an approximation of the recommended uncertainties by the GENIE collaboration, which are $-15\%$, $+25\%$ for $M_\rm{A}^\rm{CCQE}$ and $\pm 20\%$ for $M_\rm{A}^\rm{CCRES}$ \cite{genie}. To apply a continuous uncertainty variation of the axial mass in a fit, the total cross-section is fit with a quadratic function to interpolate between the cross-sections computed with the different axial masses.
 
-\todo{which experiments measure the axial mass?}
+Even though the DIS interactions can be calculated very precisely, there are still uncertainties in the input PDF, describing the probability of finding a specific parton (quark) with a specific momentum fraction $x$ inside a nucleon. To account for differences between the used method and more sophisticated methods using newer PDFs seen at high energies, an uncertainty parameter is introduced. The parameter is based on the discrepancy between the cross-sections computed with GENIE and the ones computed with CSMS \sidecite{csms} above \SI{100}{\giga\electronvolt}. The included parameter scales the cross-section from the GENIE values to the CSMS values, which are considered more accurate above \SI{100}{\giga\electronvolt}. The scaling is done as a function of energy and inelasticity and to guarantee continuity, the scaling is extrapolated linearly below \SI{100}{\giga\electronvolt}. The parameter is designed such that a value of 0.0 corresponds to the GENIE cross-sections and a value of 1.0 gives an approximation of the CSMS cross-sections. A comparison of the total cross-sections GENIE (scaled/unscaled) with the data is shown in \reffig{dis_systematic_effect}.
 
-- the axial mass can be determined experimentally and to include uncertainties on the values of $M_\rm{A}^\rm{CCQE}$ and $M_\rm{A}^\rm{CCRES}$, the cross-sections are computed with \textsc{GENIE} where the form factors are calculated varying the axial mass by $\pm 20\% (1\sigma)$/$\pm 40\% (1\sigma)$ around the nominal value
-- this is an approximation of the recommended uncertainties by the GENIE collaboration, which are $-15\%$, $+25\%$ for $M_\rm{A}^\rm{CCQE}$ and $\pm 20\%$ for $M_\rm{A}^\rm{CCRES}$ \cite{genie}
-- to apply a continuous uncertainty variation of the axial mass in a fit, the total cross-section is fit with a quadratic function to interpolate between the cross-sections computed with the different axial masses
+\todo{add total cross section plots from OVS paper to show GENIE and modified GENIE cross sections}
+
 
 \todo{add varied total cross-section for a few background HNL events}
 \todo{add final level effects of varying the axial mass parameters (or example of one)}
+\todo{add final level effects of varying the DIS parameter (or example of one)}
 
-- the uncertainty parameter of the DIS cross-section is based on the discrepancy between the cross-sections computed with GENIE and the ones computed with CSMS \sidecite{csms} above \SI{100}{giga\electronvolt}
-- the included parameter scales the cross-section from the GENIE values to the CSMS values, which are considered more accurate above \SI{100}{giga\electronvolt}
-- below \SI{100}{giga\electronvolt} the scaling is extrapolated linearly
-
-\todo{add DIS systematic effect on final level histograms}
 
 \subsection{Detector Calibration Uncertainties}
 
