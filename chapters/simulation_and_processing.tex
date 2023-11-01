@@ -45,7 +45,7 @@ Due to the very low interaction rate of neutrinos, the event generation is perfo
 where $F_{\rm{sim}}$ is the number of neutrino events per energy, time, area, and solid angle and $N_{\rm{sim}}$ is the number of simulated events. If this weight is multiplied by the livetime and the theoretically expected neutrino flux for a given physical model, it results in the number of events that this event would produce. The used baseline neutrino flux computed for the South Pole is taken from \sidecite{PhysRevD.92.023004_Honda_Flux}.
 
 The chosen simulation volume is a cylinder centered in DeepCore with radius and height chosen such that all events possibly producing a signal are contained. The different sizes are chosen depending on energy and neutrino flavor are shown in \reftab{genie_sampling_cylinder}.
-\begin{table}[h]
+\begin{table}
     \begin{center}
         % \small
         \footnotesize
@@ -281,7 +281,7 @@ The L3 cuts remove \SI{95}{\percent} of the atmospheric muons and >\SI{99}{\perc
 
 After the total rate was reduced by the simple cuts of L3 and the overall agreement between data and MC is established, ML techniques can be applied to further reduce the background. For Level 4, two \textit{Boosted Decision Trees (BDTs)} \todo{reference BDT} classifier are trained to separate neutrino events from atmospheric muons and noise hits, separately. The output of each classifier, a probability score, can be seen in \reffig{level_4_classifiers}. The noise filter is applied first and an event passes the score is larger than 0.7, reducing the noise hits by a factor of 100, while keeping \SI{96}{\percent} of neutrinos. Then the second BDT classifier, trained partly on unfiltered data consisting of >\SI{99}{\percent} atmospheric muons, is applied. Rejecting events with a score smaller than 0.65 removes \SI{94}{\percent} of atmospheric muons while keeping \SI{87}{\percent} of neutrinos. This fraction varies depending on the flavor and interaction type, $\nu_\mu$-CC events for example, which have a muon in the final state, are therefore reduced to \SI{82.5}{\percent}. After applying the L4 cuts based on the BDT classifier outputs, the sample is still dominated by atmospheric muons, while the noise rate dropped to below most neutrino types.
 
-\begin{figure*}[h]
+\begin{figure*}
 \centering 
 \includegraphics[width=0.49\linewidth]{figures/simulation_and_processing/selection/l4_noise_classifier_probnu.pdf}
 \includegraphics[width=0.49\linewidth]{figures/simulation_and_processing/selection/l4_muon_classifier_probnu.pdf}
@@ -289,8 +289,6 @@ After the total rate was reduced by the simple cuts of L3 and the overall agreem
 \caption[Level 4 classifier outputs (muon and noise)]{Distributions of Level 4 noise classifier output (left) and muon classifier output (right), where larger values indicate more neutrino-like and lower values more noise-like/muon-like Taken from \cite{OVS_PRD}.}
 \labfig{level_4_classifiers}
 \end{figure*}
-
-
 
 
 \subsubsection{Level 5} \labsec{level_5}
@@ -403,13 +401,18 @@ where $Q^2$ is the momentum transfer squared. The axial mass can be determined e
 
 Even though the DIS interactions can be calculated very precisely, there are still uncertainties in the input PDF, describing the probability of finding a specific parton (quark) with a specific momentum fraction $x$ inside a nucleon. To account for differences between the used method and more sophisticated methods using newer PDFs seen at high energies, an uncertainty parameter is introduced. The parameter is based on the discrepancy between the cross-sections computed with GENIE and the ones computed with CSMS \sidecite{csms} above \SI{100}{\giga\electronvolt}. The included parameter scales the cross-section from the GENIE values to the CSMS values, which are considered more accurate above \SI{100}{\giga\electronvolt}. The scaling is done as a function of energy and inelasticity and to guarantee continuity, the scaling is extrapolated linearly below \SI{100}{\giga\electronvolt}. The parameter is designed such that a value of 0.0 corresponds to the GENIE cross-sections and a value of 1.0 gives an approximation of the CSMS cross-sections. A comparison of the total cross-sections GENIE (scaled/unscaled) with the data is shown in \reffig{dis_systematic_effect}.
 
-\todo{add total cross section plots from OVS paper to show GENIE and modified GENIE cross sections}
-
+\begin{figure*}
+    \centering 
+    \includegraphics[width=0.49\linewidth]{figures/simulation_and_processing/cross_sections/NuMu_CC_iso_comp_to_data__upd_style.pdf}
+    \includegraphics[width=0.49\linewidth]{figures/simulation_and_processing/cross_sections/NuMu_Bar_CC_iso_comp_to_data__upd_style.pdf}
+    
+    \caption[Inclusive total neutrino-nucleon cross-sections]{Inclusive total neutrino-nucleon cross-sections on an isoscalar target (black) for neutrinos (left) and antineutrinos (right) calculated with GENIE, comparing to measurements from NOMAD \cite{xsec_data_nomad}, NUTEV \cite{xsec_data_nutev}, and CCFR \cite{xsec_data_ccfr}. The scaled GENIE cross-section (orange) is also shown. Taken from \cite{OVS_PRD}.}
+    \labfig{dis_systematic_effect}
+\end{figure*}
 
 \todo{add varied total cross-section for a few background HNL events}
 \todo{add final level effects of varying the axial mass parameters (or example of one)}
 \todo{add final level effects of varying the DIS parameter (or example of one)}
-
 
 \subsection{Detector Calibration Uncertainties}
 
