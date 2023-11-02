@@ -42,7 +42,7 @@ Due to the very low interaction rate of neutrinos, the event generation is perfo
     \;,
     \labeq{neutrino_generation_weight}
 \end{equation}
-where $F_{\rm{sim}}$ is the number of neutrino events per energy, time, area, and solid angle and $N_{\rm{sim}}$ is the number of simulated events. If this weight is multiplied by the livetime and the theoretically expected neutrino flux for a given physical model, it results in the number of events that this event would produce. The used baseline neutrino flux computed for the South Pole is taken from \sidecite{PhysRevD.92.023004_Honda_Flux}.
+where $F_{\rm{sim}}$ is the number of neutrino events per energy, time, area, and solid angle and $N_{\rm{sim}}$ is the number of simulated events. If this weight is multiplied by the livetime and the theoretically expected neutrino flux for a given physical model, it results in the number of events that this event would produce. The used baseline neutrino flux computed for the South Pole is taken from Honda \textit{et al.} \sidecite{PhysRevD.92.023004_Honda_Flux}.
 
 The chosen simulation volume is a cylinder centered in DeepCore with radius and height chosen such that all events possibly producing a signal are contained. The different sizes are chosen depending on energy and neutrino flavor are shown in \reftab{genie_sampling_cylinder}.
 \begin{table}
@@ -379,16 +379,30 @@ Another set of cuts is applied to make sure the agreement between data and MC is
 
 \section{Systematic Uncertainties} \labsec{systematic_uncertainties}
 
-\todo{Add table with all systematic uncertainties used in this analysis (in the analysis chapter).}
-
 There are multiple sources of systematic uncertainties related to the event generation and processing explained in this chapter. Since variations in the range of these uncertainties change the expected number of events in the analysis, it is important to estimate their impact on the final results. In this work the aim is to be able to continuously vary the systematic parameters, modeling their effects, so that a simultaneous fit of the physics and systematic parameters can be performed. Where possible, a correct model of the effect is used, but in many cases the variations are captured by effective parameters. Uncertainties that solely scale the total event rate are not included individually, since the analysis only uses the relative distribution of events. A single scaling parameter $A_\rm{eff}$ is used to scale the total neutrino rate instead.
 
 
-\subsection{Atmospheric Flux}
+\subsection{Atmospheric Flux Uncertainties}
+
+
+The flux of atmospheric neutrinos is influenced by multiple factors, the spectrum and composition of cosmic rays, the assumed atmospheric conditions, and the hadronic interaction model used to describe the air showers development. Uncertainties of the neutrino flux are therefore dictated by the uncertainties on these components, where the variations in atmospheric conditions were found to have negligible effect \sidecite{OVS_PRD}.
+
+\paragraph{Cosmic ray flux:}
+
+Uncertainty can be described as a power law correction
+\begin{equation}
+    \Phi^\prime_\nu = \Phi_\nu \left( \frac{E}{E^\star} \right)^{\Delta\gamma,}
+    \labeq{power_law_flux_uncertainty}
+\end{equation}
+where $E^\star$ is the pivot energy and $\Delta\gamma$ is the correction to the power law exponent. $E^\star$ was chosen to be 
+\SI{24}{\giga\electronvolt} as to minimize the dependence of the overall flux scale on $\Delta\gamma$ \sidecite{OVS_PRD}.
+
+
+\paragraph{Hadronic interaction model:}
 
 
 
-\subsubsection{Neutrino Cross-Section Systematic Uncertainties}
+\subsection{Cross-Section Uncertainties}
 
 The uncertainties related to the cross-sections are split into low and high energy components, since there is no coherent model to explain both DIS interactions, which are the dominant processes above \SI{20}{\giga\electronvolt}, and \textit{charged current resonance production (CCRES)} and \textit{charged current quasi elastic scattering {CCQE}}, which are relevant below \SI{20}{\giga\electronvolt} where interactions with the nucleons as a whole are important. Three parameters are included to account for all relevant cross-sections uncertainties.
 
