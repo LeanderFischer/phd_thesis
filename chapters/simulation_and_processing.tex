@@ -1,7 +1,7 @@
 \setchapterstyle{kao}
 \setchapterpreamble[u]{\margintoc}
 
-\todo{increase main text width (read in kao docu)}
+\todo{maybe increase main text width? (read in kao docu)}
 
 
 \chapter{Standard Model Background Simulation and Data Processing}
@@ -181,7 +181,7 @@ To simulate the neutrino interaction with the ice the \textsc{Genie} event gener
 
 \subsection{Muons}
 
-Atmospheric muons are generated on a cylinder surface enclosing the full IceCube detector array. The cylinder has a height of \SI{1600}{\meter} and a radius of \SI{800}{\meter}. The energy is sampled from an $E^{-3}$ power law while the other sampling distributions (position, direction) are found from parameterizations based on \sidecite{muon_parameterization}. This work uses full \textsc{Corsika} \sidecite{corsika} simulations of muons to tailor the parameterizations, starting from cosmic ray interactions with atmospheric nuclei using the cosmic ray flux model from \sidecite{gaisser_cosmic_ray} and producing the muons applying the hadronic interaction model SIBYLL 2.1 \sidecite{sibyll_hadronic}. After the generation, they are propagated through the ice with PROPOSAL producing photons, treating them exactly like the muons produced in neutrino interactions.
+Atmospheric muons are generated on a cylinder surface enclosing the full IceCube detector array. The cylinder has a height of \SI{1600}{\meter} and a radius of \SI{800}{\meter}. The energy is sampled from an $E^{-3}$ power law while the other sampling distributions (position, direction) are found from parameterizations based on \sidecite{muon_parameterization}. This work uses full \textsc{Corsika} \sidecite{corsika} simulations of muons to tailor the parameterizations, starting from \textit{cosmic ray (CR)} interactions with atmospheric nuclei using the CR  flux model from \sidecite{gaisser_cosmic_ray} and producing the muons applying the \textit{hadronic interaction (HI)} model SIBYLL 2.1 \sidecite{sibyll_hadronic}. After the generation, they are propagated through the ice with PROPOSAL producing photons, treating them exactly like the muons produced in neutrino interactions.
 
 Since the offline processing and selection steps described in \refsec{offline_filter} and \refsec{reconstruction} reduce the muon contamination to a negligible level, it is difficult to correctly estimate the expected number of muon events at final selection level and therefore two separate sets of muon simulation are produced. \textbf{A first set} including all events resulting from the above described generation to tune the lower level selection (up to L4) and \textbf{a second set} to estimate the muon contamination at higher levels (above L5), which only accepts muon events if they pass through a smaller cylinder centered in DeepCore (height of \SI{400}{\meter} and radius of \SI{180}{\meter}) and rejects events based on a KDE estimated muon density at L5 (in energy and zenith) increasing the simulation efficiency at L5 significantly \todo{put a number on this significant increase?}.
 
@@ -191,7 +191,7 @@ Since the offline processing and selection steps described in \refsec{offline_fi
 The detector simulation is performed after the event generation, where the initial particles and the resulting photons and secondary particles from their propagation were produced. This part of the simulation chain is applied to all particle simulation, both neutrino and muon generation explained in \refch{sm_event_generation}, but also the particles from the HNL signal generation explained in detail in \refch{signal_simulation}. The detector simulation can be split into two parts, the propagation of the photons and the simulation of the detector response (including internal noise).
 
 
-\subsection{Photon Propagation}
+\subsection{Photon Propagation} \labsec{photon_propagation}
 
 For any Cherenkov detector, but especially for ice-Cherenkov detectors, like IceCube, the propagation of the photons is a crucial part of the detector simulation. Any photon that was produced in the event generation is individually traced through the ice, simulating scattering and absorption processes, taking into account the local ice properties, estimated with a chosen ice model. The propagation is done using \textsc{clsim} \cite{clsim} which is an implementation of the \textit{Photon Propagation Code (\textsc{PPC})} \sidecite{ppc} in \textsc{OpenCL}. It is optimized to be run very efficiently on GPUs, which is what is done for IceCube simulation production. The ice is modeled as a set of \SI{10}{\meter} thick, almost horizontal layers with specific absorption and scattering lengths. The \textit{South Pole ice (SPICE)} model \sidecite{spice_ice_model} accounts for the layers being tilted by a small amount (\todo{put a number on the tilt angle?}) and the absorption and scattering lengths having a non-uniformity with respect to the azimuth direction. \reffig{simulation_ice_model} shows the values of this model for the different depths, indicating the location of IceCube, DeepCore, and the dust layer.
 
@@ -206,7 +206,7 @@ In an initial step, each photon's absorption length is sampled from an exponenti
 
 \subsection{Detector Responses}
 
-The second part of simulating the IceCube detector is the DOM response itself, but not all the photons that reached a DOM are accepted as being observed. Whether a photon was detected is determined individually based on the total efficiency and the angular acceptance curve of the specific DOM. The total efficiency includes effects of the DOM glass, PMT quantum and photo-electron collection efficiencies, and it is wavelength dependent. Additionally, there is another angle dependent effect called \textit{hole ice}. This effect is due to varied ice properties resulting from the re-freezing process of the water column inside the borehole after deployment of the string. Due to bubble formation the ice is less transparent than the surrounding ice and an additional angular acceptance is added, which can increase or decrease the efficiency to detect photons. Accepted photons are converted into a so-called \textit{Monte Carlo photo-electron (MCPE)}. The amount of charge measured for each MCPE is determined by sampling from a mixture of two exponential distributions and a normal distribution. This \textit{single photo-electron (SPE)} distribution was tuned to match the observed distribution in each DOM in an \textit{in-situ} calibration study \sidecite{spe_respose_pmt}. \reffig{spe_distribution} shows the distribution compared to a lab measurement. Based on the sampled charges and times of MCPEs, the voltage waveforms for the (two) different readout channels are simulated and passed on to the trigger simulation starting with \textit{WaveDeform}, which was already mentioned in \refsec{ice_and_DOMs}.
+The second part of simulating the IceCube detector is the DOM response itself, but not all the photons that reached a DOM are accepted as being observed. Whether a photon was detected is determined individually based on the total efficiency and the angular acceptance curve of the specific DOM. The total efficiency includes effects of the DOM glass, PMT quantum and photo-electron collection efficiencies, and it is wavelength dependent. Additionally, there is another angle dependent effect called \textit{hole ice} \sidecite{Fiedlschuster:2019unl}. This effect is due to varied ice properties resulting from the re-freezing process of the water column inside the borehole after deployment of the string. Due to bubble formation the ice is less transparent than the surrounding ice and an additional angular acceptance is added, which can increase or decrease the efficiency to detect photons. Accepted photons are converted into a so-called \textit{Monte Carlo photo-electron (MCPE)}. The amount of charge measured for each MCPE is determined by sampling from a mixture of two exponential distributions and a normal distribution. This \textit{single photo-electron (SPE)} distribution was tuned to match the observed distribution in each DOM in an \textit{in-situ} calibration study \sidecite{spe_respose_pmt}. \reffig{spe_distribution} shows the distribution compared to a lab measurement. Based on the sampled charges and times of MCPEs, the voltage waveforms for the (two) different readout channels are simulated and passed on to the trigger simulation starting with \textit{WaveDeform}, which was already mentioned in \refsec{ice_and_DOMs}.
 
 \begin{margintable}
 \small
@@ -300,7 +300,7 @@ After the total rate was reduced by the simple cuts of L3 and the overall agreem
 
 Level 5 is the final selection level, before event reconstructions are applied. This level aims to reduce the remaining atmospheric muon rate below the rate of neutrinos. Muons not rejected by the earlier levels are those that produced little or no light in the veto regions. One possible reason is that they passed through one of the un-instrumented regions between the strings \todo{add some figure showing the corridors?} called \textit{corridors}. To reject those, special corridor cuts, based on the number of hits they produced close to a potential corridor they passed through. The potential corridor in questions is identified based on a simple infinite track fit. In addition to the corridor cuts, starting containment cuts are applied to reject events that start at the edge of the fiducial volume. Events with more than seven hits in the outermost strings of the detector or those that have a down going direction in the uppermost region are rejected. This further reduces the fraction of muons by \SI{96}{\percent} while keeping \SI{48}{\percent} of neutrinos. The rates after this level are \SI{1}{\milli\hertz} and \SI{2}{\milli\hertz} for neutrinos and muons, respectively, making it a neutrino dominated sample.
 
-\todo{add table with rater per level (split in flavor for signal (benchmark mass/mixing?) and background)}
+\todo{add table with rates per level (split in flavor for signal (benchmark mass/mixing?) and background)}
 
 
 \section{Reconstruction} \labsec{reconstruction}
@@ -389,12 +389,12 @@ There are multiple sources of systematic uncertainties related to the event gene
 
 \subsection{Atmospheric Flux Uncertainties}
 
-The flux of atmospheric neutrinos is influenced by multiple factors, the spectrum and composition of cosmic rays, the assumed atmospheric conditions, and the hadronic interaction model used to describe the air showers development. Uncertainties of the neutrino flux are therefore dictated by the uncertainties on these components, where the variations in atmospheric conditions were found to have negligible effect \sidecite{OVS_PRD}.
+The flux of atmospheric neutrinos is influenced by multiple factors, the spectrum and composition of CRs, the assumed atmospheric conditions, and the HI model used to describe the air showers development. Uncertainties of the neutrino flux are therefore dictated by the uncertainties on these components, where the variations in atmospheric conditions were found to have negligible effect \sidecite{OVS_PRD}.
 
 
 \paragraph{Cosmic ray flux:}
 
-The selected sample of atmospheric neutrinos lies around energies of up to \SI{100}{\gev}. The initial primary particles in the cosmic ray flux can have 100 times larger energies and therefore the cosmic ray flux between \SI{10}{\gev} and \SI{10}{\tera\electronvolt} is important, which dominantly consists of helium and proton \sidecite{cosmic_ray_composition_and_GSF}. The uncertainty in this cosmic ray flux component can be described as a power law correction \sidecite{PhysRevD.74.094009, PhysRevD.95.023012}
+The selected sample of atmospheric neutrinos lies around energies of up to \SI{100}{\gev}. The initial primary particles in the CR flux can have 100 times larger energies and therefore the CR flux between \SI{10}{\gev} and \SI{10}{\tera\electronvolt} is important, which dominantly consists of helium and proton \sidecite{cosmic_ray_composition_and_GSF}. The uncertainty in this CR flux component can be described as a power law correction \sidecite{PhysRevD.74.094009, PhysRevD.95.023012}
 \begin{equation}
     \Phi^\prime_\nu = \Phi_\nu \left( \frac{E}{E^\star} \right)^{\Delta\gamma}
     \;,
@@ -405,13 +405,13 @@ where $E^\star$ is the pivot energy and $\Delta\gamma$ is the correction to the 
 
 \paragraph{Hadronic interaction model:}
 
-Neutrinos are produced in the decaying hadrons in cosmic ray air showers, spanning a large parameter space that is sparsely evaluated by experimental data. To include uncertainties based on energy, direction, and neutrino flavor, the \textsc{MCEq} package \sidecite{mceq} is used to compute the distribution of atmospheric leptons and to estimate the impact of varying their contributions. The calculations in MCEq are based on the work of Barr \textit{et al.} \sidecite{Barr:2006it} and results in the change in flux $d\Phi_\rm{l}/dB$ for a variation $dB$ of some parameter $B$. Scaling this variation by some value $b$, the modified total flux, s is then given by
+Neutrinos are produced in the decaying hadrons in CR air showers, spanning a large parameter space that is sparsely evaluated by experimental data. To include uncertainties based on energy, direction, and neutrino flavor, the \textsc{MCEq} package \sidecite{mceq} is used to compute the distribution of atmospheric leptons and to estimate the impact of varying their contributions. The calculations in MCEq are based on the work of Barr \textit{et al.} \sidecite{Barr:2006it} and results in the change in flux $d\Phi_\rm{l}/dB$ for a variation $dB$ of some parameter $B$. Scaling this variation by some value $b$, the modified total flux, s is then given by
 \begin{equation}
     \Phi^\prime_\rm{l} = \Phi_\rm{l} + \left( b \cdot \frac{d\Phi_\rm{l}}{dB} \right)
     \;.
     \labeq{mceq_flux_variations}
 \end{equation}
-Matching the original work, the parameter space is divided in the primary energy $E_i$ and the energy fraction of the secondary meson $x_\rm{lab}$, with varying uncertainties, derived from fixed target experiment data. The Sibyll2.3c \sidecite{sibyll2.3d} hadronic interaction model and the GSF cosmic ray flux \sidecite{cosmic_ray_composition_and_GSF} were used to calculate the related flux changes\sidenote{The choice of flux and hadronic interaction model have minor impact on the variations.} for the different regions in $E_i$ and $x_\rm{lab}$, resulting in 17 variables, encoding the possible changes.
+Matching the original work, the parameter space is divided in the primary energy $E_i$ and the energy fraction of the secondary meson $x_\rm{lab}$, with varying uncertainties, derived from fixed target experiment data. The Sibyll2.3c \sidecite{sibyll2.3d} HI model and the GSF CR flux \sidecite{cosmic_ray_composition_and_GSF} were used to calculate the related flux changes\sidenote{The choice of flux and HI model have minor impact on the variations.} for the different regions in $E_i$ and $x_\rm{lab}$, resulting in 17 variables, encoding the possible changes.
 
 
 \subsection{Cross-Section Uncertainties}
@@ -439,20 +439,28 @@ Even though the DIS interactions can be calculated very precisely, there are sti
 
 \subsection{Detector Calibration Uncertainties}
 
-There are multiple sources of systematic uncertainties related to the detection process of neutrinos in IceCube. Dominant for this analysis are the effects of the properties of the ice itself and the optical efficiency of the DOMs. None of these uncertainties can be described by an analytic expression, so they have to be estimated using MC simulation. The method used to derive the continuous variations based on the MC simulation is described in \refsec{ultrasurfaces}. The five relevant uncertainty parameters are the absolute efficiency of the DOMs, a global scaling of bulk ice scattering and absorption lengths, and variations of the relative angular acceptance in two parameters.
+There are multiple sources of systematic uncertainties related to the detection process of neutrinos in IceCube. Dominant for this analysis are the effects of the properties of the ice itself and the optical efficiency of the DOMs. None of these uncertainties can be described by an analytic expression, so they have to be estimated using MC simulation. The method used to derive the continuous variations based on the MC simulation is described in \refsec{ultrasurfaces}. The five relevant uncertainty parameters are the absolute efficiency of the DOMs, a global scaling of bulk ice scattering and absorption lengths, and variations of the relative angular acceptance due to hole ice variations in two parameters.
 
 
 \paragraph{DOM efficiency:}
-As was already mentioned in \refsec{ice_and_DOMs}, the absolute efficiency of the DOMs is calibrated using minimum ionizing muons from air showers, due to the lack of a calibrated light source in the detector. Using the muons as a steady, controlled source of light, the efficiency can be estimated by comparing simulated muon data sets with varied DOM response to the measured data. Since the uncertainties found in multiple iterations of this study \sidecite{JFeintzeig_phd, domeff_nick} are at the order of \SI{10}{\percent}, this systematic is highly relevant and has to be included in the analysis.
+As was already mentioned in \refsec{ice_and_DOMs}, the absolute efficiency of the DOMs, $\epsilon_\rm{DOM}$ is calibrated using minimum ionizing muons from air showers, due to the lack of a calibrated light source in the detector. Using the muons as a steady, controlled source of light, the efficiency can be estimated by comparing simulated muon data sets with varied DOM response to the measured data. Since the uncertainties found in multiple iterations of this study \sidecite{JFeintzeig_phd, domeff_nick} are at the order of \SI{10}{\percent}, this systematic is highly relevant and has to be included in the analysis.
 
 
 \paragraph{Bulk ice scattering and absorption:}
 
+Absorption and scattering length are the most important properties that govern the propagation of photons through the ice. The simulation principle and how the depth dependent absorption and scattering coefficients are used was already explained in \refsec{photon_propagation}. To account for uncertainties on this model of the bulk ice coefficients, a global scaling for each of the two parameters ($absoprtion, scatteriong$) is applied.
 
 
 \paragraph{Hole ice angular acceptance:}
 
+Due to bubble formation in the re-freezing process of the boreholes, the hole ice seems to be less transparent in the center of the columns \sidecite{rongen_drilling_epj}. This effectively decreases the chance of photons hitting the DOMs directly from below, which can be described as an additional angular modification of the DOM acceptance. The modification is parameterized by a two dimensional, normalized\sidenote{The hole ice angular acceptance modification is normalized so that it does not affect the total charge.} function, where the two dominant of the parameters ($p_0, p_1$), dictating its form, are enough to describe all past and the current hole ice models from both in-situ and laboratory measurements. \reffig{hole_ice_variations} shows the acceptance modification as a function of the incident photon angle $\cos(\eta)$. The current baseline model, the variations achieved through modifying $p_0$ and $p_1$, and a laboratory measurement can be seen.
 
+\begin{figure}
+    \centering
+    \input{figures/simulation_and_processing/hole_ice/hole_ice_p0_p1.tex}
+    \caption[xx]{xxx , modified from \cite{ATrettin_phd}}
+    \labfig{hole_ice_variations}
+\end{figure}
 
 
 \subsection{Muon Uncertainties}

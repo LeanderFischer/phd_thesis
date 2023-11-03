@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+
+\pgfplotstableread{figures/simulation_and_processing/hole_ice/angsens_example_fluct.csv}\table
+\pgfplotstableread[col sep=comma]{figures/simulation_and_processing/hole_ice/all_acceptance_curves.csv}\acceptancecurves
+
+\begin{axis}[
+		xmajorgrids, ymajorgrids,
+		xlabel=$\cos(\eta)$, ylabel=relative optical efficiency,
+		legend style={at={(0.02,0.95)}, anchor=north west},
+        ytick distance=0.2,
+	]
+    \addplot[black, thick] table [x=cos_theta, y=baseline] \acceptancecurves;
+    \addlegendentry{baseline}
+    
+    \addplot[vermilion, thick] table [x=cos_theta, y=nominal] \acceptancecurves;
+    \addlegendentry{laboratory}
+    
+    \addplot[tab_blue, thin, name path=fluct_p0_dn, forget plot] table [x=cos_theta, y=fluct_p0_dn] \table;
+    \addplot[tab_blue, thin, name path=fluct_p0_up, forget plot] table [x=cos_theta, y=fluct_p0_up] \table;
+    \addplot[tab_blue, opacity=0.5] fill between[of = fluct_p0_dn and fluct_p0_up];
+    \addlegendentry{example variation in $p_0$}
+    
+    \addplot[tab_orange, thin, name path=fluct_p1_dn, forget plot] table [x=cos_theta, y=fluct_p1_dn] \table;
+    \addplot[tab_orange, thin, name path=fluct_p1_up, forget plot] table [x=cos_theta, y=fluct_p1_up] \table;
+    \addplot[tab_orange, opacity=0.5] fill between[of = fluct_p1_dn and fluct_p1_up];
+    \addlegendentry{example variation in $p_1$}
+	
+\end{axis}
+\end{tikzpicture}
