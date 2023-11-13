@@ -4,16 +4,32 @@
 \chapter{Search for an Excess of Heavy Neutral Lepton Events}
 \labch{analysis}
 
+The measurement performed in this thesis is the search for an excess of HNL events in the \SI{10}{years} of IceCube DeepCore data. In principle the two physics parameters to be probed are the mass of the HNL, $m_4$, and the mixing between the fourth heavy mass state and the SM $\tau$ sector, $|U_{\tau4}|^2$. Since the mass itself influences the production and decay kinematics of the event and the accessible decay modes, individual mass sets were produced as described in \refsec{model_specific_simulation}. The mass slightly influences the energy distribution, while the mixing both changes the overall scale of the HNL events and the shape in energy and PID. IceCube DeepCore is suited to measure the excess which appears around and below \SI{20}{\giga\electronvolt}, due to its production from the atmospheric tau neutrinos. The measurement will be performed for the three mass sets individually, while the mixing is the parameter that can be varied continuously and will be measured in the fit. 
+
+
+\section{Final Level Sample} \labsec{analysis_samples}
+
+\subsection{Expected Rates/Events}
+
+\todo{Add final level composition for benchmark mixing/all masses?}
+
+\subsection{Analysis Binning}
+
+\todo{describe binning and bin masking}
+
+\todo{add 3D expectation and/or S/sqrt(B) plots}
+
+
+
 
 \section{Statistical Analysis} \labsec{analysis_principle}
 
+
 \subsection{Test Statistic}
 
-- measurement by comparing weighted MC to Data
-- uses modified chi2 defined as
-
-
+The measurements are performed by comparing the weighted MC to the data. Through variation of the nuisance and physics parameters that govern the weights, the best matching set of parameters can be found. The comparison is done using a modified $\chi^2$ defined as
 \begin{equation}
+    \small
     \chi^2_{\mathrm{mod}} = 
     \sum_{i \in \mathrm{bins}}^{}\frac{(N^{\mathrm{\nu}}_i + N^{\mathrm{\mu}}_i + N^{\mathrm{HNL}}_i - N^{\mathrm{obs}}_i)^2}
     {N^{\mathrm{\nu}}_i + N^{\mathrm{\mu}}_i + N^{\mathrm{HNL}}_i + (\sigma^{\mathrm{\nu}}_i)^2 + (\sigma^{\mathrm{\mu}}_i)^2 + (\sigma^{\mathrm{HNL}}_i)^2}
@@ -21,27 +37,14 @@
     \;,
     \labeq{mod-chi2-hnl}
 \end{equation}
-where $N^{\mathrm{\nu}}_i$, $N^{\mathrm{\mu}}_i$, and $N^{\mathrm{HNL}}_i$ are the expected number of events in bin $i$ from neutrinos, atmospheric muons, and HNL, while $N^{\mathrm{obs}}_i$ is the observed number of events in bin $i$. The expected number of events from each particle type is calculated by summing the weights of all events in the bin $N^{\mathrm{type}}_i = \sum_i^{\rm type}\omega_i$, with the statistical uncertainty being $(\sigma^{\mathrm{type}}_i)^2 = \sum_i^{\rm type}\omega_i^2$ 
+as the test statistic (TS), where $N^{\mathrm{\nu}}_i$, $N^{\mathrm{\mu}}_i$, and $N^{\mathrm{HNL}}_i$ are the expected number of events in bin $i$ from neutrinos, atmospheric muons, and HNL, while $N^{\mathrm{obs}}_i$ is the observed number of events in bin $i$. The expected number of events from each particle type is calculated by summing the weights of all events in the bin $N^{\mathrm{type}}_i = \sum_i^\rm{type}\omega_i$, with the statistical uncertainty being $(\sigma^{\mathrm{type}}_i)^2 = \sum_i^\rm{type}\omega_i^2$. The expected Poisson error is calculated using the combined expectation of neutrinos, atmospheric muons, and HNL events. The additional term in \refeq{mod-chi2-hnl} is included to apply a penalty term for prior knowledge of the systematic uncertainties of the parameters where they are known. $s_j$ are the systematic parameters that are varied in the fit, while $\hat{s_j}$ are their nominal values and $\sigma_{s_j}$ are the known uncertainties.
+
+\todo{Do I want/need to include the description of the KDE muon estimation?}
+
+\subsection{Systematic Uncertainties} \labsec{analysis_systematics}
 
 
-\subsection{Free Parameter Selection} \labsec{parameter_selection}
-
-Copy paste from OVS PRD about systematic impact test:
-
-We decide which systematic uncertainties must be included in the fit by studying the potential bias they would produce in the oscillation parameters and the change on the test statistic $\chi^2_\mathrm{mod}$ if we neglected them. We create data sets with their observed quantities set equal to their expected values for a wide range of values for $\theta_{23}$ and $\Delta m^{2}_{32}$ and perform two fits: one where the oscillation parameters are fixed to their true value and one where they are left free. In both fits, the systematic parameter being tested is fixed to a value off from its nominal expectation by either 1$\sigma$ or by an educated guess, if the uncertainty is not well defined. Parameters are included in the analysis when this test creates a significant bias in the oscillation parameters, which is conservatively defined as a difference larger than $2\times10^{-2}$ between the test statistics of the two fits.
-
-Copy paste from OVS PRD about detector systematic nominal, prior, and ranges:
-
-As motivated in Section~\ref{sec:detector_calibration}, the DOM efficiency is constrained by a Gaussian prior to the value of 1.0 $\pm$ 0.1. The ice model parameters are unconstrained in the fit, and allowed to vary within conservative ranges determined from calibration data. The hole ice model parameters are bounded within the ranges $-2.0<p_{0}<1.0$ and $-0.2<p_{1}<0.2$. The bulk ice model parameters are bounded within $-0.90 < \mathrm{Absorption} < 1.10$ and $-0.95 < \mathrm{Scattering} < 1.15$.
-
-\todo{Add table with all systematic uncertainties used in this analysis (in the analysis chapter).}
-\todo{add final level effects of varying the axial mass parameters (or example of one)}
-\todo{add final level effects of varying the DIS parameter (or example of one)}
-
-\subsection{Signal and Background in Analysis Binning}
-
-
-\section{Treatment of Detector Response Uncertainties via a Likelihood-Free Inference Method} \labsec{ultrasurfaces}
+\subsubsection{Treatment of Detector Response Uncertainties via a Likelihood-Free Inference Method} \labsec{ultrasurfaces}
 
 \sidecite{Fischer_2023}
 
@@ -64,12 +67,12 @@ The event counts coming from different flavors and interactions have a different
     \item ($\nu_\mu + \bar{\nu}_\mu$) CC: These interactions produce track-like signatures.
 \end{itemize}
 
-\begin{figure}[t!]
-    \centering
-    \includegraphics[width=.95\linewidth]{Figures/detector_syst/hypersurface_example_v5.pdf}
-    \caption{Example of a hypersurface function in one bin projected on the DOM efficiency dimension. Each data point corresponds to one systematic set. Translucent datapoints are from sets where one or more systematic parameter \emph{besides} DOM efficiency is off-nominal. Those points are projected along the fitted plane to the nominal point. Several systematic sets have a nominal DOM efficiency of 1.0. The translucent error band corresponds to the standard deviation of the fitted function.}
-    \label{fig:hypersurface-example}
-\end{figure}
+% \begin{figure}[t!]
+%     \centering
+%     \includegraphics[width=.95\linewidth]{Figures/detector_syst/hypersurface_example_v5.pdf}
+%     \caption{Example of a hypersurface function in one bin projected on the DOM efficiency dimension. Each data point corresponds to one systematic set. Translucent datapoints are from sets where one or more systematic parameter \emph{besides} DOM efficiency is off-nominal. Those points are projected along the fitted plane to the nominal point. Several systematic sets have a nominal DOM efficiency of 1.0. The translucent error band corresponds to the standard deviation of the fitted function.}
+%     \label{fig:hypersurface-example}
+% \end{figure}
 
 The distribution of $\chi^{2}$/d.o.f. from the fits in all analysis bins is used as a diagnostic to ensure that the fitted, linear hypersurfaces provide a good estimate for the expected number of events for the full range of simulated detector configurations. We find that the means of these $\chi^{2}$/d.o.f. distributions are all consistent with 1.0 as expected from good fits for each of the three categories described above (NC + $\nu_{e}$ CC, $\nu_{\tau}$ CC and $\nu_{\mu}$ CC). Attempts to use higher order polynomial fits did not yield a significantly improved $\chi^{2}$/d.o.f., and in fact often rendered the fits less stable. 
 
@@ -79,16 +82,27 @@ To produce the histograms for fitting the hypersurfaces, a choice must be made f
 This problem arises because we are only fitting the hypersurfaces in reconstructed phase space, without accounting for the different true energy and zenith distributions of MC in each analysis bin, which change with each detector systematic variation. To mitigate this problem, we fit the hypersurfaces for 20 different values in mass splitting between $1.5\times 10^{-3}\,\mathrm{eV}^2$ and $3.5\times 10^{-3}\,\mathrm{eV}^2$, and then apply a piece-wise linear interpolation to all slopes, intercepts and covariance matrix elements. The oscillation parameter fit can then dynamically adapt the hypersurfaces for each value of $\Delta m^{2}_{32}$ that is tested using these interpolated functions. The effects of other parameter choices were evaluated as well, but none were found to introduce a significant bias.
 
 
+\subsubsection{Free Parameter Selection} \labsec{parameter_selection}
+
+Copy paste from OVS PRD about systematic impact test:
+
+We decide which systematic uncertainties must be included in the fit by studying the potential bias they would produce in the oscillation parameters and the change on the test statistic $\chi^2_\mathrm{mod}$ if we neglected them. We create data sets with their observed quantities set equal to their expected values for a wide range of values for $\theta_{23}$ and $\Delta m^{2}_{32}$ and perform two fits: one where the oscillation parameters are fixed to their true value and one where they are left free. In both fits, the systematic parameter being tested is fixed to a value off from its nominal expectation by either 1$\sigma$ or by an educated guess, if the uncertainty is not well defined. Parameters are included in the analysis when this test creates a significant bias in the oscillation parameters, which is conservatively defined as a difference larger than $2\times10^{-2}$ between the test statistics of the two fits.
+
+Copy paste from OVS PRD about detector systematic nominal, prior, and ranges:
+
+As motivated in Section~\ref{sec:detector_calibration}, the DOM efficiency is constrained by a Gaussian prior to the value of 1.0 $\pm$ 0.1. The ice model parameters are unconstrained in the fit, and allowed to vary within conservative ranges determined from calibration data. The hole ice model parameters are bounded within the ranges $-2.0<p_{0}<1.0$ and $-0.2<p_{1}<0.2$. The bulk ice model parameters are bounded within $-0.90 < \mathrm{Absorption} < 1.10$ and $-0.95 < \mathrm{Scattering} < 1.15$.
+
+\todo{Add table with all systematic uncertainties used in this analysis (in the analysis chapter).}
+\todo{add final level effects of varying the axial mass parameters (or example of one)}
+\todo{add final level effects of varying the DIS parameter (or example of one)}
+
 \section{Analysis Checks}
 
-\subsection{Minimizer Stability}
+\subsection{Asimov Inject/Recover Tests}
+
+\subsection{Sensitivity}
 
 \subsection{Ensemble Tests}
-
-\subsection{Background Only Three-Flavor Oscillation Measurement}
-
-\subsection{Heavy Neutral Lepton Sensitivity}
-
 
 
 \section{Results}

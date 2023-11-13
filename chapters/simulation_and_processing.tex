@@ -301,7 +301,7 @@ After the total rate was reduced by the simple cuts of L3 and the overall agreem
 
 Level 5 is the final selection level, before event reconstructions are applied. This level aims to reduce the remaining atmospheric muon rate below the rate of neutrinos. Muons not rejected by the earlier levels are those that produced little or no light in the veto regions. One possible reason is that they passed through one of the un-instrumented regions between the strings \todo{add some figure showing the corridors?} called \textit{corridors}. To reject those, special corridor cuts, based on the number of hits they produced close to a potential corridor they passed through. The potential corridor in questions is identified based on a simple infinite track fit. In addition to the corridor cuts, starting containment cuts are applied to reject events that start at the edge of the fiducial volume. Events with more than seven hits in the outermost strings of the detector or those that have a down going direction in the uppermost region are rejected. This further reduces the fraction of muons by \SI{96}{\percent} while keeping \SI{48}{\percent} of neutrinos. The rates after this level are \SI{1}{\milli\hertz} and \SI{2}{\milli\hertz} for neutrinos and muons, respectively, making it a neutrino dominated sample.
 
-\todo{add table with rates per level (split in flavor for signal (benchmark mass/mixing?) and background)}
+\todo{add table with rates per level (split in flavor) - maybe better in analysis chapter to also show signal?}
 
 
 \section{Reconstruction} \labsec{reconstruction}
@@ -378,7 +378,7 @@ Another set of cuts is applied to make sure the agreement between data and MC is
     \end{table}
     
 
-\todo{there is some more information in Elisas thesis about the  final sample composition, but I should maybe put this together for myself?}
+\todo{add final sample composition, but maybe also in analysis chapter to show signal and background?}
 
 \todo{at some place I will want a selection efficiency plot for SM BG and HNL signal, but I'm not sure where to put it yet}
 
@@ -406,7 +406,7 @@ where $E^\star$ is the pivot energy and $\Delta\gamma$ is the correction to the 
 
 \paragraph{Hadronic interaction model:}
 
-Neutrinos are produced in the decaying hadrons in CR air showers, spanning a large parameter space that is sparsely evaluated by experimental data. To include uncertainties based on energy, direction, and neutrino flavor, the \textsc{MCEq} package \sidecite{mceq} is used to compute the distribution of atmospheric leptons and to estimate the impact of varying their contributions. The calculations in MCEq are based on the work of Barr \textit{et al.} \sidecite{Barr:2006it} and results in the change in flux $d\Phi_\rm{l}/dB$ for a variation $dB$ of some parameter $B$. Scaling this variation by some value $b$, the modified total flux, s is then given by
+Neutrinos are produced in the decaying hadrons in CR air showers, spanning a large parameter space that is sparsely evaluated by experimental data. To include uncertainties based on energy, direction, and neutrino flavor, the \textsc{MCEq} package \sidecite{mceq} is used to compute the distribution of atmospheric leptons and to estimate the impact of varying their contributions. The calculations in MCEq are based on the work of Barr \textit{et al.} \sidecite{Barr:2006it}\todo{add figure with Barr blocks?} and results in the change in flux $d\Phi_\rm{l}/dB$ for a variation $dB$ of some parameter $B$. Scaling this variation by some value $b$, the modified total flux, s is then given by
 \begin{equation}
     \Phi^\prime_\rm{l} = \Phi_\rm{l} + \left( b \cdot \frac{d\Phi_\rm{l}}{dB} \right)
     \;.
@@ -459,7 +459,7 @@ Due to bubble formation in the re-freezing process of the boreholes, the hole ic
 \begin{figure}
     \centering
     \input{figures/simulation_and_processing/hole_ice/hole_ice_p0_p1.tex}
-    \caption[Hole ice angular acceptance modification]{Relative angular acceptance modification due to hole ice. Shown is the current baseline model, the variations from changing $p_0$ and $p_1$, and a laboratory measurement. Modified from \cite{ATrettin_phd}}
+    \caption[Hole ice angular acceptance modification]{Relative angular acceptance modification due to hole ice. Shown is the current baseline model, the variations from changing $p_0$ and $p_1$, and a laboratory measurement. Modified from \cite{ATrettin_phd}.}
     \labfig{hole_ice_variations}
 \end{figure}
 
