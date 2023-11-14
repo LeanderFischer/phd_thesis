@@ -4,22 +4,75 @@
 \chapter{Search for an Excess of Heavy Neutral Lepton Events}
 \labch{analysis}
 
-The measurement performed in this thesis is the search for an excess of HNL events in the \SI{10}{years} of IceCube DeepCore data. In principle the two physics parameters to be probed are the mass of the HNL, $m_4$, and the mixing between the fourth heavy mass state and the SM $\tau$ sector, $|U_{\tau4}|^2$. Since the mass itself influences the production and decay kinematics of the event and the accessible decay modes, individual mass sets were produced as described in \refsec{model_specific_simulation}. The mass slightly influences the energy distribution, while the mixing both changes the overall scale of the HNL events and the shape in energy and PID. IceCube DeepCore is suited to measure the excess which appears around and below \SI{20}{\giga\electronvolt}, due to its production from the atmospheric tau neutrinos. The measurement will be performed for the three mass sets individually, while the mixing is the parameter that can be varied continuously and will be measured in the fit. 
+The measurement performed in this thesis is the search for an excess of HNL events in the \SI{10}{years} of IceCube DeepCore data. In principle the two physics parameters to be probed are the mass of the HNL, $m_4$, and the mixing between the fourth heavy mass state and the SM $\tau$ sector, $|U_{\tau4}|^2$. Since the mass itself influences the production and decay kinematics of the event and the accessible decay modes, individual mass sets were produced as described in \refsec{model_specific_simulation}. The mass slightly influences the energy distribution, while the mixing both changes the overall scale of the HNL events and the shape in energy and PID. IceCube DeepCore is suited to measure the excess which appears around and below \SI{20}{\gev}, due to its production from the atmospheric tau neutrinos, although a reduced lower energy threshold could improve the analysis. The measurement will be performed for the three mass sets individually, while the mixing is the parameter that can be varied continuously and will be measured in the fit. 
 
 
 \section{Final Level Sample} \labsec{analysis_samples}
 
+The final level sample of this analysis always consists of the neutrino and muon MC introduced in \refsec{sm_event_generation} and one of the three HNL samples explained in \refsec{model_specific_simulation}. All of those simulation sets and the \SI{10}{years} of IceCube DeepCore data are processed through the full processing and event selection chain described in \refsec{processing_chain, reconstruction} leading to the final level sample. Since applying the last cuts from \refsec{analysis_cuts} leaves an insignificant amount of pure noise events in the sample, the noise simulation is not included in the analysis and won't be listed here.
+
+
+\todo{add information about the matter profile used }
+\todo{add information about the oscillation probability calculation and the software used for it}
+
 \subsection{Expected Rates/Events}
 
-\todo{Add final level composition for benchmark mixing/all masses?}
+The rates and the expected events in \SI{10}{years} are shown in \reftab{combined_final_level_expectation}. For the HNL the expectation depends on the mass and the mixing. Shown here are two example mixings for all the three masses. A mixing of $0.0$ would result in a rate of $0.0$ and therefore no HNL events.
+
+\begin{table}
+    \begin{tabular}{ llcc }
+    \hline\hline
+
+    \textbf{Type} & \textbf{Rate [\si{\milli\hertz}]} & \multicolumn{2}{c}{\textbf{Events (in \SI{10}{years})}} \\ 
+
+    \hline\hline
+
+    $\nu_\mu^\rm{CC}$   & 0.3522 & \multicolumn{2}{c}{103063 ± 113} \\
+    $\nu_e^\rm{CC}$     & 0.1411 & \multicolumn{2}{c}{41299 ± 69} \\
+    $\nu_\tau^\rm{CC}$  & 0.0348 & \multicolumn{2}{c}{10187 ± 22} \\
+    $\nu_\rm{NC}$       & 0.0667 & \multicolumn{2}{c}{968 ± 57} \\
+    $\mu$               & 0.0033 & \multicolumn{2}{c}{19522 ± 47} \\
+    \hline
+    HNL & & \textbf{$|U_{\tau4}|^2=10^{-3}$} & \textbf{$|U_{\tau4}|^2=10^{-1}$} \\ 
+    \hline
+    $m_4$=\SI{0.3}{\gev} & x.xxx & 2.5 & 1342.5\\
+    $m_4$=\SI{0.6}{\gev} & x.xxx & 9.0 & 1207.0\\
+    $m_4$=\SI{1.0}{\gev} & x.xxx & 9.6 & 966.5 \\
+    
+    \hline
+    \end{tabular}
+\caption[Final level event/rate expectation]{Final level rates and event expectation of the SM background particle types and the HNL signal for all three masses and two example mixing values.}
+\labtab{combined_final_level_expectation}
+\end{table}
+
+\todo{get correct final level rates from my pipeline(s)}
+\todo{add rate and poisson error for HNL samples}
+\todo{maybe just pick one mixing?}
 
 \subsection{Analysis Binning}
 
-\todo{describe binning and bin masking}
+The identical binning to the analysis performed in \sidecite{flercnn_analysis_result} is used. It was chosen such that the track-like bin has the largest $\nu_\mu$-CC fraction. Extend the binning towards lower energies or increasing the number of bins did not improve the HNL sensitivities significantly. It also has to be considered that sufficient data events need to end up in the individual bins to result in a good fit, which was already investigated in the previous analysis. To mitigate the low data statistics, a few bins were not taken into account in the analysis. There are three bins in PID (cascade-like, mixed and track-like), 12 bins in reconstructed energy, and 8 bins in cosine of the reconstructed zenith angle as specified in \reftab{analysis_binning}. Originally, there were two more bins in $\cos(\theta)$, which were removed to reduce muons coming from the horizon and some low energy bins in the cascade-like bin are removed due to the low event expectation.
+
+\begin{table}
+        \begin{tabular}{ llll }
+        \hline\hline
+    
+        \textbf{Variable} & \textbf{$N_\rm{bins}$} & \textbf{Edges} & \textbf{Step} \\ 
+    
+        \hline\hline
+    
+        $P_\nu$ & 3 & [0.00, 0.25, 0.55, 1.00] & linear \\
+        $E$ & 12 & [5.00, 100.00] & logarithmic \\
+        $\cos(\theta)$ & 8 & [-1.00, 0.04] & linear \\
+    
+        \hline
+        \end{tabular}
+    \caption[Analysis binning]{Three dimensional binning used in the analysis. All variables are from the FLERCNN reconstruction explained in \refsec{reconstruction}.}
+    \labtab{analysis_binning}
+\end{table}
+
 
 \todo{add 3D expectation and/or S/sqrt(B) plots}
-
-
 
 
 \section{Statistical Analysis} \labsec{analysis_principle}
@@ -84,9 +137,13 @@ This problem arises because we are only fitting the hypersurfaces in reconstruct
 
 \subsubsection{Free Parameter Selection} \labsec{parameter_selection}
 
+
+
+
+
 Copy paste from OVS PRD about systematic impact test:
 
-We decide which systematic uncertainties must be included in the fit by studying the potential bias they would produce in the oscillation parameters and the change on the test statistic $\chi^2_\mathrm{mod}$ if we neglected them. We create data sets with their observed quantities set equal to their expected values for a wide range of values for $\theta_{23}$ and $\Delta m^{2}_{32}$ and perform two fits: one where the oscillation parameters are fixed to their true value and one where they are left free. In both fits, the systematic parameter being tested is fixed to a value off from its nominal expectation by either 1$\sigma$ or by an educated guess, if the uncertainty is not well defined. Parameters are included in the analysis when this test creates a significant bias in the oscillation parameters, which is conservatively defined as a difference larger than $2\times10^{-2}$ between the test statistics of the two fits.
+We decide which systematic uncertainties must be included in the fit by studying the potential bias they would produce in the oscillation parameters and the change on the test statistic $\chi^2_\mathrm{mod}$ if we neglected them. We create data sets with their observed quantities set equal to their expected values for a wide range of values for $\theta_{23}$ and $\Delta m^{2}_{32}$ and perform two fits: one where the oscillation parameters are fixed to their true value and one where they are left free. In both fits, the systematic parameter being tested is fixed to a value off from its nominal expectation by either 1$\sigma$ or by an educated guess, if the uncertainty is not well-defined. Parameters are included in the analysis when this test creates a significant bias in the oscillation parameters, which is conservatively defined as a difference larger than $2\times10^{-2}$ between the test statistics of the two fits.
 
 Copy paste from OVS PRD about detector systematic nominal, prior, and ranges:
 
@@ -98,7 +155,25 @@ As motivated in Section~\ref{sec:detector_calibration}, the DOM efficiency is co
 
 \section{Analysis Checks}
 
+Fitting to data will be performed in a \textit{blind} manner, where the analyzer does not immediately see the fitted physics and nuisance parameter values, but first checks that a set of pre-defined \textit{goodness of fit (GOF)} criteria are fulfilled. If those criteria are met to satisfaction the fit results are unblinded and the full result can be revealed. Before these blind fits to data are run, the robustness of the analysis method is tested using pseudo-data that is generated using the MC sets.
+
+
 \subsection{Asimov Inject/Recover Tests}
+
+- descibe used minimizer and minimization routine
+- minimize the modified $\chi^2$ TS
+- describe the Asimov data set (no statistical fluctuations)
+- without fluctuations the fit is always expected to recover the injected parameters
+- \reffig{asimov_inject_recover_0.6_GeV}
+
+\begin{figure}
+    \includegraphics{figures/results/checks/asimov_scan_0.6_GeV-01.png}
+	\caption[Asimov inject/recover test (\SI{0.6}{\gev})]{Asimov inject/recover test for the \SI{0.6}{\gev} mass set. Mixing values between $10^{-3}$ and $10^{0}$ are injected and fit back with the full analysis chain. The injected parameter is alwasy recovered within the statistical uncertainty.}
+    \labfig{asimov_inject_recover_0.6_GeV}
+\end{figure}
+
+\todo{put in asimov inject/recover plots for other masses in the appendix}
+
 
 \subsection{Sensitivity}
 
