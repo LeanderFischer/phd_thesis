@@ -158,22 +158,35 @@ As motivated in Section~\ref{sec:detector_calibration}, the DOM efficiency is co
 Fitting to data will be performed in a \textit{blind} manner, where the analyzer does not immediately see the fitted physics and nuisance parameter values, but first checks that a set of pre-defined \textit{goodness of fit (GOF)} criteria are fulfilled. If those criteria are met to satisfaction the fit results are unblinded and the full result can be revealed. Before these blind fits to data are run, the robustness of the analysis method is tested using pseudo-data that is generated using the MC sets.
 
 
-\subsection{Asimov Inject/Recover Tests}
+\subsection{Minimization Robustness} \labsec{asimov_inject_recover}
 
-- descibe used minimizer and minimization routine
-- minimize the modified $\chi^2$ TS
-- describe the Asimov data set (no statistical fluctuations)
-- without fluctuations the fit is always expected to recover the injected parameters
-- \reffig{asimov_inject_recover_0.6_GeV}
+To find the set of parameters that describes the data best, a staged minimization routine is used. In the first stage, a fit with coarse minimizer settings is performed to find a rough estimate of the \textit{best fit point (BFP)}. In the second stage, the fit is performed again in both octants\sidenote{There is a degeneracy between the lower octant ($\theta_{23}<\SI{45}{\degree}$) and the upper octant ($\theta_{23}>\SI{45}{\degree}$), which can lead to TS minimum at two positions that are mirrored around \SI{45}{\degree} in $\theta_{23}$.} of $\theta_{23}$, starting from the BFP of the coarse fit. For each individual fit the \textit{MIGRAD} routine of \textsc{iminuit} \sidecite{iminuit_v2.17.0} is used to minimize the $\chi^2$ TS defined in \refeq{mod-chi2-hnl}. Iminuit is a fast, python compatible minimizer based on the Minuit2 C++ library \sidecite{og_minuit}. The individual minimizer settings are shown in \reftab{minimization_settings}.
 
-\begin{figure}
+\begin{margintable}
+    \small
+        \begin{tabular}{ llll }
+        \hline\hline
+
+        \textbf{Fit} & \textbf{Error} & \textbf{Prec.} & \textbf{Tol.} \\
+        
+        \hline\hline
+    
+        Coarse & 0.1 & 1e-8 & 0.1 \\
+        Fine & 1e-5 & 1e-14 & 1e-5 \\
+    
+        \hline
+        \end{tabular}
+    \caption[Staged minimization settings]{Migrad settings for the two stages in the minimization routine.}
+    \labtab{minimization_settings}
+\end{margintable}
+
+To test the minimization routine and to make sure it consistently recovers any injected physics parameters, pseudo-data sets are produced from the MC by choosing the nominal nuisance parameters and specific physics parameters, without adding any statistical or systematic fluctuations to it. These so-called \textit{Asimov}\sidenote{A pseudo-data set without statistical fluctuations is called Asimov data set.} data sets are then fit back with the full analysis chain. This type of test is called \textit{Asimov inject/recover test}. A set of mixing values between $10^{-3}$ and $10^{0}$ is injected and fit back. Even though this range is well within the excluded regions by other experiments, discussed in \refsec{HNL_mixing_constraints}, this covers the current sensitive region of the analysis in IceCube DeepCore. Without fluctuations the fit is expected to always recover the injected parameters (both physics and nuisance parameters). The fitted mixing values from the Asimov inject/recover tests are compared to the true injected values in \reffig{asimov_inject_recover_0.6_GeV}\todo{Do I want additional plots for this (fit diff, LLH distr, minim. stats, param. fits)?} for the \SI{0.6}{\gev} set. As expected, the fit is always able to recover the injected physcis parameter and the nuisance paramters. Additional plots for the other mass sets can be found in \refsec{asimov_inject_recover_appendix}.
+
+\begin{figure}[h]
     \includegraphics{figures/results/checks/asimov_scan_0.6_GeV-01.png}
-	\caption[Asimov inject/recover test (\SI{0.6}{\gev})]{Asimov inject/recover test for the \SI{0.6}{\gev} mass set. Mixing values between $10^{-3}$ and $10^{0}$ are injected and fit back with the full analysis chain. The injected parameter is alwasy recovered within the statistical uncertainty.}
+	\caption[Asimov inject/recover test (\SI{0.6}{\gev})]{Asimov inject/recover test for the \SI{0.6}{\gev} mass set. Mixing values between $10^{-3}$ and $10^{0}$ are injected and fit back with the full analysis chain. The injected parameter is always recovered within the statistical uncertainty.}
     \labfig{asimov_inject_recover_0.6_GeV}
 \end{figure}
-
-\todo{put in asimov inject/recover plots for other masses in the appendix}
-
 
 \subsection{Sensitivity}
 

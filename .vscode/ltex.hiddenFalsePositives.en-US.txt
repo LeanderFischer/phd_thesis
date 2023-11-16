@@ -1,0 +1,1 @@
+{"rule":"CD_NN","sentence":"^\\QVariable Threshold removed Number of hit DOMs \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q Radial distance < 200 Vertical position -495 < z < -225 Energy 5 < z < 100 Cosine of zenith angle < 0.3 Number of hit DOMs < 0.3 Number of hit DOMs < 0.3\\E$"}
