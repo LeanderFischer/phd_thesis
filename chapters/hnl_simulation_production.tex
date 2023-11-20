@@ -4,22 +4,165 @@
 \chapter{Heavy Neutral Lepton Signal Simulation}
 \labch{signal_simulation}
 
+After the SM simulation generation and the default low energy event selection and processing chain were introduced in the previous \refch{simulation_and_processing}, the focus will now be on the central part of this thesis - the HNL signal simulation. Since this is the first attempt of performing a search for HNLs with IceCube DeepCore, there was no prior knowledge of the expected performance nor the event expectation and the simulation had to be developed from scratch. Two avenues of simulation generation were pursued in parallel; a collection of model independent simulation sets was realized and is explained in \refsec{model_independent_simulation} and the physically accurate model dependent simulation is described in \refsec{model_specific_simulation}.
 
 
-\section{Model Independent Simulation}
+\section{Model Independent Simulation} \labsec{model_independent_simulation}
+
+To investigate the potential of IceCube to detect HNLs by identifying the unique double cascade morphology explained in \refsec{double_cascade_morphology}, it is very valuable to have simulation sets where the double cascade kinematics can be controlled directly. In a realistic model the decay kinematics and the absolute event expectation all depend on the specific model parameters chosen (see \refsec{hnl_theory}). To decouple the simulation from a specific model, a model independent double cascade generator was developed and will be explained in the following sections. Using these sets, the performance of IceCube DeepCore to detect low energetic double cascades, dependent on their properties, is studied in \refch{double_cascade_performance}.
+
 
 \subsection{Generator Functions}
 
+
+
+
+\textbf{Implemented generator functions:}
+\begin{itemize}
+    \item random sign 
+    \item power law sampling
+    \item exponential sampling
+    \item[] 
+    \item direction vector (from zenith/azimuth)
+    \item direction angles (from direction vector)
+    \item[] 
+    \item make cascade (produce EM cascade particle from pos, dir, energy, time)
+    \item add cascades to tree (add n cascades to mctree)
+\end{itemize}
+
+
+\todo{Re-write/re-formulate this section (copied from HNL technote).}
+
+For this purpose a collection of secondary generator functions is added to the \href{https://github.com/LeanderFischer/LeptonInjector-HNL/blob/main/LeptonInjector/python/cascade_generator_functions.py}{custom LeptonInjector project}. It includes a function to place an arbitrary list of electromagnetic cascades (electrons) with given positions, directions, and energies into an \textit{I3MCTree} and add it to the current frame. There is also some functions used to create the individual cascades and for specific random sampling. Note here that the icetray random number generators should always be used in order to avoid issues with the tray scope and multiple files having identical distributions. To simulate a specific set a process script needs to be set up that deals with sampling from the wanted distributions and calls the full generation in a tray script. For cluster submission using dagman, a submit and a job script are also needed. Explicit examples will be linked in the following sections, where specific choices for model independent simulation sets will be explained in more detail.
+
 \subsection{Simplistic Sets}
 
-\subsection{Realistic Set}
 
+\subsubsection{Up-Going/String 81 Centered Set}
+
+
+\begin{figure}
+    \centering
+    \includegraphics{figures/icecube_deepcore/deepcore_surface_distances.jpg}
+    \caption[xx]{Horizontal positions and distances between DeepCore strings. Red strings are instrumented more densely (vertically) and partially with higher quantum efficiency (HQE) DOMs.}
+    \labfig{deepcore_distances}
+\end{figure}
+
+To investigate one of the best possible cases of detecting double cascades, a set is produced, where both cascades are placed on a DeepCore string (namely string 81) and the directions are directly up-going. The horizontal positions of all DeepCore strings are shown in \reffig{deepcore_distances}. The z position of each cascade is sampled uniformly along the strings z elongation and the energies are sampled uniform in [$0.0, 60.0$]\si{\gev}. The order of the cascades is chosen such that the lower one is first ($t_0=0.0$) and the upper one is second ($t_1=L/c$). The sampling distributions/values for the cascades are listed in \reftab{upgoing_string81_sampling_distributions}. The generation level distributions of the sampled variables are shown in \reffig{upgoing_string81_gen_distris}.
+
+
+\begin{table*}
+        \begin{tabular}{ llll }
+        \hline\hline
+        \textbf{Set} & \textbf{Variable} & \textbf{Distribution} & \textbf{Range/Value} \\
+        \hline\hline
+        Up-going &&& \\
+        \hline
+        & energy & uniform & [0.0, 60.0]\si{\gev} \\
+        & zenith & fixed & \SI{180.0}{\degree} \\
+        & azimuth & fixed & \SI{0.0}{\degree} \\
+        & ($x,y$) position & fixed & (41.6, 35.49)\si{\metre} \\
+        & $z$ position & uniform & [-480.0, -180.0]\si{\metre} \\
+        \hline
+        Horizontal &&& \\ 
+        \hline
+        & energy & uniform & [0.0, 60.0]\si{\gev} \\
+        & zenith & fixed & \SI{90.0}{\degree} \\
+        & azimuth & uniform & [0.0, 360.0]\si{\degree} \\
+        & ($x,y$) position & uniform (circle) & $c$=(46.29, -34.88)\si{\metre}, $r$=\SI{150.0}{\metre} \\
+        & $z$ position & fixed & \SI{-330.0}{\metre} \\
+        \hline
+        \end{tabular}
+    \caption[xx]{Sampling distributions of up-going, string 81 centered and horizontal simulation generation.}
+    \labtab{hnl_simplified_set_sampling_distributions}
+\end{table*}
+
+
+% \begin{figure}[h!]
+%     \subfloat[\labfig{upgoing_string81_gen_distris_energies}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_energies_clipped.png}
+%     }
+%     \subfloat[\labfig{upgoing_string81_gen_distris_depths}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_depths_clipped.png}
+%     }
+%     \\[-2.5ex]
+%     \subfloat[\labfig{upgoing_string81_gen_distris_decay_length}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_true_decay_length_clipped.png}
+%     }
+%     \subfloat[\labfig{upgoing_string81_gen_distris_total_energy}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_true_total_energy_clipped.png}
+%     }
+%     \caption{Generation level distributions of the 1000 files, with 1000 events each of set 194601. Only the parameters that are not fixed to a certain value are shown.}
+%     \labfig{upgoing_string81_gen_distris}
+% \end{figure}
+
+After generation the events are processed with standard Photon, Detector, L1, and L2 processing and then Taupede+MuMillipede is run on top of the L2 files. Multiple versions with different parameters were produced, some with the OscNext baseline parameters, some without detector noise (in Det level) and some with h2-50cm holeice model, to match the holeice model that was used to generate the photonics tables.
+
+
+\paragraph{BrightDom Cleaning}
+
+To investigate the effect of the BrightDom cleaning cut the 194601 set without detector noise (and baseline hole ice model) is used. The BrightDom cleaning is needed to stop a few DOMs with many photon hits to drive the reconstruction because this leads to large biases in the energy estimations. Historically, the BrightDom cleaning was removing all DOMs that had a charge larger than 10 times the mean charge. After quickly checking some charge distributions and how the mean behaves it was clear that the cut should better be defined based on a metric that is less affected by outliers, like the median. \reffig{bright_dom_cleaning_charges_mean_median} shows where the mean and the median are located for an example event. The cut was re-defined to use the median instead of the mean and 10\% of the simulation were processed with \href{https://github.com/LeanderFischer/I3_HNL_Decay/blob/a6838ec48e0a2d4f6547cbe064d2928ec55fb76d/submission_scripts/process/process_Taupede.py}{Taupede} using 30x and 100x the median as BrightDom cutoff. \reffig{bright_dom_cleaning_charges_median_scales} shows where these values fall for the same example event.
+
+% \begin{figure}[h!]
+%     \subfloat[\labfig{bright_dom_cleaning_charges_mean_median}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/brightdom_cleaning/median_and_mean_L2_00001.i3.zst_SplitInIcePulses_frame_0.png}
+%         }
+%     \subfloat[\labfig{bright_dom_cleaning_charges_median_scales}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/brightdom_cleaning/median_scales_L2_00001.i3.zst_SplitInIcePulses_frame_0.png}
+%         }
+%     \caption{Charge distribution of example event showing mean and median charge (left) and different scales of median charge (right).}
+%     \labfig{bright_dom_cleaning_charges}
+% \end{figure}
+
+As a quick check of the performance of both cuts the decay length resolution/bias and the resolutions/biases of all energies were checked. The reconstructed decay length is almost not affected by applying this cut, which is as expected, because it is mostly dependent on the arrival time of the photons. The effect on the reconstructed energy is much stronger, where a looser cut (100x) shows a significantly larger bias than the tighter cut at (30x). Even though this was not a highly sophisticated optimization of the BrightDom cut, an improvement was achieved by changing from mean to median and selecting the tighter cut (of the two tested). It's hard to tell how this would perform for high energy events, but I'm quite certain that a definition based on the median would be more reliable than on the mean.
+
+% \begin{figure}[h!]
+%     \subfloat[\labfig{bright_dom_cleaning_performance_decay_length_bias}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/brightdom_cleaning/median_decay_length_bias_fullset_larger_range_unweighted.png}
+%         }
+%     \subfloat[\labfig{bright_dom_cleaning_performance_total_energy_bias}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/brightdom_cleaning/compare_bright_dom_cuts_fractional_reco_total_energy_error_fully.png}
+%         }
+%     \caption{Decay length bias (left) and total energy bias (right).}
+%     \labfig{bright_dom_cleaning_performance}
+% \end{figure}
+
+
+\subsubsection{Horizontal Set}
+
+To investigate the effect of the tilt and the reconstruction performance for horizontal events another set is produced where both cascades are placed on a circle with radius $150$\si{\metre} at a depth of $-330$\si{\metre}. The direction is always horizontal (zenith=$\pi/2$) and azimuth is defined by the connecting vector of both random sampled cascade positions. The energies are again sampled uniform in [$0.0, 60.0$]\si{\gev}. The sampling distributions/values for the cascades are listed in \reftab{horizontal_sampling_distributions}. 
+
+% The generation level distributions of the sampled variables are shown in \reffig{horizontal_gen_distris}.
+
+
+% \begin{figure}[h!]
+%     \subfloat[\labfig{horizontal_gen_distris_energies}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_energies_clipped.png}
+%     }
+%     \subfloat[\labfig{horizontal_gen_distris_depths}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_depths_clipped.png}
+%     }
+%     \\[-2.5ex]
+%     \subfloat[\labfig{horizontal_gen_distris_decay_length}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_true_decay_length_clipped.png}
+%     }
+%     \subfloat[\labfig{horizontal_gen_distris_total_energy}]{
+%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_true_total_energy_clipped.png}
+%     }
+%     \caption{Generation level distributions of the 1k files, with 1k events each of set 194601. Only the parameters that are not fixed to a certain value are shown.}
+%     \labfig{horizontal_gen_distris}
+% \end{figure}
+
+
+
+\subsection{Realistic Set}
 
 
 
 \section{Model Specific Simulation} \labsec{model_specific_simulation}
 
 \todo{Re-write/re-formulate this section (copied from HNL technote).}
+
 
 \subsection{Custom LeptonInjector} \labsec{custom_leptoninjector}
 
@@ -60,23 +203,26 @@ is implemented for the neutral current case. Here $\delta_{4}=\frac{m_4^2}{s-M^2
 
 The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the considered decay channels are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_decay_modes_log_branching_ratio}. The indiviudal branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. The formulas to calculate the decay width show up in multiple references, but we chose to match them to \sidecite{Coloma:2020lgy}, which also discusses the discrepencies in previous literature.
 
-\begin{table}
-    \centering
-    \begin{tabular} { l || l | l}
-        Channel & Opens [\si{\MeV}] & Max BR [\%] \\
-        \hline \hline 
-        $\nu_4 \rightarrow \nu_\tau \nu_\alpha \bar{\nu_\alpha}$ & 0 & 100.0 \\
-        $\nu_4 \rightarrow \nu_\tau e^+ e^-$ & 1 & ? \\
-        $\nu_4 \rightarrow \nu_\tau \pi^0$ & 135 & ? \\
-        $\nu_4 \rightarrow \nu_\tau \mu^+ \mu^-$ & 211 & ? \\
-        $\nu_4 \rightarrow \nu_\tau \eta$ & 548 & ? \\
-        $\nu_4 \rightarrow \nu_\tau \rho^0$ & 770 & ? \\
-        $\nu_4 \rightarrow \nu_\tau \omega$ & 783 & ? \\
-        $\nu_4 \rightarrow \nu_\tau \eta'$ & 958 & ? \\
+\begin{margintable}
+    \footnotesize
+    \begin{tabular} { lll }
+        \hline\hline 
+        \textbf{Channel} & \textbf{Opens} & \textbf{$\hat{\mathrm BR}$ [\%]} \\
+        \hline\hline 
+        $\nu_4 \rightarrow \nu_\tau \nu_\alpha \bar{\nu_\alpha}$ & \SI{0}{\MeV} & 100.0 \\
+        $\nu_4 \rightarrow \nu_\tau e^+ e^-$ & \SI{1}{\MeV} & ? \\
+        $\nu_4 \rightarrow \nu_\tau \pi^0$ & \SI{135}{\MeV} & ? \\
+        $\nu_4 \rightarrow \nu_\tau \mu^+ \mu^-$ & \SI{211}{\MeV} & ? \\
+        $\nu_4 \rightarrow \nu_\tau \eta$ & \SI{548}{\MeV} & ? \\
+        $\nu_4 \rightarrow \nu_\tau \rho^0$ & \SI{770}{\MeV} & ? \\
+        $\nu_4 \rightarrow \nu_\tau \omega$ & \SI{783}{\MeV} & ? \\
+        $\nu_4 \rightarrow \nu_\tau \eta'$ & \SI{958}{\MeV} & ? \\
+        \hline
     \end{tabular}
-    \caption{xx}
+    \caption[xx]{xx}
     \labtab{hnl_decay_channels}
-\end{table}
+\end{margintable}
+
 
 
 \paragraph{2-Body Decay Widths}
@@ -153,19 +299,21 @@ This is the description of the signal simulation generator used to (re-)start si
 
 \begin{table}
     \centering
-    \begin{tabular} { l || l | l}
-        variable & distribution & range \\
+    \begin{tabular} { lll }
         \hline \hline 
-        energy & $E^{-2}$ & $[2, 10^4]\,\si{\GeV}$ \\
-        zenith & uniform (in cos($\theta$)) & [$180\,\si{\degree}$, $80\,\si{\degree}$] \\
-        azimuth & uniform & [$0\,\si{\degree}$, $360\,\si{\degree}$] \\
-        vertex ($x,y$) & uniform & $r=600$\,\si{\m} \\
-        vertex $z$ & uniform & [-600, 0]\,\si{\m} \\
-        $m_\mathrm{HNL}$ & fixed & $[0.3, 0.6, 1.0]\,\si{\GeV}$ \\
-        $L_\mathrm{decay}$ & $L^{-1}$ & [0.0004, 1000.0]\,\si{\m} / [1.0, 1000.0]\,\si{\m} \\
+        \textbf{Variable} & \textbf{Distribution} & \textbf{Range/Value} \\
+        \hline \hline 
+        energy & $E^{-2}$ & [\SI{2}{\GeV}, \SI{1e4}{\GeV}] \\
+        zenith & uniform (in $\cos(\theta)$) & [\SI{180}{\degree}, \SI{80}{\degree}] \\
+        azimuth & uniform & [\SI{0}{\degree}, \SI{360}{\degree}] \\
+        vertex ($x,y$) & uniform & $r$=\SI{600}{\metre} \\
+        vertex $z$ & uniform & [-600, 0]\si{\metre} \\
+        $m_\mathrm{4}$ & fixed & [0.3, 0.6, 1.0]\si{\GeV} \\
+        $L_\mathrm{decay}$ & $L^{-1}$ & [0.0004, 1000]\si{\metre} / [1, 1000]\si{\metre} \\
+        \hline
     \end{tabular}
-    \caption{Sampling distributions of HNL simulation generation.}   
-    \labtab{HNL_sampling_distributions}
+    \caption[xx]{Sampling distributions of HNL simulation generation.}   
+    \labtab{hnl_realistic_set_sampling_distributions}
 \end{table}
 
 
