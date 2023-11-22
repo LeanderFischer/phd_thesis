@@ -9,31 +9,25 @@ After the SM simulation generation and the default low energy event selection an
 
 \section{Model Independent Simulation} \labsec{model_independent_simulation}
 
-To investigate the potential of IceCube to detect HNLs by identifying the unique double cascade morphology explained in \refsec{double_cascade_morphology}, it is very valuable to have simulation sets where the double cascade kinematics can be controlled directly. In a realistic model the decay kinematics and the absolute event expectation all depend on the specific model parameters chosen (see \refsec{hnl_theory}). To decouple the simulation from a specific model, a model independent double cascade generator was developed and will be explained in the following sections. Using these sets, the performance of IceCube DeepCore to detect low energetic double cascades, dependent on their properties, is studied in \refch{double_cascade_performance}.
+To investigate the potential of IceCube to detect HNLs by identifying the unique double cascade morphology explained in \refsec{double_cascade_morphology}, it is very valuable to have simulation sets where the double cascade kinematics can be controlled directly. In a realistic model the decay kinematics and the absolute event expectation all depend on the specific model parameters chosen (see \refsec{hnl_theory}). To decouple the simulation from a specific model, a model independent double cascade generator was developed and will be explained in the following sections. Using these sets, the performance of IceCube DeepCore to detect low energetic double cascades, dependent on their properties, is studied in \refch{double_cascade_performance}. 
 
 
 \subsection{Generator Functions}
 
+\todo{Throw the generator functions into a public repo (with author+copyright) and link it here}
 
+In order to produce the model independent simulation sets a series of generator functions was implemented in \textsc{Python} \sidecite{python}.
+% The collection of functions can be found in \href{}{this public repository.}
+A few independent functions are needed to perform the sampling based on a random variable between \SIrange[range-phrase={~and~}]{0}{1}{} as input. There is a simple function to return a random sign ($+1/-1$) and two functions to sample from a power law and an exponential distribution. The inputs are the wanted sampling range and the power law index or the exponential decay constant, respectively. They both apply the inverse transformation method.
 
+Additionally, there are some functions that are IceCube specific. Two functions are implemented to transform a direction in zenith/azimuth angles a direction vector and vice versa. There is a function to create an EM cascade particle from a position, direction, energy, and time and another to produce an arbitrary list of EM cascades, given the list of input parameters, and adding it to the current IceCube event. Based on these, any specific simulation set can be produced by defining the sampling distributions and number of cascades to be placed in each event and then calling the generator functions.
 
-\textbf{Implemented generator functions:}
-\begin{itemize}
-    \item random sign 
-    \item power law sampling
-    \item exponential sampling
-    \item[] 
-    \item direction vector (from zenith/azimuth)
-    \item direction angles (from direction vector)
-    \item[] 
-    \item make cascade (produce EM cascade particle from pos, dir, energy, time)
-    \item add cascades to tree (add n cascades to mctree)
-\end{itemize}
+% \marginnote{
+  \begin{kaobox}[frametitle=IceCube software framework]
+    Add a box with some information on the \href{https://github.com/icecube/icetray-public}{(public) icetray} software and how the above is using \href{https://docs.icecube.aq/icetray/main/projects/dataclasses/particle.html#i3particle}{I3Particle}, \href{https://docs.icecube.aq/icetray/main/projects/dataclasses/i3mctree.html#i3mctree}{I3MCTree}, and \href{https://docs.icecube.aq/icetray/main/projects/icetray/classes/i3frame.html#index-0}{I3Frame} objects.
+  \end{kaobox}
+% }
 
-
-\todo{Re-write/re-formulate this section (copied from HNL technote).}
-
-For this purpose a collection of secondary generator functions is added to the \href{https://github.com/LeanderFischer/LeptonInjector-HNL/blob/main/LeptonInjector/python/cascade_generator_functions.py}{custom LeptonInjector project}. It includes a function to place an arbitrary list of electromagnetic cascades (electrons) with given positions, directions, and energies into an \textit{I3MCTree} and add it to the current frame. There is also some functions used to create the individual cascades and for specific random sampling. Note here that the icetray random number generators should always be used in order to avoid issues with the tray scope and multiple files having identical distributions. To simulate a specific set a process script needs to be set up that deals with sampling from the wanted distributions and calls the full generation in a tray script. For cluster submission using dagman, a submit and a job script are also needed. Explicit examples will be linked in the following sections, where specific choices for model independent simulation sets will be explained in more detail.
 
 \subsection{Simplistic Sets}
 
@@ -41,22 +35,25 @@ For this purpose a collection of secondary generator functions is added to the \
 \subsubsection{Up-Going/String 81 Centered Set}
 
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics{figures/icecube_deepcore/deepcore_surface_distances.jpg}
     \caption[xx]{Horizontal positions and distances between DeepCore strings. Red strings are instrumented more densely (vertically) and partially with higher quantum efficiency (HQE) DOMs.}
     \labfig{deepcore_distances}
 \end{figure}
 
+\todo{Make my own IC/DC string positions plot}
+
 To investigate one of the best possible cases of detecting double cascades, a set is produced, where both cascades are placed on a DeepCore string (namely string 81) and the directions are directly up-going. The horizontal positions of all DeepCore strings are shown in \reffig{deepcore_distances}. The z position of each cascade is sampled uniformly along the strings z elongation and the energies are sampled uniform in [$0.0, 60.0$]\si{\gev}. The order of the cascades is chosen such that the lower one is first ($t_0=0.0$) and the upper one is second ($t_1=L/c$). The sampling distributions/values for the cascades are listed in \reftab{upgoing_string81_sampling_distributions}. The generation level distributions of the sampled variables are shown in \reffig{upgoing_string81_gen_distris}.
 
 
-\begin{table*}
+\begin{table}
+    \small
         \begin{tabular}{ llll }
         \hline\hline
         \textbf{Set} & \textbf{Variable} & \textbf{Distribution} & \textbf{Range/Value} \\
         \hline\hline
-        Up-going &&& \\
+        \multicolumn{2}{l}{Up-going} && \\
         \hline
         & energy & uniform & [0.0, 60.0]\si{\gev} \\
         & zenith & fixed & \SI{180.0}{\degree} \\
@@ -64,7 +61,7 @@ To investigate one of the best possible cases of detecting double cascades, a se
         & ($x,y$) position & fixed & (41.6, 35.49)\si{\metre} \\
         & $z$ position & uniform & [-480.0, -180.0]\si{\metre} \\
         \hline
-        Horizontal &&& \\ 
+        \multicolumn{2}{l}{Horizontal} && \\ 
         \hline
         & energy & uniform & [0.0, 60.0]\si{\gev} \\
         & zenith & fixed & \SI{90.0}{\degree} \\
@@ -75,7 +72,7 @@ To investigate one of the best possible cases of detecting double cascades, a se
         \end{tabular}
     \caption[xx]{Sampling distributions of up-going, string 81 centered and horizontal simulation generation.}
     \labtab{hnl_simplified_set_sampling_distributions}
-\end{table*}
+\end{table}
 
 
 % \begin{figure}[h!]
