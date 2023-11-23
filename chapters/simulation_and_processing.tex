@@ -34,7 +34,7 @@ The MC is used in the analysis by applying a method called \textit{forward foldi
 The analysis itself is then performed by comparing the weighted MC distributions to the observed data. This is done by binning them as will be described in \refch{analysis} and calculating a loss function comparing the bin expectations to the data. By varying the physics and nuisance parameters, that govern the weights, the loss function can be minimized and the parameters producing MC that describes the data best are found. In order to achieve a reliable result with this method the MC needs to be precise and as close to the data as possible (at least at the final event selection). 
 
 
-\subsection{Neutrinos}
+\subsection{Neutrinos} \labsec{neutrino_generation}
 
 Due to the very low interaction rate of neutrinos, the event generation is performed in a way that forces every event to interact in a chosen sampling volume. The weight of each event is then calculated as the inverse of the simulated neutrino fluence
 \begin{equation}

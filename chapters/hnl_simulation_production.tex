@@ -41,7 +41,7 @@ To test the implemented generator functions and investigate some idealistic doub
     \labfig{deepcore_distances}
 \end{figure}
 
-The first set is used to investigate one of the best possible cases to detect a double cascade, where both cascades are placed on a DeepCore string (namely string 81) and the directions are directly up-going. The horizontal positions and distances of all DeepCore fiducial volume strings are shown in \reffig{deepcore_distances}. As already mentioned in \refsec{deepcore}, DeepCore strings have higher quantum efficiency DOMs and a denser vertical spacing. The $(x,y)$ position is fixed to the center of string 8 while the the z position of each cascade is sampled uniformly along the strings z elongation and the energies are sampled uniformly between \SIrange{0.0}{60.0}{\gev}. The specific sampling distributions/values for the cascades are listed in \reftab{hnl_simplified_set_sampling_distributions}. The order of the cascades is chosen such that the lower one is first ($t_0=0.0$) and the upper one is second ($t_1=L/c$), assuming the speed of light $c$ as speed of the heavy mass state, traveling between the two cascades.
+The first set is used to investigate one of the best possible cases to detect a double cascade, where both cascades are placed on a DeepCore string (namely string 81) and the directions are directly up-going. The horizontal positions and distances of all DeepCore fiducial volume strings are shown in \reffig{deepcore_distances}. As already mentioned in \refsec{deepcore}, DeepCore strings have higher quantum efficiency DOMs and a denser vertical spacing. The $(x,y)$ position is fixed to the center of string 8 while the $z$ position of each cascade is sampled uniformly along the strings $z$ elongation and the energies are sampled uniformly between \SIrange{0.0}{60.0}{\gev}. The specific sampling distributions/values for the cascades are listed in \reftab{hnl_simplified_set_sampling_distributions}. The order of the cascades is chosen such that the lower one is first ($t_0=0.0$) and the upper one is second ($t_1=L/c$), assuming the speed of light $c$ as speed of the heavy mass state, traveling between the two cascades.
 % The generation level distributions of the up-going set are shown in \reffig{upgoing_string81_gen_distris}.
 
 \begin{table}
@@ -55,7 +55,7 @@ The first set is used to investigate one of the best possible cases to detect a 
         & energy & uniform & \SIrange{0.0}{60.0}{\gev} \\
         & zenith & fixed & \SI{180.0}{\degree} \\
         & azimuth & fixed & \SI{0.0}{\degree} \\
-        & ($x,y$) position & fixed & (41.6, 35.49)\si{\metre} \\
+        & $x,y$ position & fixed & (41.6, 35.49)\,\si{\metre} \\
         & $z$ position & uniform & \SIrange{-480.0}{-180.0}{\metre} \\
         \hline
         \multicolumn{2}{l}{Horizontal} && \\ 
@@ -63,7 +63,7 @@ The first set is used to investigate one of the best possible cases to detect a 
         & energy & uniform & \SIrange{0.0}{60.0}{\gev} \\
         & zenith & fixed & \SI{90.0}{\degree} \\
         & azimuth & uniform & \SIrange{0.0}{360.0}{\degree} \\
-        & ($x,y$) position & uniform (circle) & $c$=(46.29, -34.88)\si{\metre}, $r$=\SI{150.0}{\metre} \\
+        & $x,y$ position & uniform (circle) & $c$=(46.29, -34.88)\,\si{\metre}, $r$=\SI{150.0}{\metre} \\
         & $z$ position & fixed & \SI{-330.0}{\metre} \\
         \hline
         \end{tabular}
@@ -71,16 +71,38 @@ The first set is used to investigate one of the best possible cases to detect a 
     \labtab{hnl_simplified_set_sampling_distributions}
 \end{table}
 
-The second set is used to investigate the effect of the tilt of the double cascade and the reconstruction performance for horizontal events. The cascades are placed uniformly on a circle with centered in DeepCroe. The direction is always horizontal and azimuth is defined by the connecting vector of both cascade positions. The energies are again sampled uniformly between \SIrange{0.0}{60.0}{\gev} and the detailed sampling distributions/values are also listed in \reftab{hnl_simplified_set_sampling_distributions}.
+\todo{fix caption for simplistic sampling distris}
+
+The second set is used to investigate the effect of the tilt of the double cascade and the reconstruction performance for horizontal events. The cascades are placed uniformly on a circle with centered in DeepCore. The direction is always horizontal and azimuth is defined by the connecting vector of both cascade positions. The energies are again sampled uniformly between \SIrange{0.0}{60.0}{\gev} and the detailed sampling distributions/values are also listed in \reftab{hnl_simplified_set_sampling_distributions}.
 % The generation level distributions of the horizontal set are shown in \reffig{horizontal_gen_distris}.
 
 
 \subsection{Realistic Set}
 
+To thoroughly investigate the potential of IceCube DeepCore to detect double cascade events, a more realistic simulation set is produced that aims to be as close as possible to the expected signal simulation explained in \refsec{model_specific_simulation}, while still allowing some freedom to control the double cascade kinematics. For this purpose the total energy is sampled from an $E^{-2}$ power law, mimicking the energy spectrum of the primary neutrinos as stated in \refsec{neutrino_generation}. Although in the realistic process described in \refsec{model_specific_simulation} the energy is distributed in a more complex way into the two cascades and secondary particles, it is a good approximation to simply divide the total energy into two parts. This is done by randomly assigning a fraction between \SIrange[range-phrase={~and~}]{0}{100}{\percent} to one cascade and the remaining part to the other cascade. In this way the whole sample covers various cases of energy distributions between the two cascades. To efficiently generate events in a way that produces distributions similar to what would be observed with DeepCore, one of the cascades positions is sampled inside the DeepCore volume by choosing is coordinates randomly on a cylinder that is centered in DeepCore. This partly imitates a trigger condition of one cascade always being inside the DeepCore fiducial volume. By choosing the direction of the event sampling zenith and azimuth uniformly between \SIrange[range-phrase={~and~}]{70}{180}{\degree} and \SIrange[range-phrase={~and~}]{0}{360}{\degree}, respectively, the position of the other cascade can be inferred for a given decay length. The length is sampled from an exponential distribution, which would be expected for the decaying heavy mass state. Based on the direction and the decay length, the position of the other cascade is found, assuming a travel speed of $c$ and randomly chosing whether the cascade position that was sampled is the first cascade or the second and then assigning the other cascade position accordingly. The sampling distributions/values are listed in \reftab{hnl_realistic_set_sampling_distributions}.
 
-\section{Model Independent Simulation Distributions}
+\begin{table}
+    \small
+        \begin{tabular}{ llll }
+        \hline\hline
+        \textbf{Variable} & \textbf{Distribution} & \textbf{Range/Value} \\
+        \hline\hline
+        energy (total) & power law $E^{-2}$ & \SIrange{1}{1000}{\gev} \\
+        decay length & exponential e$^{-0.01L}$ & \SIrange{0}{1000}{\metre} \\
+        zenith & uniform & \SIrange{70}{180}{\degree} \\
+        azimuth & uniform & \SIrange{0}{360}{\degree} \\
+        $x,y$ (one cascade) & uniform (circle) & $c$=(46.29, -34.88)\,\si{\metre}, $r$=\SI{150}{\metre} \\
+        $z$ (one cascade) & uniform & \SIrange{-480.0}{-180.0}{\metre}\\
+        \hline
+        \end{tabular}
+    \caption[xx]{xx}
+    \labtab{hnl_realistic_set_sampling_distributions}
+\end{table}
 
-\subsection{Generation Level}
+\todo{fix caption for realistic sampling distris}
+
+
+\subsection{Generation Level Distributions}
 
 % \begin{figure}[h!]
 %     \subfloat[\labfig{upgoing_string81_gen_distris_energies}]{
@@ -270,7 +292,7 @@ This is the description of the signal simulation generator used to (re-)start si
         energy & $E^{-2}$ & [\SI{2}{\GeV}, \SI{1e4}{\GeV}] \\
         zenith & uniform (in $\cos(\theta)$) & [\SI{180}{\degree}, \SI{80}{\degree}] \\
         azimuth & uniform & [\SI{0}{\degree}, \SI{360}{\degree}] \\
-        vertex ($x,y$) & uniform & $r$=\SI{600}{\metre} \\
+        vertex $x,y$ & uniform & $r$=\SI{600}{\metre} \\
         vertex $z$ & uniform & [-600, 0]\si{\metre} \\
         $m_\mathrm{4}$ & fixed & [0.3, 0.6, 1.0]\si{\GeV} \\
         $L_\mathrm{decay}$ & $L^{-1}$ & [0.0004, 1000]\si{\metre} / [1, 1000]\si{\metre} \\
@@ -324,8 +346,4 @@ Adding another factor of $|U_{\tau4}|^2$ to account for the mixing at the intera
 \end{equation}
 which can be applied on top of flux and oscillation weight to get the final HNL weight for a given mixing (and mass).
 
-\section{Model Dependent Simulation Distributions}
-
-\subsection{Generation Level}
-
-% \subsection{Final Level}
+\subsection{Generation Level Distributions}
