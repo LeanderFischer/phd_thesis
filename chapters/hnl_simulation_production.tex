@@ -34,6 +34,8 @@ To test the implemented generator functions and investigate some idealistic doub
     \labfig{deepcore_distances}
 \end{figure}
 
+\todo{fix ic/dc string positions plot caption}
+
 The first set is used to investigate one of the best possible cases to detect a double cascade, where both cascades are placed on a DeepCore string (namely string 81) and the directions are directly up-going. The horizontal positions and distances of all DeepCore fiducial volume strings are shown in \reffig{deepcore_distances} and string 81 is at a medium distance of $\sim\SI{60}{\metre}$ to its neighboring strings. As already mentioned in \refsec{deepcore}, DeepCore strings have higher quantum efficiency DOMs and a denser vertical spacing. The $x,y$ position is fixed to the center of string 81 while the $z$ position of each cascade is sampled uniformly along the strings $z$ elongation and the energies are sampled uniformly between \SIrange[range-phrase={~and~}]{0.0}{60.0}{\gev}. The specific sampling distributions/values for the cascades are listed in \reftab{hnl_simplified_set_sampling_distributions}. The order of the cascades is chosen such that the lower one is first ($t_0=\SI{0.0}{\nano\second}$) and the upper one is second ($t_1=L/c$), assuming the speed of light $c$ as speed of the heavy mass state, traveling between the two cascades.
 % The generation level distributions of the up-going set are shown in \reffig{upgoing_string81_gen_distris}.
 
@@ -72,7 +74,7 @@ The second set is used to investigate the effect of the tilt of the double casca
 
 \subsection{Realistic Set}
 
-To thoroughly investigate the potential of IceCube DeepCore to detect double cascade events, a more realistic simulation set is produced that aims to be as close as possible to the expected signal simulation explained in \refsec{model_specific_simulation}, while still allowing some freedom to control the double cascade kinematics. For this purpose the total energy is sampled from an $E^{-2}$ power law, mimicking the energy spectrum of the primary neutrinos as stated in \refsec{neutrino_generation}. Although in the realistic process described in \refsec{model_specific_simulation} the energy is distributed in a more complex way into the two cascades and secondary particles, it is a good approximation to simply divide the total energy into two parts. This is done by randomly assigning a fraction between \SIrange[range-phrase={~and~}]{0}{100}{\percent} to one cascade and the remaining part to the other cascade. In this way the whole sample covers various cases of energy distributions between the two cascades. To efficiently generate events in a way that produces distributions similar to what would be observed with DeepCore, one of the cascades positions is sampled inside the DeepCore volume by choosing is coordinates randomly on a cylinder that is centered in DeepCore. This partly imitates a trigger condition of one cascade always being inside the DeepCore fiducial volume. By choosing the direction of the event sampling zenith and azimuth uniformly between \SIrange[range-phrase={~and~}]{70}{180}{\degree} and \SIrange[range-phrase={~and~}]{0}{360}{\degree}, respectively, the position of the other cascade can be inferred for a given decay length. The length is sampled from an exponential distribution, which would be expected for the decaying heavy mass state. Based on the direction and the decay length, the position of the other cascade is found, assuming a travel speed of $c$ and randomly chosing whether the cascade position that was sampled is the first cascade or the second and then assigning the other cascade position accordingly. The sampling distributions/values are listed in \reftab{hnl_realistic_set_sampling_distributions}.
+To thoroughly investigate the potential of IceCube DeepCore to detect double cascade events, a more realistic simulation set is produced that aims to be as close as possible to the expected signal simulation explained in \refsec{model_specific_simulation}, while still allowing some freedom to control the double cascade kinematics. For this purpose the total energy is sampled from an $E^{-2}$ power law, mimicking the energy spectrum of the primary neutrinos as stated in \refsec{neutrino_generation}. Although in the realistic process described in \refsec{model_specific_simulation} the energy is distributed in a more complex way into the two cascades and secondary particles, it is a good approximation to simply divide the total energy into two parts. This is done by randomly assigning a fraction between \SIrange[range-phrase={~and~}]{0}{100}{\percent} to one cascade and the remaining part to the other cascade. In this way the whole sample covers various cases of energy distributions between the two cascades. To efficiently generate events in a way that produces distributions similar to what would be observed with DeepCore, one of the cascade positions is sampled inside the DeepCore volume by choosing its coordinates randomly on a cylinder that is centered in DeepCore. This is similar to a trigger condition of one cascade always being inside the DeepCore fiducial volume. By choosing the direction of the event sampling zenith and azimuth uniformly between \SIrange[range-phrase={~and~}]{70}{180}{\degree} and \SIrange[range-phrase={~and~}]{0}{360}{\degree}, respectively, the position of the other cascade can be inferred for a given decay length. The length is sampled from an exponential distribution, which would be expected for the decaying heavy mass state. Based on the direction and the decay length, the position of the other cascade is found, assuming a travel speed of $c$ and randomly choosing whether the cascade position that was sampled is the first cascade or the second and then assigning the other cascade position accordingly. The sampling distributions/values are listed in \reftab{hnl_realistic_set_sampling_distributions}.
 
 \begin{table}
     \small
@@ -97,88 +99,105 @@ To thoroughly investigate the potential of IceCube DeepCore to detect double cas
 
 \subsection{Generation Level Distributions}
 
-% \begin{figure}[h!]
-%     \subfloat[\labfig{upgoing_string81_gen_distris_energies}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_energies_clipped.png}
-%     }
-%     \subfloat[\labfig{upgoing_string81_gen_distris_depths}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_depths_clipped.png}
-%     }
-%     \\[-2.5ex]
-%     \subfloat[\labfig{upgoing_string81_gen_distris_decay_length}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_true_decay_length_clipped.png}
-%     }
-%     \subfloat[\labfig{upgoing_string81_gen_distris_total_energy}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_true_total_energy_clipped.png}
-%     }
-%     \caption{Generation level distributions of the 1000 files, with 1000 events each of set 194601. Only the parameters that are not fixed to a certain value are shown.}
-%     \labfig{upgoing_string81_gen_distris}
-% \end{figure}
+\todo{Select interesting plots (energy length) and move the others to the appendix?}
+
+\begin{figure*}[h]
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/model_independent_simulation/gen_level/1_d_distr_energies_clipped.png}
+        \caption{Cascade and total energies (Up-going and horizontal)}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/model_independent_simulation/gen_level/1_d_distr_true_decay_length_clipped.png}
+        \caption{Decay lengths (Up-going and horizontal)}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/model_independent_simulation/gen_level/1_d_distr_depths_clipped.png}
+        \caption{Vertical position (Up-going)}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/model_independent_simulation/gen_level/1_d_distr_xs_clipped.png}
+        \caption{Horizontal position (Horizontal)}
+    \end{subfigure}
+    \caption[Simplistic set ]{Generation level distributions of the simplistic simulation sets of the 1000 files, with 1000 events each. Only the parameters that are not fixed to a certain value are shown.}
+    \labfig{simplified_gen_distris}
+\end{figure*}
+
+\todo{Fix caption for simplified gen distris}
 
 
-% \begin{figure}[h!]
-%     \subfloat[\labfig{horizontal_gen_distris_energies}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_energies_clipped.png}
-%     }
-%     \subfloat[\labfig{horizontal_gen_distris_depths}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_depths_clipped.png}
-%     }
-%     \\[-2.5ex]
-%     \subfloat[\labfig{horizontal_gen_distris_decay_length}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_true_decay_length_clipped.png}
-%     }
-%     \subfloat[\labfig{horizontal_gen_distris_total_energy}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/1_d_distr_true_total_energy_clipped.png}
-%     }
-%     \caption{Generation level distributions of the 1k files, with 1k events each of set 194601. Only the parameters that are not fixed to a certain value are shown.}
-%     \labfig{horizontal_gen_distris}
-% \end{figure}
+\begin{figure*}
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_all_energies_clipped.png}
+        \caption{Cascade and total energies}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_true_decay_length_clipped.png}
+        \caption{Decay lengths}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_casc0_true_x_clipped.png}
+        \caption{Positions}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_casc0_true_azimuth_clipped.png}
+        \caption{Direction}
+    \end{subfigure}
+    \caption[Realistic set ]{Generation level distributions of the simplistic simulation sets f the 1000 files, with 1000 events each.. Only the parameters that are not fixed to a certain value are shown.}
+    \labfig{realistic_gen_distris}
+\end{figure*}
 
-% \subsection{Final Level}
-
+\todo{Fix caption for realistic gen distris}
 
 
 \section{Model Dependent Simulation} \labsec{model_specific_simulation}
 
-\todo{Re-write/re-formulate this section (copied from HNL technote).}
+To get a realistic estimate of the HNL event expectation in IceCube DeepCore, depending on the specific model parameters, a generator was developed that is based on the HNL theory introduced in \refsec{hnl_theory}. For this work, only the interaction with the $\tau$-sector was taken into account ($|U_{\alpha4}^2|=0$, $\alpha=e,\mu$), which reduces the physics parameters of interest and relevent for the simulation to the fourth heavy lepton mass, $m_4$, and the mixing, $|U_{\tau4}^2|$. The generator uses a customized \textit{\textsc{LeptonInjector} (LI)} version to create the events and \textit{\textsc{LeptonWeighter} (LW)} to weight them \sidecite{IceCube:2020tcq}. The modified LI and the essential components needed for the HNL simulation are described in the next sections, followed by the description of the weighting scheme and the sampling distributions chosen for the simulation generation.
 
 
 \subsection{Custom LeptonInjector} \labsec{custom_leptoninjector}
 
-Signal events are simulated using a \href{https://github.com/LeanderFischer/LeptonInjector-HNL/tree/main/LeptonInjector}{custom LeptonInjector (LI) tool} \sidecite{IceCube:2020tcq}, modified from its standard version to include the HNL particle and the description of the HNL decays needed to produce the double cascade signature (currently only $\nu_{\tau}$ related). In its SM work mode, LI injects a lepton and a cascade (under the general name \textit{Hadrons}) at the interaction vertex of the neutrino. Both objects have the same (x,y,z,t) coordinates. In the modified version, the lepton at the interaction vertex is replaced by the HNL. After a chosen distance the HNL is forced to decay. The decay is sampled from the kinematically accessible decay modes shown in \reffig{hnl_decay_modes_log_branching_ratio}.
+In its standard version, the LI generator produces neutrino interactions by injecting a lepton and a cascade\sidenote{The cascades are defined as icetray I3Particles with type \textit{Hadrons}.} at the interaction vertex of the neutrino, where the lepton is the charged (neutral) particle produced in a CC (NC) interaction and the cascade is the hadronic cascade from the breaking nucleus. Both objects are injected with the same $(x,y,z,t)$ coordinates and the kinematics are sampled from the differential and total cross-sections that are one of the inputs to LI.
 
-A big addition to the standard LI is that the decay products of the HNL are added to the list of particles in the I3MCTree with a displaced position and delayed time from the interaction vertex. These daughter particles form a second cascade, not in the form of a \textit{Hadrons} object, but as the explicit particles forming the shower. The kinematics of the two-body decays are computed analytically, while the three-body decays are dealt with using MadGraph5. To do so, we randomly pick an event from a list that we generated for each three-body decay mode. Independent of the number of particles in the final state of the HNL decay, the kinematics are calculated/simulated at rest and then boosted along the HNL momentum. The decay mode is randomly chosen based on the mass dependent branching ratios shown in \reffig{hnl_decay_modes_log_branching_ratio}.
+\begin{figure}[h]
+    \includegraphics{hnl_simulation/decay_theory/branching_ratios_log_up_to_1.0_GeV.png}
+    \caption[HNL branching ratios]{Branching ratios of the HNL within the mass range considered in this work, only considering $|U_{\tau4}^2| \neq 0$, calculated based on the results from \cite{Coloma:2020lgy}.}
+    \labfig{hnl_branching_ratios}
+\end{figure}
 
-Each file is produced by running the \href{https://github.com/LeanderFischer/I3_HNL_Decay/blob/master/submission_scripts/process/process_Gen.py}{generation level processing script} using the filenumber as random seed and the above settings for the sampling distributions. The main part is calling the \textit{MultiLeptonInjector} module in \textit{volume mode} adding two generators (for $\nu_\tau$ and $\bar{\nu}_\tau$) with $50\%$ of the events. The generators are provided with the custom double-differential/total cross section splines described in \refsec{hnl_cross_sections} and the parameters defining the sampling distributions. For each frame \textit{OneWeight} and a reference weight are also calculated and stored using the \href{https://github.com/LeanderFischer/LeptonInjector-HNL/blob/main/LeptonInjector/python/hnl_weighting.py}{weighting functions} and a baseline atmospheric $\nu_\tau$ flux + oscillation spline. The weight will later be calculated inside of the analysis framework \href{https://github.com/icecube/pisa}{PISA}, based on the input OneWeight. In addition to the i3 file itself, a LeptonInjector configuration file is written which stores the needed information to produce event weights using LeptonWeighter. Optionally the script can also produce an hdf5 file with the same name in the same location. This will store a fixed set of keys, extracted from the i3 file.
+In the modified version, the lepton at the interaction vertex is replaced by the HNL, where the interaction cross-sections are replaced by custom, mass dependent HNL cross-sections. The HNL is forced to decay after a chosen distance to produce secondary SM particles, where the decay mode is randomly chosen based on the mass dependent branching ratios from the kinematically accessible decay modes shown in \reffig{hnl_branching_ratios}. The cross-section and decay width calculations were implemented for this purpose and will be explained in more detail in the following. Another needed addition to LI is that the decay products of the HNL are also added to the list of MC particles in each event. They are injected with the correctly displaced position and delayed time from the interaction vertex, given the HNL decay length. These HNL daughter particles form the second cascade, not as a single cascade object, but as the explicit particles forming the shower. The kinematics of the two-body decays are computed analytically, while the three-body decay kinematics are calculated with \textsc{MadGraph5} \sidecite{madgraph5}, which will also be explained further below. Independent of the number of particles in the final state of the HNL decay, the kinematics are calculated/simulated at rest and then boosted along the HNL momentum. 
 
-We are using \textit{volume mode}, for the injection of the primary particle on a cylindrical volume. The main generation/sampling happens in \texttt{VolumeLeptonInjector::DAQ} inside \\ \texttt{LeptonInjector.cxx}. After writing the config (s) frame (currently not kept), the energy is sampled from a power law distribution, then the cosine(zenith) and azimuth angles are sampled from uniform distributions. The (x,y) position is sampled uniform in $r, \phi$ (for position on disk) and the z position is sampled from a uniform distribution. After the primary properties have been sampled the \textit{EventProperties} is created and handed over to the \texttt{FillTree} functions which is where the custom HNL simulation happens:
 
-\subsubsection{Cross Sections} \labsec{hnl_cross_sections}
+Any number of files can be produced, where the number of events per file is also variable. The injection is done using the LI \textit{volume mode}, for the injection of the primary particle on a cylindrical volume, adding \SI{50}{\percent} of the events with $\nu_\tau$ and the other half with $\bar{\nu}_\tau$ as primary particle type. The generator takes the custom double-differential/total cross-section splines described below and the parameters defining the sampling distributions as inputs.
 
+
+% For each frame \textit{OneWeight} and a reference weight are also calculated and stored using the \href{https://github.com/LeanderFischer/LeptonInjector-HNL/blob/main/LeptonInjector/python/hnl_weighting.py}{weighting functions} and a baseline atmospheric $\nu_\tau$ flux + oscillation spline. The weight will later be calculated inside of the analysis framework \href{https://github.com/icecube/pisa}{PISA}, based on the input OneWeight. In addition to the i3 file itself, a LeptonInjector configuration file is written which stores the needed information to produce event weights using LeptonWeighter. Optionally the script can also produce an hdf5 file with the same name in the same location. This will store a fixed set of keys, extracted from the i3 file.
+
+
+\subsubsection{Cross-Sections} \labsec{hnl_cross_sections}
 
 \todo{add varied total cross-section for a few background HNL events}
 
-\begin{figure}
-    \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutau-N-nc.png}
-    \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutaubar-N-nc.png}
-    \caption{Custom HNL total cross sections for the four target masses compared to the total ($\nu_\tau$/$\bar{\nu}_\tau$ neutral current) cross section used for SM neutrino simulation production with GENIE.}
-    \labfig{custom_hnl_cross_sections}
-\end{figure}
 
-The cross sections are calculated using a \href{https://github.com/LeanderFischer/NuXSSplMkr/tree/massive_nu_nc_dis}{modified version} of Carlos Argüelles' \href{https://github.com/arguelles/NuXSSplMkr}{NuXSSplMkr}, which is a tool to calculate neutrino cross sections from parton distribution functions (PDFs) and then produce splines that can be read and used with IceCube software. The main modification to calculate the cross sections for the $\nu_\tau$ neutral current interaction into the new heavy mass state is the addition of a kinematic condition to ensure that there is sufficent energy to produce the heavy mass state. It is the same confition that needs to be fulfilled for the charged current case, where the outgoing lepton mass is non-zero. Following \sidecite{Levy:2004rk} (equation 7), the condition
+The cross-sections are calculated using the \textsc{NuXSSplMkr} \sidecite{xsecmaker} software, which is a tool to calculate neutrino cross-sections from \textit{parton distribution functions (PDFs)} and then produce splines that can be read and used with LI/LW. The tool was customized to produce the custom HNL cross-sections, where main modification to calculate the cross-sections for the $\nu_\tau$-NC interaction into the new heavy mass state, is the addition of a kinematic condition to ensure that there is sufficient energy to produce the heavy mass state. It is the same condition that needs to be fulfilled for the CC case, where the outgoing charged lepton mass is non-zero. Following \sidecite{Levy:2004rk} (equation 7), the condition
 \begin{equation}
     (1 + x \delta_N) h^2 - (x + \delta_{4}) h + x \delta_{4} \leq 0,
 \end{equation}
-is implemented for the neutral current case. Here $\delta_{4}=\frac{m_4^2}{s-M^2}$, $\delta_{N}=\frac{M^2}{s-M^2}$, and $h \overset{\textit{def}}{=} xy + \delta_{4}$, with $x, y$ being the Bjorken variables, $m_4$ and $M$ the mass of the heavy state and the target nucleon, respectively, and $s$ the center of mass energy squared. Since the (SM) neutrino background simulation used for this analysis was created using GENIE (version 2.12.8), interfaced through the IceCube software package \textit{genie-icetray}, with the \href{https://internal.dunescience.org/doxygen/classgenie_1_1GRV89LO.html}{GRV98LO} PDFs, those were added as \textit{GRV98lo\_patched} to the cross section spline maker, to ensure the best possibe agreement. Double-differential ($dsdxdy$) and total ($\sigma$) cross sections were produced for the four target HNL masses and then splined. The produced cross section splines are stored \href{https://github.com/LeanderFischer/LeptonInjector-HNL/tree/main/LeptonInjector/resources/cross_sections}{in the resources of the custom LeptonInjector module}. \reffig{custom_hnl_cross_sections} shows the total cross sections that were produced compared to the cross section used for the production of the SM $\nu_\tau/\bar{\nu}_\tau$ neutral current background simulation \todo{Add comparions of SM cross sections between NuXSSplMkr and genie}.
+is implemented for the NC case in the NuXSSplMkr code. Here $\delta_{4}=\frac{m_4^2}{s-M^2}$, $\delta_{N}=\frac{M^2}{s-M^2}$, and $h \overset{\textit{def}}{=} xy + \delta_{4}$, with $x, y$ being the Bjorken variables, $m_4$ and $M$ the mass of the heavy state and the target nucleon, respectively, and $s$ the center of mass energy squared.
 
+\todo{Re-write the following parts..}
+
+Since the SM neutrino background simulation explained in was created using GENIE (version 2.12.8), interfaced through the IceCube software package \textit{genie-icetray}, with the \href{https://internal.dunescience.org/doxygen/classgenie_1_1GRV89LO.html}{GRV98LO} PDFs, those were added as \textit{GRV98lo\_patched} to the cross section spline maker, to ensure the best possibe agreement. Double-differential ($dsdxdy$) and total ($\sigma$) cross-sections were produced for the four target HNL masses and then splined. The produced cross section splines are stored \href{https://github.com/LeanderFischer/LeptonInjector-HNL/tree/main/LeptonInjector/resources/cross_sections}{in the resources of the custom LeptonInjector module}. \reffig{custom_hnl_cross_sections} shows the total cross-sections that were produced compared to the cross section used for the production of the SM $\nu_\tau/\bar{\nu}_\tau$ NC background simulation \todo{Add comparions of SM cross-sections between NuXSSplMkr and genie}.
+
+\begin{figure*}[h]
+    \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutau-N-nc.png}
+    \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutaubar-N-nc.png}
+    \caption{Custom HNL total cross-sections for the four target masses compared to the total ($\nu_\tau$/$\bar{\nu}_\tau$ NC) cross-section used for SM neutrino simulation production with GENIE.}
+    \labfig{custom_hnl_cross_sections}
+\end{figure*}
 
 \subsubsection{Decay Channels}
-
-\begin{figure}
-    \includegraphics{hnl_simulation/decay_theory/branching_ratios_log_up_to_1.0_GeV.png}
-    \caption{Branching ratios of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
-    \labfig{hnl_decay_modes_log_branching_ratio}
-\end{figure}
 
 The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the considered decay channels are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_decay_modes_log_branching_ratio}. The indiviudal branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. The formulas to calculate the decay width show up in multiple references, but we chose to match them to \sidecite{Coloma:2020lgy}, which also discusses the discrepencies in previous literature.
 
@@ -201,7 +220,6 @@ The accessible decay channels are dependent on the mass of the HNL and the allow
     \caption[xx]{xx}
     \labtab{hnl_decay_channels}
 \end{margintable}
-
 
 
 \paragraph{2-Body Decay Widths}
@@ -267,12 +285,17 @@ and
 \end{equation}
 
 
-\subsection{MadGraph5 3-Body Decays} \labsec{madgraph_3body_decays}
+\subsubsection{MadGraph5 3-Body Decays} \labsec{madgraph_3body_decays}
 
-The code to produce the 3-body decay kinematics is \href{https://launchpad.net/mg5amcnlo/3.0/3.3.x}{MadGraph4 v3.4.0} based on the decay diagrams calculated with \href{http://feynrules.irmp.ucl.ac.be/#FeynRules2.0}{FeynRules 2.0} using the Lagrangians derived in \sidecite{Coloma:2020lgy}. The Universal FeynRules Outpur (UFO) from \texttt{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each meass and corresponding decay channel, we produce $1e06$ decay kinematic variations (rest frame) and store those in a text file. 
+The code to produce the 3-body decay kinematics is \href{https://launchpad.net/mg5amcnlo/3.0/3.3.x}{MadGraph4 v3.4.0} based on the decay diagrams calculated with \href{http://feynrules.irmp.ucl.ac.be/#FeynRules2.0}{FeynRules 2.0} using the Lagrangians derived in \sidecite{Coloma:2020lgy}. The Universal FeynRules Output (UFO) from \texttt{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each meass and corresponding decay channel, we produce $1e06$ decay kinematic variations (rest frame) and store those in a text file. 
 
+
+To do so, we randomly pick an event from a list that we generated for each three-body decay mode
 
 \subsection{Sampling Distributions}
+
+\todo{correct information about filenumbers, number of events and how many that were at Gen}
+
 
 This is the description of the signal simulation generator used to (re-)start simulation production in December 2023. The underlying sampling distributions are listed in \reftab{HNL_sampling_distributions}. Judging from how the generation/processing efficiency was for the 190607 set, we target $1e04$ files per set with $5e05$ events per file at generation, resulting in a maximum of $5e09$ events per set at generation level. Note here that the actual number of events per set at generation might be a little lower since some events won't be allowed if they don't have enough energy to produce the HNL.
 
