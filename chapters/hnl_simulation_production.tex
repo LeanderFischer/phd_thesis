@@ -166,7 +166,7 @@ In its standard version, the LI generator produces neutrino interactions by inje
     \labfig{hnl_branching_ratios}
 \end{figure}
 
-In the modified version, the lepton at the interaction vertex is replaced by the HNL, where the interaction cross-sections are replaced by custom, mass dependent HNL cross-sections. The HNL is forced to decay after a chosen distance to produce secondary SM particles, where the decay mode is randomly chosen based on the mass dependent branching ratios from the kinematically accessible decay modes shown in \reffig{hnl_branching_ratios}. The cross-section and decay width calculations were implemented for this purpose and will be explained in more detail in the following. Another needed addition to LI is that the decay products of the HNL are also added to the list of MC particles in each event. They are injected with the correctly displaced position and delayed time from the interaction vertex, given the HNL decay length. These HNL daughter particles form the second cascade, not as a single cascade object, but as the explicit particles forming the shower. The kinematics of the two-body decays are computed analytically, while the three-body decay kinematics are calculated with \textsc{MadGraph5} \sidecite{madgraph5}, which will also be explained further below. Independent of the number of particles in the final state of the HNL decay, the kinematics are calculated/simulated at rest and then boosted along the HNL momentum. 
+In the modified version, the lepton at the interaction vertex is replaced by the HNL, where the interaction cross-sections are replaced by custom, mass dependent HNL cross-sections. The HNL is forced to decay after a chosen distance to produce secondary SM particles, where the decay mode is randomly chosen based on the mass dependent branching ratios from the kinematically accessible decay modes shown in \reffig{hnl_branching_ratios}. The cross-section and decay width calculations were implemented for this purpose and will be explained in more detail in the following. Another needed addition to LI is that the decay products of the HNL are also added to the list of MC particles in each event. They are injected with the correctly displaced position and delayed time from the interaction vertex, given the HNL decay length. These HNL daughter particles form the second cascade, not as a single cascade object, but as the explicit particles forming the shower. The kinematics of the two-body decays are computed analytically, while the three-body decay kinematics are calculated with \textsc{MadGraph} \sidecite{madgraph}, which will also be explained further below. Independent of the number of particles in the final state of the HNL decay, the kinematics are calculated/simulated at rest and then boosted along the HNL momentum. 
 
 
 Any number of files can be produced, where the number of events per file is also variable. The injection is done using the LI \textit{volume mode}, for the injection of the primary particle on a cylindrical volume, adding \SI{50}{\percent} of the events with $\nu_\tau$ and the other half with $\bar{\nu}_\tau$ as primary particle type. The generator takes the custom double-differential/total cross-section splines described below and the parameters defining the sampling distributions as inputs.
@@ -177,18 +177,13 @@ Any number of files can be produced, where the number of events per file is also
 
 \subsubsection{Cross-Sections} \labsec{hnl_cross_sections}
 
-\todo{add varied total cross-section for a few background HNL events}
-
-
-The cross-sections are calculated using the \textsc{NuXSSplMkr} \sidecite{xsecmaker} software, which is a tool to calculate neutrino cross-sections from \textit{parton distribution functions (PDFs)} and then produce splines that can be read and used with LI/LW. The tool was customized to produce the custom HNL cross-sections, where main modification to calculate the cross-sections for the $\nu_\tau$-NC interaction into the new heavy mass state, is the addition of a kinematic condition to ensure that there is sufficient energy to produce the heavy mass state. It is the same condition that needs to be fulfilled for the CC case, where the outgoing charged lepton mass is non-zero. Following \sidecite{Levy:2004rk} (equation 7), the condition
+The cross-sections are calculated using the \textsc{NuXSSplMkr} \cite{xsecmaker} software, which is a tool to calculate neutrino cross-sections from \textit{parton distribution functions (PDFs)} and then produce splines that can be read and used with LI/LW. The tool was customized to produce the custom HNL cross-sections, where the main modification to calculate the cross-sections for the $\nu_\tau$-NC interaction into the new heavy mass state is the addition of a kinematic condition to ensure that there is sufficient energy to produce the heavy mass state. It is the same condition that needs to be fulfilled for the CC case, where the outgoing charged lepton mass is non-zero. Following \sidecite{Levy:2004rk} (equation 7), the condition
 \begin{equation}
-    (1 + x \delta_N) h^2 - (x + \delta_{4}) h + x \delta_{4} \leq 0,
+    (1 + x \delta_N) h^2 - (x + \delta_{4}) h + x \delta_{4} \leq 0
+    \;
+    \labeq{hnl_kinematic_condition}
 \end{equation}
 is implemented for the NC case in the NuXSSplMkr code. Here $\delta_{4}=\frac{m_4^2}{s-M^2}$, $\delta_{N}=\frac{M^2}{s-M^2}$, and $h \overset{\textit{def}}{=} xy + \delta_{4}$, with $x, y$ being the Bjorken variables, $m_4$ and $M$ the mass of the heavy state and the target nucleon, respectively, and $s$ the center of mass energy squared.
-
-\todo{Re-write the following parts..}
-
-Since the SM neutrino background simulation explained in was created using GENIE (version 2.12.8), interfaced through the IceCube software package \textit{genie-icetray}, with the \href{https://internal.dunescience.org/doxygen/classgenie_1_1GRV89LO.html}{GRV98LO} PDFs, those were added as \textit{GRV98lo\_patched} to the cross section spline maker, to ensure the best possibe agreement. Double-differential ($dsdxdy$) and total ($\sigma$) cross-sections were produced for the four target HNL masses and then splined. The produced cross section splines are stored \href{https://github.com/LeanderFischer/LeptonInjector-HNL/tree/main/LeptonInjector/resources/cross_sections}{in the resources of the custom LeptonInjector module}. \reffig{custom_hnl_cross_sections} shows the total cross-sections that were produced compared to the cross section used for the production of the SM $\nu_\tau/\bar{\nu}_\tau$ NC background simulation \todo{Add comparions of SM cross-sections between NuXSSplMkr and genie}.
 
 \begin{figure*}[h]
     \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutau-N-nc.png}
@@ -196,10 +191,16 @@ Since the SM neutrino background simulation explained in was created using GENIE
     \caption{Custom HNL total cross-sections for the four target masses compared to the total ($\nu_\tau$/$\bar{\nu}_\tau$ NC) cross-section used for SM neutrino simulation production with GENIE.}
     \labfig{custom_hnl_cross_sections}
 \end{figure*}
+\todo{Re-make plot with 3 target masses and better labels}
+
+As already described in \refsec{neutrino_generation}, the SM neutrino background simulation is created using the GRV98LO PDFs. These PDFs also had to be added to the cross-section spline maker, to ensure good agreement between the background and signal cross-sections. The double differential ($\rm{d}s\rm{d}x\rm{d}y$) and total ($\sigma$) cross-sections were produced for the chosen target HNL masses and then splined. The produced cross-section are added to the custom LI version and used for the simulation generation and weighting. \reffig{custom_hnl_cross_sections} shows the total cross-sections that were produced compared to the cross-section used for the production of the SM $\nu_\tau/\bar{\nu}_\tau$ NC background simulation. Above $\sim\SI{2e2}{\GeV}$ they match, which is the wanted result of using the identical input PDFs.
+\todo{Add comparions of SM cross-sections between NuXSSplMkr and genie?}
+\todo{add varied total cross-section for a few background HNL events (for QE/RES variations?!)}
+
 
 \subsubsection{Decay Channels}
 
-The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the considered decay channels are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_decay_modes_log_branching_ratio}. The indiviudal branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. The formulas to calculate the decay width show up in multiple references, but we chose to match them to \sidecite{Coloma:2020lgy}, which also discusses the discrepencies in previous literature.
+The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the considered decay channels are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. The formulas to calculate the decay widths show up in multiple references, but we chose to match them to \sidecite{Coloma:2020lgy}, which also discusses the discrepancies in previous literature.
 
 \begin{margintable}
     \footnotesize
@@ -220,28 +221,33 @@ The accessible decay channels are dependent on the mass of the HNL and the allow
     \caption[xx]{xx}
     \labtab{hnl_decay_channels}
 \end{margintable}
+\todo{Calculate max BRs}
 
 
 \paragraph{2-Body Decay Widths}
 
-The decay to a neutral pseudoscalar mesons is
+The decay to a neutral pseudoscalar meson is
 \begin{equation}
-    \Gamma_{\nu_4 \rightarrow \nu_\tau P} = |U_{\tau4}|^2 \frac{G_F^2 m_4^3}{32\pi} f_P^2 (1-x_p^2)^2,
+    \Gamma_{\nu_4 \rightarrow \nu_\tau P} = |U_{\tau4}|^2 \frac{G_F^2 m_4^3}{32\pi} f_P^2 (1-x_p^2)^2
+    \;,
     \labeq{gamma_nu_P}
 \end{equation}
 with $x_P = m_P/m_4$ and
 \begin{equation}
-    f_{\pi^0} = \SI{0.130}{\GeV}, \hspace{1cm} f_{\eta} = \SI{0.0816}{\GeV}, \hspace{1cm} C_2 = f_{\eta'} = \SI{-0.0946}{\GeV},
+    f_{\pi^0} = \SI{0.130}{\GeV}, \hspace{1cm} f_{\eta} = \SI{0.0816}{\GeV}, \hspace{1cm} C_2 = f_{\eta'} = \SI{-0.0946}{\GeV}
+    \;,
     \labeq{gamma_nu_P_f_factors}
 \end{equation}
 while the decay to a neutral vector meson is given by
 \begin{equation}
-    \Gamma_{\nu_4 \rightarrow \nu_\tau V} = |U_{\tau4}|^2 \frac{G_F^2 m_4^3}{32\pi} \bigg(\frac{f_V}{m_V}\bigg)^2 g_V^2 (1+2x_V^2) (1-x_V^2)^2,
+    \Gamma_{\nu_4 \rightarrow \nu_\tau V} = |U_{\tau4}|^2 \frac{G_F^2 m_4^3}{32\pi} \bigg(\frac{f_V}{m_V}\bigg)^2 g_V^2 (1+2x_V^2) (1-x_V^2)^2
+    \;,
     \labeq{gamma_nu_V}
 \end{equation}
 with $x_V = m_V/m_4$,
 \begin{equation}
-    f_{\rho^0} = \SI{0.171}{\square\GeV}, \hspace{1cm} f_{\omega} = \SI{0.155}{\square\GeV},
+    f_{\rho^0} = \SI{0.171}{\square\GeV}, \hspace{1cm} f_{\omega} = \SI{0.155}{\square\GeV}
+    \;,
     \labeq{gamma_nu_V_f_factors}
 \end{equation}
 and
@@ -256,50 +262,55 @@ and
 
 The (invisible) decay to three neutrinos is
 \begin{equation}
-    \Gamma_{\nu_4 \rightarrow \nu_\tau \nu_\alpha \bar{\nu_\alpha}} = |U_{\tau4}|^2 \frac{G_F^2 m_4^5}{192\pi^3},
+    \Gamma_{\nu_4 \rightarrow \nu_\tau \nu_\alpha \bar{\nu_\alpha}} = |U_{\tau4}|^2 \frac{G_F^2 m_4^5}{192\pi^3}
+    \;,
     \labeq{gamma_nu_nu_nu}
 \end{equation}
 while the decay to two charged leptons (using $x_\alpha = (m_\alpha/m_4)^2)$ of the same flavor reads
 \begin{equation}
-    \Gamma_{\nu_4 \rightarrow \nu_\tau l_\alpha^+ l_\alpha^-} = |U_{\tau4}|^2 \frac{G_F^2 m_4^5}{192\pi^3} \big[ C_1 f_1(x_\alpha) + C_2 f_2(x_\alpha) \big],
+    \Gamma_{\nu_4 \rightarrow \nu_\tau l_\alpha^+ l_\alpha^-} = |U_{\tau4}|^2 \frac{G_F^2 m_4^5}{192\pi^3} \big[ C_1 f_1(x_\alpha) + C_2 f_2(x_\alpha) \big]
+    \;,
     \labeq{gamma_nu_ll_full}
 \end{equation}
 with the constants defined as
 \begin{equation}
-    C_1 = \frac{1}{4}(1-4s_w^2+8s_w^4) , \hspace{1cm} C_2 = \frac{1}{2}(-s_w^2+2s_w^4),
+    C_1 = \frac{1}{4}(1-4s_w^2+8s_w^4) , \hspace{1cm} C_2 = \frac{1}{2}(-s_w^2+2s_w^4)
+    \;,
     \labeq{gamma_nu_ll_c1_c2}
 \end{equation} 
 the functions as
 \begin{equation}
-    f_1(x_\alpha) = (1-14x_\alpha-2x_\alpha^2-12x_\alpha^3)\sqrt{1-4x_\alpha}+12x_\alpha^2(x_\alpha^2-1)L(x_\alpha),
+    f_1(x_\alpha) = (1-14x_\alpha-2x_\alpha^2-12x_\alpha^3)\sqrt{1-4x_\alpha}+12x_\alpha^2(x_\alpha^2-1)L(x_\alpha)
+    \;,
     \labeq{gamma_nu_ll_f1}
 \end{equation}
 \begin{equation}
-    f_2(x_\alpha) = 4[x_\alpha(2+10x_\alpha-12x_\alpha^2)\sqrt{1-4x_\alpha}+6x_\alpha^2(1-2x_\alpha+2x_\alpha^2)L(x_\alpha)],
+    f_2(x_\alpha) = 4[x_\alpha(2+10x_\alpha-12x_\alpha^2)\sqrt{1-4x_\alpha}+6x_\alpha^2(1-2x_\alpha+2x_\alpha^2)L(x_\alpha)]
+    \;,
     \labeq{gamma_nu_ll_f2}
 \end{equation}
 and
 \begin{equation}
-    L(x) = \ln \biggl( \frac{ 1-3x_\alpha-(1-x_\alpha)\sqrt{1-4x_\alpha} }{ x_\alpha(1+\sqrt{1-4x_\alpha}) } \biggr).
+    L(x) = \ln \biggl( \frac{ 1-3x_\alpha-(1-x_\alpha)\sqrt{1-4x_\alpha} }{ x_\alpha(1+\sqrt{1-4x_\alpha}) } \biggr)
+    \;.
     \labeq{gamma_nu_ll_l}
 \end{equation}
 
 
-\subsubsection{MadGraph5 3-Body Decays} \labsec{madgraph_3body_decays}
+\subsubsection{MadGraph 3-Body Decays} \labsec{madgraph_3body_decays}
 
-The code to produce the 3-body decay kinematics is \href{https://launchpad.net/mg5amcnlo/3.0/3.3.x}{MadGraph4 v3.4.0} based on the decay diagrams calculated with \href{http://feynrules.irmp.ucl.ac.be/#FeynRules2.0}{FeynRules 2.0} using the Lagrangians derived in \sidecite{Coloma:2020lgy}. The Universal FeynRules Output (UFO) from \texttt{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each meass and corresponding decay channel, we produce $1e06$ decay kinematic variations (rest frame) and store those in a text file. 
-
-
-To do so, we randomly pick an event from a list that we generated for each three-body decay mode
+The specific MadGraph version to produce the 3-body decay kinematics is \href{https://launchpad.net/mg5amcnlo/3.0/3.3.x}{MadGraph4 v3.4.0}, using the decay diagrams calculated with \href{http://feynrules.irmp.ucl.ac.be/#FeynRules2.0}{FeynRules 2.0} using the Lagrangians derived in \sidecite{Coloma:2020lgy}. The Universal FeynRules Output (UFO) from \textsc{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each mass and corresponding decay channel, we produce \SI{1e06}{} decay kinematic variations in the rest frame and store those in a text file. To use them during even generation, we randomly pick an event from that list.
 
 \subsection{Sampling Distributions}
+
+\todo{Re-write the following parts..}
 
 \todo{correct information about filenumbers, number of events and how many that were at Gen}
 
 
 This is the description of the signal simulation generator used to (re-)start simulation production in December 2023. The underlying sampling distributions are listed in \reftab{HNL_sampling_distributions}. Judging from how the generation/processing efficiency was for the 190607 set, we target $1e04$ files per set with $5e05$ events per file at generation, resulting in a maximum of $5e09$ events per set at generation level. Note here that the actual number of events per set at generation might be a little lower since some events won't be allowed if they don't have enough energy to produce the HNL.
 
-\begin{table}
+\begin{table}[h]
     \centering
     \begin{tabular} { lll }
         \hline \hline 
