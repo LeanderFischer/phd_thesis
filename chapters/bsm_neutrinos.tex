@@ -211,12 +211,12 @@ Since we assumed propagation in vacuum in Equation \refeq{flavor_time_evol}, the
 \todo{Re-write/re-formulate this section (copied from HNL technote).}
 
 Extensions to the Standard Model (SM) that add \textit{Heavy Neutral Leptons} (HNLs) provide a good explanation for the origin of neutrino masses through different seesaw mechanisms \cite{PTP.64.1103}.
-\begin{wrapfigure}{r}{0.5\textwidth}
-  \includegraphics[width=0.5\textwidth]{figures/UtauN_custom_plots_LF_grid_white.png}
+\begin{figure}
+  \includegraphics{figures/hnl_simulation/theory/UtauN_custom_plots_LF_grid_white.png}
   \caption{Current $|U_{\tau4}^2|$ limits from NOMAD \cite{NOMAD:2001eyx}, ArgoNeut \cite{ArgoNeuT:2021clc}, CHARM \cite{Orloff:2002de, Boiarska:2021yho}, and DELPHI \cite{DELPHI:1996qcc}.}
-  \label{fig:boundsUtau}
-\end{wrapfigure}
-\fxnote*{Produce similar styled plot for these limits}{While the mixing with $\nu_{e/\mu}$ is strongly constrained} ($|U_{\alpha4}^2| \lesssim 10^{-5}-10^{-8}, \alpha=e,\mu$), the mixing with $\nu_{\tau}$ is much harder to probe due to the difficulty of producing and detecting $\nu_\tau$. \cref{fig:boundsUtau} shows the current limits on the $\tau$-sterile mixing space for HNL masses between $0.1$\,GeV-$10$\,GeV. As was first pointed out in \cite{Coloma_2017}, the atmospheric neutrino flux observed in IceCube offers a way to constrain the neutrino-HNL mixing parameters. By using the large fraction of atmospheric $\nu_{\mu}$ events that oscillate into $\nu_{\tau}$ before they reach the detector \cite{IceCube:2019dqi}, the less constrained $\tau$-sterile mixing space can be explored. In this document, we present the methodology and strategy of a search for HNLs with IceCube DeepCore. These additional \textit{right-handed} (RH) neutrinos can be included in the Standard Model (SM) by extending the PMNS matrix to at least a 3x4 matrix as
+  \labfig{boundsUtau}
+\end{figure}
+While the mixing with $\nu_{e/\mu}$ is strongly constrained\todo{Produce similar styled plot for these limits} ($|U_{\alpha4}^2| \lesssim 10^{-5}-10^{-8}, \alpha=e,\mu$), the mixing with $\nu_{\tau}$ is much harder to probe due to the difficulty of producing and detecting $\nu_\tau$. \cref{fig:boundsUtau} shows the current limits on the $\tau$-sterile mixing space for HNL masses between $0.1$\,GeV-$10$\,GeV. As was first pointed out in \cite{Coloma_2017}, the atmospheric neutrino flux observed in IceCube offers a way to constrain the neutrino-HNL mixing parameters. By using the large fraction of atmospheric $\nu_{\mu}$ events that oscillate into $\nu_{\tau}$ before they reach the detector \cite{IceCube:2019dqi}, the less constrained $\tau$-sterile mixing space can be explored. In this document, we present the methodology and strategy of a search for HNLs with IceCube DeepCore. These additional \textit{right-handed} (RH) neutrinos can be included in the Standard Model (SM) by extending the PMNS matrix to at least a 3x4 matrix as
 \begin{equation}
     \label{eq:3_by_4_mixing_matrix}
     \begin{pmatrix}
@@ -239,18 +239,18 @@ Extensions to the Standard Model (SM) that add \textit{Heavy Neutral Leptons} (H
     \nu_{4}\\
     \end{pmatrix},
 \end{equation}
-where the components with index $4$ define the mixing between the flavor states and the fourth sterile mass state, respectively. Note here that this is not a theoretically fully consistent picture, but rather the phenomenologically minimal model to be tested by this analysis. This can hopefully be put into the larger context of several fully consistent models, later. Due to the singlet nature of the RH neutrinos, they only interact weakly, inheriting these interactions from their \textit{left-handed} (LH) neutrino counterparts via mixing. This mixing of the HNLs with the electron, muon, and tau neutrinos can be probed and constrained as a function of the HNL mass by searching for their production and decay. In \cite{Coloma_2017, Coloma_2019} this search is \fxnote*{This section really needs to be re-written to motivate the search for HNLs from a more generic point of view (e.g. to explain neutrino masses)}{mainly motivated through two experimental arguments}. First, a decaying sterile neutrino could explain the low-energy excess (LEE) that is observed in the MiniBooNE data \cite{PhysRevLett.110.161801}. Secondly, IceCube is ideally placed to explore the yet unconstrained $|U_{\tau4}|^{2}-m_{4}$ phase-space that is not easily accessible by accelerator-based experiments.
+where the components with index $4$ define the mixing between the flavor states and the fourth sterile mass state, respectively. Note here that this is not a theoretically fully consistent picture, but rather the phenomenologically minimal model to be tested by this analysis. This can hopefully be put into the larger context of several fully consistent models, later. Due to the singlet nature of the RH neutrinos, they only interact weakly, inheriting these interactions from their \textit{left-handed} (LH) neutrino counterparts via mixing. This mixing of the HNLs with the electron, muon, and tau neutrinos can be probed and constrained as a function of the HNL mass by searching for their production and decay. In \cite{Coloma_2017, Coloma_2019} this search is mainly motivated through two experimental arguments\todo{This section really needs to be re-written to motivate the search for HNLs from a more generic point of view (e.g. to explain neutrino masses)}. First, a decaying sterile neutrino could explain the low-energy excess (LEE) that is observed in the MiniBooNE data \cite{PhysRevLett.110.161801}. Secondly, IceCube is ideally placed to explore the yet unconstrained $|U_{\tau4}|^{2}-m_{4}$ phase-space that is not easily accessible by accelerator-based experiments.
 
 \subsection{Extending the Standard Model}
 
-In order to probe the $\tau$-sterile mixing parameter, it is required to look at interactions involving $\tau$ neutrinos. However, most neutrinos produced in cosmic ray interactions with the atmosphere are $\nu_{e}$ or $\nu_{\mu}$. Therefore, we need these neutrinos to oscillate to the $\tau$ flavor before reaching the detector. \fxnote*{This section definitley needs to be elaborated in a little more detail}{For this to happen at the considered energies a traveled distance of the order of the earth diameter is necessary. This is why our signal is mostly up-going and passing through the whole earth.}
+In order to probe the $\tau$-sterile mixing parameter, it is required to look at interactions involving $\tau$ neutrinos. However, most neutrinos produced in cosmic ray interactions with the atmosphere are $\nu_{e}$ or $\nu_{\mu}$. Therefore, we need these neutrinos to oscillate to the $\tau$ flavor before reaching the detector. For this to happen at the considered energies a traveled distance of the order of the earth diameter is necessary. This is why our signal is mostly up-going and passing through the whole earth.\todo{This section definitley needs to be elaborated in a little more detail}
 
 To explain the signature we can observe in IceCube we first have to revisit the weak interactions that the HNL inherits from its LH counterpart through mixing. We will be following the derivation in \cite{Coloma:2020lgy}. Extending the SM by n additional RH neutrinos, $\nu_i$ ($i=3+n$), leads to the mass Lagrangian
 \begin{equation}
     \mathcal{L}_{\nu }^{\rm mass} \supset - \sum _{\alpha = e,\mu ,\tau} \sum _{i=4}^{3+n} Y_{\nu , \alpha i} {\overline{L}}_{L,\alpha} {\tilde{\phi }} \nu_{i} - \frac{1}{2} \sum _{i=4}^{3+n} M_{i} {\overline{\nu}}_{i} \nu^c_{i} + {\rm h.c.},
     \label{eq:hnl_mass_lagrangian}
 \end{equation}
-in a basis where the Majorana mass terms are diagonal. $Y_{\nu , \alpha i}$ are the Yukawa couplings to the lepton doublets and $M$ the Majorana masses for the heavy singlets. $L_{L,\alpha}$ stands for the SM LH lepton doublet of flavor $\alpha$ while $\phi$ is the Higgs field, and ${\tilde{\phi }} = i \sigma _2 \phi ^*$ and $\nu^c_{i} \equiv C {\bar{\nu}}_{i}^t$, with $C = i \gamma _0 \gamma _2$ in the Weyl representation. \fxnote*{Not adding information about the case where the neutrinos have Dirac or pseudo-Dirac masses}{The full neutrino mass matrix with the Higgs vacuum expectation value $v/\sqrt{2}$ reads}
+in a basis where the Majorana mass terms are diagonal. $Y_{\nu , \alpha i}$ are the Yukawa couplings to the lepton doublets and $M$ the Majorana masses for the heavy singlets. $L_{L,\alpha}$ stands for the SM LH lepton doublet of flavor $\alpha$ while $\phi$ is the Higgs field, and ${\tilde{\phi }} = i \sigma _2 \phi ^*$ and $\nu^c_{i} \equiv C {\bar{\nu}}_{i}^t$, with $C = i \gamma _0 \gamma _2$ in the Weyl representation. The full neutrino mass matrix with the Higgs vacuum expectation value $v/\sqrt{2}$ reads\todo{Not adding information about the case where the neutrinos have Dirac or pseudo-Dirac masses}
 \begin{equation}
     {\mathcal {M}} = \left( \begin{array}{cc} {\mathbf {0}}_{3\times 3} &{} Y_\nu v/\sqrt{2} \\ Y_\nu ^t v/\sqrt{2} &{} M \end{array} \right),
     \label{eq:majorana_mass_matrix}
@@ -277,7 +277,7 @@ The indices now sum over all $(3+n)$ flavor and mass states.
 Based on this formulation and assuming that only the mixing with the tau sector is open ($|U_{\alpha4}^2|=0, \alpha=e,\mu$), the relevant production diagram of the HNL can be drawn as shown in \cref{fig:HNL_production}. Alongside the fourth heavy mass state, a Hadronic cascade is produced. The heavy mass state will travel for some distance (dependent on mass and mixing) before it decays. The subsequent decay processes are depicted in \cref{fig:HNL_decay}. It can be a CC or NC decay and both leptonic and mesonic modes are possible (dependent on the mass). This will produce a tau or a tau neutrino and another cascade that can be Electromagnetic or Hadronic. The branching ratios corresponding to the decay modes of the HNL for the mass range of interest (i.e. between 100\,MeV and 1\,GeV) are shown in \cref{fig:hnl_decay_modes_log_branching_ratio} as a function of the HNL mass.
 \begin{figure}[!htb]
     \centering
-    \begin{fmffile}{feynman_diagrams/diag_HNL_production}
+    \begin{fmffile}{figures/feynman_diagrams/diag_HNL_production}
         \begin{fmfgraph*}(210,70)
         \fmfleft{i1,i2}
         \fmfright{o1,o2}
@@ -289,12 +289,12 @@ Based on this formulation and assuming that only the mixing with the tau sector 
         \end{fmfgraph*}
     \end{fmffile}
     \caption{Production of a sterile neutrino in the up-scattering of a tau neutrino.}
-    \label{fig:HNL_production}
+    \labfig{HNL_production}
 \end{figure}
 
 \begin{figure}[!htb]
     \centering
-    \begin{fmffile}{feynman_diagrams/diag_HNL_decay_NC}
+    \begin{fmffile}{figures/feynman_diagrams/diag_HNL_decay_NC}
         \begin{fmfgraph*}(175,70)
         %\fmfstraight
         \fmfleft{i}
@@ -307,7 +307,7 @@ Based on this formulation and assuming that only the mixing with the tau sector 
         \fmf{fermion,tension=3,label=$\bar{f}/\bar{q}/\bar{q'}$,label.side=left}{o1,v2}
         \end{fmfgraph*}
         \end{fmffile}
-        \begin{fmffile}{feynman_diagrams/diag_HNL_decay_CC}
+        \begin{fmffile}{figures/feynman_diagrams/diag_HNL_decay_CC}
         \begin{fmfgraph*}(175,70)
         %\fmfstraight
         \fmfleft{i}
@@ -321,23 +321,23 @@ Based on this formulation and assuming that only the mixing with the tau sector 
         \end{fmfgraph*}
     \end{fmffile}
     \caption{Sterile neutrino decay through neutral current (left) and charged current (right). With the current limits on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$ being orders of magnitude stronger than that on $|U_{\tau4}|^{2}$ \cite{Atre:2009rg}, the decay modes with an electron, an electron neutrino, a muon or a muon neutrino in the final state are not considered.}
-    \label{fig:HNL_decay}
+    \labfig{HNL_decay}
 \end{figure}
 
 \begin{figure}[h]
-    \subfloat[\label{fig:hnl_decay_modes_log_branching_ratio}]{
-        \includegraphics[width=.45\linewidth]{figures/decay_width_branching_ratios/branching_ratios_log_up_to_1.0_GeV.png}
+    \subfloat[\labfig{hnl_decay_modes_log_branching_ratio}]{
+        \includegraphics[width=.45\linewidth]{figures/hnl_simulation/decay_theory/branching_ratios_log_up_to_1.0_GeV.png}
     }
-    \subfloat[\label{fig:hnl_decay_modes_log_decay_width}]{
-        \includegraphics[width=.45\linewidth]{figures/decay_width_branching_ratios/hnl_decay_widths_up_to_1.0_GeV_log.png}
+    \subfloat[\labfig{hnl_decay_modes_log_decay_width}]{
+        \includegraphics[width=.45\linewidth]{figures/hnl_simulation/decay_theory/hnl_decay_widths_up_to_1.0_GeV_log.png}
     }
     \\[-2.5ex]
     \centering
-    \subfloat[\label{fig:hnl_decay_modes_log_proper_lifetime}]{
-        \includegraphics[width=.45\linewidth]{figures/decay_width_branching_ratios/proper_lifetimes_up_to_1.0_GeV_log.png}
+    \subfloat[\labfig{hnl_decay_modes_log_proper_lifetime}]{
+        \includegraphics[width=.45\linewidth]{figures/hnl_simulation/decay_theory/proper_lifetimes_up_to_1.0_GeV_log.png}
     }
     \caption{Branching ratios, decay widths, and proper lifetime of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
-    \label{fig:hnl_decay_modes_log}
+    \labfig{hnl_decay_modes_log}
 \end{figure}
 
 
@@ -369,7 +369,7 @@ Based on this formulation and assuming that only the mixing with the tau sector 
 % \end{figure}
 
 \begin{figure}
-    \includegraphics{hnl_simulation/decay_theory/hnl_decay_widths_up_to_1.0_GeV_log.png}
+    \includegraphics{figures/hnl_simulation/decay_theory/hnl_decay_widths_up_to_1.0_GeV_log.png}
     \caption{Decay widths of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
     \labfig{hnl_decay_modes_log_decay_width}
 \end{figure}
