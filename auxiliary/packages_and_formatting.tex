@@ -37,6 +37,12 @@
 \newcommand{\gev}{\giga\electronvolt}
 \fi
 
+\ifdefined\mev
+\renewcommand{\mev}{\mega\electronvolt}
+\else
+\newcommand{\mev}{\mega\electronvolt}
+\fi
+
 % Load mathematical packages for theorems and related environments
 \usepackage[framed=true]{kaotheorems}
 \usepackage{amsmath}

@@ -4,6 +4,10 @@
 \chapter{Standard Model Neutrinos}
 \labch{sm_neutrinos_properties}
 
+\todo{SB:
+The breakdown in the first 2 chapters (excluding the introduction) appears overly detailed to me. I'm not sure this distinction between standard model nu's and BSM nu's is really serving your thesis topic well. Can you create a structure where HNLs show up already in Chapter 2?    
+}
+
 
 \todo{(Re-)write SM neutrino chapter for PhD thesis (just copy paste from M.Sc.).}
 
@@ -62,14 +66,15 @@ There are three distinct neutrino flavors - electron neutrinos, muon neutrinos a
     {Feynman diagrams of charged-current (left) and neutral-current (right) neutrino weak interactions. Taken from \cite{ATerliuk}.}
     \label{fig:weak_interactions}
 \end{figure}
+\todo{Plot is missing + for W and 0 for Z boson.}
 
 In the SM, weak interactions are mediated by the three massive bosons $\textbf{W}^+$, $\textbf{W}^-$, and $\textbf{Z}^0$ \sidecite{Thomson_Particle}.
-The large boson masses ($m_{\textbf{W}}\sim80$\,GeV, $m_{\textbf{Z}}\sim90$\,GeV) result in a short range of the force of about $10^{-18}$\,m.
+The large boson masses ($m_{\textbf{W}}\sim\SI{80}{\gev}, m_{\textbf{Z}}\sim\SI{90}{\gev}$) result in a short range of the force of about \SI{10e-18}{\meter}.
 Weak interactions carried by $\textbf{W}^\pm$ bosons are called charged-current (CC) interactions, because charge is transferred between the interacting particles.
 In CC interactions, a neutrino is converted into its corresponding charged lepton or vice versa.
 Neutral current (NC) interactions are those mediated by $\textbf{Z}^0$ bosons.
 Here no charge is transferred.
-The Feynman diagrams for CC and NC interactions are shown in Figure \reffig{weak_interactions}.
+The Feynman diagrams for CC and NC interactions are shown in \reffig{weak_interactions}.
 
 Although neutrinos are massless in the SM, we know today that they do have a small mass.
 The observed phenomenon of neutrino oscillations (see Section \refsec{neutrino_oscillations}) is based on the fact that there is a mass difference between the three neutrino mass eigenstates.
@@ -84,34 +89,34 @@ These upper limits are typically between $0.3$ and $1.3$\,eV \sidecite{PhysRevD.
 
 \subsection{Neutrino Interactions with Nuclei}
 
-To describe the neutrino detection principle of IceCube explained in Chapter \refch{icecube} we need to understand the weak interaction processes that occur at the energies relevant for this work ($10-100$\,GeV).
+To describe the neutrino detection principle of IceCube explained in \refch{icecube} we need to understand the weak interaction processes that occur at the energies relevant for this work \SIrange[range-phrase=-]{10}{100}{\gev}.
 The cross-sections are dominated by the following neutrino-nucleon interactions: quasi-elastic scattering (QE), resonant scattering (RES), and deep inelastic scattering (DIS).
-The relative importance of the different processes depends on energy as can be seen in Figure \reffig{cross_sections}.
+The relative importance of the different processes depends on energy as can be seen in \reffig{cross_sections}.
 
-\begin{figure}[ht]
+\begin{figure*}[ht]
 	\centering
     \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nu.pdf}
     \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nubar.pdf}
 	\caption[Total inclusive neutrino-nucleon cross-sections, taken from \cite{Formaggio_Cross_Sections}.]{Total neutrino(left) and antineutrino(right) per nucleon cross-section divided by neutrino energy plotted against energy.
     The three main scattering processes quasi-elastic scattering (QE), resonant scattering (RES), and deep-inelastic scattering (DIS) are depicted. Taken from \cite{Formaggio_Cross_Sections}.}
     \labfig{cross_sections}
-\end{figure}
+\end{figure*}
 
-An extensive description of all the interactions and the differences between neutrino and antineutrino cross-sections can be found in \sidecite{Formaggio_Cross_Sections}.
-At energies below 5\,GeV, QE and RES occur and the neutrinos interact with approximately point-like protons and neutrons.
+At energies below \SI{5}{\gev}, QE and RES occur and the neutrinos interact with approximately point-like protons and neutrons.
 The cross-sections of these processes are not linear in energy and the transition region to higher energies is poorly understood.
 At higher energies, the interactions are dominated solely by DIS which has a linear dependence on energy above $\sim20\,$GeV.
 For a given neutrino energy, it is possible to predict the cross-section in this region.
-Here neutrinos interact with a single quark, breaking apart the nucleus and producing a shower of relativistic secondary particles.
+Here neutrinos interact with a single quark, breaking apart the nucleus and producing a shower of relativistic secondary particles.\todo{SB:
+It seems that you have some double counting of information here . I suggest to move some of the information in this "intro" paragraph to the appropriate subsections}
 Neutrino DIS is the primary detection channel of IceCube.
-From Figure \reffig{cross_sections} it can be seen that the interaction cross-sections are very small of the order of $10^{-38}\mathrm{\,cm}^2$.
+From \reffig{cross_sections} it can be seen that the interaction cross-sections are very small of the order of $10^{-38}\mathrm{\,cm}^2$.
 Because of the small interaction cross-section, very large volume detectors are required to capture a sufficiently large sample of neutrinos to use for precision studies of their properties.
-For example, the interaction length of a neutrino with $E_\nu = 10$\,GeV is of $\mathcal{O}(10^{10}\,\mathrm{km})$.
+For example, the interaction length of a neutrino with $E_\nu = \SI{10}{\gev}$ is of $\mathcal{O}(10^{10}\,\mathrm{km})$.
 
 
 \subsubsection{Charged-current Quasi-elastic Scattering}
 
-\paragraph{Quasi-elastic scattering (QE)} with nucleons is the main process below 1\,GeV.
+\paragraph{Quasi-elastic scattering (QE)} with nucleons is the main process below \SI{1}{\gev}.
 Protons are converted to neutrons in antineutrino interactions and vice-versa for neutrino interactions.
 Additionally, a charged lepton corresponding to the neutrino/antineutrino flavor is produced.
 
@@ -119,13 +124,13 @@ Additionally, a charged lepton corresponding to the neutrino/antineutrino flavor
 \subsubsection{Resonant Scattering}
 
 \paragraph{Resonant scattering (RES)} describes the process of a neutrino scattering off a nucleon producing an excited state of the nucleon in addition to a charged lepton.
-RES is the leading process at 1.5-5\,GeV for neutrinos and 1.5-8\,GeV for antineutrinos.
+RES is the leading process at \SI{1.5e-5}{\gev} for neutrinos and \SI{1.5e-8}{\gev} for antineutrinos.
 
 
 \subsubsection{Deep Inelastic Scattering}
 
 \paragraph{Deep inelastic scattering (DIS)} occurs if a neutrino carries sufficient energy to resolve the underlying structure of the nucleon and interacts with one of the composing quarks.
-DIS is the dominant process above 10\,GeV. The nucleon breaks up and a lepton accompanied by a set of hadronic final states is produced.
+DIS is the dominant process above \SI{10}{\gev}. The nucleon breaks up and a lepton accompanied by a set of hadronic final states is produced.
 Whether the lepton is the charged lepton corresponding to the interacting neutrino type, or the neutrino itself depends on the type of DIS interaction.
 DIS happens via CC as in 
 \begin{equation}
@@ -141,7 +146,7 @@ or NC interactions as
         \labeq{dis_nc}
 \end{equation}
 Here, $X$ stands for any set of final state hadrons and $N$ for the nucleon.
-The Feynman diagrams for the processes in Equations \refeq{dis_cc} and \refeq{dis_nc} are shown in Figure \reffig{dis_feynman}.
+The Feynman diagrams for the processes in \refeq{dis_cc} and \refeq{dis_nc} are shown in \reffig{dis_feynman}.
 
 \begin{figure}[h]
     \centering
@@ -151,3 +156,4 @@ The Feynman diagrams for the processes in Equations \refeq{dis_cc} and \refeq{di
     \caption[Neutrino-nucleon deep inelastic scattering, taken from \cite{ATerliuk}]{Feynman diagrams for deep inelastic scattering of a neutrino with a nucleon via charged-current (left) and neutral current (right) interactions. Taken from \cite{ATerliuk}.}
     \labfig{dis_feynman}
 \end{figure}
+\todo{Explain momenta and momentum transfer (p,q) in these figures.}

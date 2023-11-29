@@ -20,7 +20,6 @@
 \todo{(Re-)write BSM chapter for PhD thesis (just copy paste from M.Sc.).}
 
 The flux of neutrinos used for this work exclusively comes from the Earth's atmosphere.
-The nominal flux model is calculated by \sidecite{PhysRevD.92.023004_Honda_Flux} in the energy range of 100\,MeV to 10\,TeV.
 When highly relativistic cosmic rays (protons and heavier nuclei \sidecite{PhysRevD.98.030001}) interact in  the upper atmosphere they produce a shower of particles. 
 Neutrinos emerge from the decays of charged pions and kaons ($\pi$ and $K$ mesons) present in these showers.
 For energies below 100\,GeV, the leading contribution comes from the pion decay chain
@@ -32,11 +31,11 @@ For energies below 100\,GeV, the leading contribution comes from the pion decay 
     \labeq{pion_decay}
 \end{equation}
 The muons that also originate from this process are considered the main background source for IceCube.
-The left part of Figure \reffig{honda_flux} shows the atmospheric neutrino flux for the very broad energy spectrum in which they are produced.
-The flux expectations are calculated for the South Pole \sidecite{PhysRevD.92.023004_Honda_Flux}, where the IceCube detector is located.
-From Equation \refeq{pion_decay} the ratio between muon and electron neutrinos can be inferred to be $N_{\nu_\mu}:N_{\nu_e} \approx 2:1$.
+The left part of \reffig{honda_flux} shows the atmospheric neutrino flux for the very broad energy spectrum in which they are produced.
+The flux expectations are calculated in the energy range of \SI{100}{\mev} to \SI{10}{\tera\electronvolt} for the South Pole \sidecite{PhysRevD.92.023004_Honda_Flux}, where the IceCube detector is located.
+From \refeq{pion_decay} the ratio between muon and electron neutrinos can be inferred to be $N_{\nu_\mu}:N_{\nu_e} \approx 2:1$.
 This is only the case at muon energies below 1\,GeV, where all muons decay in flight.
-For higher energies, muons can reach earth before decaying increasing the ratio to approximately 10:1 at around 100\,GeV as shown in the right part of Figure \reffig{honda_flux}.
+For higher energies, muons can reach earth before decaying increasing the ratio to approximately 10:1 at around 100\,GeV as shown in the right part of \reffig{honda_flux}.
 Additionally, kaon decays start to contribute which also increases the number of muons and muon neutrinos.
 
 \begin{figure}[h]
@@ -47,10 +46,13 @@ Additionally, kaon decays start to contribute which also increases the number of
 \end{figure}
 
 In cosmic ray interactions, charged mesons or tau particles can also be produced, which leads to the formation of tau neutrinos.
-However, at the energy range considered for this work, the resulting tau neutrino flux is negligible as compared to the muon neutrino flux \sidecite{2015EPJWC..9908001F_lepton_fluxes} and is not taken into account.
+However, at the energy range considered for this work, the resulting tau neutrino flux is negligible as compared to the muon neutrino flux \sidecite{2015EPJWC..9908001F_lepton_fluxes}\todo{SB:
+You could say why with an extra half-sentence. 
+} and is not taken into account.
 % is less than 0.1\,\%  of the muon neutrino flux and can, therefore, be neglected.
 It should be stated here that there is a rather large uncertainty on the normalization of the atmospheric neutrino flux on the order of 20-30\,\% \sidecite{PhysRevD.75.043006_neutino_flux_honda} in the energy region of interest.
-This is mainly due to uncertainties in the primary cosmic ray spectrum and modeling of the hadronic interactions.
+This is mainly due to uncertainties in the primary cosmic ray spectrum and modeling of the hadronic interactions.\todo{SB:
+I don't think this is true - the normalization is known to ~5\% if you trust Anatoli/Juan Pablo. Please have a look at more recent publications on this topic. }
 
 
 \subsubsection{Oscillations of Atmospheric Neutrinos}
@@ -64,7 +66,7 @@ When applying a plane wave approach to explain the propagation of neutrinos in v
 where $E_k=\sqrt{\vec{p}^2c^2+m_k^2c^4}$ is the energy of the mass eigenstate $\ket{\nu_k}$, with momentum $\vec{p}$ and mass $m_k$.
 Alternatively, they can be described in terms of their flavor eigenstates, which relate the neutrinos to the charged leptons they interact with in weak CC interactions.
 The flavor eigenstates are $\nu_e, \nu_\mu$, and $\nu_\tau$, whereas the mass eigenstates are called $\nu_1, \nu_2$, and $\nu_3$ in the standard three-neutrino model.
-To understand the propagation of distinct neutrino flavors in time (in vacuum) we need to relate the flavor eigenstates to the mass eigenstates.
+To understand the propagation of distinct neutrino flavors in time we need to relate the flavor eigenstates to the mass eigenstates.
 For massive neutrinos, each flavor eigenstate is a superposition of mass eigenstates \sidecite{PhysRevD.98.030001}
 \begin{equation}
     \ket{\nu_\alpha} = \sum_kU^*_{\alpha k}\ket{\nu_k},
@@ -97,9 +99,11 @@ The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
     \right)  
     \operatorname{diag}(e^{i\rho_{1}},e^{i\rho_{2}},1),
     \labeq{PMNS_matrix}
-\end{equation}
+\end{equation}\todo{SB:
+formatting/margins also I don't think you defined rho1,2
+}
 where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates i and j and $\delta_{CP}$ is the neutrino CP-violating phase.
-Nonzero, non-equal neutrino masses and the neutrino mixing relation in Equation \refeq{neutrino_mixing} lead to the observed phenomenon of neutrino oscillations.
+Nonzero, non-equal neutrino masses and the neutrino mixing relation in \refeq{neutrino_mixing} lead to the observed phenomenon of neutrino oscillations.
 Oscillation means that a neutrino changes from its initial flavor to another flavor and back after traveling a certain distance.
 A produced flavor eigenstate $\ket{\nu_\alpha}$ propagates through space as a superposition of mass eigenstates.
 To find the probability that the initial flavor state $\ket{\nu_\alpha}$ ends up as the final flavor state $\ket{\nu_\beta}$ after the time $t$ we calculate
@@ -112,8 +116,8 @@ To find the probability that the initial flavor state $\ket{\nu_\alpha}$ ends up
 where $P$ is the probability calculated by applying Fermi's Golden Rule \sidecite{1927RSPSA.114..243D}.
 Fermi's Golden Rule explains the transition rate from one energy eigenstate to another depending on the strength of the coupling between the two.
 The strength of the coupling is described by the square of the matrix element.
-Using the unitarity of the mixing matrix $U^{-1}=U^\dagger$ to reverse the relation \refeq{neutrino_mixing} and then time evolve the mass eigenstates with Equation \refeq{flavor_time_evol} we get the time evolution of the flavor state $\ket{\nu_\alpha(t)}$.
-Inserting this result into Equation \refeq{fermis_golden_rule} yields
+Using the unitarity of the mixing matrix $U^{-1}=U^\dagger$ to reverse the relation \refeq{neutrino_mixing} and then time evolve the mass eigenstates with \refeq{flavor_time_evol} we get the time evolution of the flavor state $\ket{\nu_\alpha(t)}$.
+Inserting this result into \refeq{fermis_golden_rule} yields
 \begin{equation}
     P_{\nu_\alpha \rightarrow \nu_\beta}(t)
     =
@@ -125,7 +129,7 @@ where the indices $j$ and $k$ run over the mass eigenstates. For small neutrino 
     E_k \approx E+\frac{c^4m^2_k}{2E} \hspace{0.25cm} \longrightarrow \hspace{0.25cm} E_k-E_j \approx \frac{c^4\Delta m^2_{kj}}{2E},
 \end{equation}
 where $\Delta m^2_{kj}=m^2_k-m^2_j$ is the mass-squared splitting between states $k$ and $j$.
-If we now replace the time in Equation \refeq{probability_raw} by the distance traveled by the relativistic neutrinos $t\approx L/c$ we get
+If we now replace the time in \refeq{probability_raw} by the distance traveled by the relativistic neutrinos $t\approx L/c$ we get
 \begin{equation}
     \begin{split}
         P_{\nu_\alpha \rightarrow \nu_\beta}(t)
@@ -139,9 +143,9 @@ If we now replace the time in Equation \refeq{probability_raw} by the distance t
     \labeq{probability_detailed}
 \end{equation}
 which is referred to as the survival probability if $\alpha=\beta$ and the transition probability if $\alpha\neq\beta$.
-The probability in Equation \refeq{probability_detailed} is only nonzero if there are neutrino mass eigenstates with masses greater than zero.
+The probability in \refeq{probability_detailed} is only nonzero if there are neutrino mass eigenstates with masses greater than zero.
 Additionally, there must be a mass-squared difference $\Delta m^2$ and nonzero mixing between the states.
-Since we assumed propagation in vacuum in Equation \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing.
+Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing.
 
 
 % \subsubsection{Two-Neutrino Approximation}
@@ -206,17 +210,21 @@ Since we assumed propagation in vacuum in Equation \refeq{flavor_time_evol}, the
 
 \section{Heavy Neutral Leptons} \labsec{hnl_theory}
 
+\todo{SB:
+Somehow all of this needs to come much sooner in the thesis. Oscillations are the way that you get your nutau flux, so they should be explained, but it should not exceed nor proceed the HNL theory and pheno discussion
+}
+
 \subsection{Motivation for Heavy Sterile Neutrinos}
 
 \todo{Re-write/re-formulate this section (copied from HNL technote).}
 
-Extensions to the Standard Model (SM) that add \textit{Heavy Neutral Leptons} (HNLs) provide a good explanation for the origin of neutrino masses through different seesaw mechanisms \cite{PTP.64.1103}.
+Extensions to the Standard Model (SM) that add \textit{Heavy Neutral Leptons (HNLs)} provide a good explanation for the origin of neutrino masses through different seesaw mechanisms \cite{PTP.64.1103}.
 \begin{figure}
   \includegraphics{figures/hnl_simulation/theory/UtauN_custom_plots_LF_grid_white.png}
   \caption{Current $|U_{\tau4}^2|$ limits from NOMAD \cite{NOMAD:2001eyx}, ArgoNeut \cite{ArgoNeuT:2021clc}, CHARM \cite{Orloff:2002de, Boiarska:2021yho}, and DELPHI \cite{DELPHI:1996qcc}.}
   \labfig{boundsUtau}
 \end{figure}
-While the mixing with $\nu_{e/\mu}$ is strongly constrained\todo{Produce similar styled plot for these limits} ($|U_{\alpha4}^2| \lesssim 10^{-5}-10^{-8}, \alpha=e,\mu$), the mixing with $\nu_{\tau}$ is much harder to probe due to the difficulty of producing and detecting $\nu_\tau$. \cref{fig:boundsUtau} shows the current limits on the $\tau$-sterile mixing space for HNL masses between $0.1$\,GeV-$10$\,GeV. As was first pointed out in \cite{Coloma_2017}, the atmospheric neutrino flux observed in IceCube offers a way to constrain the neutrino-HNL mixing parameters. By using the large fraction of atmospheric $\nu_{\mu}$ events that oscillate into $\nu_{\tau}$ before they reach the detector \cite{IceCube:2019dqi}, the less constrained $\tau$-sterile mixing space can be explored. In this document, we present the methodology and strategy of a search for HNLs with IceCube DeepCore. These additional \textit{right-handed} (RH) neutrinos can be included in the Standard Model (SM) by extending the PMNS matrix to at least a 3x4 matrix as
+While the mixing with $\nu_{e/\mu}$ is strongly constrained\todo{Produce similar styled plot for these limits} ($|U_{\alpha4}^2| \lesssim 10^{-5}-10^{-8}, \alpha=e,\mu$), the mixing with $\nu_{\tau}$ is much harder to probe due to the difficulty of producing and detecting $\nu_\tau$. \cref{fig:boundsUtau} shows the current limits on the $\tau$-sterile mixing space for HNL masses between $0.1$\,GeV-$10$\,GeV. As was first pointed out in \cite{Coloma_2017}, the atmospheric neutrino flux observed in IceCube offers a way to constrain the neutrino-HNL mixing parameters. By using the large fraction of atmospheric $\nu_{\mu}$ events that oscillate into $\nu_{\tau}$ before they reach the detector \cite{IceCube:2019dqi}, the less constrained $\tau$-sterile mixing space can be explored. In this document, we present the methodology and strategy of a search for HNLs with IceCube DeepCore. These additional \textit{right-handed (RH)} neutrinos can be included in the Standard Model (SM) by extending the PMNS matrix to at least a 3x4 matrix as
 \begin{equation}
     \label{eq:3_by_4_mixing_matrix}
     \begin{pmatrix}
@@ -239,7 +247,7 @@ While the mixing with $\nu_{e/\mu}$ is strongly constrained\todo{Produce similar
     \nu_{4}\\
     \end{pmatrix},
 \end{equation}
-where the components with index $4$ define the mixing between the flavor states and the fourth sterile mass state, respectively. Note here that this is not a theoretically fully consistent picture, but rather the phenomenologically minimal model to be tested by this analysis. This can hopefully be put into the larger context of several fully consistent models, later. Due to the singlet nature of the RH neutrinos, they only interact weakly, inheriting these interactions from their \textit{left-handed} (LH) neutrino counterparts via mixing. This mixing of the HNLs with the electron, muon, and tau neutrinos can be probed and constrained as a function of the HNL mass by searching for their production and decay. In \cite{Coloma_2017, Coloma_2019} this search is mainly motivated through two experimental arguments\todo{This section really needs to be re-written to motivate the search for HNLs from a more generic point of view (e.g. to explain neutrino masses)}. First, a decaying sterile neutrino could explain the low-energy excess (LEE) that is observed in the MiniBooNE data \cite{PhysRevLett.110.161801}. Secondly, IceCube is ideally placed to explore the yet unconstrained $|U_{\tau4}|^{2}-m_{4}$ phase-space that is not easily accessible by accelerator-based experiments.
+where the components with index $4$ define the mixing between the flavor states and the fourth sterile mass state, respectively. Note here that this is not a theoretically fully consistent picture, but rather the phenomenologically minimal model to be tested by this analysis. This can hopefully be put into the larger context of several fully consistent models, later. Due to the singlet nature of the RH neutrinos, they only interact weakly, inheriting these interactions from their \textit{left-handed (LH)} neutrino counterparts via mixing. This mixing of the HNLs with the electron, muon, and tau neutrinos can be probed and constrained as a function of the HNL mass by searching for their production and decay. In \cite{Coloma_2017, Coloma_2019} this search is mainly motivated through two experimental arguments\todo{This section really needs to be re-written to motivate the search for HNLs from a more generic point of view (e.g. to explain neutrino masses)}. First, a decaying sterile neutrino could explain the low-energy excess (LEE) that is observed in the MiniBooNE data \cite{PhysRevLett.110.161801}. Secondly, IceCube is ideally placed to explore the yet unconstrained $|U_{\tau4}|^{2}-m_{4}$ phase-space that is not easily accessible by accelerator-based experiments.
 
 \subsection{Extending the Standard Model}
 
@@ -274,7 +282,7 @@ where $c_w \equiv \cos \theta _w$, $s_w \equiv \sin \theta _w$, and $\theta _w$ 
 \end{equation}
 The indices now sum over all $(3+n)$ flavor and mass states.
 
-Based on this formulation and assuming that only the mixing with the tau sector is open ($|U_{\alpha4}^2|=0, \alpha=e,\mu$), the relevant production diagram of the HNL can be drawn as shown in \cref{fig:HNL_production}. Alongside the fourth heavy mass state, a Hadronic cascade is produced. The heavy mass state will travel for some distance (dependent on mass and mixing) before it decays. The subsequent decay processes are depicted in \cref{fig:HNL_decay}. It can be a CC or NC decay and both leptonic and mesonic modes are possible (dependent on the mass). This will produce a tau or a tau neutrino and another cascade that can be Electromagnetic or Hadronic. The branching ratios corresponding to the decay modes of the HNL for the mass range of interest (i.e. between 100\,MeV and 1\,GeV) are shown in \cref{fig:hnl_decay_modes_log_branching_ratio} as a function of the HNL mass.
+Based on this formulation and assuming that only the mixing with the tau sector is open ($|U_{\alpha4}^2|=0, \alpha=e,\mu$), the relevant production diagram of the HNL can be drawn as shown in \cref{fig:HNL_production}. Alongside the fourth heavy mass state, a Hadronic cascade is produced. The heavy mass state will travel for some distance (dependent on mass and mixing) before it decays. The subsequent decay processes are depicted in \cref{fig:HNL_decay}. It can be a CC or NC decay and both leptonic and mesonic modes are possible (dependent on the mass). This will produce a tau or a tau neutrino and another cascade that can be Electromagnetic or Hadronic. The branching ratios corresponding to the decay modes of the HNL for the mass range of interest (i.e. between \SI{100}{\mev} and 1\,GeV) are shown in \cref{fig:hnl_decay_modes_log_branching_ratio} as a function of the HNL mass.
 \begin{figure}[!htb]
     \centering
     \begin{fmffile}{figures/feynman_diagrams/diag_HNL_production}
