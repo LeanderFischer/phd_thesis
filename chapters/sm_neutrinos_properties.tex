@@ -55,15 +55,13 @@ The charged leptons - electron, muon, and tau - are subject to the weak and the 
 Neutrinos carry neither electric charge nor color charge and therefore only take part in weak interactions.
 There are three distinct neutrino flavors - electron neutrinos, muon neutrinos and tau neutrinos ($\nu_e$, $\nu_{\mu}$, and $\nu_{\tau}$) \sidecite{PhysRevD.98.030001} - each corresponding to their charged lepton counterparts.
 
-\begin{figure}
+\begin{marginfigure}
 	\centering
-    \includegraphics[width=0.25\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
-    \hspace{1cm}
-    \includegraphics[width=0.25\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
-    \caption[Feynman diagrams of neutrino weak interactions, taken from \cite{ATerliuk}]
-    {Feynman diagrams of charged-current (left) and neutral-current (right) neutrino weak interactions. Taken from \cite{ATerliuk}.}
-    \label{fig:weak_interactions}
-\end{figure}
+    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
+    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
+    \caption[Feynman diagrams of neutrino weak interactions]{Feynman diagrams of charged-current (left) and neutral-current (right) neutrino weak interactions, taken from \cite{ATerliuk}.}
+    \labfig{weak_interactions}
+\end{marginfigure}
 \todo{Plot is missing + for W and 0 for Z boson.}
 
 In the SM, weak interactions are mediated by the three massive bosons $\textbf{W}^+$, $\textbf{W}^-$, and $\textbf{Z}^0$ \sidecite{Thomson_Particle}.
@@ -95,7 +93,7 @@ The relative importance of the different processes depends on energy as can be s
 	\centering
     \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nu.pdf}
     \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nubar.pdf}
-	\caption[Total inclusive neutrino-nucleon cross-sections, taken from \cite{Formaggio_Cross_Sections}.]{Total neutrino(left) and antineutrino(right) per nucleon cross-section divided by neutrino energy plotted against energy.
+	\caption[Total inclusive neutrino-nucleon cross-sections]{Total neutrino(left) and antineutrino(right) per nucleon cross-section divided by neutrino energy plotted against energy.
     The three main scattering processes quasi-elastic scattering (QE), resonant scattering (RES), and deep-inelastic scattering (DIS) are depicted. Taken from \cite{Formaggio_Cross_Sections}.}
     \labfig{cross_sections}
 \end{figure*}
@@ -114,20 +112,20 @@ For example, the interaction length of a neutrino with $E_\nu = \SI{10}{\gev}$ i
 
 \subsubsection{Charged-current Quasi-elastic Scattering}
 
-\paragraph{Quasi-elastic scattering (QE)} with nucleons is the main process below \SI{1}{\gev}.
+\textit{Quasi-elastic scattering (QE)} with nucleons is the main process below \SI{1}{\gev}.
 Protons are converted to neutrons in antineutrino interactions and vice-versa for neutrino interactions.
 Additionally, a charged lepton corresponding to the neutrino/antineutrino flavor is produced.
 
 
 \subsubsection{Resonant Scattering}
 
-\paragraph{Resonant scattering (RES)} describes the process of a neutrino scattering off a nucleon producing an excited state of the nucleon in addition to a charged lepton.
+\textit{Resonant scattering (RES)} describes the process of a neutrino scattering off a nucleon producing an excited state of the nucleon in addition to a charged lepton.
 RES is the leading process at \SI{1.5e-5}{\gev} for neutrinos and \SI{1.5e-8}{\gev} for antineutrinos.
 
 
 \subsubsection{Deep Inelastic Scattering}
 
-\paragraph{Deep inelastic scattering (DIS)} occurs if a neutrino carries sufficient energy to resolve the underlying structure of the nucleon and interacts with one of the composing quarks.
+\textit{Deep inelastic scattering (DIS)} occurs if a neutrino carries sufficient energy to resolve the underlying structure of the nucleon and interacts with one of the composing quarks.
 DIS is the dominant process above \SI{10}{\gev}. The nucleon breaks up and a lepton accompanied by a set of hadronic final states is produced.
 Whether the lepton is the charged lepton corresponding to the interacting neutrino type, or the neutrino itself depends on the type of DIS interaction.
 DIS happens via CC as in 
@@ -151,13 +149,10 @@ The Feynman diagrams for the processes in \refeq{dis_cc} and \refeq{dis_nc} are 
     \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_CC_nu_new.pdf}
     \hspace{0.8cm}
     \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_NC_nu_new.pdf}
-    \caption[Neutrino-nucleon deep inelastic scattering, taken from \cite{ATerliuk}]{Feynman diagrams for deep inelastic scattering of a neutrino with a nucleon via charged-current (left) and neutral current (right) interactions. Taken from \cite{ATerliuk}.}
+    \caption[Neutrino-nucleon deep inelastic scattering]{Feynman diagrams for deep inelastic scattering of a neutrino with a nucleon via charged-current (left) and neutral current (right) interactions. Taken from \cite{ATerliuk}.}
     \labfig{dis_feynman}
 \end{figure}
 \todo{Explain momenta and momentum transfer (p,q) in these figures.}
-
-
-
 
 
 \section{Heavy Neutral Leptons} \labsec{hnl_theory}
@@ -173,7 +168,7 @@ Somehow all of this needs to come much sooner in the thesis. Oscillations are th
 Extensions to the Standard Model (SM) that add \textit{Heavy Neutral Leptons (HNLs)} provide a good explanation for the origin of neutrino masses through different seesaw mechanisms \sidecite{PTP.64.1103}.
 \begin{figure}
   \includegraphics{figures/hnl_simulation/theory/UtauN_custom_plots_LF_grid_white.png}
-  \caption{Current $|U_{\tau4}^2|$ limits from NOMAD \cite{NOMAD:2001eyx}, ArgoNeut \cite{ArgoNeuT:2021clc}, CHARM \cite{Orloff:2002de, Boiarska:2021yho}, and DELPHI \cite{DELPHI:1996qcc}.}
+  \caption[Current $|U_{\tau4}^2|-m_4$ limits]{Current $|U_{\tau4}^2|-m_4$ limits from NOMAD \cite{NOMAD:2001eyx}, ArgoNeut \cite{ArgoNeuT:2021clc}, CHARM \cite{Orloff:2002de, Boiarska:2021yho}, and DELPHI \cite{DELPHI:1996qcc}.}
   \labfig{boundsUtau}
 \end{figure}
 While the mixing with $\nu_{e/\mu}$ is strongly constrained\todo{Produce similar styled plot for these limits} ($|U_{\alpha4}^2| \lesssim 10^{-5}-10^{-8}, \alpha=e,\mu$), the mixing with $\nu_{\tau}$ is much harder to probe due to the difficulty of producing and detecting $\nu_\tau$. \reffig{boundsUtau} shows the current limits on the $\tau$-sterile mixing space for HNL masses between $0.1$\,GeV-$10$\,GeV. As was first pointed out in \sidecite{Coloma:2017ppo}, the atmospheric neutrino flux observed in IceCube offers a way to constrain the neutrino-HNL mixing parameters. By using the large fraction of atmospheric $\nu_{\mu}$ events that oscillate into $\nu_{\tau}$ before they reach the detector, the less constrained $\tau$-sterile mixing space can be explored. In this document, we present the methodology and strategy of a search for HNLs with IceCube DeepCore. These additional \textit{right-handed (RH)} neutrinos can be included in the Standard Model (SM) by extending the PMNS matrix to at least a 3x4 matrix as
@@ -238,6 +233,7 @@ The indices now sum over all $(3+n)$ flavor and mass states.
 
 Based on this formulation and assuming that only the mixing with the tau sector is open ($|U_{\alpha4}^2|=0, \alpha=e,\mu$), the relevant production diagram of the HNL can be drawn as shown in \reffig{HNL_production}. Alongside the fourth heavy mass state, a Hadronic cascade is produced. The heavy mass state will travel for some distance (dependent on mass and mixing) before it decays. The subsequent decay processes are depicted in \reffig{HNL_decay}. It can be a CC or NC decay and both leptonic and mesonic modes are possible (dependent on the mass). This will produce a tau or a tau neutrino and another cascade that can be Electromagnetic or Hadronic. The branching ratios corresponding to the decay modes of the HNL for the mass range of interest (i.e. between \SI{100}{\mev} and 1\,GeV) are shown in \reffig{hnl_decay_modes_log_branching_ratio} as a function of the HNL mass.
 \begin{figure}[!htb]
+    % \footnotesize
     \centering
     \begin{fmffile}{figures/feynman_diagrams/diag_HNL_production}
         \begin{fmfgraph*}(210,70)
@@ -250,11 +246,12 @@ Based on this formulation and assuming that only the mixing with the tau sector 
         \fmflabel{$|U_{\tau 4}|^2$}{v2}
         \end{fmfgraph*}
     \end{fmffile}
-    \caption{Production of a sterile neutrino in the up-scattering of a tau neutrino.}
+    \caption[Feynman diagram of HNL up-scattering process]{Production of a sterile neutrino in the up-scattering of a tau neutrino.}
     \labfig{HNL_production}
 \end{figure}
 
 \begin{figure}[!htb]
+    % \footnotesize
     \centering
     \begin{fmffile}{figures/feynman_diagrams/diag_HNL_decay_NC}
         \begin{fmfgraph*}(175,70)
@@ -282,7 +279,7 @@ Based on this formulation and assuming that only the mixing with the tau sector 
         \fmf{fermion,tension=3,label=$\bar{f'}/\bar{q'}$,label.side=left}{o1,v2}
         \end{fmfgraph*}
     \end{fmffile}
-    \caption{Sterile neutrino decay through neutral current (left) and charged current (right). With the current limits on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$ being orders of magnitude stronger than that on $|U_{\tau4}|^{2}$ \cite{Atre:2009rg}, the decay modes with an electron, an electron neutrino, a muon or a muon neutrino in the final state are not considered.}
+    \caption[Feynman diagram of HNL decay]{Sterile neutrino decay through neutral current (left) and charged current (right).}
     \labfig{HNL_decay}
 \end{figure}
 
@@ -298,7 +295,7 @@ Based on this formulation and assuming that only the mixing with the tau sector 
     \subfloat[\labfig{hnl_decay_modes_log_proper_lifetime}]{
         \includegraphics[width=.45\linewidth]{figures/hnl_simulation/decay_theory/proper_lifetimes_up_to_1.0_GeV_log.png}
     }
-    \caption{Branching ratios, decay widths, and proper lifetime of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
+    \caption[HNL branching ratios]{Branching ratios, decay widths, and proper lifetime of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}.}
     \labfig{hnl_decay_modes_log}
 \end{figure}
 
@@ -332,7 +329,7 @@ Based on this formulation and assuming that only the mixing with the tau sector 
 
 \begin{figure}
     \includegraphics{figures/hnl_simulation/decay_theory/hnl_decay_widths_up_to_1.0_GeV_log.png}
-    \caption{Decay widths of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
+    \caption[HNL decay widths]{Decay widths of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
     \labfig{hnl_decay_modes_log_decay_width}
 \end{figure}
 
@@ -379,7 +376,7 @@ Additionally, kaon decays start to contribute which also increases the number of
 \begin{figure}[h]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/neutrinos_properties/Honda_alldir-spl_copy.pdf}
-    \caption[Atmospheric neutrino fluxes, taken from \cite{PhysRevD.92.023004_Honda_Flux}]{Atmospheric neutrino fluxes of the different flavors as a function of energy (left) and ratios between muon- and electron-neutrinos as well as ratios between neutrinos and antineutrinos for both flavors (right). Calculations are done for the geographic South Pole. Taken from \cite{PhysRevD.92.023004_Honda_Flux}.}
+    \caption[Atmospheric neutrino fluxes]{Atmospheric neutrino fluxes of the different flavors as a function of energy (left) and ratios between muon- and electron-neutrinos as well as ratios between neutrinos and antineutrinos for both flavors (right). Calculations are done for the geographic South Pole. Taken from \cite{PhysRevD.92.023004_Honda_Flux}.}
     \labfig{honda_flux}
 \end{figure}
 

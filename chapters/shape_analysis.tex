@@ -17,7 +17,7 @@ The final level sample of this analysis always consists of the neutrino and muon
 
 \subsection{Expected Rates/Events}
 
-The rates and the expected events in \SI{10}{years} are shown in \reftab{combined_final_level_expectation}. For the HNL the expectation depends on the mass and the mixing. Shown here are two example mixings for all the three masses. A mixing of $0.0$ would result in a rate of $0.0$ and therefore no HNL events.
+The rates and the expected events in \SI{10}{years} are shown in \reftab{combined_final_level_expectation}. For the HNL the expectation depends on the mass and the mixing. Shown here are two example mixings for all the three masses. A mixing of $0.0$ would result in no HNL events at all.
 
 \begin{table}
     \begin{tabular}{ llcc }
@@ -51,46 +51,46 @@ The rates and the expected events in \SI{10}{years} are shown in \reftab{combine
 
 \subsection{Analysis Binning}
 
-The identical binning to the analysis performed in \sidecite{flercnn_analysis_result} is used. It was chosen such that the track-like bin has the largest $\nu_\mu$-CC fraction. Extend the binning towards lower energies or increasing the number of bins did not improve the HNL sensitivities significantly. It also has to be considered that sufficient data events need to end up in the individual bins to result in a good fit, which was already investigated in the previous analysis. To mitigate the low data statistics, a few bins were not taken into account in the analysis. There are three bins in PID (cascade-like, mixed and track-like), 12 bins in reconstructed energy, and 8 bins in cosine of the reconstructed zenith angle as specified in \reftab{analysis_binning}. Originally, there were two more bins in $\cos(\theta)$, which were removed to reduce muons coming from the horizon and some low energy bins in the cascade-like bin are removed due to the low event expectation.
-
+The identical binning to the analysis performed in \sidecite{flercnn_analysis_result} is used. It was chosen such that the track-like bin has the largest $\nu_\mu$-CC fraction. Extend the binning towards lower energies or increasing the number of bins did not improve the HNL sensitivities significantly. It also has to be considered that sufficient data events need to end up in the individual bins to result in a good fit, which was already investigated in the previous analysis. To mitigate the low data statistics, a few bins were not taken into account in the analysis. There are three bins in PID (cascade-like, mixed and track-like), 12 bins in reconstructed energy, and 8 bins in cosine of the reconstructed zenith angle as specified in \reftab{analysis_binning}. Originally, there were two more bins in $\cos(\theta)$, which were removed to reduce muons coming from the horizon and some low energy bins in the cascade-like bin are removed due to the low event statistics.
 \begin{table}
         \begin{tabular}{ llll }
-        \hline\hline
-    
-        \textbf{Variable} & \textbf{$N_\rm{bins}$} & \textbf{Edges} & \textbf{Step} \\ 
-    
-        \hline\hline
-    
+        \hline\hline    
+        \textbf{Variable} & \textbf{$N_\rm{bins}$} & \textbf{Edges} & \textbf{Step} \\     
+        \hline\hline    
         $P_\nu$ & 3 & [0.00, 0.25, 0.55, 1.00] & linear \\
         $E$ & 12 & [5.00, 100.00] & logarithmic \\
-        $\cos(\theta)$ & 8 & [-1.00, 0.04] & linear \\
-    
+        $\cos(\theta)$ & 8 & [-1.00, 0.04] & linear \\    
         \hline
         \end{tabular}
     \caption[Analysis binning]{Three dimensional binning used in the analysis. All variables are from the FLERCNN reconstruction explained in \refsec{reconstruction}.}
     \labtab{analysis_binning}
 \end{table}
 
-
 \todo{add 3D expectation and/or S/sqrt(B) plots}
+\todo{Add fractions of the different particle types in the bins for benchmark mass/mixing (another table?)}
 
 
 \section{Statistical Analysis} \labsec{analysis_principle}
+
+
+\subsection{Low Energy Analysis Framework} \labsec{analysis_framework}
+
+The analysis is performed using the \textsc{PISA} \sidecite{pisa_paper} \cite{pisa_software} software framework, which was developed to perform analyses "of small signals in high-statistics neutrino oscillation experiments". It is used to generate the expected event distributions from several MC sets, which can then be compared to the observed data. The expectation for each set is calculated in parallel, applying physics and nuisance parameter effects in a stage-wise manner, before combining the final expectation from all the sets.
+
 
 
 \subsection{Test Statistic}
 
 The measurements are performed by comparing the weighted MC to the data. Through variation of the nuisance and physics parameters that govern the weights, the best matching set of parameters can be found. The comparison is done using a modified $\chi^2$ defined as
 \begin{equation}
-    \small
     \chi^2_{\mathrm{mod}} = 
-    \sum_{i \in \mathrm{bins}}^{}\frac{(N^{\mathrm{\nu}}_i + N^{\mathrm{\mu}}_i + N^{\mathrm{HNL}}_i - N^{\mathrm{obs}}_i)^2}
-    {N^{\mathrm{\nu}}_i + N^{\mathrm{\mu}}_i + N^{\mathrm{HNL}}_i + (\sigma^{\mathrm{\nu}}_i)^2 + (\sigma^{\mathrm{\mu}}_i)^2 + (\sigma^{\mathrm{HNL}}_i)^2}
+    \sum_{i \in \mathrm{bins}}^{}\frac{(N^{\rm{exp}}_i - N^{\mathrm{obs}}_i)^2}
+    {N^{\rm{exp}}_i + (\sigma^{\mathrm{\nu}}_i)^2 + (\sigma^{\mathrm{\mu}}_i)^2 + (\sigma^{\mathrm{HNL}}_i)^2}
      + \sum_{j \in \mathrm{syst}}^{}\frac{(s_j - \hat{s_j})^2}{\sigma^2_{s_j}}
     \;,
     \labeq{mod-chi2-hnl}
 \end{equation}
-as the test statistic (TS), where $N^{\mathrm{\nu}}_i$, $N^{\mathrm{\mu}}_i$, and $N^{\mathrm{HNL}}_i$ are the expected number of events in bin $i$ from neutrinos, atmospheric muons, and HNL, while $N^{\mathrm{obs}}_i$ is the observed number of events in bin $i$. The expected number of events from each particle type is calculated by summing the weights of all events in the bin $N^{\mathrm{type}}_i = \sum_i^\rm{type}\omega_i$, with the statistical uncertainty being $(\sigma^{\mathrm{type}}_i)^2 = \sum_i^\rm{type}\omega_i^2$. The expected Poisson error is calculated using the combined expectation of neutrinos, atmospheric muons, and HNL events. The additional term in \refeq{mod-chi2-hnl} is included to apply a penalty term for prior knowledge of the systematic uncertainties of the parameters where they are known. $s_j$ are the systematic parameters that are varied in the fit, while $\hat{s_j}$ are their nominal values and $\sigma_{s_j}$ are the known uncertainties.
+as the \textit{test statistic (TS)}. The total even expectation is $N^{\rm{exp}}_i = N^{\mathrm{\nu}}_i + N^{\mathrm{\mu}}_i + N^{\mathrm{HNL}}_i$, where $N^{\mathrm{\nu}}_i$, $N^{\mathrm{\mu}}_i$, and $N^{\mathrm{HNL}}_i$ are the expected number of events in bin $i$ from neutrinos, atmospheric muons, and HNLs, while $N^{\mathrm{obs}}_i$ is the observed number of events in bin $i$. The expected number of events from each particle type is calculated by summing the weights of all events in the bin $N^{\mathrm{type}}_i = \sum_i^\rm{type}\omega_i$, with the statistical uncertainty being $(\sigma^{\mathrm{type}}_i)^2 = \sum_i^\rm{type}\omega_i^2$. The additional term in \refeq{mod-chi2-hnl} is included to apply a penalty term for prior knowledge of the systematic uncertainties of the parameters where they are known. $s_j$ are the systematic parameters that are varied in the fit, while $\hat{s_j}$ are their nominal values and $\sigma_{s_j}$ are the known uncertainties.
 
 \todo{Do I want/need to include the description of the KDE muon estimation?}
 
@@ -168,7 +168,7 @@ To find the set of parameters that describes the data best, a staged minimizatio
         Fine & 1e-5 & 1e-14 & 1e-5 \\    
         \hline
         \end{tabular}
-    \caption[Staged minimization settings]{Migrad settings for the two stages in the minimization routine. \textit{Err.} are the step size for the numerical gradient estimation, \textit{Prec.} is the precision with which the LLH is calculated, and \textit{Tol.} is the tolerance for the minimization.}
+    \caption[Staged minimization routine settings]{Migrad settings for the two stages in the minimization routine. \textit{Err.} are the step size for the numerical gradient estimation, \textit{Prec.} is the precision with which the LLH is calculated, and \textit{Tol.} is the tolerance for the minimization.}
     \labtab{minimization_settings}
 \end{margintable}
 
@@ -192,10 +192,10 @@ To test the minimization routine and to make sure it consistently recovers any i
 
 \subsection{Ensemble Tests} \labsec{pseudo_data_ensemble}
 
-To estimate the goodness of fit, pseudo-data is generated from the MC by injecting the BFP parameters as true parameters and then fluctuating the expected bin counts using Poisson fluctuation. The resulting pseudo-data sets are then fit back with the analysis chain. By comparing the distribution of TS values from this \textit{ensemble} of pseudo-data trials to the TS of the fit to real data, a p-value can be calculated. The p-value is the probability of finding a TS value at least as large as the one from the data fit. \reffig{pseudo_data_ensemble_0.6_GeV}\todo{Add bin-wise TS distribution? Add 3D TS maps?} shows the TS distribution from the ensemble tests for the \SI{0.6}{\gev} mass set and the observed TS value from the fit, resulting in a p-value of \SI{1.23}{\percent}\sidenote{The p-values for the \SI{0.3}{\gev} and \SI{1.0}{\gev} are \SI{1.23}{\percent} and \SI{1.23}{\percent}, respectively}. Plots for the addition two mass sets are shown in \refsec{pseudo_data_ensemble_appendix}.
+To estimate the goodness of fit, pseudo-data is generated from the MC by injecting the BFP parameters as true parameters and then fluctuating the expected bin counts using Poisson fluctuation. The resulting pseudo-data sets are then fit back with the analysis chain. By comparing the distribution of TS values from this \textit{ensemble} of pseudo-data trials to the TS of the fit to real data, a p-value can be calculated. The p-value is the probability of finding a TS value at least as large as the one from the data fit. \reffig{pseudo_data_ensemble_0.6_GeV}\todo{Add bin-wise TS distribution? Add 3D TS maps?} shows the TS distribution from the ensemble tests for the \SI{0.6}{\gev} mass set and the observed TS value from the fit, resulting in a p-value of \SI{28.5}{\percent}\sidenote{The p-values for the \SI{0.3}{\gev} and \SI{1.0}{\gev} are \SI{28.3}{\percent} and \SI{26.0}{\percent}, respectively.}. Plots for the addition two mass sets are shown in \refsec{pseudo_data_ensemble_appendix}.
 
 \begin{figure}[h]
-    \includegraphics{figures/results/checks/full_blind_fit_0.6_GeV_step_3_4-1.png}
+    \includegraphics{figures/results/blind_fits/full_blind_fit_0.3_GeV_gauss_plus_poisson_step_3_4-1.png}
 	\caption[Pseudo-data trials TS distribution (\SI{0.6}{\gev})]{Observed fit TS and TS distribution from pseudo-data trials for the \SI{0.6}{\gev} mass set.}
     \labfig{pseudo_data_ensemble_0.6_GeV}
 \end{figure}
