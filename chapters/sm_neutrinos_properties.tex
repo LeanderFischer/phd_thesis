@@ -14,154 +14,62 @@ This chapter introduces the basic properties of neutrinos, their place in the St
 % After describing atmospheric neutrinos in Section \refsec{neutrino_atmospheric} the phenomenon of neutrino oscillations is presented in Section \refsec{neutrino_oscillations}.
 
 
-\section{Standard Model Particles}
+\section{The Standard Model}
+
+some history on the SM?
+
+
+Yang-Mills theory (relativistic quantum field theory)
+EM, weak, strong interactions
+SU(3) x SU(2) x U(1) local gauge symmetry, with conserved quantities \textit{color}, \textit{left-handed chirality}, and \textit{weak hypercharge}
+
+completion in the mid-1970s
+
 
 \subsection{Electroweak Symmetry Breaking}
+
+Through spontaneous symmetry breaking of SU(2) x U(1) the gauge bosons of the weak interaction (W and Z bosons) acquire their masses. 
+
+
+Without the broken symmetry, they would be massless, like the exchange bososn of the SU(3) symmetry (gluons).
+
+% write Higgs Lagrangian as equation
+\begin{equation}
+    \mathcal{L}_{\rm Higgs} = (D_\mu \Phi^\dagger) (D^\mu \Phi) - \lambda \left( \Phi^\dagger \Phi - \frac{v^2}{2} \right) ^2
+    \;,
+    \labeq{higgs_lagrangian}
+\end{equation}
+
+with parameters $\lambda$ and $v$. $\lambda$ is assumed to be positive and.
 
 \subsection{Fermion Masses}
 
 \subsubsection{Charged - Leptons and Quarks}
-
 \subsubsection{Uncharged - Neutrinos}
 
 \paragraph{Dirac}
-
 \paragraph{Majorana}
 
 
-\subsection{See-Saw Mechanisms}
-
-\subsection{Radiative Neutrino Masses}
-
-
-\section{Neutrino Properties}
-
-\subsection{Quantum Numbers}
-
-\subsection{Mass}
-
-\subsection{Active Neutrino Flavors}
+\subsection{Mass Mechanisms}
+\paragraph{See-Saw Variants}
+\paragraph{Radiative Neutrino Masses}
 
 
-\section{Neutrino Interactions} \labsec{neutrino_interactions}
+\section{Evidence for Beyond Standard Model Physics}
 
-\subsection{Weak Interactions after Symmetry-Breaking}
-
-The neutrino is an elementary particle in the SM \sidecite{Thomson_Particle}.
-It belongs to the class of leptons, which itself is a subclass of elementary fermions (spin ${\frac{1}{2}}$ particles).
-The fermions - six quarks and six leptons - form the matter content of the universe.
-Quarks take part in all three interaction types (forces) of the SM: strong, weak, and electromagnetic (EM) \sidecite{GLASHOW1961579}.
-The charged leptons - electron, muon, and tau - are subject to the weak and the EM interaction.
-Neutrinos carry neither electric charge nor color charge and therefore only take part in weak interactions.
-There are three distinct neutrino flavors - electron neutrinos, muon neutrinos and tau neutrinos ($\nu_e$, $\nu_{\mu}$, and $\nu_{\tau}$) \sidecite{PhysRevD.98.030001} - each corresponding to their charged lepton counterparts.
-
-\begin{marginfigure}
-	\centering
-    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
-    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
-    \caption[Feynman diagrams of neutrino weak interactions]{Feynman diagrams of charged-current (left) and neutral-current (right) neutrino weak interactions, taken from \cite{ATerliuk}.}
-    \labfig{weak_interactions}
-\end{marginfigure}
-\todo{Plot is missing + for W and 0 for Z boson.}
-
-In the SM, weak interactions are mediated by the three massive bosons $\textbf{W}^+$, $\textbf{W}^-$, and $\textbf{Z}^0$ \sidecite{Thomson_Particle}.
-The large boson masses ($m_{\textbf{W}}\sim\SI{80}{\gev}, m_{\textbf{Z}}\sim\SI{90}{\gev}$) result in a short range of the force of about \SI{10e-18}{\meter}.
-Weak interactions carried by $\textbf{W}^\pm$ bosons are called charged-current (CC) interactions, because charge is transferred between the interacting particles.
-In CC interactions, a neutrino is converted into its corresponding charged lepton or vice versa.
-Neutral current (NC) interactions are those mediated by $\textbf{Z}^0$ bosons.
-Here no charge is transferred.
-The Feynman diagrams for CC and NC interactions are shown in \reffig{weak_interactions}.
-
-Although neutrinos are massless in the SM, we know today that they do have a small mass.
-The observed phenomenon of neutrino oscillations (see Section \refsec{neutrino_oscillations}) is based on the fact that there is a mass difference between the three neutrino mass eigenstates.
-From neutrino oscillation measurements the absolute mass scale cannot be determined, since they only depend on the mass differences, but there are upper limits on the sum of all neutrino masses from cosmological observations.
-These upper limits are typically between $0.3$ and $1.3$\,eV \sidecite{PhysRevD.98.030001}.
-
-
-\subsection{Neutrino-Lepton Scattering}
-
-\subsubsection{Particle-Antiparticle Scattering}
-
-
-\subsection{Neutrino Interactions with Nuclei}
-
-To describe the neutrino detection principle of IceCube explained in \refch{icecube} we need to understand the weak interaction processes that occur at the energies relevant for this work \SIrange[range-phrase=-]{10}{100}{\gev}.
-The cross-sections are dominated by the following neutrino-nucleon interactions: quasi-elastic scattering (QE), resonant scattering (RES), and deep inelastic scattering (DIS).
-The relative importance of the different processes depends on energy as can be seen in \reffig{cross_sections}.
-
-\begin{figure*}[ht]
-	\centering
-    \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nu.pdf}
-    \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nubar.pdf}
-	\caption[Total inclusive neutrino-nucleon cross-sections]{Total neutrino(left) and antineutrino(right) per nucleon cross-section divided by neutrino energy plotted against energy.
-    The three main scattering processes quasi-elastic scattering (QE), resonant scattering (RES), and deep-inelastic scattering (DIS) are depicted. Taken from \cite{Formaggio_Cross_Sections}.}
-    \labfig{cross_sections}
-\end{figure*}
-
-At energies below \SI{5}{\gev}, QE and RES occur and the neutrinos interact with approximately point-like protons and neutrons.
-The cross-sections of these processes are not linear in energy and the transition region to higher energies is poorly understood.
-At higher energies, the interactions are dominated solely by DIS which has a linear dependence on energy above $\sim20\,$GeV.
-For a given neutrino energy, it is possible to predict the cross-section in this region.
-Here neutrinos interact with a single quark, breaking apart the nucleus and producing a shower of relativistic secondary particles.\todo{SB:
-It seems that you have some double counting of information here . I suggest to move some of the information in this "intro" paragraph to the appropriate subsections}
-Neutrino DIS is the primary detection channel of IceCube.
-From \reffig{cross_sections} it can be seen that the interaction cross-sections are very small of the order of $10^{-38}\mathrm{\,cm}^2$.
-Because of the small interaction cross-section, very large volume detectors are required to capture a sufficiently large sample of neutrinos to use for precision studies of their properties.
-For example, the interaction length of a neutrino with $E_\nu = \SI{10}{\gev}$ is of $\mathcal{O}(10^{10}\,\mathrm{km})$.
-
-
-\subsubsection{Charged-current Quasi-elastic Scattering}
-
-\textit{Quasi-elastic scattering (QE)} with nucleons is the main process below \SI{1}{\gev}.
-Protons are converted to neutrons in antineutrino interactions and vice-versa for neutrino interactions.
-Additionally, a charged lepton corresponding to the neutrino/antineutrino flavor is produced.
-
-
-\subsubsection{Resonant Scattering}
-
-\textit{Resonant scattering (RES)} describes the process of a neutrino scattering off a nucleon producing an excited state of the nucleon in addition to a charged lepton.
-RES is the leading process at \SI{1.5e-5}{\gev} for neutrinos and \SI{1.5e-8}{\gev} for antineutrinos.
-
-
-\subsubsection{Deep Inelastic Scattering}
-
-\textit{Deep inelastic scattering (DIS)} occurs if a neutrino carries sufficient energy to resolve the underlying structure of the nucleon and interacts with one of the composing quarks.
-DIS is the dominant process above \SI{10}{\gev}. The nucleon breaks up and a lepton accompanied by a set of hadronic final states is produced.
-Whether the lepton is the charged lepton corresponding to the interacting neutrino type, or the neutrino itself depends on the type of DIS interaction.
-DIS happens via CC as in 
-\begin{equation}
-    \begin{split}
-        \nu_l + N \rightarrow l^- + X, \\
-        \bar{\nu}_l + N \rightarrow l^+ + X, \\
-    \end{split}
-    \labeq{dis_cc}
-\end{equation}
-or NC interactions as
-\begin{equation}
-    \nu_l + N \rightarrow \nu_l + X.
-        \labeq{dis_nc}
-\end{equation}
-Here, $X$ stands for any set of final state hadrons and $N$ for the nucleon.
-The Feynman diagrams for the processes in \refeq{dis_cc} and \refeq{dis_nc} are shown in \reffig{dis_feynman}.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_CC_nu_new.pdf}
-    \hspace{0.8cm}
-    \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_NC_nu_new.pdf}
-    \caption[Neutrino-nucleon deep inelastic scattering]{Feynman diagrams for deep inelastic scattering of a neutrino with a nucleon via charged-current (left) and neutral current (right) interactions. Taken from \cite{ATerliuk}.}
-    \labfig{dis_feynman}
-\end{figure}
-\todo{Explain momenta and momentum transfer (p,q) in these figures.}
+\begin{itemize}
+    \item hierarchy problem
+    \item strong-CP
+    \item Matter-antimatter asymmetry
+    \item Dark matter
+    \item Neutrino masses
+\end{itemize}
 
 
 \section{Heavy Neutral Leptons} \labsec{hnl_theory}
 
-\todo{SB:
-Somehow all of this needs to come much sooner in the thesis. Oscillations are the way that you get your nutau flux, so they should be explained, but it should not exceed nor proceed the HNL theory and pheno discussion
-}
-
-\subsection{Motivation for Heavy Sterile Neutrinos}
+\subsection{A Solution to (some of) the Problems}
 
 \todo{Re-write/re-formulate this section (copied from HNL technote).}
 
@@ -198,7 +106,8 @@ where the components with index $4$ define the mixing between the flavor states 
 % First, a decaying sterile neutrino could explain the low-energy excess (LEE) that is observed in the MiniBooNE data \sidecite{PhysRevLett.110.161801}.
 Secondly, IceCube is ideally placed to explore the yet unconstrained $|U_{\tau4}|^{2}-m_{4}$ phase-space that is not easily accessible by accelerator-based experiments.
 
-\subsection{Extending the Standard Model}
+
+\subsection{The Minimal Standard Model Extension}
 
 In order to probe the $\tau$-sterile mixing parameter, it is required to look at interactions involving $\tau$ neutrinos. However, most neutrinos produced in cosmic ray interactions with the atmosphere are $\nu_{e}$ or $\nu_{\mu}$. Therefore, we need these neutrinos to oscillate to the $\tau$ flavor before reaching the detector. For this to happen at the considered energies a traveled distance of the order of the earth diameter is necessary. This is why our signal is mostly up-going and passing through the whole earth.\todo{This section definitley needs to be elaborated in a little more detail}
 
@@ -327,6 +236,7 @@ Based on this formulation and assuming that only the mixing with the tau sector 
 %     \labfig{hnl_decay_modes_log}
 % \end{figure}
 
+
 \begin{figure}
     \includegraphics{figures/hnl_simulation/decay_theory/hnl_decay_widths_up_to_1.0_GeV_log.png}
     \caption[HNL decay widths]{Decay widths of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
@@ -334,23 +244,120 @@ Based on this formulation and assuming that only the mixing with the tau sector 
 \end{figure}
 
 
-\subsection{Production and Decay in IceCube DeepCore} \labsec{double_cascade_morphology}
+\subsection{Existing Constraints on Heavy Neutral Leptons} \labsec{HNL_mixing_constraints}
 
 
-\subsection{Existing Constraints on Mixing} \labsec{HNL_mixing_constraints}
+
+\section{Atmospheric Neutrinos}
+
+\subsection{Properties and Interactions}
+
+\subsubsection{Quantum Numbers}
+\subsubsection{Mass}
+\subsubsection{Active Neutrino Flavors}
+
+\subsubsection{Weak Interactions after Symmetry-Breaking}
+
+The neutrino is an elementary particle in the SM \sidecite{Thomson_Particle}.
+It belongs to the class of leptons, which itself is a subclass of elementary fermions (spin ${\frac{1}{2}}$ particles).
+The fermions - six quarks and six leptons - form the matter content of the universe.
+Quarks take part in all three interaction types (forces) of the SM: strong, weak, and electromagnetic (EM) \sidecite{GLASHOW1961579}.
+The charged leptons - electron, muon, and tau - are subject to the weak and the EM interaction.
+Neutrinos carry neither electric charge nor color charge and therefore only take part in weak interactions.
+There are three distinct neutrino flavors - electron neutrinos, muon neutrinos and tau neutrinos ($\nu_e$, $\nu_{\mu}$, and $\nu_{\tau}$) \sidecite{PhysRevD.98.030001} - each corresponding to their charged lepton counterparts.
+
+\begin{marginfigure}
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
+    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
+    \caption[Feynman diagrams of neutrino weak interactions]{Feynman diagrams of charged-current (left) and neutral-current (right) neutrino weak interactions, taken from \cite{ATerliuk}.}
+    \labfig{weak_interactions}
+\end{marginfigure}
+\todo{Plot is missing + for W and 0 for Z boson.}
+
+In the SM, weak interactions are mediated by the three massive bosons $\textbf{W}^+$, $\textbf{W}^-$, and $\textbf{Z}^0$ \sidecite{Thomson_Particle}.
+The large boson masses ($m_{\textbf{W}}\sim\SI{80}{\gev}, m_{\textbf{Z}}\sim\SI{90}{\gev}$) result in a short range of the force of about \SI{10e-18}{\meter}.
+Weak interactions carried by $\textbf{W}^\pm$ bosons are called charged-current (CC) interactions, because charge is transferred between the interacting particles.
+In CC interactions, a neutrino is converted into its corresponding charged lepton or vice versa.
+Neutral current (NC) interactions are those mediated by $\textbf{Z}^0$ bosons.
+Here no charge is transferred.
+The Feynman diagrams for CC and NC interactions are shown in \reffig{weak_interactions}.
+
+Although neutrinos are massless in the SM, we know today that they do have a small mass.
+The observed phenomenon of neutrino oscillations (see Section \refsec{neutrino_oscillations}) is based on the fact that there is a mass difference between the three neutrino mass eigenstates.
+From neutrino oscillation measurements the absolute mass scale cannot be determined, since they only depend on the mass differences, but there are upper limits on the sum of all neutrino masses from cosmological observations.
+These upper limits are typically between $0.3$ and $1.3$\,eV \sidecite{PhysRevD.98.030001}.
+
+\subsubsection{Neutrino-Lepton Scattering}
+
+\subsubsection{Neutrino Interactions with Nuclei}
+
+To describe the neutrino detection principle of IceCube explained in \refch{icecube} we need to understand the weak interaction processes that occur at the energies relevant for this work \SIrange[range-phrase=-]{10}{100}{\gev}.
+The cross-sections are dominated by the following neutrino-nucleon interactions: quasi-elastic scattering (QE), resonant scattering (RES), and deep inelastic scattering (DIS).
+The relative importance of the different processes depends on energy as can be seen in \reffig{cross_sections}.
+
+\begin{figure*}[ht]
+	\centering
+    \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nu.pdf}
+    \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nubar.pdf}
+	\caption[Total inclusive neutrino-nucleon cross-sections]{Total neutrino(left) and antineutrino(right) per nucleon cross-section divided by neutrino energy plotted against energy.
+    The three main scattering processes quasi-elastic scattering (QE), resonant scattering (RES), and deep-inelastic scattering (DIS) are depicted. Taken from \cite{Formaggio_Cross_Sections}.}
+    \labfig{cross_sections}
+\end{figure*}
+
+At energies below \SI{5}{\gev}, QE and RES occur and the neutrinos interact with approximately point-like protons and neutrons.
+The cross-sections of these processes are not linear in energy and the transition region to higher energies is poorly understood.
+At higher energies, the interactions are dominated solely by DIS which has a linear dependence on energy above $\sim20\,$GeV.
+For a given neutrino energy, it is possible to predict the cross-section in this region.
+Here neutrinos interact with a single quark, breaking apart the nucleus and producing a shower of relativistic secondary particles.\todo{SB:
+It seems that you have some double counting of information here . I suggest to move some of the information in this "intro" paragraph to the appropriate subsections}
+Neutrino DIS is the primary detection channel of IceCube.
+From \reffig{cross_sections} it can be seen that the interaction cross-sections are very small of the order of $10^{-38}\mathrm{\,cm}^2$.
+Because of the small interaction cross-section, very large volume detectors are required to capture a sufficiently large sample of neutrinos to use for precision studies of their properties.
+For example, the interaction length of a neutrino with $E_\nu = \SI{10}{\gev}$ is of $\mathcal{O}(10^{10}\,\mathrm{km})$.
 
 
-\section{Neutrino Oscillations} \labsec{neutrino_oscillations}
+\paragraph{Quasi-elastic scattering (QE)} with nucleons is the main process below \SI{1}{\gev}.
+Protons are converted to neutrons in antineutrino interactions and vice-versa for neutrino interactions.
+Additionally, a charged lepton corresponding to the neutrino/antineutrino flavor is produced.
 
-\subsection{Vacuum Oscillations}
 
-\subsection{Oscillations in Matter}
+\paragraph{Resonant scattering (RES)} describes the process of a neutrino scattering off a nucleon producing an excited state of the nucleon in addition to a charged lepton.
+RES is the leading process at \SI{1.5e-5}{\gev} for neutrinos and \SI{1.5e-8}{\gev} for antineutrinos.
 
-% \subsection{Three-Flavor Oscillations}
 
-\subsection{Atmospheric Neutrino Oscillations}
+\paragraph{Deep inelastic scattering (DIS)} occurs if a neutrino carries sufficient energy to resolve the underlying structure of the nucleon and interacts with one of the composing quarks.
+DIS is the dominant process above \SI{10}{\gev}. The nucleon breaks up and a lepton accompanied by a set of hadronic final states is produced.
+Whether the lepton is the charged lepton corresponding to the interacting neutrino type, or the neutrino itself depends on the type of DIS interaction.
+DIS happens via CC as in 
+\begin{equation}
+    \begin{split}
+        \nu_l + N \rightarrow l^- + X, \\
+        \bar{\nu}_l + N \rightarrow l^+ + X, \\
+    \end{split}
+    \labeq{dis_cc}
+\end{equation}
+or NC interactions as
+\begin{equation}
+    \nu_l + N \rightarrow \nu_l + X.
+        \labeq{dis_nc}
+\end{equation}
+Here, $X$ stands for any set of final state hadrons and $N$ for the nucleon.
+The Feynman diagrams for the processes in \refeq{dis_cc} and \refeq{dis_nc} are shown in \reffig{dis_feynman}.
 
-\subsubsection{Neutrino Production in the Atmosphere}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_CC_nu_new.pdf}
+    \hspace{0.8cm}
+    \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_NC_nu_new.pdf}
+    \caption[Neutrino-nucleon deep inelastic scattering]{Feynman diagrams for deep inelastic scattering of a neutrino with a nucleon via charged-current (left) and neutral current (right) interactions. Taken from \cite{ATerliuk}.}
+    \labfig{dis_feynman}
+\end{figure}
+\todo{Explain momenta and momentum transfer (p,q) in these figures.}
+
+
+\subsection{Oscillations} \labsec{neutrino_oscillations}
+
 
 \todo{(Re-)write BSM chapter for PhD thesis (just copy paste from M.Sc.).}
 
@@ -390,7 +397,7 @@ This is mainly due to uncertainties in the primary cosmic ray spectrum and model
 I don't think this is true - the normalization is known to ~5\% if you trust Anatoli/Juan Pablo. Please have a look at more recent publications on this topic. }
 
 
-\subsubsection{Oscillations of Atmospheric Neutrinos}
+
 
 There are two ways to describe neutrino wave functions based on their Hamiltonian eigenvalues \sidecite{BILENKY1978225}, as mass eigenstates or as flavor eigenstates.
 When applying a plane wave approach to explain the propagation of neutrinos in vacuum, their mass eigenstates evolve as
@@ -482,63 +489,4 @@ The probability in \refeq{probability_detailed} is only nonzero if there are neu
 Additionally, there must be a mass-squared difference $\Delta m^2$ and nonzero mixing between the states.
 Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing.
 
-
-% \subsubsection{Two-Neutrino Approximation}
-
-% Looking at Equation~\eqref{eq:probability_detailed} it can be noted, that the oscillation frequency for a neutrino with a given energy depends on the mass-squared splitting.
-% From experiments, we know that the mass splittings $\Delta m^2_{21}$ and $\Delta m^2_{23}$ differ by two orders of magnitude \sidecite{PhysRevD.98.030001}.
-% As a result, neutrino oscillation experiments are usually designed to measure at the scale of one of the two mass splittings.
-% When observing one of the two oscillation frequencies, the other will either be too fast or too slow to be observed.
-% The oscillations seen in an experiment can, therefore, be described in a simplified two-neutrino scheme, where we only assume two mass eigenstates $\nu_1$, $\nu_2$ that are connected to two flavor eigenstates $\nu_\alpha$, $\nu_\beta$ by the mixing matrix
-% \begin{equation} 
-%     U=\left( 
-%         \begin{matrix}
-%             \mathrm{cos}\theta & \mathrm{sin}\theta \\
-%             -\mathrm{sin}\theta & \mathrm{cos}\theta \\
-%         \end{matrix}
-%         \right),
-%     \end{equation}
-% which is a two-dimensional rotation matrix that depends only on one mixing angle $\theta$ between the two states.
-% Consequently, the resulting survival/transition probability from Equation~\eqref{eq:probability_detailed} only depends on one mass-squared splitting $\Delta m^2$ and one mixing angle.
-
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[trim=40 10 60 60, clip, width=0.6\textwidth]{figures/oscillation_probabilities.pdf}
-%     \caption[Vacuum oscillation probabilities in the two-neutrino approximation]
-%     {Transition and survival probability for muon neutrinos in the two-neutrino approximation in vacuum (equations \eqref{eq:transition_probability} and~\eqref{eq:survival_probability}) plotted as a function of $L/E$ for $\Delta m^{2}_{32}=2.54\cdot 10^{-3}\,\mathrm{eV}^2$ and $\sin^{2}(\theta_{23}) = 0.8$.}
-%     \labfig{oscillation_probabilities}
-% \end{figure}
-
-% DeepCore is sensitive to the fast atmospheric oscillations caused by the bigger mass splitting $\Delta m^2_{23}$, because it is optimized for neutrinos at energies of $\mathcal{O}$(25\,GeV), which have an oscillation length related to $\Delta m^2_{23}$ on the order of the Earth's diameter.
-% The current global best fit value is $\Delta m^2_{23}=2.54\cdot 10^{-3}\mathrm{eV}^2$ \sidecite{PhysRevD.98.030001}.
-% Here the dominant oscillation happens between the flavor states $\nu_\mu$ and $\nu_\tau$.
-% Formulating the neutrino oscillation phase of Equation~\eqref{eq:probability_detailed} in appropriate units used by the experiment, we get 
-% \begin{equation}
-%     \frac{c^3\Delta m^2L}{4E\hbar} \approx 1.267\frac{\Delta m^2\,[\mathrm{eV}^2]\cdot L\,[\mathrm{km}]}{E\,[\mathrm{GeV}]}.
-% \end{equation}
-% Inserting this for the two-flavor approximation into the transition probability, we end up with
-% \begin{equation}
-%     P_{\nu_\mu \rightarrow \nu_\tau}(L)
-%     = 
-%     \textrm{sin}^2(2\theta)\textrm{sin}^2\Big( 1.267 \cdot \frac{\Delta m^2\,[\mathrm{eV}^2]\cdot L\,[\mathrm{km}]}{E\,[\mathrm{GeV}]} \Big),
-%     \label{eq:transition_probability}
-% \end{equation}
-% whereas the survival probability becomes
-% \begin{equation}
-%     P_{\nu_\mu \rightarrow \nu_\mu}(L)
-%     = 1 - P_{\nu_\mu \rightarrow \nu_\tau}(L)
-%     =
-%     1 - \textrm{sin}^2(2\theta)\textrm{sin}^2\Big( 1.267 \cdot \frac{\Delta m^2\,[\mathrm{eV}^2]\cdot L\,[\mathrm{km}]}{E\,[\mathrm{GeV}]} \Big).
-%     \label{eq:survival_probability}
-% \end{equation}
-% The transition and survival probability in the two-neutrino approximation are plotted against the traveled neutrino distance divided by the energy in Figure~\ref{fig:oscillation_probabilities}.
-% The mixing angle in $\sin^{2}(\theta_{23})$ dictates the amplitude of the oscillation while the oscillation length (distance between extrema) is governed by the mass splitting $\Delta m^{2}_{32}$.
-
-
-\subsubsection{Matter Effects}
-
-% \subsection{Solar neutrinos}
-% \subsection{Reactor neutrinos}
-% \subsection{Accelerator neutrinos}
-% \subsection{Anomalies in Neutrino Oscillation Measurements}
-\section{Open Questions in Neutrino Particle Physics}
+\subsection{Heavy Neutral Lepton Production and Decay in IceCube DeepCore} \labsec{double_cascade_morphology}
