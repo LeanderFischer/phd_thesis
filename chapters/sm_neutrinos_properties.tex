@@ -5,55 +5,99 @@
 \labch{sm_neutrinos_properties}
 
 
-\todo{(Re-)write SM neutrino chapter for PhD thesis (just copy paste from M.Sc.).}
-
-
-This chapter introduces the basic properties of neutrinos, their place in the Standard Model of particle physics (SM) and their peculiarities following the description of \sidecite{Thomson_Particle}.
-
-% Section \refsec{neutrino_properties} and Section \refsec{neutrino_interactions} state the general properties of neutrinos and the neutrino-nucleon interactions.
-% After describing atmospheric neutrinos in Section \refsec{neutrino_atmospheric} the phenomenon of neutrino oscillations is presented in Section \refsec{neutrino_oscillations}.
-
-
-\section{The Standard Model}
-
 some history on the SM?
 
 
 Yang-Mills theory (relativistic quantum field theory)
 EM, weak, strong interactions
-SU(3) x SU(2) x U(1) local gauge symmetry, with conserved quantities \textit{color}, \textit{left-handed chirality}, and \textit{weak hypercharge}
+
+
+all matter is made up of fermions, which are divided into quarks and leptons
+leptons are excitations of fermion fiels (Dirac type)
+bosons describe the interactions between the fermions that have to fulfil overall symmetry of the theory
 
 completion in the mid-1970s
+gives very accurate predictions of Weak, Strong, and EM interactions
+also explains mechanisms giving quarks and leptons their mass - the Higgs mechanism - and predicts the existence of the Higgs boson which was discovered in 2012 at the LHC\todo{cite Higgs}
 
+it cannot explain some observations/phenomena like gravity (incompatibility with general relativity) or cosmological observations (dark matter, dark energy, matter-antimatter asymmetry)
+
+and it does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extensions to the SM is needed in order to explain them 
+
+
+
+\todo{(Re-)write SM neutrino chapter for PhD thesis (just copy paste from M.Sc.).}
+
+
+This chapter introduces the basic properties of neutrinos, their place in the Standard Model of particle physics (SM) and their peculiarities following the description of \sidecite{giunti, schwartz}.
+
+
+
+\section{The Standard Model}
 
 \subsection{Electroweak Symmetry Breaking}
 
-Through spontaneous symmetry breaking of SU(2) x U(1) the gauge bosons of the weak interaction (W and Z bosons) acquire their masses. 
+SU(3)$_C$ x SU(2)$_L$ x U(1)$_Y$ local gauge symmetry, with conserved quantities $C$, \textit{color}, $L$, \textit{left-handed chirality}, and $Y$, \textit{weak hypercharge}
+
+Through spontaneous symmetry breaking of SU(2)$_L$ x U(1)$_Y$ the gauge bosons of the weak interaction (W and Z bosons) acquire their masses. 
 
 
-Without the broken symmetry, they would be massless, like the exchange bososn of the SU(3) symmetry (gluons).
+Without the broken symmetry, they would be massless, like the exchange bososn of the SU(3)$_C$ symmetry (gluons).
 
-% write Higgs Lagrangian as equation
+the Lagrangian of the Higgs field is given by
+
 \begin{equation}
     \mathcal{L}_{\rm Higgs} = (D_\mu \Phi^\dagger) (D^\mu \Phi) - \lambda \left( \Phi^\dagger \Phi - \frac{v^2}{2} \right) ^2
     \;,
     \labeq{higgs_lagrangian}
 \end{equation}
 
-with parameters $\lambda$ and $v$. $\lambda$ is assumed to be positive and.
+with parameters $\lambda$ and $v$. $\lambda$ is assumed to be positive.
+
+
+
+\begin{equation}
+    \Phi = \binom{\Phi^+}{\Phi^0}
+    \;,
+    \labeq{higgs_doublet}
+\end{equation}
+
+
+
+non-zero \textit{vacuum expectation value (vev)} at minimum of potential at $\Phi^\dagger \Phi = \frac{v^2}{2}$
+
+vacuum is electrically neutral, so it can only come from a neutral component of the Higgs doublet as
+\begin{equation}
+    \Phi_\rm{vev} = \frac{1}{\sqrt{2}} \binom{0}{v}
+    \;.
+    \labeq{higgs_vev}
+\end{equation}
+
 
 \subsection{Fermion Masses}
 
-\subsubsection{Charged - Leptons and Quarks}
-\subsubsection{Uncharged - Neutrinos}
+mass term for charged fermions with spin-1/2 is given by
 
-\paragraph{Dirac}
-\paragraph{Majorana}
+\begin{equation}
+    \mathcal{L}_{\rm Dirac} = m (\bar{\Psi}_R \Psi_L - \bar{\Psi}_L \Psi_R)
+    \;,
+    \labeq{dirac_lagrangian}
+\end{equation}
+
+a product of left- and right-handed Weyl spinors $\Psi_{L/R}$.
+
+which is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations. Adding a Yukawa term coupling the fermion fields to the Higgs field recovers the invariance and gives the fermions their masses.
+
+\begin{equation}
+    \mathcal{L}_{\rm Yukawa} = -y \bar{L}_L \Phi e_R + {\rm h.c.}
+    \;,
+    \labeq{yukawa_lagrangian}
+\end{equation}
+
+$y$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet
 
 
-\subsection{Mass Mechanisms}
-\paragraph{See-Saw Variants}
-\paragraph{Radiative Neutrino Masses}
+with the vev this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{y v}{\sqrt{2}}$.
 
 
 \section{Evidence for Beyond Standard Model Physics}
@@ -246,14 +290,29 @@ Based on this formulation and assuming that only the mixing with the tau sector 
 
 \subsection{Existing Constraints on Heavy Neutral Leptons} \labsec{HNL_mixing_constraints}
 
+\subsubsection{xx contraints}
+
+\subsubsection{yy contraints}
 
 
 \section{Atmospheric Neutrinos}
 
+
+
 \subsection{Properties and Interactions}
 
+
+
+\subsection{Mass Mechanisms}
+
+\paragraph{Dirac}
+\paragraph{Majorana}
+
+\paragraph{See-Saw Variants}
+
+\paragraph{Radiative Neutrino Masses}
+
 \subsubsection{Quantum Numbers}
-\subsubsection{Mass}
 \subsubsection{Active Neutrino Flavors}
 
 \subsubsection{Weak Interactions after Symmetry-Breaking}
