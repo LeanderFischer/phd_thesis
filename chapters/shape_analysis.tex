@@ -17,37 +17,57 @@ The final level sample of this analysis always consists of the neutrino and muon
 
 \subsection{Expected Rates/Events}
 
-The rates and the expected events in \SI{10}{years} are shown in \reftab{combined_final_level_expectation}. For the HNL the expectation depends on the mass and the mixing. Shown here are two example mixings for all the three masses. A mixing of $0.0$ would result in no HNL events at all.
+The rates and the expected number of events for the SM background are shown in \reftab{background_final_level_expectation}. The explicit detector livetime in the \SI{10}{} years data taking period is \SI{9.28}{years}. The rates are calculated by summing the weights of all events in the final level sample, while the uncertainties are calculated by taking the square root of the sum of the weights squared. The expected number of events is calculated by multiplying the rate with the livetime. The individual fractions show that this sample is neutrino dominated where the majority of events are $\nu_\mu$-CC events.
 
 \begin{table}
-    \begin{tabular}{ llcc }
+    \begin{tabular}{ lccc }
     \hline\hline
-
-    \textbf{Type} & \textbf{Rate [\si{\milli\hertz}]} & \multicolumn{2}{c}{\textbf{Events (in \SI{10}{years})}} \\ 
-
+    \textbf{Type} & \textbf{Rate [\si{\milli\hertz}]} & \textbf{Events (in \SI{9.28}{years})} & \textbf{Fraction [\si{\percent}]} \\ 
     \hline\hline
-
-    $\nu_\mu^\rm{CC}$   & 0.3522 & \multicolumn{2}{c}{103063 ± 113} \\
-    $\nu_e^\rm{CC}$     & 0.1411 & \multicolumn{2}{c}{41299 ± 69} \\
-    $\nu_\tau^\rm{CC}$  & 0.0348 & \multicolumn{2}{c}{10187 ± 22} \\
-    $\nu_\rm{NC}$       & 0.0667 & \multicolumn{2}{c}{968 ± 57} \\
-    $\mu$               & 0.0033 & \multicolumn{2}{c}{19522 ± 47} \\
+    $\nu_\mu^\rm{CC}$   & 0.3531 & 103321 $\pm$ 113 & 58.9 \\
+    $\nu_e^\rm{CC}$     & 0.1418 & 41490 $\pm$ 69 & 23.7 \\
+    $\nu_\rm{NC}$       & 0.0666 & 19491 $\pm$ 47 & 11.1 \\
+    $\nu_\tau^\rm{CC}$  & 0.0345 & 10094 $\pm$ 22 & 5.8 \\
+    $\mu$               & 0.0032 & 936 $\pm$ 15 & 0.5 \\
     \hline
-    HNL & & \textbf{$|U_{\tau4}|^2=10^{-3}$} & \textbf{$|U_{\tau4}|^2=10^{-1}$} \\ 
-    \hline
-    $m_4$=\SI{0.3}{\gev} & x.xxx & 2.5 & 1342.5\\
-    $m_4$=\SI{0.6}{\gev} & x.xxx & 9.0 & 1207.0\\
-    $m_4$=\SI{1.0}{\gev} & x.xxx & 9.6 & 966.5 \\
-    
+    total               & 0.5991 & 175336 $\pm$ 143 & 100.0  \\
     \hline
     \end{tabular}
-\caption[Final level event/rate expectation]{Final level rates and event expectation of the SM background particle types and the HNL signal for all three masses and two example mixing values.}
-\labtab{combined_final_level_expectation}
+\caption[Final level background event/rate expectation]{Final level rates and event expectation of the SM background particle types.}
+\labtab{background_final_level_expectation}
 \end{table}
 
-\todo{get correct final level rates from my pipeline(s)}
-\todo{add rate and Poisson error for HNL samples}
-\todo{maybe just pick one mixing?}
+\todo{Should I adapt the total numbers to match the sum of the rounded individual parts?}
+
+\reftab{signal_final_level_expectation} shows the rates and expected number of events for the HNL signal simulation. The expectation depends on the mass and the mixing and shown here are two example mixings for all the three masses that are being tested in this work. A mixing of $0.0$ would result in no HNL events at all. It can already be seen that for the smaller mixing of $|U_{\tau4}|^2=10^{-3}$ the expected number of events is very low, while at the larger mixing of $|U_{\tau4}|^2=10^{-1}$ the number is comparable to the amount of muons in the background sample. 
+
+\begin{table*}[h]
+    \begin{tabular}{ lcc }
+    \hline\hline
+
+    \textbf{HNL mass} & \textbf{Rate [\si{\micro\hertz}]} & \textbf{Events (in \SI{9.28}{years})} \\
+
+    \hline\hline
+    \textbf{$|U_{\tau4}|^2=10^{-1}$} & & \\ 
+    \hline
+    \SI{0.3}{\gev} & 3.3298 $\pm$ 0.0053 & 974.5 $\pm$ 1.6 \\
+    \SI{0.6}{\gev} & 3.0583 $\pm$ 0.0058 & 895.0 $\pm$ 1.7 \\
+    \SI{1.0}{\gev} & 2.4988 $\pm$ 0.0059 & 731.3 $\pm$ 1.7 \\
+    \hline
+    \textbf{$|U_{\tau4}|^2=10^{-3}$} & & \\ 
+    \hline
+    \SI{0.3}{\gev} & 0.0057 & 1.67 $\pm$ 0.01 \\
+    \SI{0.6}{\gev} & 0.0220 & 6.44 $\pm$ 0.01 \\
+    \SI{1.0}{\gev} & 0.0248 & 7.27 $\pm$ 0.01 \\
+    % \SI{0.3}{\gev} & 0.00571 $\pm$ 0.00002 & 1.67 $\pm$ 0.01 \\
+    % \SI{0.6}{\gev} & 0.02200 $\pm$ 0.00004 & 6.44 $\pm$ 0.01 \\
+    % \SI{1.0}{\gev} & 0.02484 $\pm$ 0.00005 & 7.27 $\pm$ 0.01 \\
+    \hline
+    \end{tabular}
+\caption[Final level signal event/rate expectation]{Final level rates and event expectations of the HNL signal for all three masses and two example mixing values.}
+\labtab{signal_final_level_expectation}
+\end{table*}
+
 
 \subsection{Analysis Binning}
 
