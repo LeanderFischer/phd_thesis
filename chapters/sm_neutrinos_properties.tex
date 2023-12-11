@@ -11,45 +11,67 @@ The \textit{Standard Model (SM)} of particle physics is a Yang-Mills theory \sid
 
 The initial idea of the theory is associated with the works of Weinberg \sidecite{weinberg}, Glashow \sidecite{Glashow}, and Salam \sidecite{Salam}, that proposed a unified description of EM and weak interactions as a theory of a spontaneously broken SU(2) x U(1) symmetry for leptons, predicting a neutral massive vector boson $Z^0$, a massive charged vector boson $W^\pm$, and a massless photon $\gamma$ as the gauge bosons. The Higgs mechanism \sidecite{higgs}, describing the breaking of the symmetry, predicts the existence of an additional scalar particle, the Higgs boson, giving the $W^\pm$ and $Z^0$ bosons their mass. The Higgs boson was discovered in 2012 at the LHC\todo{Also cite this? Didn't find a good reference, only the press releases.}.
 
-Gell-Mann and Zweig proposed the quark model in 1964 \sidecite{gellmann, zweig}, which was completed by the discovery of non-abelian gauge theories \sidecite{non_abel_gauge} to form the SU(3) symmetry of the strong interaction called \textit{quantum chromodynamics (QCD)}. QDC describes the interaction between quarks and gluons which completed the full picture of the SM in the mid-1970s.
+Gell-Mann and Zweig proposed the quark model in 1964 \sidecite{gellmann, zweig}, which was completed by the discovery of non-abelian gauge theories \sidecite{non_abel_gauge} to form the SU(3) symmetry of the strong interaction called \textit{quantum chromodynamics (QCD)}. QDC describes the interaction between quarks and gluons which completed the full picture of the SM in the mid-1970s. Together with the electroweak theory, the SM is a SU(3)$_C$ x SU(2)$_L$ x U(1)$_Y$ local gauge symmetry, with the conserved quantities $C$, \textit{color}, $L$, \textit{left-handed chirality}, and $Y$, \textit{weak hypercharge}
 
 In the following, the basic properties of the SM are described, following the derivations of \sidecite{giunti, schwartz}.
 
 
+\subsection{Fundamental Fields}
+
+\begin{margintable}
+    \footnotesize
+    \begin{tabular}{ ccccc }
+    \hline\hline    
+     & \multicolumn{3}{c}{\textbf{Type}} & \textbf{Q} \\     
+    \hline\hline    
+    \multirow{2}{*}[-0.3em]{ quarks } & u & c & t & +2/3 \\
+    & d & s & b & -1/3 \\
+    \hline
+    \multirow{2}{*}[-0.3em]{ leptons } & $\nu_e$ & $\nu_{\mu}$ & $\nu_{\tau}$ & 0 \\
+     & $e$ & ${\mu}$ & ${\tau}$ & -1 \\
+    \hline
+    \end{tabular}
+\caption[Standard model fermions]{Fermions in the Standard Model. Shown are all three generations of quarks and leptons with their electric charge $Q$.}
+\labtab{fermions}
+\end{margintable}
+
+The number of bosons is dependent on the generators of the symmetry groups, while strength depends on coupling constants. There are eight massless gluons as generators of the SU(3)$_C$ group, corresponding to the strong force which conserves color charge. The spontaneous symmetry breaking of the SU(2)$_L$ x U(1)$_Y$ group mixes the $W_1, W_2, W_3$, and $B$ boson fields into the massive bosons as
+\begin{equation}
+    W^\pm = \frac{1}{\sqrt{2}} (W_1 \mp i W_2)
+\end{equation}
+and
+\begin{equation}
+    Z^0 = \cos \theta_W W_3 - \sin \theta_W B
+    \;,
+\end{equation}
+with $\theta_W$ being the \textit{Weinberg angle}. The massless photon field is given by
+\begin{equation}
+    A = \sin \theta_W W_3 + \cos \theta_W B
+\end{equation}
+and its conserved quantity is the electric charge $Q$. Fermions are divided into six quarks and six leptons. Weak, strong, and EM force act on the quarks, and they are always found in bound form as baryons or mesons. Leptons do not participate in the strong interaction and only the electrically charged leptons are massive and are effected by the EM force, while neutrinos are massless and only interact via the weak force. Each charged lepton has an associated neutrino, which it interacts with in \textit{charged-current (CC)} weak interactions, that will be explained in more detail in \refsec{weak_interactions}. The fermions are listed in \reftab{fermions}.
+
+
 \subsection{Electroweak Symmetry Breaking}
 
-\todo{(Re-)write SM neutrino chapter for PhD thesis (just copy paste from M.Sc.).}
-
-SU(3)$_C$ x SU(2)$_L$ x U(1)$_Y$ local gauge symmetry, with conserved quantities $C$, \textit{color}, $L$, \textit{left-handed chirality}, and $Y$, \textit{weak hypercharge}
-
-Through spontaneous symmetry breaking of SU(2)$_L$ x U(1)$_Y$ the gauge bosons of the weak interaction (W and Z bosons) acquire their masses. 
-
-
-Without the broken symmetry, they would be massless, like the exchange boson of the SU(3)$_C$ symmetry (gluons).
-
-the Lagrangian of the Higgs field is given by
-
+To elaborate the process of spontaneous symmetry breaking through which the gauge bosons of the weak interaction acquire their masses, the Lagrangian of the Higgs field is considered as
 \begin{equation}
-    \mathcal{L}_{\rm Higgs} = (D_\mu \Phi^\dagger) (D^\mu \Phi) - \lambda \left( \Phi^\dagger \Phi - \frac{v^2}{2} \right) ^2
+    \mathcal{L}_\rm{Higgs} = (D_\mu \Phi^\dagger) (D^\mu \Phi) - \lambda \left( \Phi^\dagger \Phi - \frac{v^2}{2} \right) ^2
     \;,
     \labeq{higgs_lagrangian}
 \end{equation}
-
-with parameters $\lambda$ and $v$. $\lambda$ is assumed to be positive.
-
-
-
+with parameters $\lambda$ and $v$, where $\lambda$ is assumed to be positive. $\Phi$ is the Higgs doublet, which is defined as
 \begin{equation}
     \Phi = \binom{\Phi^+}{\Phi^0}
     \;,
     \labeq{higgs_doublet}
 \end{equation}
-
-
-
-non-zero \textit{vacuum expectation value (vev)} at minimum of potential at $\Phi^\dagger \Phi = \frac{v^2}{2}$
-
-vacuum is electrically neutral, so it can only come from a neutral component of the Higgs doublet as
+with the charged component $\Phi^+$ and the neutral component $\Phi^0$. The covariant derivative is given by
+\begin{equation}
+    D_\mu = \partial_\mu - i g_2 \frac{\sigma^i}{2} W^i_\mu - \frac{1}{2} i g_1 B_\mu
+    \;,
+    \labeq{covariant_derivative}
+\end{equation}
+with the Pauli matrices $\sigma^i$ and the gauge boson fields $W^i_\mu$ and $B_\mu$ of the SU(2)$_L$ and U(1)$_Y$ groups, respectively. The coupling constants $g_2$ and $g_1$ are the respective coupling constants which are related to the Weinberg angle as $\tan{\theta_W} = \frac{g_1}{g_2}$. The Higgs potential has a non-zero \textit{vacuum expectation value (vev)} at the minimum of the potential at $\Phi^\dagger \Phi = \frac{v^2}{2}$. Since the vacuum is electrically neutral, it can only come from a neutral component of the Higgs doublet as
 \begin{equation}
     \Phi_\rm{vev} = \frac{1}{\sqrt{2}} \binom{0}{v}
     \;.
@@ -59,10 +81,11 @@ vacuum is electrically neutral, so it can only come from a neutral component of 
 
 \subsection{Fermion Masses}
 
+
 mass term for charged fermions with spin-1/2 is given by
 
 \begin{equation}
-    \mathcal{L}_{\rm Dirac} = m (\bar{\Psi}_R \Psi_L - \bar{\Psi}_L \Psi_R)
+    \mathcal{L}_\rm{Dirac} = m (\bar{\Psi}_R \Psi_L - \bar{\Psi}_L \Psi_R)
     \;,
     \labeq{dirac_lagrangian}
 \end{equation}
@@ -72,7 +95,7 @@ a product of left- and right-handed Weyl spinors $\Psi_{L/R}$.
 which is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations. Adding a Yukawa term coupling the fermion fields to the Higgs field recovers the invariance and gives the fermions their masses.
 
 \begin{equation}
-    \mathcal{L}_{\rm Yukawa} = -y \bar{L}_L \Phi e_R + {\rm h.c.}
+    \mathcal{L}_\rm{Yukawa} = -y \bar{L}_L \Phi e_R + {\rm h.c.}
     \;,
     \labeq{yukawa_lagrangian}
 \end{equation}
@@ -305,7 +328,9 @@ Based on this formulation and assuming that only the mixing with the tau sector 
 \subsubsection{Quantum Numbers}
 \subsubsection{Active Neutrino Flavors}
 
-\subsubsection{Weak Interactions after Symmetry-Breaking}
+\subsubsection{Weak Interactions after Symmetry-Breaking} \labsec{weak_interactions}
+
+\todo{(Re-)write for PhD thesis (just copy paste from M.Sc.).}
 
 The neutrino is an elementary particle in the SM \sidecite{Thomson_Particle}.
 It belongs to the class of leptons, which itself is a subclass of elementary fermions (spin ${\frac{1}{2}}$ particles).
@@ -326,7 +351,7 @@ There are three distinct neutrino flavors - electron neutrinos, muon neutrinos a
 
 In the SM, weak interactions are mediated by the three massive bosons $\textbf{W}^+$, $\textbf{W}^-$, and $\textbf{Z}^0$ \sidecite{Thomson_Particle}.
 The large boson masses ($m_{\textbf{W}}\sim\SI{80}{\gev}, m_{\textbf{Z}}\sim\SI{90}{\gev}$) result in a short range of the force of about \SI{10e-18}{\meter}.
-Weak interactions carried by $\textbf{W}^\pm$ bosons are called charged-current (CC) interactions, because charge is transferred between the interacting particles.
+Weak interactions carried by $\textbf{W}^\pm$ bosons are called CC interactions, because charge is transferred between the interacting particles.
 In CC interactions, a neutrino is converted into its corresponding charged lepton or vice versa.
 Neutral current (NC) interactions are those mediated by $\textbf{Z}^0$ bosons.
 Here no charge is transferred.
