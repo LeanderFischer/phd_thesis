@@ -7,11 +7,11 @@
 
 \section{The Standard Model}
 
-The \textit{Standard Model (SM)} of particle physics is a Yang-Mills theory \sidecite{yang_mills} providing very accurate predictions of weak, strong, and \textit{electromagnetic (EM)} interactions. It is a relativistic quantum field theory that relies on gauge invariance, where all matter is made up of fermions, which are divided into quarks and leptons, and bosons describe the interactions between the fermions that have to fulfil the overall symmetry of the theory. Leptons are excitations of Dirac-type fermion fields.
+The \textit{Standard Model (SM)} of particle physics is a Yang-Mills theory \sidecite[0.8cm]{yang_mills} providing very accurate predictions of weak, strong, and \textit{electromagnetic (EM)} interactions. It is a relativistic quantum field theory that relies on gauge invariance, where all matter is made up of fermions, which are divided into quarks and leptons, and bosons describe the interactions between the fermions that have to fulfil the overall symmetry of the theory. Leptons are excitations of Dirac-type fermion fields.
 
-The initial idea of the theory is associated with the works of Weinberg \sidecite{weinberg}, Glashow \sidecite{Glashow}, and Salam \sidecite{Salam}, that proposed a unified description of EM and weak interactions as a theory of a spontaneously broken SU(2) x U(1) symmetry for leptons, predicting a neutral massive vector boson $Z^0$, a massive charged vector boson $W^\pm$, and a massless photon $\gamma$ as the gauge bosons. The Higgs mechanism \sidecite{higgs}, describing the breaking of the symmetry, predicts the existence of an additional scalar particle, the Higgs boson, giving the $W^\pm$ and $Z^0$ bosons their mass. The Higgs boson was discovered in 2012 at the LHC\todo{Also cite this? Didn't find a good reference, only the press releases.}.
+The initial idea of the theory is associated with the works of Weinberg \sidecite{weinberg}, Glashow \sidecite{Glashow}, and Salam \cite{Salam}, that proposed a unified description of EM and weak interactions as a theory of a spontaneously broken SU(2) x U(1) symmetry for leptons, predicting a neutral massive vector boson $Z^0$, a massive charged vector boson $W^\pm$, and a massless photon $\gamma$ as the gauge bosons. The Higgs mechanism \sidecite{higgs}, describing the breaking of the symmetry, predicts the existence of an additional scalar particle, the Higgs boson, giving the $W^\pm$ and $Z^0$ bosons their mass. The Higgs boson was discovered in 2012 at the LHC\todo{Also cite this? Didn't find a good reference, only the press releases.}.
 
-Gell-Mann and Zweig proposed the quark model in 1964 \sidecite{gellmann, zweig}, which was completed by the discovery of non-abelian gauge theories \sidecite{non_abel_gauge} to form the SU(3) symmetry of the strong interaction called \textit{quantum chromodynamics (QCD)}. QDC describes the interaction between quarks and gluons which completed the full picture of the SM in the mid-1970s. Together with the electroweak theory, the SM is a SU(3)$_C$ x SU(2)$_L$ x U(1)$_Y$ local gauge symmetry, with the conserved quantities $C$, \textit{color}, $L$, \textit{left-handed chirality}, and $Y$, \textit{weak hypercharge}
+Gell-Mann and Zweig proposed the quark model in 1964 \sidecite{gellmann, zweig}, which was completed by the discovery of non-abelian gauge theories \cite{non_abel_gauge} to form the SU(3) symmetry of the strong interaction called \textit{quantum chromodynamics (QCD)}. QDC describes the interaction between quarks and gluons which completed the full picture of the SM in the mid-1970s. Together with the electroweak theory, the SM is a SU(3)$_C$ x SU(2)$_L$ x U(1)$_Y$ local gauge symmetry, with the conserved quantities $C$, \textit{color}, $L$, \textit{left-handed chirality}, and $Y$, \textit{weak hypercharge}
 
 In the following, the basic properties of the SM are described, following the derivations of \sidecite{giunti, schwartz}.
 
@@ -81,29 +81,19 @@ with the Pauli matrices $\sigma^i$ and the gauge boson fields $W^i_\mu$ and $B_\
 
 \subsection{Fermion Masses}
 
-
-mass term for charged fermions with spin-1/2 is given by
-
+The mass term for charged fermions with spin-1/2 is given by
 \begin{equation}
     \mathcal{L}_\rm{Dirac} = m (\bar{\Psi}_R \Psi_L - \bar{\Psi}_L \Psi_R)
     \;,
     \labeq{dirac_lagrangian}
 \end{equation}
-
-a product of left- and right-handed Weyl spinors $\Psi_{L/R}$.
-
-which is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations. Adding a Yukawa term coupling the fermion fields to the Higgs field recovers the invariance and gives the fermions their masses.
-
+composed of the product of left- and right-handed Weyl spinors $\Psi_{L/R}$. This term is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations, but adding a Yukawa term
 \begin{equation}
     \mathcal{L}_\rm{Yukawa} = -y \bar{L}_L \Phi e_R + {\rm h.c.}
     \;,
     \labeq{yukawa_lagrangian}
 \end{equation}
-
-$y$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet
-
-
-with the vev this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{y v}{\sqrt{2}}$.
+coupling the fermion fields to the Higgs field, recovers the invariance and gives the fermions their masses. Here, $y$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{y v}{\sqrt{2}}$.
 
 
 \section{Evidence for Beyond Standard Model Physics}
@@ -112,16 +102,19 @@ BSM stuff!
 
 it cannot explain some observations/phenomena like gravity (incompatibility with general relativity) or cosmological observations (dark matter, dark energy, matter-antimatter asymmetry)
 
-
 and it does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extensions to the SM is needed in order to explain them 
 
-\begin{itemize}
-    \item hierarchy problem
-    \item strong-CP
-    \item Matter-antimatter asymmetry
-    \item Dark matter
-    \item Neutrino masses
-\end{itemize}
+
+\subsection{Hierarchy Problem}
+
+\subsection{Strong-CP Problem}
+
+\subsection{Matter-Antimatter Asymmetry}
+
+\subsection{Dark Matter}
+
+\subsection{Neutrino Masses}
+
 
 
 \section{Heavy Neutral Leptons} \labsec{hnl_theory}
