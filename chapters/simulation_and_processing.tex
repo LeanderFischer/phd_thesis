@@ -397,7 +397,7 @@ Another set of cuts is applied to make sure the agreement between data and MC is
 
 There are multiple sources of systematic uncertainties related to the event generation and processing explained in this chapter. 
 % Since variations in the range of these uncertainties change the expected number of events in the analysis, it is important to estimate their impact on the final results.
-All uncertainties considered in this work are implemented with parameters that can be varied continuously so that a simultaneous fit of the physics and systematic parameters can be performed.Where possible, a correct model of the effect is used, but in many cases the variations are captured by effective parameters. Uncertainties that solely scale the total event rate are not included individually, since the analysis only uses the relative distribution of events. A single scaling parameter $A_\rm{eff}$ is used to scale the total neutrino rate instead.
+All uncertainties considered in this work are implemented with parameters that can be varied continuously so that a simultaneous fit of the physics and systematic parameters can be performed. Where possible, a correct model of the effect is used, but in many cases the variations are captured by effective parameters. Uncertainties that solely scale the total event rate are not included individually, since the analysis only uses the relative distribution of events. A single scaling parameter $A_\rm{eff}$ is used to scale the total neutrino rate instead.
 
 
 \subsection{Atmospheric Flux Uncertainties}
@@ -418,7 +418,7 @@ where $E^\star$ is the pivot energy and $\Delta\gamma$ is the correction to the 
 
 \paragraph{Hadronic interaction model:}
 
-Neutrinos are produced in the decaying hadrons in CR air showers, spanning a large parameter space that is sparsely evaluated by experimental data. To include uncertainties based on energy, direction, and neutrino flavor, the \textsc{MCEq} package \cite{mceq} is used to compute the distribution of atmospheric leptons and to estimate the impact of varying their contributions. The calculations results in the change in flux $d\Phi_\rm{l}/dB$ for a variation $dB$ of some parameter $B$. Scaling this variation by some value $b$, the modified total flux, s is then given by
+Neutrinos are produced in the decaying hadrons in CR air showers, spanning a large parameter space that is sparsely evaluated by experimental data. To include uncertainties based on energy, direction, and neutrino flavor, the \textsc{MCEq} package \cite{mceq} is used to compute the distribution of atmospheric leptons and to estimate the impact of varying their contributions. The calculations result in the change in flux $d\Phi_\rm{l}/dB$ for a variation $dB$ of some parameter $B$. Scaling this variation by some value $b$, the modified total flux, s is then given by
 \begin{equation}
     \Phi^\prime_\rm{l} = \Phi_\rm{l} + \left( b \cdot \frac{d\Phi_\rm{l}}{dB} \right)
     \;.

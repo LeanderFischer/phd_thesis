@@ -7,7 +7,7 @@
 
 \section{The Standard Model}
 
-The \textit{Standard Model (SM)} of particle physics is a Yang-Mills theory \sidecite[0.8cm]{yang_mills} providing very accurate predictions of weak, strong, and \textit{electromagnetic (EM)} interactions. It is a relativistic quantum field theory that relies on gauge invariance, where all matter is made up of fermions, which are divided into quarks and leptons, and bosons describe the interactions between the fermions that have to fulfil the overall symmetry of the theory. Leptons are excitations of Dirac-type fermion fields.
+The \textit{Standard Model (SM)} of particle physics is a Yang-Mills theory \sidecite[1.1cm]{yang_mills} providing very accurate predictions of weak, strong, and \textit{electromagnetic (EM)} interactions. It is a relativistic quantum field theory that relies on gauge invariance, where all matter is made up of fermions, which are divided into quarks and leptons, and bosons describe the interactions between the fermions that have to fulfil the overall symmetry of the theory. Leptons are excitations of Dirac-type fermion fields.
 
 The initial idea of the theory is associated with the works of Weinberg \sidecite{weinberg}, Glashow \sidecite{Glashow}, and Salam \cite{Salam}, that proposed a unified description of EM and weak interactions as a theory of a spontaneously broken SU(2) x U(1) symmetry for leptons, predicting a neutral massive vector boson $Z^0$, a massive charged vector boson $W^\pm$, and a massless photon $\gamma$ as the gauge bosons. The Higgs mechanism \sidecite{higgs}, describing the breaking of the symmetry, predicts the existence of an additional scalar particle, the Higgs boson, giving the $W^\pm$ and $Z^0$ bosons their mass. The Higgs boson was discovered in 2012 at the LHC\todo{Also cite this? Didn't find a good reference, only the press releases.}.
 
@@ -17,6 +17,26 @@ In the following, the basic properties of the SM are described, following the de
 
 
 \subsection{Fundamental Fields}
+
+Fermions in the SM are Weyl fields with either \textit{left-handed (LH)} or \textit{right-handed (RH)} chirality, meaning they are eigenvectors of the chirality operator $\gamma_5$ with $\gamma_5 \psi_{R/L}=\pm \psi_{R/L}$. Only LH particles transform under SU(2)$_L$. The Higgs field is a complex scalar field, a doublet of SU(2)$_L$, which is responsible for the spontaneous symmetry breaking of SU(2)$_L$ x U(1)$_Y$ to U(1)$_{EM}$. Local gauge transformations of the fields are given by
+\begin{equation}
+    \psi \rightarrow e^{i g \theta^a(x) T^a} \psi
+    \;,
+\end{equation}
+where $g$ is the coupling constant, $\theta^a(x)$ are the parameters of the transformation, and $T^a$ are the generators of the group, with $a$ counting them. The number of bosons is dependent on the generators of the symmetry groups, while the strength is defined by the coupling constants. There are eight massless gluons corresponding to the generators of the SU(3)$_C$ group. These mediate the strong force which conserves color charge. The $W_1, W_2, W_3$, and $B$ boson fields of the SU(2)$_L$ x U(1)$_Y$ group are mixed into the massive bosons through spontaneous symmetry breaking as
+\begin{equation}
+    W^\pm = \frac{1}{\sqrt{2}} (W_1 \mp i W_2)
+\end{equation}
+and
+\begin{equation}
+    Z^0 = \cos \theta_W W_3 - \sin \theta_W B
+    \;,
+\end{equation}
+with $\theta_W$ being the \textit{Weinberg angle}. The massless photon field is given by
+\begin{equation}
+    A = \sin \theta_W W_3 + \cos \theta_W B
+\end{equation}
+and its conserved quantity is the EM charge $Q$, which depends on the weak hypercharge, $Y$, and the third component of the weak isospin, $T_3$, as $Q = T_3 + Y/2$.
 
 \begin{margintable}
     \footnotesize
@@ -35,20 +55,7 @@ In the following, the basic properties of the SM are described, following the de
 \labtab{fermions}
 \end{margintable}
 
-The number of bosons is dependent on the generators of the symmetry groups, while strength depends on coupling constants. There are eight massless gluons as generators of the SU(3)$_C$ group, corresponding to the strong force which conserves color charge. The spontaneous symmetry breaking of the SU(2)$_L$ x U(1)$_Y$ group mixes the $W_1, W_2, W_3$, and $B$ boson fields into the massive bosons as
-\begin{equation}
-    W^\pm = \frac{1}{\sqrt{2}} (W_1 \mp i W_2)
-\end{equation}
-and
-\begin{equation}
-    Z^0 = \cos \theta_W W_3 - \sin \theta_W B
-    \;,
-\end{equation}
-with $\theta_W$ being the \textit{Weinberg angle}. The massless photon field is given by
-\begin{equation}
-    A = \sin \theta_W W_3 + \cos \theta_W B
-\end{equation}
-and its conserved quantity is the electric charge $Q$. Fermions are divided into six quarks and six leptons. Weak, strong, and EM force act on the quarks, and they are always found in bound form as baryons or mesons. Leptons do not participate in the strong interaction and only the electrically charged leptons are massive and are effected by the EM force, while neutrinos are massless and only interact via the weak force. Each charged lepton has an associated neutrino, which it interacts with in \textit{charged-current (CC)} weak interactions, that will be explained in more detail in \refsec{weak_interactions}. The fermions are listed in \reftab{fermions}.
+Fermions are divided into six quarks and six leptons. Weak, strong, and EM force act on the quarks, and they are always found in bound form as baryons or mesons. Leptons do not participate in the strong interaction and only the electrically charged leptons are massive and are effected by the EM force, while neutrinos are massless and only interact via the weak force. Each charged lepton has an associated neutrino, which it interacts with in \textit{charged-current (CC)} weak interactions, that will be explained in more detail in \refsec{weak_interactions}. The fermions are listed in \reftab{fermions}.
 
 
 \subsection{Electroweak Symmetry Breaking}
@@ -79,7 +86,7 @@ with the Pauli matrices $\sigma^i$ and the gauge boson fields $W^i_\mu$ and $B_\
 \end{equation}
 
 
-\subsection{Fermion Masses}
+\subsection{Fermion Masses} \labsec{fermion_masses}
 
 The mass term for charged fermions with spin-1/2 is given by
 \begin{equation}
@@ -95,26 +102,22 @@ composed of the product of left- and right-handed Weyl spinors $\Psi_{L/R}$. Thi
 \end{equation}
 coupling the fermion fields to the Higgs field, recovers the invariance and gives the fermions their masses. Here, $y$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{y v}{\sqrt{2}}$.
 
+\todo{Note here why neutrinos do not have mass because of this!?}
+
 
 \section{Evidence for Beyond Standard Model Physics}
 
-BSM stuff!
 
-it cannot explain some observations/phenomena like gravity (incompatibility with general relativity) or cosmological observations (dark matter, dark energy, matter-antimatter asymmetry)
+Are the fundamentals of the SM described above enough to explain \textit{all} observed phenomena? Gravity cannot be explained by the SM, as it is incompatible with general relativity. Neither can the SM explain some cosmological observations like dark matter, and the matter-antimatter asymmetry, and it does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extensions to the SM is needed in order to explain them.
 
-and it does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extensions to the SM is needed in order to explain them 
+Standard cosmology ($\Lambda$CDM\todo{Cite and/or sidenote this.}) assumes that equal amounts of matter and anti-matter were produced in the early universe. However, the universe today is dominantly made up of matter. This so-called \textit{baryon asymmetry} can be measured by the difference between the number densities of baryons and anti-baryons normalized to the number density of photons as
+\begin{equation}
+    \eta_B = \frac{n_B - n_{\bar{B}}}{n_\gamma}
+    \;,
+\end{equation}
+where $n_B$, $n_{\bar{B}}$, and $n_\gamma$ are the number densities of baryons, anti-baryons, and photons, respectively. Baryons are the dominant component with  $\eta_B$ being observed to be around $6 \times 10^{-10}$\todo{cite this}. Leptogenesis and EW baryogenesis are scenarios that could explain this phenomenon, where the former could be realized by the existence of heavy RH neutrinos.
 
-
-\subsection{Hierarchy Problem}
-
-\subsection{Strong-CP Problem}
-
-\subsection{Matter-Antimatter Asymmetry}
-
-\subsection{Dark Matter}
-
-\subsection{Neutrino Masses}
-
+The observation of neutrino oscillations in a multitude experiments \todo{cite neutrino oscillations/flavor conversions} is the strongest evidence for physics beyond the SM. To explain the oscillations, at least two neutrinos need to have non-zero masses, which is not predicted by the SM. Adding additional RH neutrinos states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments.
 
 
 \section{Heavy Neutral Leptons} \labsec{hnl_theory}
@@ -131,26 +134,27 @@ Extensions to the Standard Model (SM) that add \textit{Heavy Neutral Leptons (HN
 \end{figure}
 While the mixing with $\nu_{e/\mu}$ is strongly constrained\todo{Produce similar styled plot for these limits} ($|U_{\alpha4}^2| \lesssim 10^{-5}-10^{-8}, \alpha=e,\mu$), the mixing with $\nu_{\tau}$ is much harder to probe due to the difficulty of producing and detecting $\nu_\tau$. \reffig{boundsUtau} shows the current limits on the $\tau$-sterile mixing space for HNL masses between $0.1$\,GeV-$10$\,GeV. As was first pointed out in \sidecite{Coloma:2017ppo}, the atmospheric neutrino flux observed in IceCube offers a way to constrain the neutrino-HNL mixing parameters. By using the large fraction of atmospheric $\nu_{\mu}$ events that oscillate into $\nu_{\tau}$ before they reach the detector, the less constrained $\tau$-sterile mixing space can be explored. In this document, we present the methodology and strategy of a search for HNLs with IceCube DeepCore. These additional \textit{right-handed (RH)} neutrinos can be included in the Standard Model (SM) by extending the PMNS matrix to at least a 3x4 matrix as
 \begin{equation}
-    \label{eq:3_by_4_mixing_matrix}
     \begin{pmatrix}
     \nu_{e}\\
     \nu_{\mu}\\
     \nu_{\tau}\\
-    % \nu_{s}\\
+    \nu_{s}\\
     \end{pmatrix}
     =
     \begin{pmatrix}
     U_{e1} & U_{e2} & U_{e3} & U_{e4}\\
     U_{\mu1} & U_{\mu2} & U_{\mu3} & U_{\mu4}\\
     U_{\tau1} & U_{\tau2} & U_{\tau3} & U_{\tau4}\\
-    % U_{s1} & U_{s2} & U_{s3} & U_{s4}\\
+    U_{s1} & U_{s2} & U_{s3} & U_{s4}\\
     \end{pmatrix}
     \begin{pmatrix}
     \nu_{1}\\
     \nu_{2}\\
     \nu_{3}\\
     \nu_{4}\\
-    \end{pmatrix},
+    \end{pmatrix}
+    \;,
+    \labeq{4_by_4_mixing_matrix}
 \end{equation}
 where the components with index $4$ define the mixing between the flavor states and the fourth sterile mass state, respectively. Note here that this is not a theoretically fully consistent picture, but rather the phenomenologically minimal model to be tested by this analysis. This can hopefully be put into the larger context of several fully consistent models, later. Due to the singlet nature of the RH neutrinos, they only interact weakly, inheriting these interactions from their \textit{left-handed (LH)} neutrino counterparts via mixing. This mixing of the HNLs with the electron, muon, and tau neutrinos can be probed and constrained as a function of the HNL mass by searching for their production and decay. In \sidecite{Coloma:2017ppo, Coloma:2019qqj} this search is mainly motivated through two experimental arguments\todo{This section really needs to be re-written to motivate the search for HNLs from a more generic point of view (e.g. to explain neutrino masses)}.
 % First, a decaying sterile neutrino could explain the low-energy excess (LEE) that is observed in the MiniBooNE data \sidecite{PhysRevLett.110.161801}.
@@ -310,6 +314,11 @@ Based on this formulation and assuming that only the mixing with the tau sector 
 
 
 \subsection{Mass Mechanisms}
+
+\textbf{Collect some info:}
+
+
+There are no right-handed neutrinos in the SM and therefore the mass mechanism described in \refsec{fermion_masses}, which couples the Higgs field to left-handed and right-handed Weyl spinors, predicts them to be massless. From experimental observations it is known that at least two of the three neutrino generations need to have a non-zero mass.
 
 \paragraph{Dirac}
 \paragraph{Majorana}
