@@ -6,7 +6,7 @@
 
 \todo{Adapt to reflect switched chapter order}
 
-After the SM simulation generation and the default low energy event selection and processing chain were introduced in the previous \refch{simulation_and_processing}, the focus will now be on the central part of this thesis - the HNL signal simulation. Since this is the first search for HNLs with IceCube DeepCore, there was no prior knowledge of the expected performance nor the event expectation. This is the first simulation developed for IceCube DeepCore. Two avenues of simulation generation were pursued in parallel. The physically accurate, model dependent simulation is described in \refsec{model_specific_simulation} and a collection of model independent simulation sets was realized and is explained in \refsec{model_independent_simulation}. The latter is used for performance benchmarking and as a cross-check for the model dependent simulation
+After the SM simulation generation and the default low energy event selection and processing chain were introduced in the previous \refch{simulation_and_processing}, the focus will now be on the central part of this thesis - the HNL signal simulation. Since this is the first search for HNLs with IceCube DeepCore, there was no prior knowledge of the number of events expected per year nor of the expected performance in terms of reconstruction and classification accuracy which governs the \SI{90}{\percent} confidence level on estimateing the $|U_{\tau4}|^2$ mixing matrix element. This is the first simulation developed for IceCube DeepCore. Two avenues of simulation generation were pursued in parallel. The physically accurate, model dependent simulation is described in \refsec{model_specific_simulation} and a collection of model independent simulation sets was realized and is explained in \refsec{model_independent_simulation}. The latter is used for performance benchmarking and as a cross-check for the model dependent simulation
 
 
 \section{Model Independent Simulation} \labsec{model_independent_simulation}
@@ -163,9 +163,9 @@ The accessible decay channels are dependent on the mass of the HNL and the allow
     \footnotesize
     \begin{tabular} { lll }
         \hline\hline 
-        \textbf{Channel} & \textbf{Opens} & \textbf{$\hat{\mathrm BR}$ [\%]} \\
+        \textbf{Channel} & \textbf{Opens} & \textbf{$\hat{\mathrm BR}$} \\
         \hline\hline 
-        $\nu_4 \rightarrow \nu_\tau \nu_\alpha \bar{\nu_\alpha}$ & \SI{0}{\MeV} & 100.0 \\
+        $\nu_4 \rightarrow \nu_\tau \nu_\alpha \bar{\nu_\alpha}$ & \SI{0}{\MeV} & 1.0 \\
         $\nu_4 \rightarrow \nu_\tau e^+ e^-$ & \SI{1}{\MeV} & ? \\
         $\nu_4 \rightarrow \nu_\tau \pi^0$ & \SI{135}{\MeV} & ? \\
         $\nu_4 \rightarrow \nu_\tau \mu^+ \mu^-$ & \SI{211}{\MeV} & ? \\
@@ -175,7 +175,7 @@ The accessible decay channels are dependent on the mass of the HNL and the allow
         $\nu_4 \rightarrow \nu_\tau \eta'$ & \SI{958}{\MeV} & ? \\
         \hline
     \end{tabular}
-    \caption[HNL mass dependent decay channels]{Possible decay channels of the HNL, considering only ${\tau4}|^2 \neq 0$. Listed is the mass at which each channel opens and the maximum branching ratio.}
+    \caption[HNL mass dependent decay channels]{Possible decay channels of the HNL, considering only $|U_{\tau4}|^2 \neq 0$. Listed is the mass at which each channel opens and the maximum branching ratio.}
     \labtab{hnl_decay_channels}
 \end{margintable}
 \todo{Calculate max BRs}
@@ -189,9 +189,9 @@ The decay to a neutral pseudoscalar meson is
     \;,
     \labeq{gamma_nu_P}
 \end{equation}
-with $x_P = m_P/m_4$ and
+with $x_P = m_P/m_4$ and the \textit{effective decay constants} given by
 \begin{equation}
-    f_{\pi^0} = \SI{0.130}{\GeV}, \hspace{1cm} f_{\eta} = \SI{0.0816}{\GeV}, \hspace{1cm} C_2 = f_{\eta'} = \SI{-0.0946}{\GeV}
+    f_{\pi^0} = \SI{0.130}{\GeV}, \hspace{1cm} f_{\eta} = \SI{0.0816}{\GeV}, \hspace{1cm} f_{\eta'} = \SI{-0.0946}{\GeV}
     \;,
     \labeq{gamma_nu_P_f_factors}
 \end{equation}
@@ -254,14 +254,19 @@ and
 \end{equation}
 
 
-\subsubsection{MadGraph 3-Body Decays} \labsec{madgraph_3body_decays}
+% \subsubsection{2-Body Decay Kinematics} \labsec{2body_decay_kinematics}
+\todo{JVS:
+consider also writing down the (trivial) 2-body decay kinematics for completeness and consistency. This transition is a bit jarring as it is
+}
 
-The specific MadGraph version used to produce the 3-body decay kinematics is \href{https://launchpad.net/mg5amcnlo/3.0/3.3.x}{MadGraph4 v3.4.0}. As input, the decay diagrams calculated with \href{http://feynrules.irmp.ucl.ac.be/#FeynRules2.0}{FeynRules 2.0} using the Lagrangians derived in \sidecite{Coloma:2020lgy}. The Universal FeynRules Output (UFO) from \textsc{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each mass and corresponding decay channels, we produce \SI{1e06}{} decay kinematic variations in the rest frame and store those in a text file. During event generation, we randomly select an event from that list, to simulate the decay kinematics of a 3-body decay.
+\subsubsection{3-Body Decay Kinematics with MadGraph} \labsec{madgraph_3body_decays}
+
+The specific MadGraph version used to produce the 3-body decay kinematics is \href{https://launchpad.net/mg5amcnlo/3.0/3.3.x}{MadGraph4 v3.4.0}. As input, the decay diagrams calculated with \href{http://feynrules.irmp.ucl.ac.be/#FeynRules2.0}{FeynRules 2.0} using the Lagrangians derived in \sidecite{Coloma:2020lgy}. The Universal FeynRules Output (UFO) from \textsc{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each mass and corresponding decay channels, we produce \SI{1e06}{} decay kinematic variations in the rest frame and store those in a text file. During event generation, we uniformly select an event from that list, to simulate the decay kinematics of a 3-body decay.
 
 
 \subsection{Sampling Distributions}
 
-In principle, the generation level sampling distributions should be chosen such that at final level of the selection chain, the for the analysis relevant phase space is covered with sufficient statistics to make a reasonable estimate of the event expectation. Insufficiently large initial distributions lead to an underestimate of the expected rates, which is still correct as in being the more conservative estimate, but limiting the analysis potential. Three discrete simulation sets were produced with HNL masses of \SIlist{0.3;0.6;1.0}{\GeV}. Each set consist of a part that is generated for very short decay lengths and one for long decay lengths, because during development it became clear that the low lengths component is crucial to get a reasonable event estimate. The remaining sampling distributions are identical for all sets and are listed in \reftab{hnl_realistic_set_sampling_distributions}. The target number of events for each set was \SI{2.5e9}.
+In principle, the generation level sampling distributions should be chosen such that at final level of the selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Insufficiently large initial distributions lead to an underestimate of the expected rates, because part of the events that would pass the selection are not produced. This would still be correct as in being the more conservative estimate, but it would limit the analysis potential. Three discrete simulation sets were produced with HNL masses of \SIlist{0.3;0.6;1.0}{\GeV}. Each set consist of a part that is generated for very short decay lengths and one for long decay lengths, because during development it became clear that the low lengths component is crucial to get a reasonable event estimate. The remaining sampling distributions are identical for all sets and are listed in \reftab{hnl_realistic_set_sampling_distributions}. The target number of events for each set was \SI{2.5e9}.
 
 \begin{table}[h]
     \centering

@@ -18,7 +18,7 @@ In the following, the basic properties of the SM are described, following the de
 
 \subsection{Fundamental Fields}
 
-Fermions in the SM are Weyl fields with either \textit{left-handed (LH)} or \textit{right-handed (RH)} chirality, meaning they are eigenvectors of the chirality operator $\gamma_5$ with $\gamma_5 \psi_{R/L}=\pm \psi_{R/L}$. Only LH particles transform under SU(2)$_L$. The Higgs field is a complex scalar field, a doublet of SU(2)$_L$, which is responsible for the spontaneous symmetry breaking of SU(2)$_L$ x U(1)$_Y$ to U(1)$_{EM}$. Local gauge transformations of the fields are given by
+Fermions in the SM are Weyl fields with either \textit{left-handed (LH)} or \textit{right-handed (RH)} chirality, meaning they are eigenvectors of the chirality operator $\gamma_5$ with $\gamma_5 \psi_{R/L}=\pm \psi_{R/L}$. Only LH particles transform under SU(2)$_L$. The Higgs field is a complex scalar field, a doublet of SU(2)$_L$, which is responsible for the spontaneous symmetry breaking of SU(2)$_L$ x U(1)$_Y$ to U(1)$_\rm{EM}$. Local gauge transformations of the fields are given by
 \begin{equation}
     \psi \rightarrow e^{i g \theta^a(x) T^a} \psi
     \;,
@@ -94,19 +94,24 @@ The mass term for charged fermions with spin-1/2 is given by
     \;,
     \labeq{dirac_lagrangian}
 \end{equation}
-composed of the product of left- and right-handed Weyl spinors $\Psi_{L/R}$. This term is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations, but adding a Yukawa term
+composed of the product of left- and RH Weyl spinors $\Psi_{L/R}$. This term is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations, but adding a Yukawa term
 \begin{equation}
     \mathcal{L}_\rm{Yukawa} = -y \bar{L}_L \Phi e_R + {\rm h.c.}
     \;,
-    \labeq{yukawa_lagrangian}
+    \labeq{up_type_yukawa_lagrangian}
 \end{equation}
-coupling the fermion fields to the Higgs field, recovers the invariance and gives the fermions their masses. Here, $y$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{y v}{\sqrt{2}}$.
+coupling the fermion fields to the Higgs field, recovers the invariance and gives the fermions their masses. Here, $y$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{y v}{\sqrt{2}}$. With $\tilde{\Phi} = i \sigma_2 \Phi^*$, a similar Yukawa term can be written as $-y \bar{L}_L \tilde{\Phi} u_R + {\rm h.c.}$, which leads to the masses of the up-type quarks.
 
-\todo{Note here why neutrinos do not have mass because of this!?}
+
+\subsection{Weak Interactions after Symmetry-Breaking} \labsec{weak_interactions}
+
+
+\todo{Introduce SM EW NC/CC Lagrangian to build upon in the next chapter}
+
+
 
 
 \section{Evidence for Beyond Standard Model Physics}
-
 
 Are the fundamentals of the SM described above enough to explain \textit{all} observed phenomena? Gravity cannot be explained by the SM, as it is incompatible with general relativity. Neither can the SM explain some cosmological observations like dark matter, and the matter-antimatter asymmetry, and it does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extensions to the SM is needed in order to explain them.
 
@@ -117,10 +122,74 @@ Standard cosmology ($\Lambda$CDM\todo{Cite and/or sidenote this.}) assumes that 
 \end{equation}
 where $n_B$, $n_{\bar{B}}$, and $n_\gamma$ are the number densities of baryons, anti-baryons, and photons, respectively. Baryons are the dominant component with  $\eta_B$ being observed to be around $6 \times 10^{-10}$\todo{cite this}. Leptogenesis and EW baryogenesis are scenarios that could explain this phenomenon, where the former could be realized by the existence of heavy RH neutrinos.
 
-The observation of neutrino oscillations in a multitude experiments \todo{cite neutrino oscillations/flavor conversions} is the strongest evidence for physics beyond the SM. To explain the oscillations, at least two neutrinos need to have non-zero masses, which is not predicted by the SM. Adding additional RH neutrinos states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments.
+The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments \todo{cite neutrino oscillations/flavor conversions} is the strongest evidence for physics beyond the SM. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. This is not predicted by the SM, but adding additional RH neutrinos states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments.
 
 
-\section{Heavy Neutral Leptons} \labsec{hnl_theory}
+\section{Beyond Standard Model Neutrinos}
+
+
+\subsection{Mass Mechanisms}
+
+There are no RH neutrinos in the SM and therefore the mass mechanism described in \refsec{fermion_masses}, which couples the Higgs field to LH and RH Weyl fields, predicts them to be massless. From experimental observations it is known that at least two of the three neutrino generations need to have a non-zero mass. Assuming the existence of RH neutrinos fields $\nu_{R}$, one way of producing the neutrino masses is by adding a Yukawa coupling term similar to the one for up-type quarks mentioned in \refsec{fermion_masses}, to write the full Yukawa Lagrangian as
+\begin{equation}
+    \mathcal{L}_\rm{Yukawa} = -Y^e_{ij} \bar{L}^i_L \Phi e^j_R - Y^\nu_{ij} \bar{L}^i_L \tilde{\Phi} \nu^j_R + {\rm h.c.}
+    \;,
+    \labeq{dirac_yukawa_lagrangian}
+\end{equation}
+with $i,j$ running over the three generations of leptons $e$, $\mu$, and $\tau$, and $Y^e$ and $Y^\nu$ being the Yukawa coupling matrices. Diagonalizing the Yukawa coupling matrices through unitary transformations $U^e$ and $U^\nu$ leads to the Dirac mass Lagrangian in the mass basis as
+\begin{equation}
+    \mathcal{L}^\rm{mass}_\rm{Dirac} = \frac{v}{\sqrt{2}} \left( \bar{e}_L M_e e_R - \bar{\nu}_L M_\nu \nu_R \right)
+    \;,
+    \labeq{dirac_mass_lagrangian}
+\end{equation}
+where $M_e$ and $M_\nu$ are the diagonal mass matrices of leptons and neutrinos, respectively.
+
+
+\textbf{Below here isn't quite done yet..}
+
+An additional way of generating neutrino masses is by adding a Majorana mass term of the form
+\begin{equation}
+    \mathcal{L}_\rm{Majorana} = -\frac{1}{2} M_{ij} (\nu^i_R)^c \nu^j_R + {\rm h.c.}
+    \;,
+    \labeq{majorana_mass_lagrangian}
+\end{equation}
+with $M_{ij}$ being the Majorana mass matrix and the indices $i, j$ running over all RH neutrino generations. The superscript $c$ denotes the charge conjugate field.
+
+\begin{equation}
+    \boldsymbol{N} = \binom{\boldsymbol{\nu}_L}{\boldsymbol{\nu}_R^c}
+    \;,
+\end{equation}
+with $\boldsymbol{\nu}_R$ containing the N new RH neutrino fields.
+
+The full neutrino mass Lagrangian is then given by the sum of the Dirac and Majorana mass terms as
+\begin{equation}
+    \mathcal{L}^\rm{mass, \nu}_\rm{Dirac+Majorana} = \frac{1}{2} \boldsymbol{N}^T \hat{C} M^\rm{D+M} \boldsymbol{N} + {\rm h.c.}
+    \;,
+    \labeq{dirac_and_Majorana_mass_lagrangian}
+\end{equation}
+
+and the mass matrix is given by
+\begin{equation}
+    M^\rm{D+M} = \begin{pmatrix}
+    0 & (M^D)^T \\
+    M^D & M^R
+    \end{pmatrix}
+    \;,
+    \labeq{dirac_and_Majorana_mass_matrix}
+\end{equation}
+
+
+
+
+From AT:
+"Such a right-handed field would be uncharged with respect to all symmetry groups of the SM and therefore would not interact with any other particle, and hence it is called a sterile neutrino"
+
+"It is worth noting that, in this picture of pure Dirac neutrino masses, there is no mixing between the left-handed and the right-handed states, and therefore there is no observable oscillation effect that could be measured between active and sterile neutrinos."
+
+
+\paragraph{See-Saw Variants}
+
+\paragraph{Radiative Neutrino Masses}
 
 \subsection{A Solution to (some of) the Problems}
 
@@ -132,7 +201,7 @@ Extensions to the Standard Model (SM) that add \textit{Heavy Neutral Leptons (HN
   \caption[Current $|U_{\tau4}^2|-m_4$ limits]{Current $|U_{\tau4}^2|-m_4$ limits from NOMAD \cite{NOMAD:2001eyx}, ArgoNeut \cite{ArgoNeuT:2021clc}, CHARM \cite{Orloff:2002de, Boiarska:2021yho}, and DELPHI \cite{DELPHI:1996qcc}.}
   \labfig{boundsUtau}
 \end{figure}
-While the mixing with $\nu_{e/\mu}$ is strongly constrained\todo{Produce similar styled plot for these limits} ($|U_{\alpha4}^2| \lesssim 10^{-5}-10^{-8}, \alpha=e,\mu$), the mixing with $\nu_{\tau}$ is much harder to probe due to the difficulty of producing and detecting $\nu_\tau$. \reffig{boundsUtau} shows the current limits on the $\tau$-sterile mixing space for HNL masses between $0.1$\,GeV-$10$\,GeV. As was first pointed out in \sidecite{Coloma:2017ppo}, the atmospheric neutrino flux observed in IceCube offers a way to constrain the neutrino-HNL mixing parameters. By using the large fraction of atmospheric $\nu_{\mu}$ events that oscillate into $\nu_{\tau}$ before they reach the detector, the less constrained $\tau$-sterile mixing space can be explored. In this document, we present the methodology and strategy of a search for HNLs with IceCube DeepCore. These additional \textit{right-handed (RH)} neutrinos can be included in the Standard Model (SM) by extending the PMNS matrix to at least a 3x4 matrix as
+While the mixing with $\nu_{e/\mu}$ is strongly constrained\todo{Produce similar styled plot for these limits} ($|U_{\alpha4}^2| \lesssim 10^{-5}-10^{-8}, \alpha=e,\mu$), the mixing with $\nu_{\tau}$ is much harder to probe due to the difficulty of producing and detecting $\nu_\tau$. \reffig{boundsUtau} shows the current limits on the $\tau$-sterile mixing space for HNL masses between $0.1$\,GeV-$10$\,GeV. As was first pointed out in \sidecite{Coloma:2017ppo}, the atmospheric neutrino flux observed in IceCube offers a way to constrain the neutrino-HNL mixing parameters. By using the large fraction of atmospheric $\nu_{\mu}$ events that oscillate into $\nu_{\tau}$ before they reach the detector, the less constrained $\tau$-sterile mixing space can be explored. In this document, we present the methodology and strategy of a search for HNLs with IceCube DeepCore. These additional RH neutrinos can be included in the Standard Model (SM) by extending the PMNS matrix to at least a 3x4 matrix as
 \begin{equation}
     \begin{pmatrix}
     \nu_{e}\\
@@ -156,7 +225,7 @@ While the mixing with $\nu_{e/\mu}$ is strongly constrained\todo{Produce similar
     \;,
     \labeq{4_by_4_mixing_matrix}
 \end{equation}
-where the components with index $4$ define the mixing between the flavor states and the fourth sterile mass state, respectively. Note here that this is not a theoretically fully consistent picture, but rather the phenomenologically minimal model to be tested by this analysis. This can hopefully be put into the larger context of several fully consistent models, later. Due to the singlet nature of the RH neutrinos, they only interact weakly, inheriting these interactions from their \textit{left-handed (LH)} neutrino counterparts via mixing. This mixing of the HNLs with the electron, muon, and tau neutrinos can be probed and constrained as a function of the HNL mass by searching for their production and decay. In \sidecite{Coloma:2017ppo, Coloma:2019qqj} this search is mainly motivated through two experimental arguments\todo{This section really needs to be re-written to motivate the search for HNLs from a more generic point of view (e.g. to explain neutrino masses)}.
+where the components with index $4$ define the mixing between the flavor states and the fourth sterile mass state, respectively. Note here that this is not a theoretically fully consistent picture, but rather the phenomenologically minimal model to be tested by this analysis. This can hopefully be put into the larger context of several fully consistent models, later. Due to the singlet nature of the RH neutrinos, they only interact weakly, inheriting these interactions from their LH neutrino counterparts via mixing. This mixing of the HNLs with the electron, muon, and tau neutrinos can be probed and constrained as a function of the HNL mass by searching for their production and decay. In \sidecite{Coloma:2017ppo, Coloma:2019qqj} this search is mainly motivated through two experimental arguments\todo{This section really needs to be re-written to motivate the search for HNLs from a more generic point of view (e.g. to explain neutrino masses)}.
 % First, a decaying sterile neutrino could explain the low-energy excess (LEE) that is observed in the MiniBooNE data \sidecite{PhysRevLett.110.161801}.
 Secondly, IceCube is ideally placed to explore the yet unconstrained $|U_{\tau4}|^{2}-m_{4}$ phase-space that is not easily accessible by accelerator-based experiments.
 
@@ -309,28 +378,10 @@ Based on this formulation and assuming that only the mixing with the tau sector 
 
 
 
-\subsection{Properties and Interactions}
+% \subsection{Properties and Interactions}
+% \subsubsection{Quantum Numbers}
+% \subsubsection{Active Neutrino Flavors}
 
-
-
-\subsection{Mass Mechanisms}
-
-\textbf{Collect some info:}
-
-
-There are no right-handed neutrinos in the SM and therefore the mass mechanism described in \refsec{fermion_masses}, which couples the Higgs field to left-handed and right-handed Weyl spinors, predicts them to be massless. From experimental observations it is known that at least two of the three neutrino generations need to have a non-zero mass.
-
-\paragraph{Dirac}
-\paragraph{Majorana}
-
-\paragraph{See-Saw Variants}
-
-\paragraph{Radiative Neutrino Masses}
-
-\subsubsection{Quantum Numbers}
-\subsubsection{Active Neutrino Flavors}
-
-\subsubsection{Weak Interactions after Symmetry-Breaking} \labsec{weak_interactions}
 
 \todo{(Re-)write for PhD thesis (just copy paste from M.Sc.).}
 
