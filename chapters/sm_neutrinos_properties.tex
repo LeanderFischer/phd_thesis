@@ -96,11 +96,11 @@ The mass term for charged fermions with spin-1/2 is given by
 \end{equation}
 composed of the product of left- and RH Weyl spinors $\Psi_{L/R}$. This term is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations, but adding a Yukawa term
 \begin{equation}
-    \mathcal{L}_\rm{Yukawa} = -y \bar{L}_L \Phi e_R + {\rm h.c.}
+    \mathcal{L}_\rm{Yukawa} = -y \bar{L}_L \Phi e_R + h.c.
     \;,
     \labeq{up_type_yukawa_lagrangian}
 \end{equation}
-coupling the fermion fields to the Higgs field, recovers the invariance and gives the fermions their masses. Here, $y$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{y v}{\sqrt{2}}$. With $\tilde{\Phi} = i \sigma_2 \Phi^*$, a similar Yukawa term can be written as $-y \bar{L}_L \tilde{\Phi} u_R + {\rm h.c.}$, which leads to the masses of the up-type quarks.
+coupling the fermion fields to the Higgs field, recovers the invariance and gives the fermions their masses. Here, $y$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{y v}{\sqrt{2}}$. With $\tilde{\Phi} = i \sigma_2 \Phi^*$, a similar Yukawa term can be written as $-y \bar{L}_L \tilde{\Phi} u_R + h.c.$, which leads to the masses of the up-type quarks.
 
 
 \subsection{Weak Interactions after Symmetry-Breaking} \labsec{weak_interactions}
@@ -109,9 +109,29 @@ coupling the fermion fields to the Higgs field, recovers the invariance and give
 \todo{Introduce SM EW NC/CC Lagrangian to build upon in the next chapter}
 
 
+\textbf{Stuff from my MSc thesis to re-write:}
+
+\begin{marginfigure}
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
+    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
+    \caption[Feynman diagrams of neutrino weak interactions]{Feynman diagrams of charged-current (left) and neutral-current (right) neutrino weak interactions, taken from \cite{ATerliuk}.}
+    \labfig{weak_interactions}
+\end{marginfigure}
+\todo{Plot is missing + for W and 0 for Z boson.}
+
+In the SM, weak interactions are mediated by the three massive bosons $\textbf{W}^+$, $\textbf{W}^-$, and $\textbf{Z}^0$ \sidecite{Thomson_Particle}.
+The large boson masses ($m_{\textbf{W}}\sim\SI{80}{\gev}, m_{\textbf{Z}}\sim\SI{90}{\gev}$) result in a short range of the force of about \SI{10e-18}{\meter}.
+Weak interactions carried by $\textbf{W}^\pm$ bosons are called CC interactions, because charge is transferred between the interacting particles.
+In CC interactions, a neutrino is converted into its corresponding charged lepton or vice versa.
+Neutral current (NC) interactions are those mediated by $\textbf{Z}^0$ bosons.
+Here no charge is transferred.
+The Feynman diagrams for CC and NC interactions are shown in \reffig{weak_interactions}.
+
+The observed phenomenon of neutrino oscillations (see Section \refsec{neutrino_oscillations}) is based on the fact that there is a mass difference between the three neutrino mass eigenstates.
 
 
-\section{Evidence for Beyond Standard Model Physics}
+\section{Beyond the Standard Model}
 
 Are the fundamentals of the SM described above enough to explain \textit{all} observed phenomena? Gravity cannot be explained by the SM, as it is incompatible with general relativity. Neither can the SM explain some cosmological observations like dark matter, and the matter-antimatter asymmetry, and it does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extensions to the SM is needed in order to explain them.
 
@@ -122,76 +142,277 @@ Standard cosmology ($\Lambda$CDM\todo{Cite and/or sidenote this.}) assumes that 
 \end{equation}
 where $n_B$, $n_{\bar{B}}$, and $n_\gamma$ are the number densities of baryons, anti-baryons, and photons, respectively. Baryons are the dominant component with  $\eta_B$ being observed to be around $6 \times 10^{-10}$\todo{cite this}. Leptogenesis and EW baryogenesis are scenarios that could explain this phenomenon, where the former could be realized by the existence of heavy RH neutrinos.
 
-The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments \todo{cite neutrino oscillations/flavor conversions} is the strongest evidence for physics beyond the SM. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. This is not predicted by the SM, but adding additional RH neutrinos states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments.
+The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments \todo{cite neutrino oscillations/flavor conversions} is the strongest evidence for physics beyond the SM. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. From the measurements and cosmological observations, we know that the masses are very small as compared to the lepton masses. Neither their existence, nor their smallness is not predicted by the SM, but adding additional RH neutrinos states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments. But the addition of RH neutrino fields is not the only possible explanation for neutrino masses. Radiative neutrino mass mechanisms could also explain their origin and their smallness, but those would need the introduction of additional symmetries to the theory.
 
-
-\section{Beyond Standard Model Neutrinos}
+Maybe also add this somehow: "From neutrino oscillation measurements the absolute mass scale cannot be determined, since they only depend on the mass differences, but there are upper limits on the sum of all neutrino masses from cosmological observations.
+These upper limits are typically between $0.3$ and $1.3$\,eV \sidecite{PhysRevD.98.030001}."
 
 
 \subsection{Mass Mechanisms}
 
+\todo{namedrop RH=sterile=HNL and why they are called like this based on the SM EW Lagrangian introduced above}
+
 There are no RH neutrinos in the SM and therefore the mass mechanism described in \refsec{fermion_masses}, which couples the Higgs field to LH and RH Weyl fields, predicts them to be massless. From experimental observations it is known that at least two of the three neutrino generations need to have a non-zero mass. Assuming the existence of RH neutrinos fields $\nu_{R}$, one way of producing the neutrino masses is by adding a Yukawa coupling term similar to the one for up-type quarks mentioned in \refsec{fermion_masses}, to write the full Yukawa Lagrangian as
 \begin{equation}
-    \mathcal{L}_\rm{Yukawa} = -Y^e_{ij} \bar{L}^i_L \Phi e^j_R - Y^\nu_{ij} \bar{L}^i_L \tilde{\Phi} \nu^j_R + {\rm h.c.}
+    \mathcal{L}_\rm{Yukawa} = -Y^e_{ij} \bar{L}^i_L \Phi e^j_R - Y^\nu_{ij} \bar{L}^i_L \tilde{\Phi} \nu^j_R + h.c.
     \;,
     \labeq{dirac_yukawa_lagrangian}
 \end{equation}
-with $i,j$ running over the three generations of leptons $e$, $\mu$, and $\tau$, and $Y^e$ and $Y^\nu$ being the Yukawa coupling matrices. Diagonalizing the Yukawa coupling matrices through unitary transformations $U^e$ and $U^\nu$ leads to the Dirac mass Lagrangian in the mass basis as
+with $i,j$ running over the three generations of leptons $e$, $\mu$, and $\tau$, and $Y^e$ and $Y^\nu$ being the Yukawa coupling matrices. Diagonalizing the Yukawa coupling matrices through unitary transformations $U^e$ and $U^\nu$ leads to the \textbf{Dirac mass term} in the mass basis as
 \begin{equation}
     \mathcal{L}^\rm{mass}_\rm{Dirac} = \frac{v}{\sqrt{2}} \left( \bar{e}_L M_e e_R - \bar{\nu}_L M_\nu \nu_R \right)
     \;,
     \labeq{dirac_mass_lagrangian}
 \end{equation}
-where $M_e$ and $M_\nu$ are the diagonal mass matrices of leptons and neutrinos, respectively.
-
-
-\textbf{Below here isn't quite done yet..}
+where $M_e$ and $M_\nu$ are the diagonal mass matrices of leptons and neutrinos, respectively. A purely Dirac mass term would not explain the smallness of the neutrino masses in a straightforward way. Only fine-tuning the Yukawa coupling constants to small values would lead to small neutrino masses.
 
 An additional way of generating neutrino masses is by adding a Majorana mass term of the form
 \begin{equation}
-    \mathcal{L}_\rm{Majorana} = -\frac{1}{2} M_{ij} (\nu^i_R)^c \nu^j_R + {\rm h.c.}
+    \mathcal{L}_\rm{Majorana} = -\frac{1}{2} M_{ij} (\nu^i_R)^c \nu^j_R + h.c.
     \;,
     \labeq{majorana_mass_lagrangian}
 \end{equation}
-with $M_{ij}$ being the Majorana mass matrix and the indices $i, j$ running over all RH neutrino generations. The superscript $c$ denotes the charge conjugate field.
-
+with $M_{ij}$ being the Majorana mass matrix and the indices $i, j$ running over all $N_R$ RH neutrino generations. The superscript $c$ denotes the charge conjugate field. Combining the charge conjugated RH neutrino fields with the LH neutrino fields as
 \begin{equation}
     \boldsymbol{N} = \binom{\boldsymbol{\nu}_L}{\boldsymbol{\nu}_R^c}
     \;,
 \end{equation}
-with $\boldsymbol{\nu}_R$ containing the N new RH neutrino fields.
-
-The full neutrino mass Lagrangian is then given by the sum of the Dirac and Majorana mass terms as
+with $\boldsymbol{\nu}_R$ containing the $N_R$ RH fields. The full neutrino mass Lagrangian is then given by the combined \textbf{Dirac and Majorana mass term} as
 \begin{equation}
-    \mathcal{L}^\rm{mass, \nu}_\rm{Dirac+Majorana} = \frac{1}{2} \boldsymbol{N}^T \hat{C} M^\rm{D+M} \boldsymbol{N} + {\rm h.c.}
+    \mathcal{L}^\rm{mass, \nu}_\rm{Dirac+Majorana} = \frac{1}{2} \boldsymbol{N}^T \hat{C} M^\rm{D+M} \boldsymbol{N} + h.c.
     \;,
     \labeq{dirac_and_Majorana_mass_lagrangian}
 \end{equation}
-
 and the mass matrix is given by
 \begin{equation}
     M^\rm{D+M} = \begin{pmatrix}
     0 & (M^D)^T \\
     M^D & M^R
     \end{pmatrix}
-    \;,
+    \;.
     \labeq{dirac_and_Majorana_mass_matrix}
 \end{equation}
+On top of explaining the origin of neutrino masses itself, a combined Dirac and Majorana mass term could also solve the question of their smallness. If the mass of the RH neutrinos is very large, the masses of the active neutrino flavors is suppressed, which is known as \textit{see-saw mechanism}. 
+
+
+\subsection{Observational Avenues for right-handed neutrinos}
+
+\begin{itemize}
+    \item oscillations searches for light steriles
+    \item potential searches for heavy steriles
+\end{itemize}
+
+
+\subsection{Existing Constraints on Heavy Neutral Leptons} \labsec{HNL_mixing_constraints}
 
 
 
 
-From AT:
-"Such a right-handed field would be uncharged with respect to all symmetry groups of the SM and therefore would not interact with any other particle, and hence it is called a sterile neutrino"
+\begin{figure}
+    \includegraphics{figures/hnl_simulation/decay_theory/hnl_decay_widths_up_to_1.0_GeV_log.png}
+    \caption[HNL decay widths]{Decay widths of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
+    \labfig{hnl_decay_modes_log_decay_width}
+\end{figure}
 
-"It is worth noting that, in this picture of pure Dirac neutrino masses, there is no mixing between the left-handed and the right-handed states, and therefore there is no observable oscillation effect that could be measured between active and sterile neutrinos."
+
+\section{Atmospheric Neutrinos as Source of Heavy Neutral Leptons}
+
+\todo{write some interlude to motivate atm. neutrinos as source for HNL searches/production etc.}
 
 
-\paragraph{See-Saw Variants}
+\subsection{Production of Neutrinos in the Atmosphere}
 
-\paragraph{Radiative Neutrino Masses}
+The analysis performed in this work is based on the sample of neutrinos observed in IceCube DeepCore at energies below \SI{100}{\gev}. At these energies, the flux exclusively originates in the Earth's atmosphere. Highly relativistic cosmic rays (protons and heavier nuclei \sidecite{PhysRevD.98.030001}) interact in the upper atmosphere, producing showers of secondary particles. Neutrinos are produced in decays of charged pions and kaons ($\pi$ and $K$ mesons) present in those showers, where the dominant contribution comes from the decay chain
+\begin{equation}
+    \begin{split}   
+        \pi^\pm &\rightarrow \mu^\pm + \nu_\mu(\bar{\nu}_\mu)\;, \\
+        \mu^\pm &\rightarrow e^\pm + \bar{\nu}_\mu(\nu_\mu) + \nu_e(\bar{\nu}_e)
+        \;,
+    \end{split}
+    \labeq{pion_decay}
+\end{equation}
+where muon neutrinos $\nu_\mu$ and muons $\mu^\pm$ are produced in the first decay and both electron and muon neutrinos $\nu_{e/\mu}$ are produced in the second decay. Atmospheric muons, which are also produced in these decays, are the main background component for IceCube DeepCore analyses.
 
-\subsection{A Solution to (some of) the Problems}
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/neutrinos_properties/Honda_alldir-spl_copy.pdf}
+    \caption[Atmospheric neutrino fluxes]{The atmospheric fluxes of different neutrino flavors as a function of energy (left) and the ratios between muon neutrinos and electron neutrinos as well as the ratios between neutrinos and antineutrinos for both those flavors (right). Results from the calculations performed for the geographic South Pole, taken from \cite{PhysRevD.92.023004_Honda_Flux}.}
+    \labfig{honda_flux}
+\end{figure}
+
+The different atmospheric flux components are shown in \reffig{honda_flux} (left), for a much broader energy range than relevant for this work. Both neutrinos and antineutrino fluxes are shown for electron  and muon neutrinos and all fluxes are the directionally averaged expectation calculated at the South Pole. Muon neutrinos are dominating the flux and from \refeq{pion_decay} the naive assumption would be that the ratio between muon and electron neutrinos is $(\nu_\mu+\bar{\nu}_\mu)/(\nu_e+\bar{\nu}_e)=2$. This is roughly true at energies below \SI{1}{\gev}, where all muons decay in flight, but at larger energies muons can reach the detector before decaying, which increases the ratio to approximately 10:1 at around \SI{100}{\gev}. Additionally, kaon decays start to contribute which also increases the number of muons and muon neutrinos. The increasing ratio can be seen in \reffig{honda_flux} (right), which also shows the ration between neutrinos and antineutrinos for both flavors.
+
+Charged mesons or tau particles can also be produced in cosmic ray interactions. Their decays lead to the production of tau neutrinos. At the energies relevant for this work however, the resulting tau neutrino flux is negligible as compared to the muon neutrino flux \sidecite{2015EPJWC..9908001F_lepton_fluxes} and is not considered in the analysis. This is because both charged mesons and tau particles are much heavier than pions and kaons and therefore their production is suppressed at high energies.\todo{Say something about atmospheric atmospheric neutrino flux uncertainties, based on recent JP/Anatoli papers.}
+% It should be stated here that there is a rather large uncertainty on the normalization of the atmospheric neutrino flux on the order of 20-30\,\% \sidecite{PhysRevD.75.043006_neutino_flux_honda} in the energy region of interest.
+% This is mainly due to uncertainties in the primary cosmic ray spectrum and modeling of the hadronic interactions.\todo{SB:
+% I don't think this is true - the normalization is known to ~5\% if you trust Anatoli/Juan Pablo. Please have a look at more recent publications on this topic.}
+
+
+\subsection{Interactions with Nuclei}
+
+
+To describe the neutrino detection principle of IceCube explained in \refch{icecube} we need to understand the weak interaction processes that occur at the energies relevant for this work \SIrange[range-phrase=-]{10}{100}{\gev}.
+The cross-sections are dominated by the following neutrino-nucleon interactions: quasi-elastic scattering (QE), resonant scattering (RES), and deep inelastic scattering (DIS).
+The relative importance of the different processes depends on energy as can be seen in \reffig{cross_sections}.
+
+\begin{figure*}[ht]
+	\centering
+    \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nu.pdf}
+    \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nubar.pdf}
+	\caption[Total inclusive neutrino-nucleon cross-sections]{Total neutrino(left) and antineutrino(right) per nucleon cross-section divided by neutrino energy plotted against energy.
+    The three main scattering processes quasi-elastic scattering (QE), resonant scattering (RES), and deep-inelastic scattering (DIS) are depicted. Taken from \cite{Formaggio_Cross_Sections}.}
+    \labfig{cross_sections}
+\end{figure*}
+
+At energies below \SI{5}{\gev}, QE and RES occur and the neutrinos interact with approximately point-like protons and neutrons.
+The cross-sections of these processes are not linear in energy and the transition region to higher energies is poorly understood.
+At higher energies, the interactions are dominated solely by DIS which has a linear dependence on energy above $\sim20\,$GeV.
+For a given neutrino energy, it is possible to predict the cross-section in this region.
+Here neutrinos interact with a single quark, breaking apart the nucleus and producing a shower of relativistic secondary particles.\todo{SB:
+It seems that you have some double counting of information here . I suggest to move some of the information in this "intro" paragraph to the appropriate subsections}
+Neutrino DIS is the primary detection channel of IceCube.
+From \reffig{cross_sections} it can be seen that the interaction cross-sections are very small of the order of $10^{-38}\mathrm{\,cm}^2$.
+Because of the small interaction cross-section, very large volume detectors are required to capture a sufficiently large sample of neutrinos to use for precision studies of their properties.
+For example, the interaction length of a neutrino with $E_\nu = \SI{10}{\gev}$ is of $\mathcal{O}(10^{10}\,\mathrm{km})$.
+
+
+\paragraph{Quasi-elastic scattering (QE)} with nucleons is the main process below \SI{1}{\gev}.
+Protons are converted to neutrons in antineutrino interactions and vice-versa for neutrino interactions.
+Additionally, a charged lepton corresponding to the neutrino/antineutrino flavor is produced.
+
+
+\paragraph{Resonant scattering (RES)} describes the process of a neutrino scattering off a nucleon producing an excited state of the nucleon in addition to a charged lepton.
+RES is the leading process at \SI{1.5e-5}{\gev} for neutrinos and \SI{1.5e-8}{\gev} for antineutrinos.
+
+
+\paragraph{Deep inelastic scattering (DIS)} occurs if a neutrino carries sufficient energy to resolve the underlying structure of the nucleon and interacts with one of the composing quarks.
+DIS is the dominant process above \SI{10}{\gev}. The nucleon breaks up and a lepton accompanied by a set of hadronic final states is produced.
+Whether the lepton is the charged lepton corresponding to the interacting neutrino type, or the neutrino itself depends on the type of DIS interaction.
+DIS happens via CC as in 
+\begin{equation}
+    \begin{split}
+        \nu_l + N \rightarrow l^- + X, \\
+        \bar{\nu}_l + N \rightarrow l^+ + X, \\
+    \end{split}
+    \labeq{dis_cc}
+\end{equation}
+or NC interactions as
+\begin{equation}
+    \nu_l + N \rightarrow \nu_l + X.
+        \labeq{dis_nc}
+\end{equation}
+Here, $X$ stands for any set of final state hadrons and $N$ for the nucleon.
+The Feynman diagrams for the processes in \refeq{dis_cc} and \refeq{dis_nc} are shown in \reffig{dis_feynman}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_CC_nu_new.pdf}
+    \hspace{0.8cm}
+    \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_NC_nu_new.pdf}
+    \caption[Neutrino-nucleon deep inelastic scattering]{Feynman diagrams for deep inelastic scattering of a neutrino with a nucleon via charged-current (left) and neutral current (right) interactions. Taken from \cite{ATerliuk}.}
+    \labfig{dis_feynman}
+\end{figure}
+\todo{Explain momenta and momentum transfer (p,q) in these figures.}
+
+
+\subsection{Oscillations} \labsec{neutrino_oscillations}
+
+
+There are two ways to describe neutrino wave functions based on their Hamiltonian eigenvalues \sidecite{BILENKY1978225}, as mass eigenstates or as flavor eigenstates.
+When applying a plane wave approach to explain the propagation of neutrinos in vacuum, their mass eigenstates evolve as
+\begin{equation}
+    \ket{\nu_k(t)} = e^{-iE_kt/\hbar}\ket{\nu_k},
+    \labeq{flavor_time_evol}
+\end{equation}
+where $E_k=\sqrt{\vec{p}^2c^2+m_k^2c^4}$ is the energy of the mass eigenstate $\ket{\nu_k}$, with momentum $\vec{p}$ and mass $m_k$.
+Alternatively, they can be described in terms of their flavor eigenstates, which relate the neutrinos to the charged leptons they interact with in weak CC interactions.
+The flavor eigenstates are $\nu_e, \nu_\mu$, and $\nu_\tau$, whereas the mass eigenstates are called $\nu_1, \nu_2$, and $\nu_3$ in the standard three-neutrino model.
+To understand the propagation of distinct neutrino flavors in time we need to relate the flavor eigenstates to the mass eigenstates.
+For massive neutrinos, each flavor eigenstate is a superposition of mass eigenstates \sidecite{PhysRevD.98.030001}
+\begin{equation}
+    \ket{\nu_\alpha} = \sum_kU^*_{\alpha k}\ket{\nu_k},
+    \labeq{neutrino_mixing}
+\end{equation}
+where $\ket{\nu_\alpha}$ are the weak flavor states with $\alpha=e,\mu,\tau$ and $\ket{\nu_k}$ the mass states with $k=1,2,3$.
+$U_{\alpha k}$ is the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix defining the mixing between mass and flavor eigenstates.
+The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
+\begin{equation}
+    U=\left( 
+    \begin{matrix}
+        1 & 0 & 0 \\
+        0 & c_{23}  & s_{23} \\
+        0 & -s_{23} & c_{23} 
+    \end{matrix}
+    \right) 
+    \left( 
+    \begin{matrix}
+        c_{13} & 0 & s_{13}e^{-i\delta_{CP}} \\
+        0 & 1 & 0\\
+        -s_{13} e^{i\delta_{CP}} & 0 & c_{13}
+    \end{matrix}
+    \right) 
+    \left( 
+    \begin{matrix}
+        c_{12} & s_{12} & 0 \\
+        -s_{12} & c_{12} & 0\\
+        0 & 0 & 1
+    \end{matrix} 
+    \right)  
+    \operatorname{diag}(e^{i\rho_{1}},e^{i\rho_{2}},1),
+    \labeq{PMNS_matrix}
+\end{equation}\todo{SB:
+formatting/margins also I don't think you defined rho1,2
+}
+where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates i and j and $\delta_{CP}$ is the neutrino CP-violating phase.
+Nonzero, non-equal neutrino masses and the neutrino mixing relation in \refeq{neutrino_mixing} lead to the observed phenomenon of neutrino oscillations.
+Oscillation means that a neutrino changes from its initial flavor to another flavor and back after traveling a certain distance.
+A produced flavor eigenstate $\ket{\nu_\alpha}$ propagates through space as a superposition of mass eigenstates.
+To find the probability that the initial flavor state $\ket{\nu_\alpha}$ ends up as the final flavor state $\ket{\nu_\beta}$ after the time $t$ we calculate
+\begin{equation}
+    P_{\nu_\alpha \rightarrow \nu_\beta}(t)
+    =
+    |\braket{\nu_\beta|\nu_\alpha(t)}|^2,
+    \labeq{fermis_golden_rule}
+\end{equation}
+where $P$ is the probability calculated by applying Fermi's Golden Rule \sidecite{1927RSPSA.114..243D}.
+Fermi's Golden Rule explains the transition rate from one energy eigenstate to another depending on the strength of the coupling between the two.
+The strength of the coupling is described by the square of the matrix element.
+Using the unitarity of the mixing matrix $U^{-1}=U^\dagger$ to reverse the relation \refeq{neutrino_mixing} and then time evolve the mass eigenstates with \refeq{flavor_time_evol} we get the time evolution of the flavor state $\ket{\nu_\alpha(t)}$.
+Inserting this result into \refeq{fermis_golden_rule} yields
+\begin{equation}
+    P_{\nu_\alpha \rightarrow \nu_\beta}(t)
+    =
+    \sum_{j,k}U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k}e^{-i(E_k-E_j)t/\hbar},
+    \labeq{probability_raw}
+\end{equation}
+where the indices $j$ and $k$ run over the mass eigenstates. For small neutrino masses compared to their kinetic energy, we can approximate the energy as
+\begin{equation}
+    E_k \approx E+\frac{c^4m^2_k}{2E} \hspace{0.25cm} \longrightarrow \hspace{0.25cm} E_k-E_j \approx \frac{c^4\Delta m^2_{kj}}{2E},
+\end{equation}
+where $\Delta m^2_{kj}=m^2_k-m^2_j$ is the mass-squared splitting between states $k$ and $j$.
+If we now replace the time in \refeq{probability_raw} by the distance traveled by the relativistic neutrinos $t\approx L/c$ we get
+\begin{equation}
+    \begin{split}
+        P_{\nu_\alpha \rightarrow \nu_\beta}(t)
+        = 
+        \delta_{\alpha \beta}
+        -
+        4\sum_{j>k}&\textbf{Re}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big) \\
+        +
+        2\sum_{j>k}&\textbf{Im}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big),
+    \end{split}
+    \labeq{probability_detailed}
+\end{equation}
+which is referred to as the survival probability if $\alpha=\beta$ and the transition probability if $\alpha\neq\beta$.
+The probability in \refeq{probability_detailed} is only nonzero if there are neutrino mass eigenstates with masses greater than zero.
+Additionally, there must be a mass-squared difference $\Delta m^2$ and nonzero mixing between the states.
+Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing.
+
+
+\subsection{Testing Heavy Neutral Leptons with Atmospheric Neutrinos} \labsec{double_cascade_morphology}
+
+
+\subsubsection{The Minimal Standard Model Extension}
 
 \todo{Re-write/re-formulate this section (copied from HNL technote).}
 
@@ -230,13 +451,11 @@ where the components with index $4$ define the mixing between the flavor states 
 Secondly, IceCube is ideally placed to explore the yet unconstrained $|U_{\tau4}|^{2}-m_{4}$ phase-space that is not easily accessible by accelerator-based experiments.
 
 
-\subsection{The Minimal Standard Model Extension}
-
 In order to probe the $\tau$-sterile mixing parameter, it is required to look at interactions involving $\tau$ neutrinos. However, most neutrinos produced in cosmic ray interactions with the atmosphere are $\nu_{e}$ or $\nu_{\mu}$. Therefore, we need these neutrinos to oscillate to the $\tau$ flavor before reaching the detector. For this to happen at the considered energies a traveled distance of the order of the earth diameter is necessary. This is why our signal is mostly up-going and passing through the whole earth.\todo{This section definitley needs to be elaborated in a little more detail}
 
 To explain the signature we can observe in IceCube we first have to revisit the weak interactions that the HNL inherits from its LH counterpart through mixing. We will be following the derivation in \sidecite{Coloma:2020lgy}. Extending the SM by n additional RH neutrinos, $\nu_i$ ($i=3+n$), leads to the mass Lagrangian
 \begin{equation}
-    \mathcal{L}_{\nu }^{\rm mass} \supset - \sum _{\alpha = e,\mu ,\tau} \sum _{i=4}^{3+n} Y_{\nu , \alpha i} {\overline{L}}_{L,\alpha} {\tilde{\phi }} \nu_{i} - \frac{1}{2} \sum _{i=4}^{3+n} M_{i} {\overline{\nu}}_{i} \nu^c_{i} + {\rm h.c.},
+    \mathcal{L}_{\nu }^{\rm mass} \supset - \sum _{\alpha = e,\mu ,\tau} \sum _{i=4}^{3+n} Y_{\nu , \alpha i} {\overline{L}}_{L,\alpha} {\tilde{\phi }} \nu_{i} - \frac{1}{2} \sum _{i=4}^{3+n} M_{i} {\overline{\nu}}_{i} \nu^c_{i} + h.c.,
     \label{eq:hnl_mass_lagrangian}
 \end{equation}
 in a basis where the Majorana mass terms are diagonal. $Y_{\nu , \alpha i}$ are the Yukawa couplings to the lepton doublets and $M$ the Majorana masses for the heavy singlets. $L_{L,\alpha}$ stands for the SM LH lepton doublet of flavor $\alpha$ while $\phi$ is the Higgs field, and ${\tilde{\phi }} = i \sigma _2 \phi ^*$ and $\nu^c_{i} \equiv C {\bar{\nu}}_{i}^t$, with $C = i \gamma _0 \gamma _2$ in the Weyl representation. The full neutrino mass matrix with the Higgs vacuum expectation value $v/\sqrt{2}$ reads\todo{Not adding information about the case where the neutrinos have Dirac or pseudo-Dirac masses}
@@ -252,7 +471,7 @@ and can be diagonalized by a $(3+n)$ x $(3+n)$ full unitary roation $U$, that it
 and the leptonic part of the EW Lagrangian can be written as
 \begin{equation}
     \begin{aligned}
-        \mathcal{L}^{\ell}_{\rm EW} &= \frac{g}{\sqrt{2}}W^+_\mu \sum _{\alpha } \sum _{i} U_{\alpha i}^* {\bar{\nu}}_{i}\gamma ^\mu P_L \ell _\alpha + \frac{g}{4c_w} Z_\mu \nonumber \\& \times \left\{ \sum _{i, j} C_{ij} {\bar{\nu}}_{i}\gamma ^\mu P_L \nu_j + \sum _\alpha {\bar{\ell }}_\alpha \gamma ^\mu \left[ 2s_w^2P_R\!-\!(1\!-\!2s_w^2)P_L \right] \ell _\alpha \right\} \nonumber + {\rm h.c.},
+        \mathcal{L}^{\ell}_{\rm EW} &= \frac{g}{\sqrt{2}}W^+_\mu \sum _{\alpha } \sum _{i} U_{\alpha i}^* {\bar{\nu}}_{i}\gamma ^\mu P_L \ell _\alpha + \frac{g}{4c_w} Z_\mu \nonumber \\& \times \left\{ \sum _{i, j} C_{ij} {\bar{\nu}}_{i}\gamma ^\mu P_L \nu_j + \sum _\alpha {\bar{\ell }}_\alpha \gamma ^\mu \left[ 2s_w^2P_R\!-\!(1\!-\!2s_w^2)P_L \right] \ell _\alpha \right\} \nonumber + h.c.,
     \end{aligned}
     \label{eq:leptonic_ew_lagrangian}
 \end{equation}
@@ -360,260 +579,5 @@ Based on this formulation and assuming that only the mixing with the tau sector 
 % \end{figure}
 
 
-\begin{figure}
-    \includegraphics{figures/hnl_simulation/decay_theory/hnl_decay_widths_up_to_1.0_GeV_log.png}
-    \caption[HNL decay widths]{Decay widths of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
-    \labfig{hnl_decay_modes_log_decay_width}
-\end{figure}
+\subsubsection{Production and Decay in IceCube DeepCore}
 
-
-\subsection{Existing Constraints on Heavy Neutral Leptons} \labsec{HNL_mixing_constraints}
-
-\subsubsection{xx contraints}
-
-\subsubsection{yy contraints}
-
-
-\section{Atmospheric Neutrinos}
-
-
-
-% \subsection{Properties and Interactions}
-% \subsubsection{Quantum Numbers}
-% \subsubsection{Active Neutrino Flavors}
-
-
-\todo{(Re-)write for PhD thesis (just copy paste from M.Sc.).}
-
-The neutrino is an elementary particle in the SM \sidecite{Thomson_Particle}.
-It belongs to the class of leptons, which itself is a subclass of elementary fermions (spin ${\frac{1}{2}}$ particles).
-The fermions - six quarks and six leptons - form the matter content of the universe.
-Quarks take part in all three interaction types (forces) of the SM: strong, weak, and EM \sidecite{GLASHOW1961579}.
-The charged leptons - electron, muon, and tau - are subject to the weak and the EM interaction.
-Neutrinos carry neither electric charge nor color charge and therefore only take part in weak interactions.
-There are three distinct neutrino flavors - electron neutrinos, muon neutrinos and tau neutrinos ($\nu_e$, $\nu_{\mu}$, and $\nu_{\tau}$) \sidecite{PhysRevD.98.030001} - each corresponding to their charged lepton counterparts.
-
-\begin{marginfigure}
-	\centering
-    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
-    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
-    \caption[Feynman diagrams of neutrino weak interactions]{Feynman diagrams of charged-current (left) and neutral-current (right) neutrino weak interactions, taken from \cite{ATerliuk}.}
-    \labfig{weak_interactions}
-\end{marginfigure}
-\todo{Plot is missing + for W and 0 for Z boson.}
-
-In the SM, weak interactions are mediated by the three massive bosons $\textbf{W}^+$, $\textbf{W}^-$, and $\textbf{Z}^0$ \sidecite{Thomson_Particle}.
-The large boson masses ($m_{\textbf{W}}\sim\SI{80}{\gev}, m_{\textbf{Z}}\sim\SI{90}{\gev}$) result in a short range of the force of about \SI{10e-18}{\meter}.
-Weak interactions carried by $\textbf{W}^\pm$ bosons are called CC interactions, because charge is transferred between the interacting particles.
-In CC interactions, a neutrino is converted into its corresponding charged lepton or vice versa.
-Neutral current (NC) interactions are those mediated by $\textbf{Z}^0$ bosons.
-Here no charge is transferred.
-The Feynman diagrams for CC and NC interactions are shown in \reffig{weak_interactions}.
-
-Although neutrinos are massless in the SM, we know today that they do have a small mass.
-The observed phenomenon of neutrino oscillations (see Section \refsec{neutrino_oscillations}) is based on the fact that there is a mass difference between the three neutrino mass eigenstates.
-From neutrino oscillation measurements the absolute mass scale cannot be determined, since they only depend on the mass differences, but there are upper limits on the sum of all neutrino masses from cosmological observations.
-These upper limits are typically between $0.3$ and $1.3$\,eV \sidecite{PhysRevD.98.030001}.
-
-\subsubsection{Neutrino-Lepton Scattering}
-
-\subsubsection{Neutrino Interactions with Nuclei}
-
-To describe the neutrino detection principle of IceCube explained in \refch{icecube} we need to understand the weak interaction processes that occur at the energies relevant for this work \SIrange[range-phrase=-]{10}{100}{\gev}.
-The cross-sections are dominated by the following neutrino-nucleon interactions: quasi-elastic scattering (QE), resonant scattering (RES), and deep inelastic scattering (DIS).
-The relative importance of the different processes depends on energy as can be seen in \reffig{cross_sections}.
-
-\begin{figure*}[ht]
-	\centering
-    \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nu.pdf}
-    \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nubar.pdf}
-	\caption[Total inclusive neutrino-nucleon cross-sections]{Total neutrino(left) and antineutrino(right) per nucleon cross-section divided by neutrino energy plotted against energy.
-    The three main scattering processes quasi-elastic scattering (QE), resonant scattering (RES), and deep-inelastic scattering (DIS) are depicted. Taken from \cite{Formaggio_Cross_Sections}.}
-    \labfig{cross_sections}
-\end{figure*}
-
-At energies below \SI{5}{\gev}, QE and RES occur and the neutrinos interact with approximately point-like protons and neutrons.
-The cross-sections of these processes are not linear in energy and the transition region to higher energies is poorly understood.
-At higher energies, the interactions are dominated solely by DIS which has a linear dependence on energy above $\sim20\,$GeV.
-For a given neutrino energy, it is possible to predict the cross-section in this region.
-Here neutrinos interact with a single quark, breaking apart the nucleus and producing a shower of relativistic secondary particles.\todo{SB:
-It seems that you have some double counting of information here . I suggest to move some of the information in this "intro" paragraph to the appropriate subsections}
-Neutrino DIS is the primary detection channel of IceCube.
-From \reffig{cross_sections} it can be seen that the interaction cross-sections are very small of the order of $10^{-38}\mathrm{\,cm}^2$.
-Because of the small interaction cross-section, very large volume detectors are required to capture a sufficiently large sample of neutrinos to use for precision studies of their properties.
-For example, the interaction length of a neutrino with $E_\nu = \SI{10}{\gev}$ is of $\mathcal{O}(10^{10}\,\mathrm{km})$.
-
-
-\paragraph{Quasi-elastic scattering (QE)} with nucleons is the main process below \SI{1}{\gev}.
-Protons are converted to neutrons in antineutrino interactions and vice-versa for neutrino interactions.
-Additionally, a charged lepton corresponding to the neutrino/antineutrino flavor is produced.
-
-
-\paragraph{Resonant scattering (RES)} describes the process of a neutrino scattering off a nucleon producing an excited state of the nucleon in addition to a charged lepton.
-RES is the leading process at \SI{1.5e-5}{\gev} for neutrinos and \SI{1.5e-8}{\gev} for antineutrinos.
-
-
-\paragraph{Deep inelastic scattering (DIS)} occurs if a neutrino carries sufficient energy to resolve the underlying structure of the nucleon and interacts with one of the composing quarks.
-DIS is the dominant process above \SI{10}{\gev}. The nucleon breaks up and a lepton accompanied by a set of hadronic final states is produced.
-Whether the lepton is the charged lepton corresponding to the interacting neutrino type, or the neutrino itself depends on the type of DIS interaction.
-DIS happens via CC as in 
-\begin{equation}
-    \begin{split}
-        \nu_l + N \rightarrow l^- + X, \\
-        \bar{\nu}_l + N \rightarrow l^+ + X, \\
-    \end{split}
-    \labeq{dis_cc}
-\end{equation}
-or NC interactions as
-\begin{equation}
-    \nu_l + N \rightarrow \nu_l + X.
-        \labeq{dis_nc}
-\end{equation}
-Here, $X$ stands for any set of final state hadrons and $N$ for the nucleon.
-The Feynman diagrams for the processes in \refeq{dis_cc} and \refeq{dis_nc} are shown in \reffig{dis_feynman}.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_CC_nu_new.pdf}
-    \hspace{0.8cm}
-    \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_NC_nu_new.pdf}
-    \caption[Neutrino-nucleon deep inelastic scattering]{Feynman diagrams for deep inelastic scattering of a neutrino with a nucleon via charged-current (left) and neutral current (right) interactions. Taken from \cite{ATerliuk}.}
-    \labfig{dis_feynman}
-\end{figure}
-\todo{Explain momenta and momentum transfer (p,q) in these figures.}
-
-
-\subsection{Oscillations} \labsec{neutrino_oscillations}
-
-
-\todo{(Re-)write BSM chapter for PhD thesis (just copy paste from M.Sc.).}
-
-The flux of neutrinos used for this work exclusively comes from the Earth's atmosphere.
-When highly relativistic cosmic rays (protons and heavier nuclei \sidecite{PhysRevD.98.030001}) interact in  the upper atmosphere they produce a shower of particles. 
-Neutrinos emerge from the decays of charged pions and kaons ($\pi$ and $K$ mesons) present in these showers.
-For energies below 100\,GeV, the leading contribution comes from the pion decay chain
-\begin{equation}
-    \begin{split}   
-        \pi^\pm &\rightarrow \mu^\pm + \nu_\mu(\bar{\nu}_\mu), \\
-        \mu^\pm &\rightarrow e^\pm + \bar{\nu}_\mu(\nu_\mu) + \nu_e(\bar{\nu}_e).
-    \end{split}
-    \labeq{pion_decay}
-\end{equation}
-The muons that also originate from this process are considered the main background source for IceCube.
-The left part of \reffig{honda_flux} shows the atmospheric neutrino flux for the very broad energy spectrum in which they are produced.
-The flux expectations are calculated in the energy range of \SI{100}{\mev} to \SI{10}{\tera\electronvolt} for the South Pole \sidecite{PhysRevD.92.023004_Honda_Flux}, where the IceCube detector is located.
-From \refeq{pion_decay} the ratio between muon and electron neutrinos can be inferred to be $N_{\nu_\mu}:N_{\nu_e} \approx 2:1$.
-This is only the case at muon energies below 1\,GeV, where all muons decay in flight.
-For higher energies, muons can reach earth before decaying increasing the ratio to approximately 10:1 at around 100\,GeV as shown in the right part of \reffig{honda_flux}.
-Additionally, kaon decays start to contribute which also increases the number of muons and muon neutrinos.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1.0\textwidth]{figures/neutrinos_properties/Honda_alldir-spl_copy.pdf}
-    \caption[Atmospheric neutrino fluxes]{Atmospheric neutrino fluxes of the different flavors as a function of energy (left) and ratios between muon- and electron-neutrinos as well as ratios between neutrinos and antineutrinos for both flavors (right). Calculations are done for the geographic South Pole. Taken from \cite{PhysRevD.92.023004_Honda_Flux}.}
-    \labfig{honda_flux}
-\end{figure}
-
-In cosmic ray interactions, charged mesons or tau particles can also be produced, which leads to the formation of tau neutrinos.
-However, at the energy range considered for this work, the resulting tau neutrino flux is negligible as compared to the muon neutrino flux \sidecite{2015EPJWC..9908001F_lepton_fluxes}\todo{SB:
-You could say why with an extra half-sentence. 
-} and is not taken into account.
-% is less than 0.1\,\%  of the muon neutrino flux and can, therefore, be neglected.
-It should be stated here that there is a rather large uncertainty on the normalization of the atmospheric neutrino flux on the order of 20-30\,\% \sidecite{PhysRevD.75.043006_neutino_flux_honda} in the energy region of interest.
-This is mainly due to uncertainties in the primary cosmic ray spectrum and modeling of the hadronic interactions.\todo{SB:
-I don't think this is true - the normalization is known to ~5\% if you trust Anatoli/Juan Pablo. Please have a look at more recent publications on this topic. }
-
-
-
-
-There are two ways to describe neutrino wave functions based on their Hamiltonian eigenvalues \sidecite{BILENKY1978225}, as mass eigenstates or as flavor eigenstates.
-When applying a plane wave approach to explain the propagation of neutrinos in vacuum, their mass eigenstates evolve as
-\begin{equation}
-    \ket{\nu_k(t)} = e^{-iE_kt/\hbar}\ket{\nu_k},
-    \labeq{flavor_time_evol}
-\end{equation}
-where $E_k=\sqrt{\vec{p}^2c^2+m_k^2c^4}$ is the energy of the mass eigenstate $\ket{\nu_k}$, with momentum $\vec{p}$ and mass $m_k$.
-Alternatively, they can be described in terms of their flavor eigenstates, which relate the neutrinos to the charged leptons they interact with in weak CC interactions.
-The flavor eigenstates are $\nu_e, \nu_\mu$, and $\nu_\tau$, whereas the mass eigenstates are called $\nu_1, \nu_2$, and $\nu_3$ in the standard three-neutrino model.
-To understand the propagation of distinct neutrino flavors in time we need to relate the flavor eigenstates to the mass eigenstates.
-For massive neutrinos, each flavor eigenstate is a superposition of mass eigenstates \sidecite{PhysRevD.98.030001}
-\begin{equation}
-    \ket{\nu_\alpha} = \sum_kU^*_{\alpha k}\ket{\nu_k},
-    \labeq{neutrino_mixing}
-\end{equation}
-where $\ket{\nu_\alpha}$ are the weak flavor states with $\alpha=e,\mu,\tau$ and $\ket{\nu_k}$ the mass states with $k=1,2,3$.
-$U_{\alpha k}$ is the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix defining the mixing between mass and flavor eigenstates.
-The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
-\begin{equation}
-    U=\left( 
-    \begin{matrix}
-        1 & 0 & 0 \\
-        0 & c_{23}  & s_{23} \\
-        0 & -s_{23} & c_{23} 
-    \end{matrix}
-    \right) 
-    \left( 
-    \begin{matrix}
-        c_{13} & 0 & s_{13}e^{-i\delta_{CP}} \\
-        0 & 1 & 0\\
-        -s_{13} e^{i\delta_{CP}} & 0 & c_{13}
-    \end{matrix}
-    \right) 
-    \left( 
-    \begin{matrix}
-        c_{12} & s_{12} & 0 \\
-        -s_{12} & c_{12} & 0\\
-        0 & 0 & 1
-    \end{matrix} 
-    \right)  
-    \operatorname{diag}(e^{i\rho_{1}},e^{i\rho_{2}},1),
-    \labeq{PMNS_matrix}
-\end{equation}\todo{SB:
-formatting/margins also I don't think you defined rho1,2
-}
-where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates i and j and $\delta_{CP}$ is the neutrino CP-violating phase.
-Nonzero, non-equal neutrino masses and the neutrino mixing relation in \refeq{neutrino_mixing} lead to the observed phenomenon of neutrino oscillations.
-Oscillation means that a neutrino changes from its initial flavor to another flavor and back after traveling a certain distance.
-A produced flavor eigenstate $\ket{\nu_\alpha}$ propagates through space as a superposition of mass eigenstates.
-To find the probability that the initial flavor state $\ket{\nu_\alpha}$ ends up as the final flavor state $\ket{\nu_\beta}$ after the time $t$ we calculate
-\begin{equation}
-    P_{\nu_\alpha \rightarrow \nu_\beta}(t)
-    =
-    |\braket{\nu_\beta|\nu_\alpha(t)}|^2,
-    \labeq{fermis_golden_rule}
-\end{equation}
-where $P$ is the probability calculated by applying Fermi's Golden Rule \sidecite{1927RSPSA.114..243D}.
-Fermi's Golden Rule explains the transition rate from one energy eigenstate to another depending on the strength of the coupling between the two.
-The strength of the coupling is described by the square of the matrix element.
-Using the unitarity of the mixing matrix $U^{-1}=U^\dagger$ to reverse the relation \refeq{neutrino_mixing} and then time evolve the mass eigenstates with \refeq{flavor_time_evol} we get the time evolution of the flavor state $\ket{\nu_\alpha(t)}$.
-Inserting this result into \refeq{fermis_golden_rule} yields
-\begin{equation}
-    P_{\nu_\alpha \rightarrow \nu_\beta}(t)
-    =
-    \sum_{j,k}U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k}e^{-i(E_k-E_j)t/\hbar},
-    \labeq{probability_raw}
-\end{equation}
-where the indices $j$ and $k$ run over the mass eigenstates. For small neutrino masses compared to their kinetic energy, we can approximate the energy as
-\begin{equation}
-    E_k \approx E+\frac{c^4m^2_k}{2E} \hspace{0.25cm} \longrightarrow \hspace{0.25cm} E_k-E_j \approx \frac{c^4\Delta m^2_{kj}}{2E},
-\end{equation}
-where $\Delta m^2_{kj}=m^2_k-m^2_j$ is the mass-squared splitting between states $k$ and $j$.
-If we now replace the time in \refeq{probability_raw} by the distance traveled by the relativistic neutrinos $t\approx L/c$ we get
-\begin{equation}
-    \begin{split}
-        P_{\nu_\alpha \rightarrow \nu_\beta}(t)
-        = 
-        \delta_{\alpha \beta}
-        -
-        4\sum_{j>k}&\textbf{Re}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big) \\
-        +
-        2\sum_{j>k}&\textbf{Im}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big),
-    \end{split}
-    \labeq{probability_detailed}
-\end{equation}
-which is referred to as the survival probability if $\alpha=\beta$ and the transition probability if $\alpha\neq\beta$.
-The probability in \refeq{probability_detailed} is only nonzero if there are neutrino mass eigenstates with masses greater than zero.
-Additionally, there must be a mass-squared difference $\Delta m^2$ and nonzero mixing between the states.
-Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing.
-
-\subsection{Heavy Neutral Lepton Production and Decay in IceCube DeepCore} \labsec{double_cascade_morphology}
