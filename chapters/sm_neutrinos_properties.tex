@@ -133,6 +133,16 @@ The observed phenomenon of neutrino oscillations (see Section \refsec{neutrino_o
 
 \section{Beyond the Standard Model}
 
+\textbf{Open questions related to neutrinos:}
+\begin{itemize}
+    \item question of neutrino nature, e.g. dirac or majorana?
+    \item absolute mass values? (mass ordering + absolute mass scale)
+    \item is there leptonic cp violation and what is the precise delta\_cp value?
+    \item what are the mixing angle values and is there a flavor principle
+    \item is there additional effects like steriles, non-standard, lorentz violation
+\end{itemize}
+
+
 Are the fundamentals of the SM described above enough to explain \textit{all} observed phenomena? Gravity cannot be explained by the SM, as it is incompatible with general relativity. Neither can the SM explain some cosmological observations like dark matter, and the matter-antimatter asymmetry, and it does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extensions to the SM is needed in order to explain them.
 
 Standard cosmology ($\Lambda$CDM\todo{Cite and/or sidenote this.}) assumes that equal amounts of matter and anti-matter were produced in the early universe. However, the universe today is dominantly made up of matter. This so-called \textit{baryon asymmetry} can be measured by the difference between the number densities of baryons and anti-baryons normalized to the number density of photons as
@@ -142,10 +152,12 @@ Standard cosmology ($\Lambda$CDM\todo{Cite and/or sidenote this.}) assumes that 
 \end{equation}
 where $n_B$, $n_{\bar{B}}$, and $n_\gamma$ are the number densities of baryons, anti-baryons, and photons, respectively. Baryons are the dominant component with  $\eta_B$ being observed to be around $6 \times 10^{-10}$\todo{cite this}. Leptogenesis and EW baryogenesis are scenarios that could explain this phenomenon, where the former could be realized by the existence of heavy RH neutrinos.
 
-The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments \todo{cite neutrino oscillations/flavor conversions} is the strongest evidence for physics beyond the SM. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. From the measurements and cosmological observations, we know that the masses are very small as compared to the lepton masses. Neither their existence, nor their smallness is not predicted by the SM, but adding additional RH neutrinos states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments. But the addition of RH neutrino fields is not the only possible explanation for neutrino masses. Radiative neutrino mass mechanisms could also explain their origin and their smallness, but those would need the introduction of additional symmetries to the theory.
+The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments\sidecite{homestake, super_k_atm_osc, snolab_flavor_conv}\todo{cite neutrino oscillations/flavor conversions} is the strongest evidence for physics beyond the SM measured in laboratories. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. From the measurements and cosmological observations, we know that the masses are very small as compared to the lepton masses. Neither their existence, nor their smallness is not predicted by the SM, but adding additional RH neutrinos states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments. But the addition of RH neutrino fields is not the only possible explanation for neutrino masses. Radiative neutrino mass mechanisms could also explain their origin and their smallness, but those would need the introduction of additional symmetries to the theory.
+
 
 Maybe also add this somehow: "From neutrino oscillation measurements the absolute mass scale cannot be determined, since they only depend on the mass differences, but there are upper limits on the sum of all neutrino masses from cosmological observations.
 These upper limits are typically between $0.3$ and $1.3$\,eV \sidecite{PhysRevD.98.030001}."
+"Actually \SI{0.8}{\electronvolt} \sidecite{katrin_nu_mass} from KATRIN and \SI{1.2}{\electronvolt} \sidecite{BOS_nu_masses, planck_nu_mass} from cosmological observations. 
 
 
 \subsection{Mass Mechanisms}
@@ -195,7 +207,7 @@ and the mass matrix is given by
 On top of explaining the origin of neutrino masses itself, a combined Dirac and Majorana mass term could also solve the question of their smallness. If the mass of the RH neutrinos is very large, the masses of the active neutrino flavors is suppressed, which is known as \textit{see-saw mechanism}. 
 
 
-\subsection{Observational Avenues for right-handed neutrinos}
+\subsection{Observational Avenues for Right-Handed Neutrinos}
 
 \begin{itemize}
     \item oscillations searches for light steriles
@@ -203,8 +215,18 @@ On top of explaining the origin of neutrino masses itself, a combined Dirac and 
 \end{itemize}
 
 
-\subsection{Existing Constraints on Heavy Neutral Leptons} \labsec{HNL_mixing_constraints}
+\subsection{Searching for Heavy Neutral Leptons} \labsec{HNL_mixing_constraints}
 
+
+\subsubsection{Collider}
+
+\subsubsection{Nuclear Decay}
+
+\subsubsection{Extracted Beamlines}
+
+\subsubsection{Atmospheric and Solar}
+
+\subsubsection{Cosmological and Astrophysical}
 
 
 
@@ -291,24 +313,13 @@ At energies below \SI{5}{\gev}, \textbf{\textit{quasi-elastic scattering (QE)}} 
 
 \subsection{Oscillations} \labsec{neutrino_oscillations}
 
-There are two ways to describe neutrino wave functions based on their Hamiltonian eigenvalues \sidecite{BILENKY1978225}, as mass eigenstates or as flavor eigenstates.
-When applying a plane wave approach to explain the propagation of neutrinos in vacuum, their mass eigenstates evolve as
+So far we have described neutrinos in their flavor eigenstates, which are relevant for weak interactions. In the SM three-neutrino model the weak flavor states are $\nu_e, \nu_\mu$, and $\nu_\tau$, which relate them to the charged leptons they interact with in CC interactions. There is a second way of describing neutrino wave functions based on their Hamiltonian eigenvalues \sidecite{BILENKY1978225}, namely as the mass eigenstates $\nu_1, \nu_2$, and $\nu_3$. These states are related to the flavor eigenstates by the unitary, 3x3 \textit{Pontecorvo-Maki-Nakagawa-Sakata (PMNS)} matrix $U$, where the flavor states are a superposition of the mass states as
 \begin{equation}
-    \ket{\nu_k(t)} = e^{-iE_kt/\hbar}\ket{\nu_k},
-    \labeq{flavor_time_evol}
-\end{equation}
-where $E_k=\sqrt{\vec{p}^2c^2+m_k^2c^4}$ is the energy of the mass eigenstate $\ket{\nu_k}$, with momentum $\vec{p}$ and mass $m_k$.
-Alternatively, they can be described in terms of their flavor eigenstates, which relate the neutrinos to the charged leptons they interact with in weak CC interactions.
-The flavor eigenstates are $\nu_e, \nu_\mu$, and $\nu_\tau$, whereas the mass eigenstates are called $\nu_1, \nu_2$, and $\nu_3$ in the standard three-neutrino model.
-To understand the propagation of distinct neutrino flavors in time we need to relate the flavor eigenstates to the mass eigenstates.
-For massive neutrinos, each flavor eigenstate is a superposition of mass eigenstates \sidecite{PhysRevD.98.030001}
-\begin{equation}
-    \ket{\nu_\alpha} = \sum_kU^*_{\alpha k}\ket{\nu_k},
+    \ket{\nu_\alpha} = \sum_kU^*_{\alpha k}\ket{\nu_k}
+    \;,
     \labeq{neutrino_mixing}
 \end{equation}
-where $\ket{\nu_\alpha}$ are the weak flavor states with $\alpha=e,\mu,\tau$ and $\ket{\nu_k}$ the mass states with $k=1,2,3$.
-$U_{\alpha k}$ is the Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix defining the mixing between mass and flavor eigenstates.
-The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
+with the weak flavor states $\ket{\nu_\alpha}$, $\alpha=e,\mu,\tau$, and the mass states $\ket{\nu_k}$ with $k=1,2,3$. The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
 \begin{equation}
     U=\left( 
     \begin{matrix}
@@ -331,39 +342,39 @@ The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
         0 & 0 & 1
     \end{matrix} 
     \right)  
-    \operatorname{diag}(e^{i\rho_{1}},e^{i\rho_{2}},1),
+    \;,
     \labeq{PMNS_matrix}
-\end{equation}\todo{SB:
-formatting/margins also I don't think you defined rho1,2
-}
-where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates i and j and $\delta_{CP}$ is the neutrino CP-violating phase.
-Nonzero, non-equal neutrino masses and the neutrino mixing relation in \refeq{neutrino_mixing} lead to the observed phenomenon of neutrino oscillations.
-Oscillation means that a neutrino changes from its initial flavor to another flavor and back after traveling a certain distance.
-A produced flavor eigenstate $\ket{\nu_\alpha}$ propagates through space as a superposition of mass eigenstates.
-To find the probability that the initial flavor state $\ket{\nu_\alpha}$ ends up as the final flavor state $\ket{\nu_\beta}$ after the time $t$ we calculate
+\end{equation}
+where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates $i$ and $j$, and $\delta_{CP}$ is the neutrino CP-violating phase.\todo{add current BF values from nufit or so?}
+
+Describing neutrinos in their mass state is crucial to understand their propagation through space and time. Their propagation in vacuum can be expressed by applying a plane wave approach, where the mass eigenstates evolve as
+\begin{equation}
+    \ket{\nu_k(t)} = e^{-iE_kt/\hbar}\ket{\nu_k}
+    \;.
+    \labeq{flavor_time_evol}
+\end{equation}
+The energy of the mass eigenstate $\ket{\nu_k}$ is $E_k=\sqrt{\vec{p}^2c^2+m_k^2c^4}$, with momentum $\vec{p}$ and mass $m_k$, $\hbar$ is the reduced Planck constant, and c is the speed of light in vacuum. The existence of non-zero, non-equal masses and the neutrino mixing relation in \refeq{neutrino_mixing}, lead to the observed phenomenon of neutrino oscillations. Oscillations mean that a neutrino changes from its initial flavor, that it was produced with, to another flavor and back after traveling a certain distance. A neutrino is produced as a flavor eigenstate $\ket{\nu_\alpha}$ in a CC weak interaction, but its propagation happens as the individual mass states it is composed of. The probability of finding the neutrino with initial flavor $\ket{\nu_\alpha}$ in the flavor state $\ket{\nu_\beta}$ after the time $t$ is calculated as
 \begin{equation}
     P_{\nu_\alpha \rightarrow \nu_\beta}(t)
     =
-    |\braket{\nu_\beta|\nu_\alpha(t)}|^2,
+    |\braket{\nu_\beta|\nu_\alpha(t)}|^2
+    \;,
     \labeq{fermis_golden_rule}
 \end{equation}
-where $P$ is the probability calculated by applying Fermi's Golden Rule \sidecite{1927RSPSA.114..243D}.
-Fermi's Golden Rule explains the transition rate from one energy eigenstate to another depending on the strength of the coupling between the two.
-The strength of the coupling is described by the square of the matrix element.
-Using the unitarity of the mixing matrix $U^{-1}=U^\dagger$ to reverse the relation \refeq{neutrino_mixing} and then time evolve the mass eigenstates with \refeq{flavor_time_evol} we get the time evolution of the flavor state $\ket{\nu_\alpha(t)}$.
-Inserting this result into \refeq{fermis_golden_rule} yields
+by applying Fermi's Golden Rule \sidecite{1927RSPSA.114..243D}, which defines the transition rate from one eigenstate to another by the strength of the coupling between them. This coupling strength is the square of the matrix element and using the fact that the mixing matrix is unitary ($U^{-1}=U^\dagger$) to describe the mass eigenstates as flavor eigenstates, we find the time evolution of the flavor state $\ket{\nu_\alpha(t)}$, which can be inserted into \refeq{fermis_golden_rule} to find the probability as
 \begin{equation}
     P_{\nu_\alpha \rightarrow \nu_\beta}(t)
     =
-    \sum_{j,k}U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k}e^{-i(E_k-E_j)t/\hbar},
+    \sum_{j,k}U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k}e^{-i(E_k-E_j)t/\hbar}
+    \;.
     \labeq{probability_raw}
 \end{equation}
-where the indices $j$ and $k$ run over the mass eigenstates. For small neutrino masses compared to their kinetic energy, we can approximate the energy as
+The indices $j$ and $k$ run over the mass eigenstates. We can approximate the energy as
 \begin{equation}
-    E_k \approx E+\frac{c^4m^2_k}{2E} \hspace{0.25cm} \longrightarrow \hspace{0.25cm} E_k-E_j \approx \frac{c^4\Delta m^2_{kj}}{2E},
+    E_k \approx E+\frac{c^4m^2_k}{2E} \hspace{0.25cm} \longrightarrow \hspace{0.25cm} E_k-E_j \approx \frac{c^4\Delta m^2_{kj}}{2E}
+    \;,
 \end{equation}
-where $\Delta m^2_{kj}=m^2_k-m^2_j$ is the mass-squared splitting between states $k$ and $j$.
-If we now replace the time in \refeq{probability_raw} by the distance traveled by the relativistic neutrinos $t\approx L/c$ we get
+for small neutrino masses compared to their kinetic energy. Here, $\Delta m^2_{kj}=m^2_k-m^2_j$ is the mass-squared splitting between states $k$ and $j$. Replacing the time in \refeq{probability_raw} by the distance traveled by relativistic neutrinos $t\approx L/c$ we get
 \begin{equation}
     \begin{split}
         P_{\nu_\alpha \rightarrow \nu_\beta}(t)
@@ -372,14 +383,12 @@ If we now replace the time in \refeq{probability_raw} by the distance traveled b
         -
         4\sum_{j>k}&\textbf{Re}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big) \\
         +
-        2\sum_{j>k}&\textbf{Im}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big),
+        2\sum_{j>k}&\textbf{Im}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big)
+        \;,
     \end{split}
     \labeq{probability_detailed}
 \end{equation}
-which is referred to as the survival probability if $\alpha=\beta$ and the transition probability if $\alpha\neq\beta$.
-The probability in \refeq{probability_detailed} is only nonzero if there are neutrino mass eigenstates with masses greater than zero.
-Additionally, there must be a mass-squared difference $\Delta m^2$ and nonzero mixing between the states.
-Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing.
+which is called the survival probability if $\alpha=\beta$, and the transition probability if $\alpha\neq\beta$. Once again, this probability is only non-zero if there are neutrino mass eigenstates with masses greater than zero. Additionally, there must be a mass-squared difference $\Delta m^2$ and non-zero mixing between the states. Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing. \todo{say something about how this changes with matter}
 
 
 \subsection{Testing Heavy Neutral Leptons with Atmospheric Neutrinos} \labsec{double_cascade_morphology}
