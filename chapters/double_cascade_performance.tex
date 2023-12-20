@@ -51,6 +51,9 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 
 \subsection{Energy/Decay Length Resolution}
 
+\todo{describe the "good fit" selection}
+
+\subsubsection{2-D Histograms}
 
 \textbf{Things to mention about the 2d-hists:}
 \begin{itemize}
@@ -62,23 +65,63 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 \end{itemize}
 
 
-
-\begin{figure*}
+\begin{figure*}[h]
 	\centering
     \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/2d_hists/194603_reco_total_energy_vs_true_total_energy_goodfit_step_contours.png}
     \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/2d_hists/194603_reco_decay_length_vs_true_decay_length_goodfit_step_contours.png}
     \caption[]{}
-    \labfig{yy}
+    \labfig{total_energy_decay_length_2dhists}
 \end{figure*}
 
-
-
-\begin{figure*}
+\begin{figure*}[h]
 	\centering
     \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/2d_hists/194603_casc0_reco_energy_vs_casc0_true_energy_goodfit_step_contours.png}
     \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/2d_hists/194603_casc1_reco_energy_vs_casc1_true_energy_goodfit_step_contours.png}
     \caption[]{}
-    \labfig{yy}
+    \labfig{cascade_energy_2dhists}
+\end{figure*}
+
+
+\subsubsection{Energy Resolution}
+
+\textbf{Things to mention about the energy resolution:}
+\begin{itemize}
+    \item Here it can be seen more clearly how the median total energy resolution starts to stabilize around 0.0 at \SI{10}{\gev}, while for lower energies the reconstruction is over-estimating the true energy. This is a known behavior of energy reconstructions in IceCube, which is mainly due to a selection effect. Only events with a certain amount of light can be reconstructed, which means that the ones with true small energies that are still in the sample are events with over average light production due to fluctuations or other effects?
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+    \includegraphics{figures/model_independent_simulation/results/realistic/resolutions/194603_fractional_reco_total_energy_error_goodfit.png}
+    \caption[]{}
+    \labfig{total_energy_bias_vs_energy}
+\end{figure}
+
+
+\subsubsection{Decay Length Resolution}
+
+\textbf{Things to mention about the decay length resolution:}
+\begin{itemize}
+    \item As already mentioned before, the decay length resolution is much worse than the energy resolutions. \reffig{decay_length_bias_vs_length} also shows that the median is below 0.0 for short true length and above 0.0 and approaching 1.0 for long true lengths.
+    \item To investigate whether this is really due to the fact that one of the cascades is not observed, the decay length resolution was plotted against the total energy of the event and the minimum energy of the two cascades \reffig{decay_length_bias_vs_energies}.
+    \item It can be seen that the median of the decay length resolution stabilizes at 0.0 for a total energy above \SI{20}{\gev}, but the spread of the distribution is still quite large with a 1-sigma band of \SIrange{80}{100}{\percent}.
+    \item From the plot against the minimum energy it can be seen that the decay length resolution starts to be unbiased for a minimum energy of the cascades of \SI{7}{\gev}, with an equivalently large spread.
+    \item A preliminary takeaway from this is that the decay length reconstruction is not reliable at all for events with a total energy below \SI{20}{\gev} or a minimum cascade energy below \SI{7}{\gev}.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+    \includegraphics{figures/model_independent_simulation/results/realistic/resolutions/194603_median_decay_length_bias_goodfit_log_unweighted.png}
+    \caption[]{}
+    \labfig{decay_length_bias_vs_length}
+\end{figure}
+
+
+\begin{figure*}[h]
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/resolutions/194603_median_decay_length_bias_vs_tot_energy_goodfit_log_unweighted.png}
+    \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/resolutions/194603_median_decay_length_bias_vs_min_energy_goodfit_log_unweighted.png} 
+    \caption[]{}
+    \labfig{decay_length_bias_vs_energies}
 \end{figure*}
 
 
