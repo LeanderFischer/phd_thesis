@@ -134,15 +134,26 @@ The injection is done using the LI \textit{volume mode}, for the injection of th
 
 \subsubsection{Cross-Sections} \labsec{hnl_cross_sections}
 
-The cross-sections are calculated using the \textsc{NuXSSplMkr} \cite{xsecmaker} software, which is a tool to calculate neutrino cross-sections from \textit{parton distribution functions (PDFs)} and then produce splines that can be read and used with LI/LW. The tool was customized to produce the custom HNL cross-sections, where the main modification to calculate the cross-sections for the $\nu_\tau$-NC interaction into the new heavy mass state is the addition of a kinematic condition to ensure that there is sufficient energy to produce the heavy mass state. It is the same condition that needs to be fulfilled for the CC case, where the outgoing charged lepton mass is non-zero. Following \sidecite{Levy:2004rk} (equation 7), the condition
+The cross-sections are calculated using the \textsc{NuXSSplMkr} \cite{xsecmaker} software, which is a tool to calculate neutrino cross-sections from \textit{parton distribution functions (PDFs)} and then produce splines\todo{In which variables are they splined?} that can be read and used with LI/LW. The tool was customized to produce the custom HNL cross-sections, where the main modification to calculate the cross-sections for the $\nu_\tau$-NC interaction into the new heavy mass state is the addition of a kinematic condition to ensure that there is sufficient energy to produce the heavy mass state. It is the same condition fulfilled for the CC case, where the outgoing charged lepton mass is non-zero. Following \sidecite{Levy:2004rk} (equation 7), the condition
 \begin{equation}
     (1 + x \delta_N) h^2 - (x + \delta_{4}) h + x \delta_{4} \leq 0
     \;
     \labeq{hnl_kinematic_condition}
 \end{equation}
-is implemented for the NC case in the NuXSSplMkr code. Here $\delta_{4}=\frac{m_4^2}{s-M^2}$, $\delta_{N}=\frac{M^2}{s-M^2}$, and $h \overset{\textit{def}}{=} xy + \delta_{4}$, with $x, y$ being the Bjorken variables, $m_4$ and $M$ the mass of the heavy state and the target nucleon, respectively, and $s$ the center of mass energy squared.
+is implemented for the NC case in the NuXSSplMkr code. Here
+% write in equations: $\delta_{4}=\frac{m_4^2}{s-M^2}$, $\delta_{N}=\frac{M^2}{s-M^2}$, and $h \overset{\textit{def}}{=} xy + \delta_{4}$
+\begin{align}
+    \delta_{4} ={}& \frac{m_4^2}{s-M^2}
+    \;, \\
+    \delta_{N} ={}& \frac{M^2}{s-M^2}
+    \;, \rm{and} \\
+    h \overset{\textit{def}}{=}& xy + \delta_{4}
+    \;,
+    \labeq{hnl_kinematic_condition_variables}
+\end{align}
+with $x$ and $y$ being the Bjorken variables, $m_4$ and $M$ the mass of the heavy state and the target nucleon, respectively, and $s$ the center of mass energy squared.
 
-\todo{Re-make plot with 3 target masses and better labels}
+\todo{Re-make plot with 3 target masses and better labels/legends etc.}
 \begin{figure*}[h]
     \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutau-N-nc.png}
     \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutaubar-N-nc.png}
@@ -150,14 +161,19 @@ is implemented for the NC case in the NuXSSplMkr code. Here $\delta_{4}=\frac{m_
     \labfig{custom_hnl_cross_sections}
 \end{figure*}
 
-As already described in \refsec{neutrino_generation}, the SM neutrino background simulation is created using the GRV98LO PDFs. These PDFs also had to be added to the cross-section spline maker, to ensure good agreement between the background and signal cross-sections. The double differential ($\rm{d}s\rm{d}x\rm{d}y$) and total ($\sigma$) cross-sections were produced for the chosen target HNL masses and then splined. The produced cross-section are added to the custom LI version and used for the simulation generation and weighting. \reffig{custom_hnl_cross_sections} shows the total cross-sections that were produced compared to the cross-section used for the production of the SM $\nu_\tau/\bar{\nu}_\tau$ NC background simulation. Above $\sim\SI{2e2}{\GeV}$ they match, which is the wanted result of using the identical input PDFs.
-\todo{Add comparions of SM cross-sections between NuXSSplMkr and genie?}
+The GRV98LO PDFs were added to the cross-section spline maker and used to create the HNL cross-sections for consistency with the SM neutrino simulation that will be explained in \refsec{neutrino_generation}. The double differential ($\rm{d}\sigma\rm{d}x\rm{d}y$) and total ($\sigma$) cross-sections were produced for the chosen target HNL masses and then splined. The produced cross-section are added to the custom LI version and used for the simulation generation and weighting. \reffig{custom_hnl_cross_sections} shows the total cross-sections that were produced compared to the cross-section used for the production of the SM $\nu_\tau/\bar{\nu}_\tau$ NC background simulation. Above $\sim\SI{2e2}{\GeV}$ they match, which is the desired result of using the identical input PDFs.
+\todo{SB:
+emphasize the cut-off/suppression
+}
+\todo{Add comparisons of SM cross-sections between NuXSSplMkr and genie?}
 \todo{add varied total cross-section for a few background HNL events (for QE/RES variations?!)}
 
 
 \subsubsection{Decay Channels} \labsec{hnl_decay_channels}
 
-The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the considered decay channels are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. The formulas to calculate the decay widths show up in multiple references, but we chose to match them to \sidecite{Coloma:2020lgy}, which also discusses the discrepancies in previous literature.
+The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the decay channels considered are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$.
+% The formulas to calculate the decay widths show up in multiple references, but we chose to match them to \sidecite{Coloma:2020lgy}, which also discusses the discrepancies in previous literature.
+The individual decay widths $\Gamma_i$ are computed using the state-of-the-art calculations from \sidecite{Coloma:2020lgy}, which are described in the following.
 
 \begin{margintable}
     \footnotesize
@@ -189,12 +205,18 @@ The decay to a neutral pseudoscalar meson is
     \;,
     \labeq{gamma_nu_P}
 \end{equation}
-with $x_P = m_P/m_4$ and the \textit{effective decay constants} given by
-\begin{equation}
-    f_{\pi^0} = \SI{0.130}{\GeV}, \hspace{1cm} f_{\eta} = \SI{0.0816}{\GeV}, \hspace{1cm} f_{\eta'} = \SI{-0.0946}{\GeV}
-    \;,
+with $x_P = m_P/m_4$ and the \textit{effective decay constants $f_P$} given by
+% \begin{equation}
+%     f_{\pi^0} = \SI{0.130}{\GeV}, \hspace{1cm} f_{\eta} = \SI{0.0816}{\GeV}, \hspace{1cm} f_{\eta'} = \SI{-0.0946}{\GeV}
+%     \;,
+%     \labeq{gamma_nu_P_f_factors}
+% \end{equation}
+\begin{align}
+    f_{\pi^0} ={}& +\SI{0.1300}{\GeV}\;, \\
+    f_{\eta} ={}& +\SI{0.0816}{\GeV}\;, \rm{and} \\
+    f_{\eta'} ={}& -\SI{0.0946}{\GeV}\;,
     \labeq{gamma_nu_P_f_factors}
-\end{equation}
+\end{align}
 while the decay to a neutral vector meson is given by
 \begin{equation}
     \Gamma_{\nu_4 \rightarrow \nu_\tau V} = |U_{\tau4}|^2 \frac{G_F^2 m_4^3}{32\pi} \bigg(\frac{f_V}{m_V}\bigg)^2 g_V^2 (1+2x_V^2) (1-x_V^2)^2
@@ -202,17 +224,27 @@ while the decay to a neutral vector meson is given by
     \labeq{gamma_nu_V}
 \end{equation}
 with $x_V = m_V/m_4$,
-\begin{equation}
-    f_{\rho^0} = \SI{0.171}{\square\GeV}, \hspace{1cm} f_{\omega} = \SI{0.155}{\square\GeV}
-    \;,
+% \begin{equation}
+%     f_{\rho^0} = \SI{0.171}{\square\GeV}, \hspace{1cm} f_{\omega} = \SI{0.155}{\square\GeV}
+%     \;,
+%     \labeq{gamma_nu_V_f_factors}
+% \end{equation}
+\begin{align}
+    f_{\rho^0} ={}& \SI{0.171}{\square\GeV}\;, \\
+    f_{\omega} ={}& \SI{0.155}{\square\GeV}\;,
     \labeq{gamma_nu_V_f_factors}
-\end{equation}
+\end{align}
 and
-\begin{equation}
-    g_{\rho^0} = 1-2\sin^2{\theta_w}, \hspace{1cm} g_{\omega} = \frac{-2\sin^2{\theta_w}}{3}, \hspace{1cm} \sin^2{\theta_w} = 0.2229
+% \begin{equation}
+%     g_{\rho^0} = 1-2\sin^2{\theta_w}, \hspace{1cm} g_{\omega} = \frac{-2\sin^2{\theta_w}}{3}, \hspace{1cm} \sin^2{\theta_w} = 0.2229
+%     \labeq{gamma_nu_V_g_factors}
+% \end{equation}
+\begin{align}
+    g_{\rho^0} ={}& 1-2\sin^2{\theta_w}\;, \\
+    g_{\omega} ={}& \frac{-2\sin^2{\theta_w}}{3}\;,
     \labeq{gamma_nu_V_g_factors}
-\end{equation}
-\sidecite{codata2018}.
+\end{align}
+and $\sin^2{\theta_w}=0.2229$ \sidecite{codata2018}.
 
 
 \paragraph{3-Body Decay Widths}
@@ -230,11 +262,16 @@ while the decay to two charged leptons (using $x_\alpha = (m_\alpha/m_4)^2)$ of 
     \labeq{gamma_nu_ll_full}
 \end{equation}
 with the constants defined as
-\begin{equation}
-    C_1 = \frac{1}{4}(1-4s_w^2+8s_w^4) , \hspace{1cm} C_2 = \frac{1}{2}(-s_w^2+2s_w^4)
-    \;,
+% \begin{equation}
+%     C_1 = \frac{1}{4}(1-4s_w^2+8s_w^4) , \hspace{1cm} C_2 = \frac{1}{2}(-s_w^2+2s_w^4)
+%     \;,
+%     \labeq{gamma_nu_ll_c1_c2}
+% \end{equation}
+\begin{align}
+    C_1 ={}& \frac{1}{4}(1-4s_w^2+8s_w^4)\;, \\
+    C_2 ={}& \frac{1}{2}(-s_w^2+2s_w^4)\;,
     \labeq{gamma_nu_ll_c1_c2}
-\end{equation} 
+\end{align} 
 the functions as
 \begin{equation}
     f_1(x_\alpha) = (1-14x_\alpha-2x_\alpha^2-12x_\alpha^3)\sqrt{1-4x_\alpha}+12x_\alpha^2(x_\alpha^2-1)L(x_\alpha)
@@ -282,7 +319,7 @@ Three discrete simulation sets were produced with HNL masses of \SIlist{0.3;0.6;
         vertex $x,y$ & uniform & $r$=\SI{600}{\metre} \\
         vertex $z$ & uniform & \SIrange{-600}{0}{\metre} \\
         $m_\mathrm{4}$ & fixed & [0.3, 0.6, 1.0]\,\si{\GeV} \\
-        $L_\mathrm{decay}$ & $L^{-1}$ & [0.0004, 1]\,\si{\metre} / [1, 1000]\,\si{\metre} \\
+        $L_\mathrm{decay}$ & $L^{-1}$ & [0.0004, 1000]\,\si{\metre} \\
         \hline
     \end{tabular}
     \caption[Model dependent simulation sampling distributions]{Generation level sampling distributions and ranges/values of the model dependent simulation sets.}
