@@ -266,7 +266,9 @@ The specific MadGraph version used to produce the 3-body decay kinematics is \hr
 
 \subsection{Sampling Distributions}
 
-In principle, the generation level sampling distributions should be chosen such that at final level of the selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Insufficiently large initial distributions lead to an underestimate of the expected rates, because part of the events that would pass the selection are not produced. This would still be correct as in being the more conservative estimate, but it would limit the analysis potential. Three discrete simulation sets were produced with HNL masses of \SIlist{0.3;0.6;1.0}{\GeV}. Each set consist of a part that is generated for very short decay lengths and one for long decay lengths, because during development it became clear that the low lengths component is crucial to get a reasonable event estimate. The remaining sampling distributions are identical for all sets and are listed in \reftab{hnl_realistic_set_sampling_distributions}. The target number of events for each set was \SI{2.5e9}.
+In principle, the generation level sampling distributions should be chosen such that at final level of the selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Initial distributions insufficiently covering the phase space lead to an underestimate of the expected rates, because part of the events that would pass the selection are not produced. This limits the expected analysis potential.
+% This would still be correct as in being the more conservative estimate, but it would limit the analysis potential.
+Three discrete simulation sets were produced with HNL masses of \SIlist{0.3;0.6;1.0}{\GeV}. Because during development it became clear that the low lengths component is crucial to get a reasonable event estimate, each set consists of a part that is generated for very short decay lengths and one for long decay lengths. The remaining sampling distributions are identical for all sets and are listed in \reftab{hnl_realistic_set_sampling_distributions}. The target number of events for each set was \SI{2.5e9}{}.
 
 \begin{table}[h]
     \centering
@@ -290,19 +292,23 @@ In principle, the generation level sampling distributions should be chosen such 
 
 \subsection{Weighting Scheme}
 
-To produce physically correct event distributions based on the arbitrary generation sampling distributions for the HNL simulation, the forward folding method that was already introduced for the SM simulation in \refsec{sm_event_generation} is used again. How this will be applied in the analysis is discussed in \refsec{analysis_principle}. The weighting scheme that will be explained in the following is implemented in the IceCube low energy analysis framework PISA, which will be discussed in \refsec{analysis_framework}. The custom weighting scheme is implemented in \href{https://github.com/icecube/pisa/blob/master/pisa/stages/aeff/weight_hnl.py}{this custom stage}. The only needed input is the mixing strength $|U_{\tau4}|^2$, which is the variable physics parameter in this analysis. This weighting is needed to go from the used decay length sampling distribution (inverse $1/L$ with fixed range in lab frame) to the target distribution (exponential defined by proper lifetime of the HNL). For each event the additional weight is calculated using the gamma factor
+To produce physically correct event distributions based on the simplified generation sampling distributions for the HNL simulation, the forward folding method that was already introduced for the SM simulation in \refsec{sm_event_generation} is also used. The weighting scheme that will be explained in the following is implemented in a custom stage\sidenote{An analysis in PISA is a collection of functions that are written in so-called \textit{stages}. The stages can be combined in a \textit{pipeline} and are executed in a specific order. This particular stage is located in \texttt{pisa$/$stages$/$aeff$/$weight\_hnl.py}.} in the IceCube low energy analysis framework PISA \cite{pisa_software}, which will be discussed in \refsec{analysis_framework}.
+% The custom weighting scheme is implemented in \href{https://github.com/icecube/pisa/blob/master/pisa/stages/aeff/weight_hnl.py}{this custom stage}.
+The only required input is the mixing strength $|U_{\tau4}|^2$, which is the variable physics parameter in this analysis.
+% This weighting is needed to go from the used decay length sampling distribution (inverse $1/L$ with fixed range in lab frame) to the target distribution (exponential defined by proper lifetime of the HNL).
+For each event the gamma factor
 \begin{equation}
     \gamma = \frac{\sqrt{E_\mathrm{kin}^2+m_4^2}}{m_4}
     \;,
     \labeq{gamma_factor}
 \end{equation}
-with the HNL mass $m_4$ and it's kinetic energy $E_\mathrm{kin}$. The speed of the HNL is calculated as
+is calculated, with the HNL mass $m_4$, and its kinetic energy $E_\mathrm{kin}$. The speed of the HNL is calculated as
 \begin{equation}
     v = c \cdot \sqrt{1 - \frac{1}{\gamma^2}}
     \;,
     \labeq{lorentz_speed}
 \end{equation}
-where $c$ is the speed of light. With these the lab frame decay length range $[s_\mathrm{min},s_\mathrm{max}]$ can be converted into the rest frame lifetime range $[\tau_\mathrm{min},\tau_\mathrm{max}]$ for each event
+where $c$ is the speed of light. With these, the lab frame decay length range $[s_\mathrm{min},s_\mathrm{max}]$ can be converted into the rest frame lifetime range $[\tau_\mathrm{min},\tau_\mathrm{max}]$ for each event
 \begin{equation}
     \tau_\mathrm{min/max} = \frac{s_\mathrm{min/max}}{v\cdot\gamma}.
 \end{equation}
@@ -336,18 +342,21 @@ Adding another factor of $|U_{\tau4}|^2$ to account for the mixing at the intera
     \;.
     \labeq{weight_full}
 \end{equation}
-If this additional weighting factor is multiplied to a generation weight (like in \refeq{neutrino_generation_weight}), the livetime, and the oscillated primary neutrino flux, it results in the number of expected events in the detector for this particular MC event for a chosen mixing (and mass).
+If this additional weighting factor is multiplied to a generation weight with units \si{\meter^2} (like in \refeq{neutrino_generation_weight}), the livetime in \si{\second}, and the oscillated primary neutrino flux in \si{\meter^{-2}\second^{-1}}, it results in the number of expected events in the detector for this particular MC event for a chosen mixing (and mass).
 
-\todo{add table with number of gen level files? mention the event number is smaller becasue of kinemtic condition?}
+\todo{add table with number of gen level files? mention the event number is smaller because of kinemtic condition?}
 
 \subsection{Generation Level Distributions}
 
 \reffig{hnl_gen_distris} shows some selected generation level distributions. Additional distributions can be found in \reffig{hnl_gen_distris_appendix}.
 
+\todo{Combine low/high plots and remove all traces of the separation in the thesis (tables/text/etc.)}
+
 \begin{figure*}[h]
     \centering
     \begin{subfigure}{0.49\linewidth}
         \includegraphics{figures/hnl_simulation/generation/1_d_distr_HNL_true_energy_gen_level_unweighted.png}
+        \caption{HNL energy}
     \end{subfigure}
     \begin{subfigure}{0.49\linewidth}
         \includegraphics{figures/hnl_simulation/generation/1_d_distr_distance_gen_level_unweighted.png}
