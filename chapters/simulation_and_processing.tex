@@ -1,8 +1,7 @@
 \setchapterstyle{kao}
 \setchapterpreamble[u]{\margintoc}
 
-\todo{maybe increase main text width? (read in kao docu)}
-\todo{Adapt to reflect switched chapter order}
+\todo{Adapt chapter to reflect switched chapter order}
 
 \chapter{Standard Model Background Simulation and Data Processing}
 \labch{simulation_and_processing}
@@ -397,7 +396,7 @@ Another set of cuts is applied to make sure the agreement between data and MC is
 
 There are multiple sources of systematic uncertainties related to the event generation and processing explained in this chapter. 
 % Since variations in the range of these uncertainties change the expected number of events in the analysis, it is important to estimate their impact on the final results.
-All uncertainties considered in this work are implemented with parameters that can be varied continuously so that a simultaneous fit of the physics and systematic parameters can be performed. Where possible, a correct model of the effect is used, but in many cases the variations are captured by effective parameters. Uncertainties that solely scale the total event rate are not included individually, since the analysis only uses the relative distribution of events. A single scaling parameter $A_\rm{eff}$ is used to scale the total neutrino rate instead.
+All uncertainties considered in this work are implemented with parameters that can be varied continuously so that a simultaneous fit of the physics and systematic parameters can be performed. Where possible, a correct model of the effect is used, but in many cases the variations are captured by effective parameters. Uncertainties that solely scale the total event rate are not included individually, since the analysis only uses the relative distribution of events and a single scaling parameter $N_{\nu}$ is used to scale the total neutrino rate instead.
 
 
 \subsection{Atmospheric Flux Uncertainties}
@@ -427,9 +426,9 @@ Neutrinos are produced in the decaying hadrons in CR air showers, spanning a lar
 Matching the work in \sidecite{Barr:2006it}, the parameter space is divided in regions of the primary energy $E_i$ and the energy fraction of the secondary meson $x_\rm{lab}$, with varying uncertainties, derived from fixed target experiment data\todo{add figure with Barr blocks?}. The Sibyll2.3c \sidecite{sibyll2.3d} HI model and the GSF CR flux \sidecite{cosmic_ray_composition_and_GSF} were used to calculate the related flux changes\sidenote{The choice of flux and HI model have minor impact on the variations.} for the different regions in $E_i$ and $x_\rm{lab}$, resulting in 17 variables, encoding the possible changes.
 
 
-\subsection{Cross-Section Uncertainties}
+\subsection{Cross-Section Uncertainties} \labsec{cross_section_uncertainties}
 
-The uncertainties related to the cross-sections are split into low and high energy components, since there is no coherent model to explain both DIS interactions, which are the dominant processes above \SI{20}{\gev}, and \textit{charged current resonance production (CCRES)} and \textit{charged current quasi elastic scattering {CCQE}}, which are relevant below \SI{20}{\gev} where interactions with the nucleons as a whole are important. Three parameters are included to account for all relevant cross-sections uncertainties.
+The uncertainties related to the cross-sections are split into low and high energy components, since there is no coherent model to explain both DIS interactions, which are the dominant processes above \SI{20}{\gev}, and \textit{charged current resonance production (CCRES)} and \textit{charged current quasi elastic scattering (CCQE)}, which are relevant below \SI{20}{\gev} where interactions with the nucleons as a whole are important. Three parameters are included to account for all relevant cross-sections uncertainties.
 
 At low energies two parameters are included accounting for uncertainties in form factors of CCQE and CCRES events. These uncertainties are due to uncertainties in the \textit{axial mass} $M_\rm{A}$, which enters the form factor as in
 \begin{equation}
