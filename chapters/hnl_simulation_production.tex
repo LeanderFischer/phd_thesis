@@ -333,7 +333,7 @@ Three discrete simulation samples were produced with HNL masses of \SIlist{0.3;0
 \end{table}
 
 
-\subsection{Weighting Scheme}
+\subsection{Weighting Scheme} \labsec{hnl_weighting_scheme}
 
 To produce physically correct event distributions based on the simplified generation sampling distributions for the HNL simulation, the forward folding method that was already introduced for the SM simulation in \refsec{sm_event_generation} is also used. The weighting scheme that will be explained in the following is implemented in a custom stage\sidenote{An analysis in PISA is a collection of functions that are written in so-called \textit{stages}. The stages can be combined in a \textit{pipeline} and are executed in a specific order. This particular stage is located in \texttt{pisa$/$stages$/$aeff$/$weight\_hnl.py}.} in the IceCube low energy analysis framework PISA \cite{pisa_software}, which will be discussed in \refsec{analysis_framework}.
 % The custom weighting scheme is implemented in \href{https://github.com/icecube/pisa/blob/master/pisa/stages/aeff/weight_hnl.py}{this custom stage}.

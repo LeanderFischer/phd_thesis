@@ -9,7 +9,7 @@ The measurement performed in this thesis is the search for an excess of HNL even
 
 \section{Final Level Sample} \labsec{analysis_samples}
 
-The final level sample of this analysis always consists of the neutrino and muon MC introduced in \refsec{sm_event_generation} and one of the three HNL samples explained in \refsec{model_specific_simulation}. All of those simulation sets and the \SI{10}{years} of IceCube DeepCore data are processed through the full processing and event selection chain described in \refsec{processing_chain, reconstruction} leading to the final level sample. Since applying the last cuts from \refsec{analysis_cuts} leaves an insignificant amount of pure noise events in the sample, the noise simulation is not included in the analysis and won't be listed here.
+The final level sample of this analysis always consists of the neutrino and muon MC introduced in \refsec{sm_event_generation} and one of the three HNL samples explained in \refsec{model_specific_simulation}. All of those simulation sets and the \SI{10}{years} of IceCube DeepCore data are processed through the full processing and event selection chain described in \refsec{processing_chain} and \refsec{reconstruction} leading to the final level sample. Since applying the last cuts from \refsec{analysis_cuts} leaves an insignificant amount of pure noise events in the sample, the noise simulation is not included in the analysis and will not be listed here.
 
 
 \todo{add information about the matter profile used }
@@ -19,7 +19,7 @@ The final level sample of this analysis always consists of the neutrino and muon
 
 The rates and the expected number of events for the SM background are shown in \reftab{background_final_level_expectation}. The explicit detector livetime in the \SI{10}{} years data taking period is \SI{9.28}{years}. The rates are calculated by summing the weights of all events in the final level sample, while the uncertainties are calculated by taking the square root of the sum of the weights squared. The expected number of events is calculated by multiplying the rate with the livetime. The individual fractions show that this sample is neutrino dominated where the majority of events are $\nu_\mu$-CC events.
 
-\begin{table}
+\begin{table}[h]
     \begin{tabular}{ lccc }
     \hline\hline
     \textbf{Type} & \textbf{Rate [\si{\milli\hertz}]} & \textbf{Events (in \SI{9.28}{years})} & \textbf{Fraction [\si{\percent}]} \\ 
@@ -72,7 +72,7 @@ The rates and the expected number of events for the SM background are shown in \
 \subsection{Analysis Binning}
 
 The identical binning to the analysis performed in \sidecite{flercnn_analysis_result} is used. It was chosen such that the track-like bin has the largest $\nu_\mu$-CC fraction. Extend the binning towards lower energies or increasing the number of bins did not improve the HNL sensitivities significantly. It also has to be considered that sufficient data events need to end up in the individual bins to result in a good fit, which was already investigated in the previous analysis. To mitigate the low data statistics, a few bins were not taken into account in the analysis. There are three bins in PID (cascade-like, mixed and track-like), 12 bins in reconstructed energy, and 8 bins in cosine of the reconstructed zenith angle as specified in \reftab{analysis_binning}. Originally, there were two more bins in $\cos(\theta)$, which were removed to reduce muons coming from the horizon and some low energy bins in the cascade-like bin are removed due to the low event statistics.
-\begin{table}
+\begin{table}[h]
         \begin{tabular}{ llll }
         \hline\hline    
         \textbf{Variable} & \textbf{$N_\rm{bins}$} & \textbf{Edges} & \textbf{Step} \\     
@@ -113,20 +113,63 @@ as the \textit{test statistic (TS)}. The total even expectation is $N^{\rm{exp}}
 
 \todo{Do I want/need to include the description of the KDE muon estimation?}
 
-\subsection{Systematic Uncertainties} \labsec{analysis_systematics}
+
+\subsection{Physics Parameters} \labsec{analysis_parameters}
+
+The only variable physics parameter in this analysis is the mixing between the HNL and the SM $\tau$ sector, $|U_{\tau4}|^2$. It can be changed continuously in the range of [\SI{0.0}, \SI{1.0}] by applying the weighting scheme described in \refsec{hnl_weighting_scheme}. The fit is initialized at the nominal value of \SI{0.0}. The other physics parameter, the mass $m_4$ of the HNL, is fixed to one of the three discrete masses to be tested, by using the corresponding sample of the HNL simulation described in \refsec{model_specific_simulation}.
 
 
-To account for the unknown overall normalization of the neutrino rate, the scaling parameter $N_{\nu}$ is included in the fit. It has the identical effect on the SM neutrino events and the BSM HNL events and its nominal value is set to 1.0 with a range of [\SI{0.1}, \SI{2.0}]. Since there was a negligible effect from any of the muon uncertainties they were not included in the fit.
+\subsection{Nuisance Parameters} \labsec{analysis_systematics}
 
-Concerning the atmospheric neutrino flux, the CR power law flux correction factor $\Delta \gamma_\nu$ is left as a free parameter in the fit, with nominal value of \SI{0.0} and a range of [\SI{-0.5}, \SI{0.5}]. Additionally, the Barr $h_{\pi^+}$, Barr $i_{\pi^+}$, and Barr $y_{K^+}$ parameters of the pion and kaon production uncertainties are included with nominal values of \SI{0.0} and ranges of [\SI{-0.75}, \SI{0.75}], [\SI{-3.05}, \SI{3.05}], and [\SI{-1.5}, \SI{1.5}], respectively.
+\begin{marginfigure}
+    \includegraphics{figures/results/checks/plot_systematic_impact_ranking.png}
+	\caption[xx]{"calculated at a mixing of 0.1 and for the 1.0 GeV set"}
+    \labfig{systematic_impact_test}
+\end{marginfigure}
+\todo{Blow up labels/legend/title and make it more readable in the margin}
+To decide which systematic uncertainties should be included in the fit, we test the potential impact they have on the TS if they are neglected. The test is performed by creating asimov data using the \SI{1.0}{\gev} sample at a mixing value of \SI{0.0}, which is around the value where the analysis starts to become sensitive. The systematic parameter of interest is set to a value above its nominal expectation, either pulled up by $+1\sigma$ or by an educated estimate for parameters without a well-defined uncertainty. A fit is performed fixing the systematic parameter of interesting and leaving all additional parameters free. The resulting TS is the mis-modeling significance between a fit with all parameters free, which would result in a TS of 0.0 for this asimov test\todo{I don't like this formulation, but don't know better right now..}. Parameters below a significance of \SI{0.1}{\sigma} are fixed and the test is perfomed in an iterative manner until the final set of free parameters is found. \reffig{systematic_impact_test} shows the resulting significances of one of these tests. In the final selection of free parameters the Barr $h_{\pi^+}$ parameter was also left free\todo{elaborate why this is also done to cover the whole energy range for the pion production, referencing the Barr Block plot that I haven't included yet :D} and the ice absorption is kept free, despite showing a small significance. This is done because the bulk ice parameters are not well constrained and are known to have large impact, which might be concealed in the test, due to correlations with the other parameters\todo{I truly dislike this sentence, too, better ideas?}.
+
+\todo{I'm just writing out the data from the table, but I need to mention/motivate the included priors here and maybe just point to the table for the ranges/nominal values? (Not quite sure about this)}The scaling parameter $N_{\nu}$ is included to account for the unknown overall normalization of the neutrino rate. It has the identical effect on the SM neutrino events and the BSM HNL events and its nominal value is set to 1.0 with a wide range of [\SI{0.1}, \SI{2.0}].
+
+Concerning the atmospheric neutrino flux, the CR power law flux correction factor $\Delta \gamma_\nu$ is included with nominal value of \SI{0.0} and a range of [\SI{-0.5}, \SI{0.5}]. Additionally, the Barr $h_{\pi^+}$, Barr $i_{\pi^+}$, and Barr $y_{K^+}$ parameters of the pion and kaon production uncertainties are included with nominal values of \SI{0.0} and ranges of [\SI{-0.75}, \SI{0.75}], [\SI{-3.05}, \SI{3.05}], and [\SI{-1.5}, \SI{1.5}], respectively.
 
 From the cross-section uncertainties introduced in \refsec{cross_section_uncertainties}, all three parameters $\rm{DIS}$, $M_\rm{A,QE}$, and $M_\rm{A,res}$ are included in the fit with nominal values of \SI{0.0} for all of them and range [\SI{-0.5}, \SI{1.5}] for $\rm{DIS}$ and [\SI{-2.0}, \si{2.0}] for the axial mass parameters $M_\rm{A,QE}$, and $M_\rm{A,res}$.
 
-
+All the detector systematic uncertainties are included in the fit. The DOM efficiency $\epsilon_{\rm{DOM}}$ has a nominal value of \SI{1.0} and a range of [\SI{0.8}, \SI{1.2}]. It is constrained by a Gaussian prior with a width of \SI{0.1}. The hole ice model parameters $p_0$ and $p_1$ are included with nominal values of \SI{0.101569} and \SI{-0.049344}, respectively, and ranges of [\SI{-0.6}, \SI{0.5}] and [\SI{-0.2}, \SI{0.2}]. The bulk ice absorption and scattering parameters are included with nominal values of \SI{1.0} and \SI{1.05}, respectively, and ranges of [\SI{0.85}, \SI{1.15}] and [\SI{0.9}, \SI{1.2}]. They are unconstrained in the fit and the ranges are set to be conservative determined from calibration data\todo{cite?!}
 
 \todo{Say something about SM atm. oscillation parameters that are also included as nuisance parameters!}
-
 \todo{I think I will need to mention here that I did no inlcude MA-RES and MA-QE for the HNL simulation..}
+\todo{add final level effects of varying the axial mass parameters (or example of one)}
+\todo{add final level effects of varying the DIS parameter (or example of one)}
+
+\begin{table}
+    \begin{tabular}{ llll }
+    \hline\hline
+    \textbf{Parameter} & \textbf{Nominal} & \textbf{Range} & \textbf{Prior} \\
+    \hline\hline
+    $\Delta \gamma_\nu$ & 0.0 & [-0.5, 0.5] & 0.1 \\
+    $\rm{Barr} \, h_{\pi^+}$ & 0.0 & [-0.75, 0.75] & 0.15 \\
+    $\rm{Barr} \, i_{\pi^+}$ & 0.0 & [-3.05, 3.05] & 0.61 \\
+    $\rm{Barr} \, y_{K^+}$ & 0.0 & [-1.5, 1.5] & 0.3 \\
+    $\theta_{23} [\si{\degree}]$ & 47.5047  & [0.0, 90.0] & - \\
+    $\Delta m^{2}_{31} [\si{\electronvolt^2}]$ & 0.002475 & [0.001, 0.004] & - \\
+    $\rm{DIS}$ & 0.0 & [-0.5, 1.5] & 1.0 \\
+    $N_{\nu}$ & 1.0 & [0.1, 2.0] & - \\
+    % $|U_{\tau 4}|^2$ & 0.0 & [0.0, 1.0] & - \\
+    $\epsilon_{\rm{DOM}}$ & 1.0 & [0.8, 1.2] & 0.1 \\
+    $\rm{hole \, ice} \, p_0$ & 0.101569 & [-0.6, 0.5] & - \\
+    $\rm{hole \, ice} \, p_1$ & -0.049344  & [-0.2, 0.2] & - \\
+    $\rm{bulk \, ice \, absorption}$ & 1.0 & [0.85, 1.15] & - \\
+    $\rm{bulk \, ice \, scattering}$ & 1.05 & [0.9, 1.2] & - \\
+    $N_\rm{bfr}$ & 0.0 & [-0.2, 1.2] & - \\
+    $M_\rm{A,QE}$ & 0.0 & [-2.0, 2.0] & 1.0 \\
+    $M_\rm{A,res}$ & 0.0 & [-2.0, 2.0] & 1.0\\
+    \hline
+    \end{tabular}
+\caption[xx]{xx}
+\labtab{free_parameters}
+\end{table}
+\todo{fix caption!}
 
 
 
@@ -165,50 +208,6 @@ From the cross-section uncertainties introduced in \refsec{cross_section_uncerta
 % %Moreover, we found that assuming the wrong mass splitting can introduce a significant bias in the measurement if the fitted DOM efficiency is pulled by only 1$\sigma$. 
 
 % This problem arises because we are only fitting the hypersurfaces in reconstructed phase space, without accounting for the different true energy and zenith distributions of MC in each analysis bin, which change with each detector systematic variation. To mitigate this problem, we fit the hypersurfaces for 20 different values in mass splitting between $1.5\times 10^{-3}\,\mathrm{eV}^2$ and $3.5\times 10^{-3}\,\mathrm{eV}^2$, and then apply a piece-wise linear interpolation to all slopes, intercepts and covariance matrix elements. The oscillation parameter fit can then dynamically adapt the hypersurfaces for each value of $\Delta m^{2}_{32}$ that is tested using these interpolated functions. The effects of other parameter choices were evaluated as well, but none were found to introduce a significant bias.
-
-
-% \subsubsection{Free Parameter Selection} \labsec{parameter_selection}
-
-% Copy paste from OVS PRD about systematic impact test:
-
-% We decide which systematic uncertainties must be included in the fit by studying the potential bias they would produce in the oscillation parameters and the change on the test statistic $\chi^2_\mathrm{mod}$ if we neglected them. We create data sets with their observed quantities set equal to their expected values for a wide range of values for $\theta_{23}$ and $\Delta m^{2}_{32}$ and perform two fits: one where the oscillation parameters are fixed to their true value and one where they are left free. In both fits, the systematic parameter being tested is fixed to a value off from its nominal expectation by either 1$\sigma$ or by an educated guess, if the uncertainty is not well-defined. Parameters are included in the analysis when this test creates a significant bias in the oscillation parameters, which is conservatively defined as a difference larger than $2\times10^{-2}$ between the test statistics of the two fits.
-
-% Copy paste from OVS PRD about detector systematic nominal, prior, and ranges:
-
-% As motivated in Section~\ref{sec:detector_calibration}, the DOM efficiency is constrained by a Gaussian prior to the value of 1.0 $\pm$ 0.1. The ice model parameters are unconstrained in the fit, and allowed to vary within conservative ranges determined from calibration data. The hole ice model parameters are bounded within the ranges $-2.0<p_{0}<1.0$ and $-0.2<p_{1}<0.2$. The bulk ice model parameters are bounded within $-0.90 < \mathrm{Absorption} < 1.10$ and $-0.95 < \mathrm{Scattering} < 1.15$.
-
-\todo{add final level effects of varying the axial mass parameters (or example of one)}
-\todo{add final level effects of varying the DIS parameter (or example of one)}
-
-\begin{table*}
-    \begin{tabular}{ llll }
-    \hline\hline
-    \textbf{Parameter} & \textbf{Nominal} & \textbf{Range} & \textbf{Prior} \\
-    \hline\hline
-    $\Delta \gamma_\nu$ & 0.0 & [-0.5, 0.5] & 0.1 \\
-    $\rm{Barr} \; h_{\pi^+}$ & 0.0 & [-0.75, 0.75] & 0.15 \\
-    $\rm{Barr} \; i_{\pi^+}$ & 0.0 & [-3.05, 3.05] & 0.61 \\
-    $\rm{Barr} \; y_{K^+}$ & 0.0 & [-1.5, 1.5] & 0.3 \\
-    $\theta_{23} [\si{\degree}]$ & 47.5047  & [0.0, 90.0] & - \\
-    $\Delta m^{2}_{31} [\si{\electronvolt^2}]$ & 0.002475 & [0.001, 0.004] & - \\
-    $\rm{DIS}$ & 0.0 & [-0.5, 1.5] & 1.0 \\
-    $N_{\nu}$ & 1.0 & [0.1, 2.0] & - \\
-    % $|U_{\tau 4}|^2$ & 0.0 & [0.0, 1.0] & - \\
-    $\epsilon_{\rm{DOM}}$ & 1.0 & [0.8, 1.2] & 0.1 \\
-    $\rm{hole \, ice} \; p_0$ & 0.101569 & [-0.6, 0.5] & - \\
-    $\rm{hole \, ice} \; p_1$ & -0.049344  & [-0.2, 0.2] & - \\
-    $\rm{ice \, absorption}$ & 1.0 & [0.85, 1.15] & - \\
-    $\rm{ice \, scattering}$ & 1.05 & [0.9, 1.2] & - \\
-    $N_\rm{bfr}$ & 0.0 & [-0.2, 1.2] & - \\
-    $M_\rm{A,QE}$ & 0.0 & [-2.0, 2.0] & 1.0 \\
-    $M_\rm{A,res}$ & 0.0 & [-2.0, 2.0] & 1.0\\
-    \hline
-    \end{tabular}
-\caption[xx]{xx}
-\labtab{best_fit_parameters}
-\end{table*}
-
-
 
 
 \section{Analysis Checks}
@@ -275,6 +274,8 @@ To estimate the goodness of fit, pseudo-data is generated from the MC by injecti
 	\caption[xx]{xx}
     \labfig{best_fit_deltas_normed}
 \end{figure*}
+
+\todo{fix caption for this figure}
 
 
 \begin{table*}
