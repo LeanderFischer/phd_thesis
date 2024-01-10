@@ -137,7 +137,8 @@ From the cross-section uncertainties introduced in \refsec{cross_section_uncerta
 
 All the detector systematic uncertainties are included in the fit. The DOM efficiency $\epsilon_{\rm{DOM}}$ has a nominal value of \SI{1.0} and a range of [\SI{0.8}, \SI{1.2}]. It is constrained by a Gaussian prior with a width of \SI{0.1}. The hole ice model parameters $p_0$ and $p_1$ are included with nominal values of \SI{0.101569} and \SI{-0.049344}, respectively, and ranges of [\SI{-0.6}, \SI{0.5}] and [\SI{-0.2}, \SI{0.2}]. The bulk ice absorption and scattering parameters are included with nominal values of \SI{1.0} and \SI{1.05}, respectively, and ranges of [\SI{0.85}, \SI{1.15}] and [\SI{0.9}, \SI{1.2}]. They are unconstrained in the fit and the ranges are set to be conservative determined from calibration data\todo{cite?!}
 
-\todo{Say something about SM atm. oscillation parameters that are also included as nuisance parameters!}
+The two atmospheric neutrino oscillation parameters $\theta_{23}$ and $\Delta m^{2}_{31}$ are also included in the fit with nominal values of \SI{47.5047}{\degree} and \SI{2.475e-3}{\electronvolt^2}, respectively. Since they govern the shape and the strength of the tau neutrino flux, by defining the oscillation from $\nu_\mu$ to $\nu_\tau$, they are also relevant for the HNL signal shape. Their ranges are set to [\SI{0.0}{\degree}, \SI{90.0}{\degree}] and [\SI{0.001}{\electronvolt^2}, \SI{0.004}{\electronvolt^2}].
+
 \todo{I think I will need to mention here that I did no inlcude MA-RES and MA-QE for the HNL simulation..}
 \todo{add final level effects of varying the axial mass parameters (or example of one)}
 \todo{add final level effects of varying the DIS parameter (or example of one)}
@@ -264,17 +265,53 @@ To estimate the goodness of fit, pseudo-data is generated from the MC by injecti
 
 \section{Results}
 
-\todo{Add table with BFP mixings and their uncertainties from scan assuming wilks?}
+\todo{Add table with BFP mixings and their uncertainties from scan assuming wilks? include different CL levels and signifcance of rejecting null}
 
 
-\subsection{Best Fit Parameters}
+
+
+\subsection{Best Fit Parameters and Limits}
+
+
+\begin{table}
+    \begin{tabular}{ lllll }
+        \hline\hline
+    
+        \textbf{HNL mass} & \textbf{$|U_{\tau4}|^2_\rm{BFP}$} & \textbf{68 \si{\percent} CL} & \textbf{90 \si{\percent} CL} & \textbf{CL$_\rm{null\,hypo}$} \\
+        % \textbf{$m_4$ [\si{\gev}]} & \textbf{$|U_{\tau4}|^2_\rm{BFP}$} & \textbf{68 \si{\percent} CL} & \textbf{90 \si{\percent} CL} & \textbf{$\Delta\chi^2_{\mathrm{mod,null}}$} \\
+    
+        \hline\hline
+
+        \SI{0.3}{\gev} & 0.003 & 0.087 & 0.194 & \SI{0.03}{\percent} \\
+        \SI{0.6}{\gev} & 0.0002 & 0.302 & 0.440 & \SI{0.01}{\percent} \\
+        \SI{1.0}{\gev} & 0.106 & 0.238 & 0.396 & \SI{37.25}{\percent} \\
+        \hline
+        \end{tabular}
+    \caption[xx]{xx}
+    \labtab{best_fit_parameters_and_confidence_levels}
+\end{table}
+\todo{fix table caption}
+
+
+\begin{figure}[h]
+    \includegraphics{figures/results/best_fit/best_fit_results_and_limits.png}
+	\caption[xx]{xx}
+    \labfig{best_fit_mixings_and_limit}
+\end{figure}
+\todo{fix caption for this figure}
+
+\begin{figure}[h]
+    \includegraphics{figures/results/best_fit/sensitivity_and_wilks_scan_0.6_GeV_with_1sigma.png}
+	\caption[xx]{xx}
+    \labfig{brazil_band_1.0_GeV}
+\end{figure}
+\todo{fix caption for this figure}
 
 \begin{figure*}[h]
     \includegraphics{figures/results/best_fit/hnl_analysis_best_fit_deltas_normed_dist_to_nominal.png}
 	\caption[xx]{xx}
     \labfig{best_fit_deltas_normed}
 \end{figure*}
-
 \todo{fix caption for this figure}
 
 
@@ -307,7 +344,7 @@ To estimate the goodness of fit, pseudo-data is generated from the MC by injecti
 \labtab{best_fit_parameters}
 \end{table*}
 
-\subsection{Upper Limits}
+% \subsection{Upper Limits}
 
 \subsection{Post$-$Fit Data/MC Agreement}
 
