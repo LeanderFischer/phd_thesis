@@ -173,47 +173,9 @@ The two atmospheric neutrino oscillation parameters $\theta_{23}$ and $\Delta m^
 \todo{fix caption!}
 
 
-
-% \subsubsection{Treatment of Detector Response Uncertainties via a Likelihood-Free Inference Method} \labsec{ultrasurfaces}
-
-% \sidecite{Fischer_2023}
-
-% Copy paste from OVS PRD about hypersurfaces (and interpolation of those):
-
-% To evaluate the expected impact of detection uncertainties, data sets are produced with different variations of detector response, processed to the final level of selection, and then they are parameterized following a model of the uncertainties to evaluate how the final sample would look like for any reasonable choice of parameters. The parametrizations are done at the analysis bin level, assuming that every effect considered is independent and that they can be approximated by a linear function. Under these assumptions we can compute a reweighting factor in every bin that depends on $N$ parameters, which correspond to the number of systematic effects being considered, plus an offset $c$, as
-
-% \begin{equation}
-%     f(p_1,...,p_N)=c+\sum_{n=1}^N m_n \Delta p_n.
-% \end{equation}
-% Here $m_n$ are the reweighting factors obtained from simulation sets with a systematic variation and $\Delta p_n$ is the test value of a specific systematic variation.
-
-% The fit of the parameters $m_n$ is done over all systematic MC sets, reducing the uncertainty on the MC prediction in each bin as a side effect since the error on the fitted function is smaller than the statistical error from the nominal MC set. The set of all fitted functions in all histogram bins are called ``hypersurfaces". An example of such a fit from a single bin, projected onto one dimension, is shown in Fig. \ref{fig:hypersurface-example}. %The result of using hypersurfaces accurately predicted the bin content of simulation sets that were left out of the parameterization.
-
-% The event counts coming from different flavors and interactions have a different response to varying the same detector parameter. Therefore, the hypersurfaces in each bin are fit separately for three groups of events:
-% \begin{itemize}
-%     \item ($\nu_{\mathrm{all}} + \bar{\nu}_{\mathrm{all}}$) NC + ($\nu_e + \bar{\nu}_e$) CC: These events all produce cascade signatures in the detector.
-%     \item ($\nu_\tau + \bar{\nu}_\tau$) CC: These interactions may differ from the previous group because they have a production threshold of $E_\nu \gtrsim 3.5\,\mathrm{GeV}$ and also produce muons with a branching ratio of 17\%.
-%     \item ($\nu_\mu + \bar{\nu}_\mu$) CC: These interactions produce track-like signatures.
-% \end{itemize}
-
-% % \begin{figure}[t!]
-% %     \centering
-% %     \includegraphics[width=.95\linewidth]{Figures/detector_syst/hypersurface_example_v5.pdf}
-% %     \caption{Example of a hypersurface function in one bin projected on the DOM efficiency dimension. Each data point corresponds to one systematic set. Translucent datapoints are from sets where one or more systematic parameter \emph{besides} DOM efficiency is off-nominal. Those points are projected along the fitted plane to the nominal point. Several systematic sets have a nominal DOM efficiency of 1.0. The translucent error band corresponds to the standard deviation of the fitted function.}
-% %     \label{fig:hypersurface-example}
-% % \end{figure}
-
-% The distribution of $\chi^{2}$/d.o.f. from the fits in all analysis bins is used as a diagnostic to ensure that the fitted, linear hypersurfaces provide a good estimate for the expected number of events for the full range of simulated detector configurations. We find that the means of these $\chi^{2}$/d.o.f. distributions are all consistent with 1.0 as expected from good fits for each of the three categories described above (NC + $\nu_{e}$ CC, $\nu_{\tau}$ CC and $\nu_{\mu}$ CC). Attempts to use higher order polynomial fits did not yield a significantly improved $\chi^{2}$/d.o.f., and in fact often rendered the fits less stable. 
-
-% To produce the histograms for fitting the hypersurfaces, a choice must be made for the values of flux, cross section and oscillation parameters. We found that the hypersurface fits are sensitive to the choice of parameters that have correlations with the effect they encode. Most notably, this effect is observed between the mass splitting and DOM optical efficiency as demonstrated in Fig.~\ref{fig:interpolatedHS}, which shows the difference between fitted hypersurface gradients for the DOM efficiency dimension for two values of $\Delta m^{2}_{32}$. 
-% %Moreover, we found that assuming the wrong mass splitting can introduce a significant bias in the measurement if the fitted DOM efficiency is pulled by only 1$\sigma$. 
-
-% This problem arises because we are only fitting the hypersurfaces in reconstructed phase space, without accounting for the different true energy and zenith distributions of MC in each analysis bin, which change with each detector systematic variation. To mitigate this problem, we fit the hypersurfaces for 20 different values in mass splitting between $1.5\times 10^{-3}\,\mathrm{eV}^2$ and $3.5\times 10^{-3}\,\mathrm{eV}^2$, and then apply a piece-wise linear interpolation to all slopes, intercepts and covariance matrix elements. The oscillation parameter fit can then dynamically adapt the hypersurfaces for each value of $\Delta m^{2}_{32}$ that is tested using these interpolated functions. The effects of other parameter choices were evaluated as well, but none were found to introduce a significant bias.
-
-
 \section{Analysis Checks}
 
-Fitting to data will be performed in a \textit{blind} manner, where the analyzer does not immediately see the fitted physics and nuisance parameter values, but first checks that a set of pre-defined \textit{goodness of fit (GOF)} criteria are fulfilled. If those criteria are met to satisfaction the fit results are unblinded and the full result can be revealed. Before these blind fits to data are run, the robustness of the analysis method is tested using pseudo-data that is generated using the MC sets.
+Fitting to data will be performed in a \textit{blind} manner, where the analyzer does not immediately see the fitted physics and nuisance parameter values, but first checks that a set of pre-defined \textit{goodness of fit (GOF)} criteria are fulfilled. At this point changes to the analysis can still be made, if the criteria are not met. This is done to circumvent the so-called \textit{confirmation bias} \sidecite{confirmation_bias}, where the analyzer might be tempted to construct the analysis in a way that confirms their expectation. After the GOF criteria are met to satisfaction the fit results are unblinded and the full result can be revealed. Before these blind fits to data are run, the robustness of the analysis method is tested using pseudo-data that is generated using the MC sets.
 
 
 \subsection{Minimization Robustness} \labsec{asimov_inject_recover}
@@ -265,15 +227,37 @@ To estimate the goodness of fit, pseudo-data is generated from the MC by injecti
 
 \section{Results}
 
-\todo{Add table with BFP mixings and their uncertainties from scan assuming wilks? include different CL levels and signifcance of rejecting null}
 
+\subsection{Best Fit Nuisance Parameters}
 
+The resulting nuisance parameter values from the fits are illustrated in \reffig{best_fit_deltas_normed}, where the differences to the nominal values are shown, normalized by the distance to the closest boundary. The results from all three fits are shown in the same plot and the fits prefer values of the same size for all three mass sets. For parameters that had a Gaussian prior, the \SI{1}{\sigma} range is also displayed. As was already confirmed during the blind fit procedure, all fitted parameters are within this range, but the $\rm{Barr} \; h_{\pi^+}$ parameter is smaller and the $\rm{Barr} \; i_{\pi^+}$ is larger than expected, both being very close within the $+$\SI{1}{\sigma} and the $-$\SI{1}{\sigma} range, respectively. The $\rm{DIS}$ parameter fits to a smaller value than the nominal and all ice parameters, both $\rm{hole \, ice} \; p_0$, and $p_1$ as well as $\rm{bulk \, ice \, absorption}$, and $\rm{scattering}$ are found at values lower than the nominal. The effective ice model parameter, $N_\rm{bfr}$, prefers a value of $\sim$\SI{0.74}, indicating that the data is more \textit{BFR}-like (value of \SI{1.0}) than \textit{Spice 3.2.1}-like (value of \SI{0.0}). For completeness's sake, the explicit results are listed in \reftab{best_fit_parameters}. There, the nominal values and the absolute differences to the best fit value are also presented.
+
+\begin{figure*}[h]
+    \includegraphics{figures/results/best_fit/hnl_analysis_best_fit_deltas_normed_dist_to_nominal.png}
+	\caption[xx]{xx}
+    \labfig{best_fit_deltas_normed}
+\end{figure*}
+\todo{fix caption for this figure}
+\todo{sort the variables also by type, same as in the table "best\_fit\_parameters"?}
+
+\todo{Show best fit hole ice angular acceptance compared to nominal and flasher/in-siute fits, maybe?}
+\todo{Discuss what it means that the parameters are at these values? Here, or somewhere else?}
 
 
 \subsection{Best Fit Parameters and Limits}
 
+The fitted mixing values are
+\begin{align*}
+    |U_{\tau4}|^2_\rm{BFP}(\SI{0.3}{\gev}) &= 0.003^{+0.084} \;, \\
+    |U_{\tau4}|^2_\rm{BFP}(\SI{0.6}{\gev}) &= 0.080^{+0.134} \;, \rm{and} \\
+    |U_{\tau4}|^2_\rm{BFP}(\SI{1.0}{\gev}) &= 0.106^{+0.132} \;,
+\end{align*}
+with their $+$\SI{1}{\sigma} uncertainty. All of them are compatible with the null hypothesis of \SI{0.0} mixing, although the \SI{0.6}{\gev} and \SI{1.0}{\gev} fits indicate a mixing value around \SI{0.1}. The best fit mixing values and the corresponding upper limits at \SI{68}{\percent} and \SI{90}{\percent} \textit{confidence level (CL)} are listed in \reftab{best_fit_parameters_and_confidence_levels}, also showing the Cl at the null hypothesis, which is the probability of excluding the null hypothesis with this fit.
 
-\begin{table}
+\begin{table}[h]
+    % \footnotesize
+    
+
     \begin{tabular}{ lllll }
         \hline\hline
     
@@ -283,22 +267,40 @@ To estimate the goodness of fit, pseudo-data is generated from the MC by injecti
         \hline\hline
 
         \SI{0.3}{\gev} & 0.003 & 0.087 & 0.194 & \SI{0.03}{\percent} \\
-        \SI{0.6}{\gev} & 0.0002 & 0.302 & 0.440 & \SI{0.01}{\percent} \\
+        \SI{0.6}{\gev} & 0.080 & 0.214 & 0.355 & \SI{21.29}{\percent} \\
         \SI{1.0}{\gev} & 0.106 & 0.238 & 0.396 & \SI{37.25}{\percent} \\
         \hline
-        \end{tabular}
+    \end{tabular}
+
+    % % didn't work in the margin..
+    % \begin{tabular}{ llll }
+    %     \hline\hline
+    
+    %     % \textbf{HNL mass} & \textbf{\SI{0.3}{\gev}} & \textbf{\SI{0.6}{\gev}} & \textbf{\SI{1.0}{\gev}} \\
+    %     \textbf{$m_4$ [\si{\gev}]} & \textbf{\SI{0.3}{}} & \textbf{\SI{0.6}{}} & \textbf{\SI{1.0}{}} \\
+    
+    %     \hline\hline
+
+    %     \textbf{$|U_{\tau4}|^2_\rm{BFP}$} & 0.003 & 0.080 & 0.106 \\
+    %     \textbf{68 \si{\percent} CL} & 0.087 & 0.214 & 0.238 \\
+    %     \textbf{90 \si{\percent} CL} & 0.194 & 0.355 & 0.396 \\
+    %     \hline
+    %     \textbf{CL$_\rm{null}$ [\si{\percent}]} & \SI{0.03}{} & \SI{21.29}{} & \SI{37.25}{} \\
+    %     \hline
+    % \end{tabular}
+
     \caption[xx]{xx}
     \labtab{best_fit_parameters_and_confidence_levels}
 \end{table}
 \todo{fix table caption}
 
 
-\begin{figure}[h]
-    \includegraphics{figures/results/best_fit/best_fit_results_and_limits.png}
-	\caption[xx]{xx}
-    \labfig{best_fit_mixings_and_limit}
-\end{figure}
-\todo{fix caption for this figure}
+% \begin{figure}[h]
+%     \includegraphics{figures/results/best_fit/best_fit_results_and_limits.png}
+% 	\caption[xx]{xx}
+%     \labfig{best_fit_mixings_and_limit}
+% \end{figure}
+% \todo{fix caption for this figure}
 
 \begin{figure}[h]
     \includegraphics{figures/results/best_fit/sensitivity_and_wilks_scan_0.6_GeV_with_1sigma.png}
@@ -307,42 +309,6 @@ To estimate the goodness of fit, pseudo-data is generated from the MC by injecti
 \end{figure}
 \todo{fix caption for this figure}
 
-\begin{figure*}[h]
-    \includegraphics{figures/results/best_fit/hnl_analysis_best_fit_deltas_normed_dist_to_nominal.png}
-	\caption[xx]{xx}
-    \labfig{best_fit_deltas_normed}
-\end{figure*}
-\todo{fix caption for this figure}
-
-
-\begin{table*}
-    \begin{tabular}{ ll lll lll }
-    \hline\hline
-    \textbf{Parameter} & \textbf{Nominal} & \multicolumn{3}{c}{\textbf{Best Fit}} & \multicolumn{3}{c}{\textbf{Nominal - Best Fit}} \\ 
-    & & \textbf{0.3 GeV} & \textbf{0.6 GeV} &  \textbf{1.0 GeV} & \textbf{0.3 GeV} & \textbf{0.6 GeV} &  \textbf{1.0 GeV} \\ 
-    \hline\hline
-    $\Delta \gamma_\nu$ & 0.000000  & $-$0.007927 & $-$0.007957 & $-$0.006622 & 0.007927  & 0.007957  & 0.006622  \\
-    $\rm{Barr} \; h_{\pi^+}$ & 0.000000  & $-$0.147462 & $-$0.147422 & $-$0.148043 & 0.147462  & 0.147422  & 0.148043  \\
-    $\rm{Barr} \; i_{\pi^+}$ & 0.000000  & 0.475480  & 0.475323  & 0.520716  & $-$0.475480 & $-$0.475323 & $-$0.520716 \\
-    $\rm{Barr} \; y_{K^+}$ & 0.000000  & 0.076161  & 0.076259  & 0.057927  & $-$0.076161 & $-$0.076259 & $-$0.057927 \\
-    $\theta_{23} [\si{\degree}]$ & 47.504700 & 48.117259 & 48.118713 & 48.013150 & $-$0.612559 & $-$0.614013 & $-$0.508450 \\
-    $\Delta m^{2}_{31} [\si{\electronvolt^2}]$ & 0.002475  & 0.002454  & 0.002454  & 0.002455  & 0.000020  & 0.000020  & 0.000019  \\
-    $\rm{DIS}$ & 0.000000  & $-$0.248768 & $-$0.248845 & $-$0.216247 & 0.248768  & 0.248845  & 0.216247  \\
-    $N_{\nu}$ & 1.000000  & 0.889145  & 0.889127  & 0.889543  & 0.110855  & 0.110873  & 0.110457  \\
-    $|U_{\tau 4}|^2$ & 0.000000  & 0.003017  & 0.000169  & 0.104056  & $-$0.003017 & $-$0.000169 & $-$0.104056 \\
-    $\epsilon_{\rm{DOM}}$ & 1.000000  & 1.021987  & 1.022017  & 1.016791  & $-$0.021987 & $-$0.022017 & $-$0.016791 \\
-    $\rm{hole \, ice} \; p_0$ & 0.101569  & $-$0.161352 & $-$0.161260 & $-$0.160133 & 0.262921  & 0.262829  & 0.261702  \\
-    $\rm{hole \, ice} \; p_1$ & $-$0.049344 & $-$0.073700 & $-$0.073682 & $-$0.076212 & 0.024356  & 0.024338  & 0.026868  \\
-    $\rm{ice \, absorption}$ & 1.000000  & 0.943262  & 0.943271  & 0.942023  & 0.056738  & 0.056729  & 0.057977  \\
-    $\rm{ice \, scattering}$ & 1.050000  & 0.986150  & 0.986131  & 0.989374  & 0.063850  & 0.063869  & 0.060626  \\
-    $N_\rm{bfr}$ & 0.000000  & 0.746674  & 0.746852  & 0.736461  & $-$0.746674 & $-$0.746852 & $-$0.736461 \\
-    $M_\rm{A,QE}$ & 0.000000  & $-$0.170430 & $-$0.170677 & $-$0.121335 & 0.170430  & 0.170677  & 0.121335  \\
-    $M_\rm{A,res}$ & 0.000000  & $-$0.125908 & $-$0.126076 & $-$0.071727 & 0.125908  & 0.126076  & 0.071727 \\
-    \hline
-    \end{tabular}
-\caption[xx]{xx}
-\labtab{best_fit_parameters}
-\end{table*}
 
 % \subsection{Upper Limits}
 
