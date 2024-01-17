@@ -7,11 +7,85 @@
 
 \section{Reconstruction}
 
+All existing reconstruction algorithms applied for low energetic atmospheric neutrino events mentioned in \refsec{reconstruction} are either assuming a single cascade hypothesis or a track and cascade hypothesis, which are the two SM morphologies observable at these energies, as was described in \refsec{icecube_signatures}. A HNL being produced and decaying inside the IceCube detector however, will produce two cascade like light depositions. The morphology and how the cascade properties and their spatial separation depend on the model parameters was introduced in \refsec{double_cascade_morphology}. To investigate the performance of the detector to observe these events, a low energetic double cascade reconstruction algorithm was developed, based on a pre-existing algorithm used to search for double cascades produced from high energetic astrophysical tau neutrinos \sidecite{Abbasi:2020zmr} that was established in \sidecite{MUsner}, but first mentioned in \sidecite{PHallen}.
+
+
 \subsection{Table-Based Minimum Likelihood Algorithms}
+
+The reconstruction is relying on a maximum likelihood algorithm, which is the \textit{classical} approach to IceCube event reconstructions, as opposed to ML based methods. A Poissonian likelihood is constructed, which compares the observed photon numbers, $n$, with their arrival times to the expected light depositions, $\mu$, for a given even hypothesis as
+\begin{equation}
+    \ln(L) = \sum_j \sum_t n_{j,t} \cdot \ln(\mu_{j,t}(\Theta) + \rho_{j,t}) - (\mu_{j,t}(\Theta) + \rho_{j,t}) - \ln(n_{j,t}!)
+    \;,
+    \labeq{millipede_likelihood}
+\end{equation}
+where $\rho$ are the number of expected photons from noise, $\Theta$ are the parameters governing the source hypothesis, and the likelihood is calculated summing over all DOMs $j$ splitting observed photons into time bins $t$. The light expectations are calculated using look-up tables\todo{cite photonics tables?} that contain the results from MC simulations of reference cascade events or track segments. By varying the parameters defining the event hypothesis, the likelihood of describing the observed light pattern by the expected light depositions is maximized to find the reconstructed event. Algorithms of this kind used in IceCube are described in great detail in \sidecite{IceCube:2013dkx}. For the table production a specific choice of ice model has to be made, while the calibrated DOM information is taken from the measurement itself.
+
 
 \subsection{Double Cascade Hypothesis}
 
-\subsection{Modification to Low Energy Events}
+Based on the tabulated light expectations for cascades and track segments, various event hypothesis can be constructed, like the common cascade only or the track and cascade hypotheses. The hypothesis describing the double cascade signature of the HNL is using two reference cascades that are separated by a certain distance. The whole hypothesis is defined by 9 parameters and assumes that the two cascades are aligned with each other, which is a safe assumption for strongly forward boosted interactions\todo{Elaborate whether this is the case (show it in a plot?). Discuss directionality of cascades in general.}. The parameters are the position of the first cascade $x, y, z$, the direction of both cascades $\phi, \theta$, and its time $t$ as well as the decay length $L$ between the two cascades. Assuming the speed of the HNL to be the speed of light, $c$, this already defines the full signature. The HNL particle does not produce any light while traveling, as it is electrically neutral. The full 9 parameters describing the event are $\Theta = (x, y, z, t, \theta, \phi, E_0, E_1, L)$. To compute the full likelihood the term in \refeq{millipede_likelihood} is summed over both cascade parts, $i$, as $\sum_i \ln(L_i)$. 
+
+
+\subsection{Optimization for Low Energy Events}
+
+% from HNL note
+
+\paragraph{Fit Routine:}
+
+It was observed that the likelihood space can be very dependent on the current parameter set $\Theta_i$\todo{Add a section showing some likelihood scans with several parameters and the effect on the decay length LLH.} and especially the likelihood distribution w.r.t. the decay length. Seeding the decay length with a value much different from the true value can lead to a resulting best fit in a local minimum. To get a better estimate of the decay length a fit routine was tested where some of the parameters were fixed in the first iteration and then the resulting best fit point was used to fit all 9 parameters in a second iteration. \cref{fig:reconstruction_optimization_fit_routine} shows the median, absolute, fractional decay length resolution for two tested fit routines. It can be seen how a fit split into two consecutive steps, where the first step fits only both cascade energies and the decay length and the second step fits the full 9 parameters, performs as compared to just the full 9 parameter fit. It can be seen that the iterative fit approach seems to result in a better resolution. The initial seed for both routines is the same.\todo{Put down some information about the used seed parameters.}
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/reconstruction/optimization_190605/fit_routine/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y_n_events.png}
+%     \caption{Decay length resolution versus true decay length comparing a full 9 paramters fit to an iterative approach where first the energies and the decay lenght are fitted, while fixing the other 7 parameters and then the full fit is performed.
+%     This was done with older signal simulation set (190605) and the resolution is unweighted.}
+%     \label{fig:reconstruction_optimization_fit_routine}
+% \end{figure}
+
+
+\paragraph{Decay Length Seeds:}
+
+Following the same line of argument as with the iterative fit approach, it was tested how multiple fits seeded with different decay length values might improve the resolution, comparing to a single decay length seed fit. In \cref{fig:reconstruction_optimization_decay_length_seeding} it can be seen that a fit with multiple decay length seed achieves slightly better results.
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/reconstruction/optimization_190605/length_seeds/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y.png}
+%     \caption{Decay length resolution versus true decay length comparing the same fit routine seeded with just the seed decay length (Single length seed) and seeded with a decay length of 5\,m, 25\,m, 50\,m, 100\,m, and 200\,m (Multiple length seeds).
+%     This was done with older signal simulation set (190605) and the resolution is unweighted.}
+%     \label{fig:reconstruction_optimization_decay_length_seeding}
+% \end{figure}
+
+
+\paragraph{Minimizer Settings:}
+
+Unfortunately it was not possible to use more sophisticated minimization routines, circumventing the fitting to local minima, but the accessible minimizers within the Millipede framework were tested. In \cref{fig:reconstruction_optimization_minimizers} the resulting resolutions from fits using three different minimizers are shown. The default Millipede minimizer Minuit1 Simplex seems to perform best out of these three.
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/reconstruction/optimization_190605/minimizers/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_n_events.png}
+%     \caption{Decay length resolution versus true decay length comparing the same fit routine performed with a different minimizer. These are the minimizers accessible with the Millipede framework. The (obvious) settings were chosen to be the same, but there might still be some hidden differences explaining the discrepency between the Minuit1 and Minuit2 implementation of Simplex. This was done with older signal simulation set (190605) and the resolution is unweighted.}
+%     \label{fig:reconstruction_optimization_minimizers}
+% \end{figure}
+
+\paragraph{Missing Points}
+\begin{itemize}
+    \item Taupede reconstruction chain
+    \item MuMillipede "reconstruction"
+    \item Flipped cascades (for events where the cascades changed order in time e.g. \textit{negative decay lengths events})
+    \item badly reconstructed population and why this happened.
+\end{itemize}
+
+The runtimes for these fit variations was also tracked alongside with the number of succesfull fits.\todo{Add a table with fit runtimes and success rates?}
+
+\paragraph{Chosen Reconstructions Chain/Settings}
+
+Minuit1 Simplex
+0.5x/1.0x/1.5x decay length seeding (multiplied by the Retro bf track length)
+iterative fit approach: 1. Fitting energies/decay length (3 seeds) 2. Full 9 parameter fit
+
+
+
+
 
 \section{Cross Checks}
 \subsection{Simplistic Sets}
