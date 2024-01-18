@@ -12,7 +12,7 @@ All existing reconstruction algorithms applied for low energetic atmospheric neu
 
 \subsection{Table-Based Minimum Likelihood Algorithms}
 
-The reconstruction is relying on a maximum likelihood algorithm, which is the \textit{classical} approach to IceCube event reconstructions, as opposed to ML based methods. A Poissonian likelihood is constructed, which compares the observed photon numbers, $n$, with their arrival times to the expected light depositions, $\mu$, for a given even hypothesis as
+The reconstruction is relying on a maximum likelihood algorithm, which is the \textit{classical} approach to IceCube event reconstructions, as opposed to ML based methods. A Poissonian likelihood is constructed, which compares the observed photon numbers, $n$, with their arrival times to the expected light depositions, $\mu$, for a given even hypothesis as\todo{maybe I want a figure for this, or not so important?}
 \begin{equation}
     \ln(L) = \sum_j \sum_t n_{j,t} \cdot \ln(\mu_{j,t}(\Theta) + \rho_{j,t}) - (\mu_{j,t}(\Theta) + \rho_{j,t}) - \ln(n_{j,t}!)
     \;,
@@ -28,33 +28,39 @@ Based on the tabulated light expectations for cascades and track segments, vario
 
 \subsection{Optimization for Low Energy Events}
 
+\textbf{Things to mention about the sample and the selection level where this optimization was done:}
+\begin{itemize}
+    \item Which simulation set was used for this?
+    \item Which selection level was this run on?
+    \item Which reco chain was run before running Taupede?
+    \item Which seed was used as input for Taupede?
+\end{itemize}
+
+
+\subsubsection{Decay Length Seeds}
+
+The full 9 dimensional likelihood space is very complex and can have many local minima, depending on the specific event and its location in the detector. Especially the seed value of the length between the two cascades was found to have a very strong impact on whether the global minimum was found during the minimization. To mitigate this effect, multiple fits are performed, seeding with variations of the input length at different orders of magnitude. The best result is used, selected based on the total likelihood value of the best fit parameter set. A small improvement in the decay length resolution can be found by using this approach as compared to a single length seed. The effect can be seen in the left part of \reffig{fit_routine_optimization}, which shows the median, absolute, fractional decay length resolution.
+
+\begin{figure*}[h]
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/decay_length_seeding_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/fit_routine_splitting_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y.png}
+    \caption[]{}
+    % \caption{Decay length resolution versus true decay length comparing the same fit routine seeded with just the seed decay length (Single length seed) and seeded with a decay length of 5\,m, 25\,m, 50\,m, 100\,m, and 200\,m (Multiple length seeds). This was done with older signal simulation set (190605) and the resolution is unweighted.}
+
+    % \caption{Decay length resolution versus true decay length comparing a full 9 paramters fit to an iterative approach where first the energies and the decay lenght are fitted, while fixing the other 7 parameters and then the full fit is performed. This was done with older signal simulation set (190605) and the resolution is unweighted.}
+
+    \labfig{fit_routine_optimization}
+\end{figure*}
+\todo{fix caption of this figure}
+
+
+\subsubsection{Fit Routine}
+
+Because the length seed showed to have such a large impact on the reconstruction performance, a more sophisticated fit routine, than just fitting all 9 parameters at once, was tested. In a first fit iteration, some parameters are fixed and the resulting best fit point is used to fit all 9 parameters in a second iteration. In the right part of \reffig{fit_routine_optimization} it can be seen how a fit split into two consecutive steps, where the first step fits only both cascade energies and the decay length and the second step fits the full 9 parameters, performs better as compared to a single, full 9 parameter fit. The initial seed for both routines is the same.
+
+
 % from HNL note
-
-\paragraph{Fit Routine:}
-
-It was observed that the likelihood space can be very dependent on the current parameter set $\Theta_i$\todo{Add a section showing some likelihood scans with several parameters and the effect on the decay length LLH.} and especially the likelihood distribution w.r.t. the decay length. Seeding the decay length with a value much different from the true value can lead to a resulting best fit in a local minimum. To get a better estimate of the decay length a fit routine was tested where some of the parameters were fixed in the first iteration and then the resulting best fit point was used to fit all 9 parameters in a second iteration. \cref{fig:reconstruction_optimization_fit_routine} shows the median, absolute, fractional decay length resolution for two tested fit routines. It can be seen how a fit split into two consecutive steps, where the first step fits only both cascade energies and the decay length and the second step fits the full 9 parameters, performs as compared to just the full 9 parameter fit. It can be seen that the iterative fit approach seems to result in a better resolution. The initial seed for both routines is the same.\todo{Put down some information about the used seed parameters.}
-
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{figures/reconstruction/optimization_190605/fit_routine/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y_n_events.png}
-%     \caption{Decay length resolution versus true decay length comparing a full 9 paramters fit to an iterative approach where first the energies and the decay lenght are fitted, while fixing the other 7 parameters and then the full fit is performed.
-%     This was done with older signal simulation set (190605) and the resolution is unweighted.}
-%     \label{fig:reconstruction_optimization_fit_routine}
-% \end{figure}
-
-
-\paragraph{Decay Length Seeds:}
-
-Following the same line of argument as with the iterative fit approach, it was tested how multiple fits seeded with different decay length values might improve the resolution, comparing to a single decay length seed fit. In \cref{fig:reconstruction_optimization_decay_length_seeding} it can be seen that a fit with multiple decay length seed achieves slightly better results.
-
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{figures/reconstruction/optimization_190605/length_seeds/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y.png}
-%     \caption{Decay length resolution versus true decay length comparing the same fit routine seeded with just the seed decay length (Single length seed) and seeded with a decay length of 5\,m, 25\,m, 50\,m, 100\,m, and 200\,m (Multiple length seeds).
-%     This was done with older signal simulation set (190605) and the resolution is unweighted.}
-%     \label{fig:reconstruction_optimization_decay_length_seeding}
-% \end{figure}
-
 
 \paragraph{Minimizer Settings:}
 
@@ -210,3 +216,13 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 
 
 
+\section{Low Energy Event Selection Efficiency}
+
+\todo{Make plot to show efficiency of the OscNext selection for HNL events.}
+
+\paragraph{Discussion ideas:}
+\begin{itemize}
+    \item At which level does the selection reduce the HNL the most?
+    \item Is there a place to improve the HNL selection? (Might have to factor in the BG efficiency, as well..)
+    \item What of this might change with Upgrade? (maybe rather for the discussion)
+\end{itemize}
