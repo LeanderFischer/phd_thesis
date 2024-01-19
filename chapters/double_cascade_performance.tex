@@ -28,13 +28,9 @@ Based on the tabulated light expectations for cascades and track segments, vario
 
 \subsection{Optimization for Low Energy Events}
 
-\textbf{Things to mention about the sample and the selection level where this optimization was done:}
-\begin{itemize}
-    \item Which simulation set was used for this?
-    \item Which selection level was this run on?
-    \item Which reco chain was run before running Taupede?
-    \item Which seed was used as input for Taupede?
-\end{itemize}
+Optimizing the double cascade reconstruction for low energetic events was done in parallel to the development of the model dependent simulation generator introduced in \refsec{model_specific_simulation}. A preliminary sample of HNL events was used, containing a continuum of masses between \SIrange[range-phrase=~and~]{0.1}{1.0}{\gev} and lab frame decay lengths sampled uniformly in the range from \SIrange{5}{500}{\meter}. Even though this sample is not representative of a physically correct model and therefore not useful to predict the event expectation, it can still be used to optimize the reconstruction. The double cascade nature of the individual events and the evenly spaced decay length distribution are especially useful for this purpose.
+
+The simulation is processed up to Level 5 of the selection chain described in \refsec{event_selection} and one of the reconstructions from \sidecite{low_energy_reco_IC} is applied to the events, fitting a cascade and a track and cascade hypothesis. The results from this reconstruction are used as an input for the double cascade reconstruction, where the position of the cascade reconstruction is used for xx, yy, and the length of the track reconstruction is used as a seed for the distance between the two cascades\todo{Make sure this information is correct..}.
 
 
 \subsubsection{Decay Length Seeds}
