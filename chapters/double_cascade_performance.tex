@@ -30,7 +30,7 @@ Based on the tabulated light expectations for cascades and track segments, vario
 
 Optimizing the double cascade reconstruction for low energetic events was done in parallel to the development of the model dependent simulation generator introduced in \refsec{model_specific_simulation}. A preliminary sample of HNL events was used, containing a continuum of masses between \SIrange[range-phrase=~and~]{0.1}{1.0}{\gev} and lab frame decay lengths sampled uniformly in the range from \SIrange{5}{500}{\meter}. Even though this sample is not representative of a physically correct model and therefore not useful to predict the event expectation, it can still be used to optimize the reconstruction. The double cascade nature of the individual events and the evenly spaced decay length distribution are especially useful for this purpose.
 
-The simulation is processed up to Level 5 of the selection chain described in \refsec{event_selection} and one of the reconstructions from \sidecite{low_energy_reco_IC} is applied to the events, fitting a cascade and a track and cascade hypothesis. The results from this reconstruction are used as an input for the double cascade reconstruction, where the position of the cascade reconstruction is used for xx, yy, and the length of the track reconstruction is used as a seed for the distance between the two cascades\todo{Make sure this information is correct..}.
+The simulation is processed up to Level 5 of the selection chain described in \refsec{event_selection} and one of the reconstructions from \sidecite{low_energy_reco_IC} is applied to the events, fitting a cascade and a track and cascade hypothesis. The results from this reconstruction are used as an input for the double cascade reconstruction, where the position of the vertex, the direction of the event, and its interaction time are used as the input quantities for the first cascade, and the length of the track reconstruction is used as a seed for the distance between the two cascades.
 
 
 \subsubsection{Decay Length Seeds}
@@ -56,41 +56,38 @@ The full 9 dimensional likelihood space is very complex and can have many local 
 Because the length seed showed to have such a large impact on the reconstruction performance, a more sophisticated fit routine, than just fitting all 9 parameters at once, was tested. In a first fit iteration, some parameters are fixed and the resulting best fit point is used to fit all 9 parameters in a second iteration. In the right part of \reffig{fit_routine_optimization} it can be seen how a fit split into two consecutive steps, where the first step fits only both cascade energies and the decay length and the second step fits the full 9 parameters, performs better as compared to a single, full 9 parameter fit. The initial seed for both routines is the same.
 
 
-% from HNL note
+\subsubsection{Minimizer Settings}
 
-\paragraph{Minimizer Settings:}
+To investigate the effect of the minimizer used to find the best fit parameters, the reconstruction was performed using three different minimizers, which were easily accessible within the reconstruction framework. The minimizers used were Minuit1 Simplex, Minuit2 Simplex, and Minuit2 Migrad. The results can be seen in \reffig{minimizer_optimization}, where the Minuit1 Simplex minimizer performs best. The initial idea was to test a global minimizer, or a routine that can find the rough position of the global minimum first and then a local minimizer to find the exact minimum, but unfortunately this was not possible with the minimizers available in the framework. From the three tested minimizers, Minuit1 Simplex performed best and was chosen as the default for the reconstruction. The comparision of the decay length resolutions can be seen in \reffig{minimizer_optimization}.
 
-Unfortunately it was not possible to use more sophisticated minimization routines, circumventing the fitting to local minima, but the accessible minimizers within the Millipede framework were tested. In \cref{fig:reconstruction_optimization_minimizers} the resulting resolutions from fits using three different minimizers are shown. The default Millipede minimizer Minuit1 Simplex seems to perform best out of these three.
 
-% \begin{figure}[h]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{figures/reconstruction/optimization_190605/minimizers/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_n_events.png}
-%     \caption{Decay length resolution versus true decay length comparing the same fit routine performed with a different minimizer. These are the minimizers accessible with the Millipede framework. The (obvious) settings were chosen to be the same, but there might still be some hidden differences explaining the discrepency between the Minuit1 and Minuit2 implementation of Simplex. This was done with older signal simulation set (190605) and the resolution is unweighted.}
-%     \label{fig:reconstruction_optimization_minimizers}
-% \end{figure}
+\begin{figure}
+    \includegraphics{figures/results/190605_reco_optimization/minimizer_checks_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3.png}
+    \caption[short]{title}
+    % \caption{Decay length resolution versus true decay length comparing the same fit routine performed with a different minimizer. These are the minimizers accessible with the Millipede framework. The (obvious) settings were chosen to be the same, but there might still be some hidden differences explaining the discrepency between the Minuit1 and Minuit2 implementation of Simplex. This was done with older signal simulation set (190605) and the resolution is unweighted.}
+    \labfig{minimizer_optimization}
+\end{figure}
+
+\todo{fix caption of this figure}
+
+
+\subsubsection{Chosen Reconstruction Chain}
+
+The chosen reconstruction chain used to test the performance of the detector to observe low energetic double cascades is the following; Minuit1 Simplex is used as the minimizer, the decay length is seeded with 3 different values, 0.5x, 1.0x, and 1.5x the length of the track reconstruction, and the fit routine is split into two steps, where the first step fits the energies and the decay length and the second step fits the full 9 parameters. The first step is seeded with the results from the second step.
+
 
 \paragraph{Missing Points}
 \begin{itemize}
-    \item Taupede reconstruction chain
-    \item MuMillipede "reconstruction"
-    \item Flipped cascades (for events where the cascades changed order in time e.g. \textit{negative decay lengths events})
-    \item badly reconstructed population and why this happened.
+    \item MuMillipede "reconstruction" (depending on how deep I want to go into the classifier I tested?)
 \end{itemize}
-
-The runtimes for these fit variations was also tracked alongside with the number of succesfull fits.\todo{Add a table with fit runtimes and success rates?}
-
-\paragraph{Chosen Reconstructions Chain/Settings}
-
-Minuit1 Simplex
-0.5x/1.0x/1.5x decay length seeding (multiplied by the Retro bf track length)
-iterative fit approach: 1. Fitting energies/decay length (3 seeds) 2. Full 9 parameter fit
-
 
 
 
 
 \section{Cross Checks}
 \subsection{Simplistic Sets}
+
+\todo{From HNL Note, re-write/change}
 
 After generation the events are processed with standard Photon, Detector, L1, and L2 processing and then Taupede+MuMillipede is run on top of the L2 files. Multiple versions with different parameters were produced, some with the OscNext baseline parameters, some without detector noise (in Det level) and some with h2-50cm holeice model, to match the holeice model that was used to generate the photonics tables.
 
