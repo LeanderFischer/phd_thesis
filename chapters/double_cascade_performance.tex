@@ -43,9 +43,7 @@ The full 9 dimensional likelihood space is very complex and can have many local 
     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/fit_routine_splitting_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y.png}
     \caption[]{}
     % \caption{Decay length resolution versus true decay length comparing the same fit routine seeded with just the seed decay length (Single length seed) and seeded with a decay length of 5\,m, 25\,m, 50\,m, 100\,m, and 200\,m (Multiple length seeds). This was done with older signal simulation set (190605) and the resolution is unweighted.}
-
     % \caption{Decay length resolution versus true decay length comparing a full 9 paramters fit to an iterative approach where first the energies and the decay lenght are fitted, while fixing the other 7 parameters and then the full fit is performed. This was done with older signal simulation set (190605) and the resolution is unweighted.}
-
     \labfig{fit_routine_optimization}
 \end{figure*}
 \todo{fix caption of this figure}
@@ -71,18 +69,57 @@ To investigate the effect of the minimizer used to find the best fit parameters,
 \todo{fix caption of this figure}
 
 
-\subsubsection{Chosen Reconstruction Chain}
+\subsubsection{Reconstruction Chain}
 
-The chosen reconstruction chain used to test the performance of the detector to observe low energetic double cascades is the following; Minuit1 Simplex is used as the minimizer, the decay length is seeded with 3 different values, 0.5x, 1.0x, and 1.5x the length of the track reconstruction, and the fit routine is split into two steps, where the first step fits the energies and the decay length and the second step fits the full 9 parameters. The first step is seeded with the results from the second step.
+The chosen reconstruction chain used to test the performance of the detector to observe low energetic double cascades is the following; Minuit1 Simplex is used as the minimizer, the decay length is seeded with 3 different values, 0.5x, 1.0x, and 1.5x the length of the track reconstruction, and the fit routine is split into two steps, where the first step fits the energies and the decay length and the second step fits the full 9 parameters. In the first step, the number of time bins in \refeq{millipede_likelihood} is set to 1, so just the number of photons and their spatial information is used. The second step is seeded with the best results from the first fit and here the number of time bins is chosen such that each photon falls into a separate time bin, which means all time information is used. The average runtime per event is $\sim$\SI{16}{\second} on a single CPU core, but is very dependent on the number of photons observed in the event, since the likelihood calculation in the second step scales with this number and a table lookup has to be performed for each photon.\todo{Describe the results plots here for the first time, so I can come back to the observed features later? Or maybe drop them and just show them later?}
 
+
+\begin{figure*}[h]
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y_n_events.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_reco_decayL_vs_true_decayL_Good + L7 + reco E1,E2 above 3_step_contours.png}
+    \caption[]{}
+    \labfig{selected_routine_length_results}
+\end{figure*}
+\todo{fix caption of this figure}
+
+\begin{figure*}[h]
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_casc0_reco_energy_vs_casc0_true_energy_Good + L7 + reco E1,E2 above 3_step_contours.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_casc1_reco_energy_vs_casc1_true_energy_Good + L7 + reco E1,E2 above 3_step_contours.png}
+    \caption[]{}
+    \labfig{selected_routine_energy_results}
+\end{figure*}
+\todo{fix caption of this figure}
+
+
+\section{Badly Reconstructed Cascade Population}
+
+\paragraph{Ideas to write about:}
+\begin{itemize}
+    \item Show/highlight 2d decay length resolution again, basically 2 populations at higher energies
+    \item only looking at events with >10 GeV instead of >3 GeV already improves the resolution a lot (low energy and therefore low light is a problem)
+    \item take a closer look at those populations to find out what's going on
+    \item multiple things were checked (bad direction (possibly due to seed), cascade position in DC, energies)
+    \item the direction is worse for the badly reconstructed population, which could be due to a bad seed direction
+    \item the events are a little further out radially, where the string/DOM spacing is not so tight, which also leads to less light being observed
+    \item the energy of the second cascade is much lower than the first
+    \item conclusion: it's a combination of all of them, but the main problem is the low energy
+    \item true energies vs true length shows that first cascade energies are much larger than second (pick benchmark lengths and state the values!)
+\end{itemize}
+
+
+\section{Double Cascade Classification}
 
 \paragraph{Missing Points}
 \begin{itemize}
     \item MuMillipede "reconstruction" (depending on how deep I want to go into the classifier I tested?)
+    \item This was done with the 190607 set (AFAIK), so I need to highlight what the differences are? 
+    \item Calculated variables to input the classifier (distributions?)
+    \item cuts applied to make sure the classifier is trained on well reconstructed events
+    \item Tested classifier (BDT) versions and their performance
+    \item takeaway
 \end{itemize}
-
-
-
 
 \section{Cross Checks}
 \subsection{Simplistic Sets}
@@ -198,17 +235,6 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 \end{figure*}
 
 
-\subsection{Double Cascade Classification}
-
-
-% \begin{figure}
-%     \includegraphics{xx}
-%     \caption[]{}
-%     \labfig{xx}
-% \end{figure}
-
-
-
 \section{Low Energy Event Selection Efficiency}
 
 \todo{Make plot to show efficiency of the OscNext selection for HNL events.}
@@ -219,3 +245,4 @@ As a quick check of the performance of both cuts the decay length resolution/bia
     \item Is there a place to improve the HNL selection? (Might have to factor in the BG efficiency, as well..)
     \item What of this might change with Upgrade? (maybe rather for the discussion)
 \end{itemize}
+
