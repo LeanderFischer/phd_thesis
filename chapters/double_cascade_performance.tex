@@ -20,8 +20,7 @@ The reconstruction is relying on a maximum likelihood algorithm, which is the \t
 \end{equation}
 where $\rho$ are the number of expected photons from noise, $\Theta$ are the parameters governing the source hypothesis, and the likelihood is calculated summing over all DOMs $j$ splitting observed photons into time bins $t$. The light expectations are calculated using look-up tables\todo{cite photonics tables?} that contain the results from MC simulations of reference cascade events or track segments. By varying the parameters defining the event hypothesis, the likelihood of describing the observed light pattern by the expected light depositions is maximized to find the reconstructed event. Algorithms of this kind used in IceCube are described in great detail in \sidecite{IceCube:2013dkx}. For the table production a specific choice of ice model has to be made, while the calibrated DOM information is taken from the measurement itself.
 
-
-\subsection{Double Cascade Hypothesis}
+% \subsection{Double Cascade Hypothesis}
 
 Based on the tabulated light expectations for cascades and track segments, various event hypothesis can be constructed, like the common cascade only or the track and cascade hypotheses. The hypothesis describing the double cascade signature of the HNL is using two reference cascades that are separated by a certain distance. The whole hypothesis is defined by 9 parameters and assumes that the two cascades are aligned with each other, which is a safe assumption for strongly forward boosted interactions\todo{Elaborate whether this is the case (show it in a plot?). Discuss directionality of cascades in general.}. The parameters are the position of the first cascade $x, y, z$, the direction of both cascades $\phi, \theta$, and its time $t$ as well as the decay length $L$ between the two cascades. Assuming the speed of the HNL to be the speed of light, $c$, this already defines the full signature. The HNL particle does not produce any light while traveling, as it is electrically neutral. The full 9 parameters describing the event are $\Theta = (x, y, z, t, \theta, \phi, E_0, E_1, L)$. To compute the full likelihood the term in \refeq{millipede_likelihood} is summed over both cascade parts, $i$, as $\sum_i \ln(L_i)$. 
 
@@ -35,8 +34,6 @@ The simulation is processed up to Level 5 of the selection chain described in \r
 
 \subsubsection{Decay Length Seeds}
 
-The full 9 dimensional likelihood space is very complex and can have many local minima, depending on the specific event and its location in the detector. Especially the seed value of the length between the two cascades was found to have a very strong impact on whether the global minimum was found during the minimization. To mitigate this effect, multiple fits are performed, seeding with variations of the input length at different orders of magnitude. The best result is used, selected based on the total likelihood value of the best fit parameter set. A small improvement in the decay length resolution can be found by using this approach as compared to a single length seed. The effect can be seen in the left part of \reffig{fit_routine_optimization}, which shows the median, absolute, fractional decay length resolution.
-
 \begin{figure*}[h]
 	\centering
     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/decay_length_seeding_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y.png}
@@ -47,6 +44,8 @@ The full 9 dimensional likelihood space is very complex and can have many local 
     \labfig{fit_routine_optimization}
 \end{figure*}
 \todo{fix caption of this figure}
+
+The full 9 dimensional likelihood space is very complex and can have many local minima, depending on the specific event and its location in the detector. Especially the seed value of the length between the two cascades was found to have a very strong impact on whether the global minimum was found during the minimization. To mitigate this effect, multiple fits are performed, seeding with variations of the input length at different orders of magnitude. The best result is used, selected based on the total likelihood value of the best fit parameter set. A small improvement in the decay length resolution can be found by using this approach as compared to a single length seed. The effect can be seen in the left part of \reffig{fit_routine_optimization}, which shows the median, absolute, fractional decay length resolution.
 
 
 \subsubsection{Fit Routine}
@@ -69,31 +68,70 @@ To investigate the effect of the minimizer used to find the best fit parameters,
 \todo{fix caption of this figure}
 
 
-\subsubsection{Reconstruction Chain}
+\subsection{Performance}
 
 The chosen reconstruction chain used to test the performance of the detector to observe low energetic double cascades is the following; Minuit1 Simplex is used as the minimizer, the decay length is seeded with 3 different values, 0.5x, 1.0x, and 1.5x the length of the track reconstruction, and the fit routine is split into two steps, where the first step fits the energies and the decay length and the second step fits the full 9 parameters. In the first step, the number of time bins in \refeq{millipede_likelihood} is set to 1, so just the number of photons and their spatial information is used. The second step is seeded with the best results from the first fit and here the number of time bins is chosen such that each photon falls into a separate time bin, which means all time information is used. The average runtime per event is $\sim$\SI{16}{\second} on a single CPU core, but is very dependent on the number of photons observed in the event, since the likelihood calculation in the second step scales with this number and a table lookup has to be performed for each photon.\todo{Describe the results plots here for the first time, so I can come back to the observed features later? Or maybe drop them and just show them later?}
 
 
+% \begin{figure*}[h]
+% 	\centering
+%     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y_n_events.png}
+%     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_reco_decayL_vs_true_decayL_Good + L7 + reco E1,E2 above 3_step_contours.png}
+%     \caption[]{}
+%     \labfig{selected_routine_length_results}
+% \end{figure*}
+% \todo{fix caption of this figure}
+
+% \begin{figure*}[h]
+% 	\centering
+%     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_casc0_reco_energy_vs_casc0_true_energy_Good + L7 + reco E1,E2 above 3_step_contours.png}
+%     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_casc1_reco_energy_vs_casc1_true_energy_Good + L7 + reco E1,E2 above 3_step_contours.png}
+%     \caption[]{}
+%     \labfig{selected_routine_energy_results}
+% \end{figure*}
+% \todo{fix caption of this figure}
+
+\paragraph{To write:}
+\begin{itemize}
+    \item This was done with the 190607 set (AFAIK), so I need to highlight what the differences are?
+    \item Criteria: Taupede has to be run succesfull (good), Selection up to L7 has to be passed (L7), both cascades have to be reconstructed above certain energy (reco E1,E2 above 3 GeV)
+    \item 2d hist of energies compares reconstructed (electromagnetic) energy to the true energy, so a bias is expected becasue some part goes into EM neutral particles (that don't produce ligtht)
+    \item both cascade energies are looking good above ~ 10 GeV, although the second cascade energy is much wider spread
+    \item the bin count shows that the second cascade energies are much lower as compared to the first
+    \item 
+\end{itemize}
+
+
 \begin{figure*}[h]
 	\centering
-    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y_n_events.png}
-    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_reco_decayL_vs_true_decayL_Good + L7 + reco E1,E2 above 3_step_contours.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_casc0_reco_energy_vs_casc0_true_energy_reco_above3_step_contours.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_casc1_reco_energy_vs_casc1_true_energy_reco_above3_step_contours.png}
     \caption[]{}
-    \labfig{selected_routine_length_results}
+    \labfig{selected_routine_2d_energy_results}
 \end{figure*}
 \todo{fix caption of this figure}
 
 \begin{figure*}[h]
 	\centering
-    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_casc0_reco_energy_vs_casc0_true_energy_Good + L7 + reco E1,E2 above 3_step_contours.png}
-    \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_casc1_reco_energy_vs_casc1_true_energy_Good + L7 + reco E1,E2 above 3_step_contours.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_n_events.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_step_contours.png}
+    
     \caption[]{}
-    \labfig{selected_routine_energy_results}
+    \labfig{selected_routine_length_results_3_gev}
+\end{figure*}
+\todo{fix caption of this figure}
+
+\begin{figure*}[h]
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/median_decay_length_resolution_Good + L7 + reco E1,E2 above 10_n_events.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above10_step_contours.png}
+    \caption[]{}
+    \labfig{selected_routine_length_results_10_gev}
 \end{figure*}
 \todo{fix caption of this figure}
 
 
-\section{Badly Reconstructed Cascade Population}
+\subsubsection{Badly Reconstructed Cascade Population}
 
 \paragraph{Ideas to write about:}
 \begin{itemize}
@@ -114,7 +152,6 @@ The chosen reconstruction chain used to test the performance of the detector to 
 \paragraph{Missing Points}
 \begin{itemize}
     \item MuMillipede "reconstruction" (depending on how deep I want to go into the classifier I tested?)
-    \item This was done with the 190607 set (AFAIK), so I need to highlight what the differences are? 
     \item Calculated variables to input the classifier (distributions?)
     \item cuts applied to make sure the classifier is trained on well reconstructed events
     \item Tested classifier (BDT) versions and their performance
