@@ -12,17 +12,17 @@ All existing reconstruction algorithms applied for low energetic atmospheric neu
 
 \subsection{Table-Based Minimum Likelihood Algorithms}
 
-The reconstruction is relying on a maximum likelihood algorithm, which is the \textit{classical} approach to IceCube event reconstructions, as opposed to ML based methods. A Poissonian likelihood is constructed, which compares the observed photon numbers, $n$, with their arrival times to the expected light depositions, $\mu$, for a given even hypothesis as\todo{maybe I want a figure for this, or not so important?}
+The reconstruction is relying on a maximum likelihood algorithm, which is the \textit{classical} approach to IceCube event reconstructions, as opposed to ML based methods. A Poissonian likelihood is constructed, which compares the observed photon numbers, $n$, with their arrival times to the expected light depositions, $\mu$, for a given even hypothesis as\todo{maybe I want a figure for this, or not so important? (YELLOW)}
 \begin{equation}
     \ln(L) = \sum_j \sum_t n_{j,t} \cdot \ln(\mu_{j,t}(\Theta) + \rho_{j,t}) - (\mu_{j,t}(\Theta) + \rho_{j,t}) - \ln(n_{j,t}!)
     \;,
     \labeq{millipede_likelihood}
 \end{equation}
-where $\rho$ are the number of expected photons from noise, $\Theta$ are the parameters governing the source hypothesis, and the likelihood is calculated summing over all DOMs $j$ splitting observed photons into time bins $t$. The light expectations are calculated using look-up tables\todo{cite photonics tables?} that contain the results from MC simulations of reference cascade events or track segments. By varying the parameters defining the event hypothesis, the likelihood of describing the observed light pattern by the expected light depositions is maximized to find the reconstructed event. Algorithms of this kind used in IceCube are described in great detail in \sidecite{IceCube:2013dkx}. For the table production a specific choice of ice model has to be made, while the calibrated DOM information is taken from the measurement itself.
+where $\rho$ are the number of expected photons from noise, $\Theta$ are the parameters governing the source hypothesis, and the likelihood is calculated summing over all DOMs $j$ splitting observed photons into time bins $t$. The light expectations are calculated using look-up tables \sidecite{photospline} that contain the results from MC simulations of reference cascade events or track segments. By varying the parameters defining the event hypothesis, the likelihood of describing the observed light pattern by the expected light depositions is maximized to find the reconstructed event. Algorithms of this kind used in IceCube are described in great detail in \sidecite{IceCube:2013dkx}. For the table production a specific choice of ice model has to be made, while the calibrated DOM information is taken from the measurement itself.
 
 % \subsection{Double Cascade Hypothesis}
 
-Based on the tabulated light expectations for cascades and track segments, various event hypothesis can be constructed, like the common cascade only or the track and cascade hypotheses. The hypothesis describing the double cascade signature of the HNL is using two reference cascades that are separated by a certain distance. The whole hypothesis is defined by 9 parameters and assumes that the two cascades are aligned with each other, which is a safe assumption for strongly forward boosted interactions\todo{Elaborate whether this is the case (show it in a plot?). Discuss directionality of cascades in general.}. The parameters are the position of the first cascade $x, y, z$, the direction of both cascades $\phi, \theta$, and its time $t$ as well as the decay length $L$ between the two cascades. Assuming the speed of the HNL to be the speed of light, $c$, this already defines the full signature. The HNL particle does not produce any light while traveling, as it is electrically neutral. The full 9 parameters describing the event are $\Theta = (x, y, z, t, \theta, \phi, E_0, E_1, L)$. To compute the full likelihood the term in \refeq{millipede_likelihood} is summed over both cascade parts, $i$, as $\sum_i \ln(L_i)$. 
+Based on the tabulated light expectations for cascades and track segments, various event hypothesis can be constructed, like the common cascade only or the track and cascade hypotheses. The hypothesis describing the double cascade signature of the HNL is using two reference cascades that are separated by a certain distance. The whole hypothesis is defined by 9 parameters and assumes that the two cascades are aligned with each other, which is a safe assumption for strongly forward boosted interactions\todo{Elaborate whether this is the case (show it in a plot?). Discuss directionality of cascades in general. (ORANGE)}. The parameters are the position of the first cascade $x, y, z$, the direction of both cascades $\phi, \theta$, and its time $t$ as well as the decay length $L$ between the two cascades. Assuming the speed of the HNL to be the speed of light, $c$, this already defines the full signature. The HNL particle does not produce any light while traveling, as it is electrically neutral. The full 9 parameters describing the event are $\Theta = (x, y, z, t, \theta, \phi, E_0, E_1, L)$. To compute the full likelihood the term in \refeq{millipede_likelihood} is summed over both cascade parts, $i$, as $\sum_i \ln(L_i)$. 
 
 
 \subsection{Optimization for Low Energy Events}
@@ -39,11 +39,11 @@ The simulation is processed up to Level 5 of the selection chain described in \r
     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/decay_length_seeding_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y.png}
     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/fit_routine_splitting_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y.png}
     \caption[]{}
-    % \caption{Decay length resolution versus true decay length comparing the same fit routine seeded with just the seed decay length (Single length seed) and seeded with a decay length of 5\,m, 25\,m, 50\,m, 100\,m, and 200\,m (Multiple length seeds). This was done with older signal simulation set (190605) and the resolution is unweighted.}
-    % \caption{Decay length resolution versus true decay length comparing a full 9 paramters fit to an iterative approach where first the energies and the decay lenght are fitted, while fixing the other 7 parameters and then the full fit is performed. This was done with older signal simulation set (190605) and the resolution is unweighted.}
+    % \caption{Decay length resolution versus true decay length comparing the same fit routine seeded with just the seed decay length (Single length seed) and seeded with a decay length of 5\,m, 25\,m, 50\,m, 100\,m, and 200\,m (Multiple length seeds). This was done with older signal simulation sample (190605) and the resolution is unweighted.}
+    % \caption{Decay length resolution versus true decay length comparing a full 9 paramters fit to an iterative approach where first the energies and the decay lenght are fitted, while fixing the other 7 parameters and then the full fit is performed. This was done with older signal simulation sample (190605) and the resolution is unweighted.}
     \labfig{fit_routine_optimization}
 \end{figure*}
-\todo{fix caption of this figure}
+\todo{fix caption of this figure (RED)}
 
 The full 9 dimensional likelihood space is very complex and can have many local minima, depending on the specific event and its location in the detector. Especially the seed value of the length between the two cascades was found to have a very strong impact on whether the global minimum was found during the minimization. To mitigate this effect, multiple fits are performed, seeding with variations of the input length at different orders of magnitude. The best result is used, selected based on the total likelihood value of the best fit parameter set. A small improvement in the decay length resolution can be found by using this approach as compared to a single length seed. The effect can be seen in the left part of \reffig{fit_routine_optimization}, which shows the median, absolute, fractional decay length resolution.
 
@@ -55,80 +55,76 @@ Because the length seed showed to have such a large impact on the reconstruction
 
 \subsubsection{Minimizer Settings}
 
-To investigate the effect of the minimizer used to find the best fit parameters, the reconstruction was performed using three different minimizers, which were easily accessible within the reconstruction framework. The minimizers used were Minuit1 Simplex, Minuit2 Simplex, and Minuit2 Migrad. The results can be seen in \reffig{minimizer_optimization}, where the Minuit1 Simplex minimizer performs best. The initial idea was to test a global minimizer, or a routine that can find the rough position of the global minimum first and then a local minimizer to find the exact minimum, but unfortunately this was not possible with the minimizers available in the framework. From the three tested minimizers, Minuit1 Simplex performed best and was chosen as the default for the reconstruction. The comparision of the decay length resolutions can be seen in \reffig{minimizer_optimization}.
+To investigate the effect of the minimizer used to find the best fit parameters, the reconstruction was performed using three different minimizers, which were easily accessible within the reconstruction framework. The minimizers used were Minuit1 Simplex, Minuit2 Simplex, and Minuit2 Migrad. The results can be seen in \reffig{minimizer_optimization}, where the Minuit1 Simplex minimizer performs best. The initial idea was to test a global minimizer, or a routine that can find the rough position of the global minimum first and then a local minimizer to find the exact minimum, but unfortunately this was not possible with the minimizers available in the framework. From the three tested minimizers, Minuit1 Simplex performed best and was chosen as the default for the reconstruction. The comparison of the decay length resolutions can be seen in \reffig{minimizer_optimization}.
 
 
-\begin{figure}
+\begin{figure}[h]
     \includegraphics{figures/results/190605_reco_optimization/minimizer_checks_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3.png}
     \caption[short]{title}
-    % \caption{Decay length resolution versus true decay length comparing the same fit routine performed with a different minimizer. These are the minimizers accessible with the Millipede framework. The (obvious) settings were chosen to be the same, but there might still be some hidden differences explaining the discrepency between the Minuit1 and Minuit2 implementation of Simplex. This was done with older signal simulation set (190605) and the resolution is unweighted.}
+    % \caption{Decay length resolution versus true decay length comparing the same fit routine performed with a different minimizer. These are the minimizers accessible with the Millipede framework. The (obvious) settings were chosen to be the same, but there might still be some hidden differences explaining the discrepency between the Minuit1 and Minuit2 implementation of Simplex. This was done with older signal simulation sample (190605) and the resolution is unweighted.}
     \labfig{minimizer_optimization}
 \end{figure}
-
-\todo{fix caption of this figure}
+\todo{fix caption of this figure (RED)}
 
 
 \subsection{Performance}
 
-The chosen reconstruction chain used to test the performance of the detector to observe low energetic double cascades is the following; Minuit1 Simplex is used as the minimizer, the decay length is seeded with 3 different values, 0.5x, 1.0x, and 1.5x the length of the track reconstruction, and the fit routine is split into two steps, where the first step fits the energies and the decay length and the second step fits the full 9 parameters. In the first step, the number of time bins in \refeq{millipede_likelihood} is set to 1, so just the number of photons and their spatial information is used. The second step is seeded with the best results from the first fit and here the number of time bins is chosen such that each photon falls into a separate time bin, which means all time information is used. The average runtime per event is $\sim$\SI{16}{\second} on a single CPU core, but is very dependent on the number of photons observed in the event, since the likelihood calculation in the second step scales with this number and a table lookup has to be performed for each photon.\todo{Describe the results plots here for the first time, so I can come back to the observed features later? Or maybe drop them and just show them later?}
+The chosen reconstruction chain used to test the performance of the detector to observe low energetic double cascades is the following; Minuit1 Simplex is used as the minimizer, the decay length is seeded with 3 different values, 0.5x, 1.0x, and 1.5x the length of the track reconstruction, and the fit routine is split into two steps, where the first step fits the energies and the decay length and the second step fits the full 9 parameters. In the first step, the number of time bins in \refeq{millipede_likelihood} is set to 1, so just the number of photons and their spatial information is used. The second step is seeded with the best results from the first fit and here the number of time bins is chosen such that each photon falls into a separate time bin, which means all time information is used. The average runtime per event is $\sim$\SI{16}{\second} on a single CPU core, but is very dependent on the number of photons observed in the event, since the likelihood calculation in the second step scales with this number and a table lookup has to be performed for each photon.\todo{Describe the results plots here for the first time, so I can come back to the observed features later? Or maybe drop them and just show them later? (RED)}
+
+To get a more realistic estimate of the reconstruction performance, it is run on a second preliminary sample of HNL events, containing masses between \SIrange[range-phrase=~and~]{0.1}{3.0}{\gev} and the lab frame decay length is sampled from an inverse distribution in the range from \SIrange{1}{1000}{\meter}, which is a better approximation of the expected exponential decay distribution of the HNL. The performance is shown for events where the reconstruction chain was successfully run, the event selection criteria up to level 7 are fulfilled, and the reconstructed energy of both cascades is above \SI{3.0}{\gev}. This is done to only investigate well reconstructed events with two significant light depositions at a usual final selection level of the oscillation analyses.
 
 
-% \begin{figure*}[h]
-% 	\centering
-%     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y_n_events.png}
-%     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_reco_decayL_vs_true_decayL_Good + L7 + reco E1,E2 above 3_step_contours.png}
-%     \caption[]{}
-%     \labfig{selected_routine_length_results}
-% \end{figure*}
-% \todo{fix caption of this figure}
+\subsubsection{Energy Resolutions}
 
-% \begin{figure*}[h]
-% 	\centering
-%     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_casc0_reco_energy_vs_casc0_true_energy_Good + L7 + reco E1,E2 above 3_step_contours.png}
-%     \includegraphics[width=0.49\linewidth]{figures/results/190605_reco_optimization/performance/selected_reco_chain_taupede_casc1_reco_energy_vs_casc1_true_energy_Good + L7 + reco E1,E2 above 3_step_contours.png}
-%     \caption[]{}
-%     \labfig{selected_routine_energy_results}
-% \end{figure*}
-% \todo{fix caption of this figure}
-
-\paragraph{To write:}
-\begin{itemize}
-    \item This was done with the 190607 set (AFAIK), so I need to highlight what the differences are?
-    \item Criteria: Taupede has to be run succesfull (good), Selection up to L7 has to be passed (L7), both cascades have to be reconstructed above certain energy (reco E1,E2 above 3 GeV)
-    \item 2d hist of energies compares reconstructed (electromagnetic) energy to the true energy, so a bias is expected becasue some part goes into EM neutral particles (that don't produce ligtht)
-    \item both cascade energies are looking good above ~ 10 GeV, although the second cascade energy is much wider spread
-    \item the bin count shows that the second cascade energies are much lower as compared to the first
-    \item 
-\end{itemize}
-
+The energy resolution is inspected by looking at the 2-dimensional distribution of reconstructed energy versus the true energy as shown in \reffig{selected_routine_2d_energy_results}. The bin entries are shown as well as the median and $\pm$\SI{25}{\percent} calculated per vertical column, to get an idea of the distribution for a given energy slice. The color scale is showing the PDF along in each true energy slice, which is the full information combined into the median$\pm$\SI{25}{\percent} lines. The reconstructed energy is only the energy that is observable from photons, while the true energy is the total cascade energy, including the parts that go into EM neutral particles that do not produce light. It is therefore not expected that the median lines up with the axis diagonal, but rather the reconstructed energy is going to be lower.
 
 \begin{figure*}[h]
 	\centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_casc0_reco_energy_vs_casc0_true_energy_reco_above3_step_contours.png}
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_casc1_reco_energy_vs_casc1_true_energy_reco_above3_step_contours.png}
-    \caption[]{}
+    \caption[Preliminary 2-d reconstructed versus true cascade energy resolutions]{Reconstructed (EM) energy versus true energy (full) energy for the first cascade (left) and second cascade (right). The color scale is according to the PDF in each vertical true energy slice, with the solid and dashed lines showing the median$\pm$\SI{25}{\percent} quantiles. The bin entries are shown as numbers.}
     \labfig{selected_routine_2d_energy_results}
 \end{figure*}
-\todo{fix caption of this figure}
+
+The histogram for the first cascade energy is shown on the left and above an energy of $\sim$\SI{10}{\gev} the reconstruction performs well, with the median being parallel to the diagonal and the spread in the $\pm$\SI{25}{\percent} quantile being small. Below this energy the reconstruction is over-estimating the true energy, which is a known effect in IceCube, where the reconstruction is biased towards higher energies around the energy detection threshold, because events that enter the sample are events with an over fluctuation in their light deposition, which makes them pass into the selection and being reconstructible in the first place.
+
+For the second cascade the overall behavior is similar, only that the energy where the reconstruction starts to perform good is higher around $\sim$\SI{20}{\gev}. The spread around the median is also larger and starts to expand a lot above \SI{200}{\gev}, where the statistics are lower as can be seen from the bin counts. It is also very apparent that the majority of energies of the second cascade are at lower true energy values between \SIrange[range-phrase=~and~]{1}{20}{\gev}.
+
+For both cascade resolutions the effect of the reconstruction being biased towards lower values, due to the comparison of the full true energy to just the reconstructed EM energy can be seen.
+
+
+\subsubsection{Length Resolutions}
+
+
+\paragraph{Ideas to write about:}
+\begin{itemize}
+    \item explain/reference again the setup of the 2d plots
+    \item at short true decay lengths, reco always overestimates (why)
+    \item above ~25m, the median reconstruction starts to be almost unbiased up to ~80m, but the spread starts to increase towards lower reco lengths
+    \item but then the median resolution starts to fall below the diagonal and a large population of events which have a very short reconstructed starts to dominate completely above ~150m
+    \item there is still some events that line up with the diagonal, but it is only a small fraction
+    \item the assumption for the badly reconstructed population is, that for those events only one cascade was observed with enough light and could therefore be reconstructed
+    \item increasing the minimum cascade energy to 10 GeV already improves the resolution a lot, as can be seen in the right part of the figure, where the median resolution now aligns with the expectation between ~40 and ~160m, but the spread towards lower reco lengths is still very large and above ~200 meters the badly reconstructed population starts to dominate again
+\end{itemize}
 
 \begin{figure*}[h]
-	\centering
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_n_events.png}
+    \centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_step_contours.png}
-    
-    \caption[]{}
-    \labfig{selected_routine_length_results_3_gev}
-\end{figure*}
-\todo{fix caption of this figure}
-
-\begin{figure*}[h]
-	\centering
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/median_decay_length_resolution_Good + L7 + reco E1,E2 above 10_n_events.png}
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above10_step_contours.png}
-    \caption[]{}
+    \caption[Preliminary 2-d reconstructed versus true decay length resolutions]{Reconstructed decay length versus true decay length for a $\sim$\SI{3}{\gev} (left) and $\sim$\SI{10}{\gev} (right) minimum reconstructed cascade energies. The color scale is according to the PDF in each vertical true length slice, with the solid and dashed lines showing the median$\pm$\SI{25}{\percent} quantiles. The bin entries are shown as numbers.}
     \labfig{selected_routine_length_results_10_gev}
 \end{figure*}
-\todo{fix caption of this figure}
+
+
+% \begin{figure*}[h]
+% 	\centering
+%     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_n_events.png}
+%     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/median_decay_length_resolution_Good + L7 + reco E1,E2 above 10_n_events.png}  
+%     \caption[]{}
+%     \labfig{selected_routine_length_results_3_gev}
+% \end{figure*}
+% \todo{fix caption of this figure (RED)}
+
 
 
 \subsubsection{Badly Reconstructed Cascade Population}
@@ -146,6 +142,14 @@ The chosen reconstruction chain used to test the performance of the detector to 
     \item true energies vs true length shows that first cascade energies are much larger than second (pick benchmark lengths and state the values!)
 \end{itemize}
 
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/true_decayL_vs_casc0_true_energy_reco_above3_step_contours.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/true_decayL_vs_casc1_true_energy_reco_above3_step_contours.png}
+    % \caption[Preliminary 2-d reconstructed versus true decay length resolutions]{Reconstructed decay length versus true decay length for a $\sim$\SI{3}{\gev} (left) and $\sim$\SI{10}{\gev} (right) minimum reconstructed cascade energies. The color scale is according to the PDF in each vertical true length slice, with the solid and dashed lines showing the median$\pm$\SI{25}{\percent} quantiles. The bin entries are shown as numbers.}
+    \labfig{true_energies_vs_true_length}
+\end{figure*}
+
 
 \section{Double Cascade Classification}
 
@@ -161,14 +165,14 @@ The chosen reconstruction chain used to test the performance of the detector to 
 \section{Cross Checks}
 \subsection{Simplistic Sets}
 
-\todo{From HNL Note, re-write/change}
+\todo{From HNL Note, re-write/change (RED)}
 
 After generation the events are processed with standard Photon, Detector, L1, and L2 processing and then Taupede+MuMillipede is run on top of the L2 files. Multiple versions with different parameters were produced, some with the OscNext baseline parameters, some without detector noise (in Det level) and some with h2-50cm holeice model, to match the holeice model that was used to generate the photonics tables.
 
 
 \paragraph{BrightDom Cleaning}
 
-To investigate the effect of the BrightDom cleaning cut the 194601 set without detector noise (and baseline hole ice model) is used. The BrightDom cleaning is needed to stop a few DOMs with many photon hits to drive the reconstruction because this leads to large biases in the energy estimations. Historically, the BrightDom cleaning was removing all DOMs that had a charge larger than 10 times the mean charge. After quickly checking some charge distributions and how the mean behaves it was clear that the cut should better be defined based on a metric that is less affected by outliers, like the median. \reffig{bright_dom_cleaning_charges_mean_median} shows where the mean and the median are located for an example event. The cut was re-defined to use the median instead of the mean and 10\% of the simulation were processed with \href{https://github.com/LeanderFischer/I3_HNL_Decay/blob/a6838ec48e0a2d4f6547cbe064d2928ec55fb76d/submission_scripts/process/process_Taupede.py}{Taupede} using 30x and 100x the median as BrightDom cutoff. \reffig{bright_dom_cleaning_charges_median_scales} shows where these values fall for the same example event.
+To investigate the effect of the BrightDom cleaning cut the 194601 sample without detector noise (and baseline hole ice model) is used. The BrightDom cleaning is needed to stop a few DOMs with many photon hits to drive the reconstruction because this leads to large biases in the energy estimations. Historically, the BrightDom cleaning was removing all DOMs that had a charge larger than 10 times the mean charge. After quickly checking some charge distributions and how the mean behaves it was clear that the cut should better be defined based on a metric that is less affected by outliers, like the median. \reffig{bright_dom_cleaning_charges_mean_median} shows where the mean and the median are located for an example event. The cut was re-defined to use the median instead of the mean and 10\% of the simulation were processed with \href{https://github.com/LeanderFischer/I3_HNL_Decay/blob/a6838ec48e0a2d4f6547cbe064d2928ec55fb76d/submission_scripts/process/process_Taupede.py}{Taupede} using 30x and 100x the median as BrightDom cutoff. \reffig{bright_dom_cleaning_charges_median_scales} shows where these values fall for the same example event.
 
 % \begin{figure}[h!]
 %     \subfloat[\labfig{bright_dom_cleaning_charges_mean_median}]{
@@ -198,7 +202,8 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 
 \subsection{Energy/Decay Length Resolution}
 
-\todo{describe the "good fit" selection}
+\todo{describe the "good fit" selection when I first show plots that use it (ORANGE)}
+\todo{add some 1D resolution plots (ORANGE)}
 
 \subsubsection{2-D Histograms}
 
@@ -219,6 +224,7 @@ As a quick check of the performance of both cuts the decay length resolution/bia
     \caption[]{}
     \labfig{total_energy_decay_length_2dhists}
 \end{figure*}
+\todo{fix caption of this figure (RED)}
 
 \begin{figure*}[h]
 	\centering
@@ -227,6 +233,7 @@ As a quick check of the performance of both cuts the decay length resolution/bia
     \caption[]{}
     \labfig{cascade_energy_2dhists}
 \end{figure*}
+\todo{fix caption of this figure (RED)}
 
 
 \subsubsection{Energy Resolution}
@@ -242,6 +249,7 @@ As a quick check of the performance of both cuts the decay length resolution/bia
     \caption[]{}
     \labfig{total_energy_bias_vs_energy}
 \end{figure}
+\todo{fix caption of this figure (RED)}
 
 
 \subsubsection{Decay Length Resolution}
@@ -261,6 +269,7 @@ As a quick check of the performance of both cuts the decay length resolution/bia
     \caption[]{}
     \labfig{decay_length_bias_vs_length}
 \end{figure}
+\todo{fix caption of this figure (RED)}
 
 
 \begin{figure*}[h]
@@ -270,11 +279,12 @@ As a quick check of the performance of both cuts the decay length resolution/bia
     \caption[]{}
     \labfig{decay_length_bias_vs_energies}
 \end{figure*}
+\todo{fix caption of this figure (RED)}
 
 
 \section{Low Energy Event Selection Efficiency}
 
-\todo{Make plot to show efficiency of the OscNext selection for HNL events.}
+\todo{Make plot to show efficiency of the OscNext selection for HNL events. (ORANGE)}
 
 \paragraph{Discussion ideas:}
 \begin{itemize}
@@ -282,4 +292,3 @@ As a quick check of the performance of both cuts the decay length resolution/bia
     \item Is there a place to improve the HNL selection? (Might have to factor in the BG efficiency, as well..)
     \item What of this might change with Upgrade? (maybe rather for the discussion)
 \end{itemize}
-

@@ -14,8 +14,8 @@ IceCube DeepCore is suited to measure the excess which appears around and below 
 The final level sample of this analysis always consists of the neutrino and muon MC introduced in \refsec{sm_event_generation} and one of the three HNL samples explained in \refsec{model_specific_simulation}. All of those simulation sets and the \SI{10}{years} of IceCube DeepCore data are processed through the full processing and event selection chain described in \refsec{processing_chain} and \refsec{reconstruction} leading to the final level sample. Since applying the final cuts from \refsec{analysis_cuts} leaves an insignificant amount of pure noise events in the sample, the noise simulation is not included in the analysis and will not be listed here.
 
 
-\todo{add information about the matter profile used }
-\todo{add information about the oscillation probability calculation and the software used for it}
+\todo{add information about the matter profile used (ORANGE)}
+\todo{add information about the oscillation probability calculation and the software used for it (RED)}
 
 \subsection{Expected Rates/Events}
 
@@ -39,7 +39,7 @@ The rates and the expected number of events for the SM background are shown in \
 \labtab{background_final_level_expectation}
 \end{table}
 
-\todo{Should I adapt the total numbers to match the sum of the rounded individual parts?}
+\todo{Should I adapt the total numbers to match the sum of the rounded individual parts? (YELLOW)}
 
 \reftab{signal_final_level_expectation} shows the rates and expected number of events for the HNL signal simulation. The expectation depends on the mass and the mixing and shown here are two example mixings for all the three masses that are being tested in this work. A mixing of $0.0$ would result in no HNL events at all. It can already be seen that for the smaller mixing of $|U_{\tau4}|^2=10^{-3}$ the expected number of events is very low, while at the larger mixing of $|U_{\tau4}|^2=10^{-1}$ the number is comparable to the amount of muons in the background sample. 
 
@@ -88,8 +88,8 @@ The identical binning to the analysis performed in \sidecite{flercnn_analysis_re
     \labtab{analysis_binning}
 \end{table}
 
-\todo{add 3D expectation and/or S/sqrt(B) plots}
-\todo{Add fractions of the different particle types in the bins for benchmark mass/mixing (another table?)}
+\todo{add 3D expectation and/or S/sqrt(B) plots }
+\todo{Add fractions of the different particle types in the bins for benchmark mass/mixing (another table?) (ORANGE)}
 
 
 \section{Statistical Analysis} \labsec{analysis_principle}
@@ -97,12 +97,12 @@ The identical binning to the analysis performed in \sidecite{flercnn_analysis_re
 
 \subsection{Low Energy Analysis Framework} \labsec{analysis_framework}
 
-The analysis is performed using the \textsc{PISA} \sidecite{pisa_paper} \cite{pisa_software} software framework, which was developed to perform analyses "of small signals in high-statistics neutrino oscillation experiments". It is used to generate the expected event distributions from several MC samples, which can then be compared to the observed data. The expectation for each sample is calculated in parallel, applying physics and nuisance parameter effects in a stage-wise manner, before combining the final expectation from all the samples.\todo{Do I want more information about the different pipelines and stages? Could link back to the extra stage I wrote and add the earth model and oscillation calculation information here, I guess?!}
+The analysis is performed using the \textsc{PISA} \sidecite{pisa_paper} \cite{pisa_software} software framework, which was developed to perform analyses "of small signals in high-statistics neutrino oscillation experiments". It is used to generate the expected event distributions from several MC samples, which can then be compared to the observed data. The expectation for each sample is calculated in parallel, applying physics and nuisance parameter effects in a stage-wise manner, before combining the final expectation from all the samples.\todo{Do I want more information about the different pipelines and stages? Could link back to the extra stage I wrote and add the earth model and oscillation calculation information here, I guess?! (ORANGE)}
 
 
 \subsection{Test Statistic}
 
-\todo{I feel like I have to be a bit more precise on what is the fit metric (e.g. the mod chi2) and what is the TS, as in the mod chi2 difference, which is the actual TS, right?}
+\todo{I feel like I have to be a bit more precise on what is the fit metric (e.g. the mod chi2) and what is the TS, as in the mod chi2 difference, which is the actual TS, right? (RED)}
 
 The measurements are performed by comparing the weighted MC to the data. Through variation of the nuisance and physics parameters that govern the weights, the best matching set of parameters can be found. The comparison is done using a modified $\chi^2$ defined as
 \begin{equation}
@@ -115,7 +115,7 @@ The measurements are performed by comparing the weighted MC to the data. Through
 \end{equation}
 as the \textit{test statistic (TS)}. The total even expectation is $N^{\rm{exp}}_i = N^{\mathrm{\nu}}_i + N^{\mathrm{\mu}}_i + N^{\mathrm{HNL}}_i$, where $N^{\mathrm{\nu}}_i$, $N^{\mathrm{\mu}}_i$, and $N^{\mathrm{HNL}}_i$ are the expected number of events in bin $i$ from neutrinos, atmospheric muons, and HNLs, while $N^{\mathrm{obs}}_i$ is the observed number of events in bin $i$. The expected number of events from each particle type is calculated by summing the weights of all events in the bin $N^{\mathrm{type}}_i = \sum_i^\rm{type}\omega_i$, with the statistical uncertainty being $(\sigma^{\mathrm{type}}_i)^2 = \sum_i^\rm{type}\omega_i^2$. The additional term in \refeq{mod-chi2-hnl} is included to apply a penalty term for prior knowledge of the systematic uncertainties of the parameters where they are known. $s_j$ are the systematic parameters that are varied in the fit, while $\hat{s_j}$ are their nominal values and $\sigma_{s_j}$ are the known uncertainties.
 
-\todo{Do I want/need to include the description of the KDE muon estimation?}
+\todo{Do I want/need to include the description of the KDE muon estimation? (YELLOW)}
 
 
 \subsection{Physics Parameters} \labsec{analysis_parameters}
@@ -130,24 +130,22 @@ The variable physics parameter in this analysis is the mixing between the HNL an
 	\caption[xx]{"calculated at a mixing of 0.1 and for the 1.0 GeV sample"}
     \labfig{systematic_impact_test}
 \end{marginfigure}
-\todo{Blow up labels/legend/title and make it more readable in the margin}
-To decide which systematic uncertainties should be included in the fit, we test the potential impact they have on the TS if they are neglected. The test is performed by creating Asimov data using the \SI{1.0}{\gev} sample at a mixing value of $0.1$, which is around the value where the analysis starts to become sensitive. The systematic parameter of interest is set to a value above its nominal expectation, either pulled up by $+1\sigma$ or by an educated estimate for parameters without a well-defined uncertainty. A fit is performed fixing the systematic parameter of interesting and leaving all additional parameters free. The resulting TS is the mis-modeling significance between this fit and a fit with all parameters free, which would result in a TS of 0.0 for this Asimov test\todo{I don't like this formulation, but don't know better right now..}. Parameters below a significance of \SI{0.1}{\sigma} are fixed and the test is perfomed in an iterative manner until the final set of free parameters is found. \reffig{systematic_impact_test} shows the resulting significances of one of these tests. In the final selection of free parameters the Barr $h_{\pi^+}$ parameter was also left free\todo{elaborate why this is also done to cover the whole energy range for the pion production, referencing the Barr Block plot that I haven't included yet :D} and the ice absorption is still kept free, despite showing a small significance. This is done because the bulk ice parameters are not well constrained and are known to have a large impact, which might be concealed in the test, due to correlations with the other parameters\todo{I truly dislike this sentence, too, better ideas?}.
+\todo{Blow up labels/legend/title and make it more readable in the margin or move it into the main text? (RED)}
+To decide which systematic uncertainties should be included in the fit, we test the potential impact they have on the TS if they are neglected. The test is performed by creating Asimov data using the \SI{1.0}{\gev} sample at a mixing value of $0.1$, which is around the value where the analysis starts to become sensitive. The systematic parameter of interest is set to a value above its nominal expectation, either pulled up by $+1\sigma$ or by an educated estimate for parameters without a well-defined uncertainty. A fit is performed fixing the systematic parameter of interesting and leaving all additional parameters free. The resulting TS is the mis-modeling significance between this fit and a fit with all parameters free, which would result in a TS of 0.0 for this Asimov test\todo{I don't like this formulation, but don't know better right now.. (YELLOW)}. Parameters below a significance of \SI{0.1}{\sigma} are fixed and the test is perfomed in an iterative manner until the final set of free parameters is found. \reffig{systematic_impact_test} shows the resulting significances of one of these tests. In the final selection of free parameters the Barr $h_{\pi^+}$ parameter was also left free\todo{elaborate why this is also done to cover the whole energy range for the pion production, referencing the Barr Block plot that I haven't included yet :D (RED)} and the ice absorption is still kept free, despite showing a small significance. This is done because the bulk ice parameters are not well constrained and are known to have a large impact, which might be concealed in the test, due to correlations with the other parameters\todo{I truly dislike this sentence, too, better ideas? (YELLOW)}.
 
-\todo{I'm just writing out the data from the table, but I need to mention/motivate the included priors here and maybe just point to the table for the ranges/nominal values? (Not quite sure about this)}The scaling parameter $N_{\nu}$ is included to account for the unknown overall normalization of the neutrino rate. It has the identical effect on the SM neutrino events and the BSM HNL events and its nominal value is set to 1.0 with a wide range of [$0.1$, $2.0$].
+\todo{I'm just writing out the data from the table, but I need to mention/motivate the included priors here and maybe just point to the table for the ranges/nominal values? (Not quite sure about this) (RED)}The scaling parameter $N_{\nu}$ is included to account for the unknown overall normalization of the neutrino rate. It has the identical effect on the SM neutrino events and the BSM HNL events and its nominal value is set to 1.0 with a wide range of [$0.1$, $2.0$].
 
 Concerning the atmospheric neutrino flux, the CR power law flux correction factor $\Delta \gamma_\nu$ is included with nominal value of 0.0 and a range of [$-0.5$, $0.5$]. The nominal value corresponds to a CR power law of $E^{-2}$ and a slightly conservative prior of 0.1 is applied to the parameter, while latest measurements have an uncertainty of 0.05 \sidecite{PhysRevD.95.023012}.
 
-Additionally, the Barr $h_{\pi^+}$, Barr $i_{\pi^+}$, and Barr $y_{K^+}$ parameters of the pion and kaon production uncertainties are included with nominal values of $0.0$ and ranges of [$-0.75$, $0.75$], [$-3.05$, $3.05$], and [$-1.5$, $1.5$], respectively.\todo{say something about their priors}
+Additionally, the Barr $h_{\pi^+}$, Barr $i_{\pi^+}$, and Barr $y_{K^+}$ parameters of the pion and kaon production uncertainties are included with nominal values of $0.0$ and ranges of [$-0.75$, $0.75$], [$-3.05$, $3.05$], and [$-1.5$, $1.5$], respectively.\todo{say something about their priors (RED)}
 
-From the cross-section uncertainties introduced in \refsec{cross_section_uncertainties}, all three parameters, $\rm{DIS}$, $M_\rm{A,QE}$, and $M_\rm{A,res}$ are included in the fit with nominal values of $0.0$ for all of them and range [$-0.5$, $1.5$] for $\rm{DIS}$ and [$-2.0$, $2.0$] for the axial mass parameters $M_\rm{A,QE}$, and $M_\rm{A,res}$.\todo{say something about their priors}
+From the cross-section uncertainties introduced in \refsec{cross_section_uncertainties}, all three parameters, $\rm{DIS}$, $M_\rm{A,QE}$, and $M_\rm{A,res}$ are included in the fit with nominal values of $0.0$ for all of them and range [$-0.5$, $1.5$] for $\rm{DIS}$ and [$-2.0$, $2.0$] for the axial mass parameters $M_\rm{A,QE}$, and $M_\rm{A,res}$.\todo{say something about their priors (RED)}
 
-All the detector systematic uncertainties are included in the fit. The DOM efficiency $\epsilon_{\rm{DOM}}$ has a nominal value of $1.0$ and a range of [$0.8$, $1.2$]. It is constrained by a Gaussian prior with a width of $0.1$, which is a conservative estimate based on the studies of the optical efficiency using minimum ionizing muons from \sidecite{JFeintzeig_phd, domeff_nick}. The hole ice model parameters $p_0$ and $p_1$ are included with nominal values of $0.101569$ and $-0.049344$, respectively, and ranges of [$-0.6$, $0.5$] and [$-0.2$, $0.2$]. The bulk ice absorption and scattering parameters are included with nominal values of $1.0$ and $1.05$, respectively, and ranges of [$0.85$, $1.15$] and [$0.9$, $1.2$]. They are unconstrained in the fit and the ranges are set to be conservative determined from calibration data\todo{cite?!}
+All the detector systematic uncertainties are included in the fit. The DOM efficiency $\epsilon_{\rm{DOM}}$ has a nominal value of $1.0$ and a range of [$0.8$, $1.2$]. It is constrained by a Gaussian prior with a width of $0.1$, which is a conservative estimate based on the studies of the optical efficiency using minimum ionizing muons from \sidecite{JFeintzeig_phd, domeff_nick}. The hole ice model parameters $p_0$ and $p_1$ are included with nominal values of $0.101569$ and $-0.049344$, respectively, and ranges of [$-0.6$, $0.5$] and [$-0.2$, $0.2$]. The bulk ice absorption and scattering parameters are included with nominal values of $1.0$ and $1.05$, respectively, and ranges of [$0.85$, $1.15$] and [$0.9$, $1.2$]. They are unconstrained in the fit and the ranges are set to be conservative determined from calibration data\todo{cite?! (ORANGE)}
 
 The two atmospheric neutrino oscillation parameters $\theta_{23}$ and $\Delta m^{2}_{31}$ are also included in the fit with nominal values of \SI{47.5047}{\degree} and \SI{2.475e-3}{\electronvolt^2}, respectively. Since they govern the shape and the strength of the tau neutrino flux, by defining the oscillation from $\nu_\mu$ to $\nu_\tau$, they are also relevant for the HNL signal shape. Their ranges are set to [\SI{0.0}{\degree}, \SI{90.0}{\degree}] and [\SI{0.001}{\electronvolt^2}, \SI{0.004}{\electronvolt^2}].
 
-\todo{I think I will need to mention here that I did no inlcude MA-RES and MA-QE for the HNL simulation..}
-\todo{add final level effects of varying the axial mass parameters (or example of one)}
-\todo{add final level effects of varying the DIS parameter (or example of one)}
+\todo{I should add some final level effects of some systematics on the 3D binning and maybe discuss how they are different from the signal shape, or so? (ORANGE)}
 
 \begin{table}
     \begin{tabular}{ llll }
@@ -185,7 +183,7 @@ Fitting to data will be performed in a \textit{blind} manner, where the analyzer
 
 \subsection{Minimization Robustness} \labsec{asimov_inject_recover}
 
-To find the set of parameters that describes the data best, a staged minimization routine is used. In the first stage, a fit with coarse minimizer settings is performed to find a rough estimate of the \textit{best fit point (BFP)}. In the second stage, the fit is performed again in both octants\sidenote{There is a degeneracy between the lower octant ($\theta_{23}<\SI{45}{\degree}$) and the upper octant ($\theta_{23}>\SI{45}{\degree}$), which can lead to TS minima (local and global) at two positions that are mirrored around \SI{45}{\degree} in $\theta_{23}$.} of $\theta_{23}$, starting from the BFP of the coarse fit. For each individual fit the \textit{MIGRAD} routine of \textsc{iminuit} \sidecite{iminuit_v2.17.0} is used to minimize the $\chi^2_{\mathrm{mod}}$ TS\todo{again, I think fit metric and TS are mixed up a bit} defined in \refeq{mod-chi2-hnl}. Iminuit is a fast, python compatible minimizer based on the \textsc{Minuit2} C++ library \sidecite{og_minuit}. The individual minimizer settings for both stages are shown in \reftab{minimization_settings}.
+To find the set of parameters that describes the data best, a staged minimization routine is used. In the first stage, a fit with coarse minimizer settings is performed to find a rough estimate of the \textit{best fit point (BFP)}. In the second stage, the fit is performed again in both octants\sidenote{There is a degeneracy between the lower octant ($\theta_{23}<\SI{45}{\degree}$) and the upper octant ($\theta_{23}>\SI{45}{\degree}$), which can lead to TS minima (local and global) at two positions that are mirrored around \SI{45}{\degree} in $\theta_{23}$.} of $\theta_{23}$, starting from the BFP of the coarse fit. For each individual fit the \textit{MIGRAD} routine of \textsc{iminuit} \sidecite{iminuit_v2.17.0} is used to minimize the $\chi^2_{\mathrm{mod}}$ TS\todo{again, I think fit metric and TS are mixed up a bit (RED)} defined in \refeq{mod-chi2-hnl}. Iminuit is a fast, python compatible minimizer based on the \textsc{Minuit2} C++ library \sidecite{og_minuit}. The individual minimizer settings for both stages are shown in \reftab{minimization_settings}.
 
 \begin{margintable}
     \small
@@ -201,7 +199,7 @@ To find the set of parameters that describes the data best, a staged minimizatio
     \labtab{minimization_settings}
 \end{margintable}
 
-To test the minimization routine and to make sure it consistently recovers any injected physics parameters, pseudo-data sets are produced from the MC by choosing the nominal nuisance parameters and specific physics parameters, without adding any statistical or systematic fluctuations to it. These so-called \textit{Asimov}\sidenote{A pseudo-data set without statistical fluctuations is called Asimov data set.} data sets are then fit back with the full analysis chain. This type of test is called \textit{Asimov inject/recover test}. A set of mixing values between $10^{-3}$ and $10^{0}$ is injected and fit back. Even though this range is well within the excluded regions by other experiments, discussed in \refsec{HNL_mixing_constraints}, this covers the current sensitive region of the analysis in IceCube DeepCore. Without fluctuations the fit is expected to always recover the injected parameters (both physics and nuisance parameters). The fitted mixing values from the Asimov inject/recover tests are compared to the true injected values in \reffig{asimov_inject_recover_0.6_GeV}\todo{Do I want additional plots for this (fit diff, LLH distr, minim. stats, param. fits)?} for the \SI{0.6}{\gev} sample. As expected, the fit is always able to recover the injected physcis parameter and the nuisance paramters. The same is true for the other mass samples and the additional plots for the other mass samples can be found in \refsec{asimov_inject_recover_appendix}.
+To test the minimization routine and to make sure it consistently recovers any injected physics parameters, pseudo-data sets are produced from the MC by choosing the nominal nuisance parameters and specific physics parameters, without adding any statistical or systematic fluctuations to it. These so-called \textit{Asimov}\sidenote{A pseudo-data set without statistical fluctuations is called Asimov data set.} data sets are then fit back with the full analysis chain. This type of test is called \textit{Asimov inject/recover test}. A set of mixing values between $10^{-3}$ and $10^{0}$ is injected and fit back. Even though this range is well within the excluded regions by other experiments, discussed in \refsec{HNL_mixing_constraints}, this covers the current sensitive region of the analysis in IceCube DeepCore. Without fluctuations the fit is expected to always recover the injected parameters (both physics and nuisance parameters). The fitted mixing values from the Asimov inject/recover tests are compared to the true injected values in \reffig{asimov_inject_recover_0.6_GeV}\todo{Do I want additional plots for this (fit diff, LLH distr, minim. stats, param. fits)? (YELLOW)} for the \SI{0.6}{\gev} sample. As expected, the fit is always able to recover the injected physcis parameter and the nuisance paramters. The same is true for the other mass samples and the additional plots for the other mass samples can be found in \refsec{asimov_inject_recover_appendix}.
 
 \begin{figure}[h]
     \includegraphics{figures/results/checks/asimov_scan_0.6_GeV-01.png}
@@ -221,7 +219,7 @@ To test the minimization routine and to make sure it consistently recovers any i
 
 \subsection{Goodness of Fit} \labsec{pseudo_data_ensemble}
 
-To estimate the GOF, pseudo-data is generated from the MC by injecting the BFP parameters as true parameters and then fluctuating the expected bin counts to account for MC uncertainty and Poisson fluctuations in data. First, the expectation value of each bin is drawn from a Gaussian distribution centered at the nominal expectation value with a standard deviation corresponding to the MC uncertainty of the bin. Based on this sampled expectation value, each bin count is drawn from a Poisson distribution, independently, to get the final pseudo-data set. These pseudo-data sets are then fit back with the analysis chain. By comparing the distribution of TS values from this \textit{ensemble} of pseudo-data trials to the TS\todo{here again, this is just the fit metric, right?} of the fit to real data, a p-value can be calculated. The p-value is the probability of finding a TS value at least as large as the one from the data fit. \reffig{pseudo_data_ensemble_0.6_GeV}\todo{Add bin-wise TS distribution? Add 3D TS maps?} shows the TS distribution from the ensemble tests for the \SI{0.6}{\gev} mass sample and the observed TS value from the fit, resulting in a p-value of \SI{28.5}{\percent}. The p-values for the \SI{0.3}{\gev} and \SI{1.0}{\gev} are \SI{28.3}{\percent} and \SI{26.0}{\percent}, respectively and the correspoinding plots are shown in \refsec{pseudo_data_ensemble_appendix}. Based on this test, it is concluded that the fit result is compatible with the expectation from the ensemble of pseudo-data trials.
+To estimate the GOF, pseudo-data is generated from the MC by injecting the BFP parameters as true parameters and then fluctuating the expected bin counts to account for MC uncertainty and Poisson fluctuations in data. First, the expectation value of each bin is drawn from a Gaussian distribution centered at the nominal expectation value with a standard deviation corresponding to the MC uncertainty of the bin. Based on this sampled expectation value, each bin count is drawn from a Poisson distribution, independently, to get the final pseudo-data set. These pseudo-data sets are then fit back with the analysis chain. By comparing the distribution of TS values from this \textit{ensemble} of pseudo-data trials to the TS\todo{here again, this is just the fit metric, right? (RED)} of the fit to real data, a p-value can be calculated. The p-value is the probability of finding a TS value at least as large as the one from the data fit. \reffig{pseudo_data_ensemble_0.6_GeV}\todo{Add bin-wise TS distribution? Add 3D TS maps? (RED)} shows the TS distribution from the ensemble tests for the \SI{0.6}{\gev} mass sample and the observed TS value from the fit, resulting in a p-value of \SI{28.5}{\percent}. The p-values for the \SI{0.3}{\gev} and \SI{1.0}{\gev} are \SI{28.3}{\percent} and \SI{26.0}{\percent}, respectively and the correspoinding plots are shown in \refsec{pseudo_data_ensemble_appendix}. Based on this test, it is concluded that the fit result is compatible with the expectation from the ensemble of pseudo-data trials.
 
 % \sidenote{The p-values for the \SI{0.3}{\gev} and \SI{1.0}{\gev} are \SI{28.3}{\percent} and \SI{26.0}{\percent}, respectively.}
 % 
@@ -244,10 +242,11 @@ The resulting nuisance parameter values from the fits are illustrated in \reffig
 	\caption[Best fit nuisance parameter distances to nominal]{Best fit nuisance parameter distances to the nominal values, normalized by the distance to the closest boundary. For parameters with a Gaussian prior, the $+$\SI{1}{\sigma} range is also shown.}
     \labfig{best_fit_deltas_normed}
 \end{figure*}
-\todo{sort the variables also by type, same as in the table "best\_fit\_parameters"?}
 
-\todo{Show best fit hole ice angular acceptance compared to nominal and flasher/in-situ fits, maybe?}
-\todo{Discuss what it means that the parameters are at these values? Here, or somewhere else?}
+\todo{sort the variables also by type, same as in the table "best\_fit\_parameters"? (ORANGE)}
+
+\todo{Show best fit hole ice angular acceptance compared to nominal and flasher/in-situ fits, maybe? (YELLOW)}
+\todo{Discuss what it means that the parameters are at these values? Here, or somewhere else? (RED)}
 
 
 \subsection{Best Fit Parameters and Limits}
@@ -263,17 +262,26 @@ with their $+$\SI{1}{\sigma} uncertainty. All of them are compatible with the nu
 \begin{table}[h]
     % \footnotesize
     
-    \begin{tabular}{ lllll }
+    % \begin{tabular}{ lllll }
+    \begin{tabular}{ ccccc }
         \hline\hline
     
-        \textbf{HNL mass} & \textbf{$|U_{\tau4}|^2_\rm{BFP}$} & \textbf{68 \si{\percent} CL} & \textbf{90 \si{\percent} CL} & \textbf{CL$_\rm{null\,hypo}$} \\
+        % \textbf{HNL mass} & \textbf{$|U_{\tau4}|^2_\rm{BFP}$} & \textbf{68 \si{\percent} CL} & \textbf{90 \si{\percent} CL} & \textbf{CL$_\rm{null\,hypo}$} \\
+        \textbf{HNL mass} & \textbf{$|U_{\tau4}|^2_\rm{BFP}$} & \textbf{68 \si{\percent} CL} & \textbf{90 \si{\percent} CL} & \textbf{NH $p$-value} \\
+        % $_\rm{null\,hypo}$
+
         % \textbf{$m_4$ [\si{\gev}]} & \textbf{$|U_{\tau4}|^2_\rm{BFP}$} & \textbf{68 \si{\percent} CL} & \textbf{90 \si{\percent} CL} & \textbf{$\Delta\chi^2_{\mathrm{mod,null}}$} \\
     
         \hline\hline
 
-        \SI{0.3}{\gev} & 0.003 & 0.087 & 0.194 & \SI{0.03}{\percent} \\
-        \SI{0.6}{\gev} & 0.080 & 0.214 & 0.355 & \SI{21.29}{\percent} \\
-        \SI{1.0}{\gev} & 0.106 & 0.238 & 0.396 & \SI{37.25}{\percent} \\
+        % \SI{0.3}{\gev} & 0.003 & 0.087 & 0.194 & \SI{0.03}{\percent} \\
+        % \SI{0.6}{\gev} & 0.080 & 0.214 & 0.355 & \SI{21.29}{\percent} \\
+        % \SI{1.0}{\gev} & 0.106 & 0.238 & 0.396 & \SI{37.25}{\percent} \\
+
+        \SI{0.3}{\gev} & 0.003 & 0.087 & 0.194 & \SI{0.97}{} \\
+        \SI{0.6}{\gev} & 0.080 & 0.214 & 0.355 & \SI{0.79}{} \\
+        \SI{1.0}{\gev} & 0.106 & 0.238 & 0.396 & \SI{0.63}{} \\
+
         \hline
     \end{tabular}
 
@@ -297,16 +305,16 @@ with their $+$\SI{1}{\sigma} uncertainty. All of them are compatible with the nu
     \caption[xx]{xx}
     \labtab{best_fit_parameters_and_confidence_levels}
 \end{table}
-\todo{fix table caption}
+\todo{fix table caption (RED)}
 
-\reffig{brazil_band_0.6_GeV} shows the observed likelihood profile for the \SI{0.6}{\gev} sample, which is the difference in $\chi^2_{\mathrm{mod}}$ between the best fit and each scan point in $|U_{\tau4}|^2$. Also shown is the expected likelihood profile, based on a scan over Asimov data produced at the BFP. The observed CLs are slightly larger/smaller\todo{fix once I have them produced} than the expected CL. To ensure this is compatible with random fluctuations, the expected likelihood is also profiled for 100 pseudo-data sets, which are generated at the BFP and then fluctuated using both Poisson and Gaussian fluctuations, to include the data and the MC uncertainty, as was already done for the ensemble tests. The resulting CLs are shown as the colored areas and the observed contour is well within the \SI{68}{\percent} band, confirming that it is compatible with data fluctuations\todo{fix once I have the brazil bands}. \reffig{brazil_bands_appendix} shows the same likelihood profiles and bands for the other two mass samples. For both of them the observed CLs are also slightly larger/smaller than the expected, but still within the \SI{68}{\percent} band of the pseudo-data trials, so they are also compatible with random fluctuations.
+\reffig{brazil_band_0.6_GeV} shows the observed likelihood profile for the \SI{0.6}{\gev} sample, which is the difference in $\chi^2_{\mathrm{mod}}$ between the best fit and each scan point in $|U_{\tau4}|^2$. Also shown is the expected likelihood profile, based on a scan over Asimov data produced at the BFP. The observed CLs are slightly larger/smaller\todo{fix once I have them produced (RED)} than the expected CL. To ensure this is compatible with random fluctuations, the expected likelihood is also profiled for 100 pseudo-data sets, which are generated at the BFP and then fluctuated using both Poisson and Gaussian fluctuations, to include the data and the MC uncertainty, as was already done for the ensemble tests. The resulting CLs are shown as the colored areas and the observed contour is well within the \SI{68}{\percent} band, confirming that it is compatible with data fluctuations\todo{fix once I have the brazil bands (RED)}. \reffig{brazil_bands_appendix} shows the same likelihood profiles and bands for the other two mass samples. For both of them the observed CLs are also slightly larger/smaller than the expected, but still within the \SI{68}{\percent} band of the pseudo-data trials, so they are also compatible with random fluctuations.
 
 \begin{figure}[h]
     \includegraphics{figures/results/best_fit/sensitivity_and_wilks_scan_0.6_GeV_with_1sigma.png}
 	\caption[xx]{xx}
     \labfig{brazil_band_0.6_GeV}
 \end{figure}
-\todo{fix caption for this figure}
+\todo{fix caption for this figure (RED)}
 
 % \begin{figure}[h]
 %     \includegraphics{figures/results/best_fit/best_fit_results_and_limits.png}
@@ -315,15 +323,15 @@ with their $+$\SI{1}{\sigma} uncertainty. All of them are compatible with the nu
 % \end{figure}
 % \todo{fix caption for this figure}
 
-\todo{make plot with BFPs and limit, comparing to upper limits from other experiments}
+\todo{make plot with BFPs and limit, comparing to upper limits from other experiments, think about ow to prsent it (RED)}
 
 
 \subsection{Data/MC Agreement}
 
-At the BFP, the agreement between the data and simulation is probed by comparing the 1-dimensional analysis distributions for PID, energy, and cosine of the zenith angle. As an example, two distributions\todo{specify which they are, once I have them} for the \SI{0.6}{\gev} mass sample are shown in \reffig{data_mc_agreement_0.6_GeV}. The data is compared to the total MC expectation, which is also split up into its composing parts. Good agreement can be observed in the pull distributions and is quantified by a reduced $\chi^2$, which is close to \SI{1.0} for all distributions. The reduced $\chi^2$ for all investigated distributions is listed in \reftab{data_mc_agreement}, while the distributions themselves can be found in \refsec{data_mc_agreement_appendix}.
+At the BFP, the agreement between the data and simulation is probed by comparing the 1-dimensional analysis distributions for PID, energy, and cosine of the zenith angle. As an example, two distributions\todo{specify which they are, once I have them (RED)} for the \SI{0.6}{\gev} mass sample are shown in \reffig{data_mc_agreement_0.6_GeV}. The data is compared to the total MC expectation, which is also split up into its composing parts. Good agreement can be observed in the pull distributions and is quantified by a reduced $\chi^2$, which is close to \SI{1.0} for all distributions. The reduced $\chi^2$ for all investigated distributions is listed in \reftab{data_mc_agreement}, while the distributions themselves can be found in \refsec{data_mc_agreement_appendix}.
 
-\todo{add 1-d data/mc agreement for example mass sample (0.6?) and all 3 analysis variables}
-\todo{add table with reduced chi2 for all 1-d distributions}
+\todo{add 1-d data/mc agreement for example mass sample (0.6?) and all 3 analysis variables (RED)}
+\todo{add table with reduced chi2 for all 1-d distributions (RED)}
 
 
 % \subsection{Likelihood Coverage}
