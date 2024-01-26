@@ -69,12 +69,12 @@ To investigate the effect of the minimizer used to find the best fit parameters,
 
 \subsection{Performance}
 
-The chosen reconstruction chain used to test the performance of the detector to observe low energetic double cascades is the following; Minuit1 Simplex is used as the minimizer, the decay length is seeded with 3 different values, 0.5x, 1.0x, and 1.5x the length of the track reconstruction, and the fit routine is split into two steps, where the first step fits the energies and the decay length and the second step fits the full 9 parameters. In the first step, the number of time bins in \refeq{millipede_likelihood} is set to 1, so just the number of photons and their spatial information is used. The second step is seeded with the best results from the first fit and here the number of time bins is chosen such that each photon falls into a separate time bin, which means all time information is used. The average runtime per event is $\sim$\SI{16}{\second} on a single CPU core, but is very dependent on the number of photons observed in the event, since the likelihood calculation in the second step scales with this number and a table lookup has to be performed for each photon.\todo{Describe the results plots here for the first time, so I can come back to the observed features later? Or maybe drop them and just show them later? (RED)}
+The chosen reconstruction chain used to test the performance of the detector to observe low energetic double cascades is the following; Minuit1 Simplex is used as the minimizer, the decay length is seeded with 3 different values, 0.5x, 1.0x, and 1.5x the length of the track reconstruction, and the fit routine is split into two steps, where the first step fits the energies and the decay length and the second step fits the full 9 parameters. In the first step, the number of time bins in \refeq{millipede_likelihood} is set to 1, so just the number of photons and their spatial information is used. The second step is seeded with the best results from the first fit and here the number of time bins is chosen such that each photon falls into a separate time bin, which means all time information is used. The average runtime per event is $\sim$\SI{16}{\second} on a single CPU core, but is very dependent on the number of photons observed in the event, since the likelihood calculation in the second step scales with this number and a table lookup has to be performed for each photon.
 
-To get a more realistic estimate of the reconstruction performance, it is run on a second preliminary sample of HNL events, containing masses between \SIrange[range-phrase=~and~]{0.1}{3.0}{\gev} and the lab frame decay length is sampled from an inverse distribution in the range from \SIrange{1}{1000}{\meter}, which is a better approximation of the expected exponential decay distribution of the HNL. The performance is shown for events where the reconstruction chain was successfully run, the event selection criteria up to level 7 are fulfilled, and the reconstructed energy of both cascades is above \SI{3.0}{\gev}. This is done to only investigate well reconstructed events with two significant light depositions at a usual final selection level of the oscillation analyses.
+To get a more realistic estimate of the reconstruction performance, it is run on a second preliminary sample of HNL events, containing masses between \SIrange[range-phrase=~and~]{0.1}{3.0}{\gev} and the lab frame decay length is sampled from an inverse distribution in the range from \SIrange{1}{1000}{\meter}, which is a better approximation of the expected exponential decay distribution of the HNL. The performance is shown for events where the reconstruction chain was successfully run, the event selection criteria up to level 7 are fulfilled, and the reconstructed energy of both cascades is above \SI{3.0}{\gev}\todo{one half sentence on why this number was chosen? (ORANGE)}. This is done to only investigate well reconstructed events with two significant light depositions at a usual final selection level of the oscillation analyses.
 
 
-\subsubsection{Energy Resolutions}
+\subsubsection{Energy Resolutions} \labsec{190607_energy_resolutions}
 
 The energy resolution is inspected by looking at the 2-dimensional distribution of reconstructed energy versus the true energy as shown in \reffig{selected_routine_2d_energy_results}. The bin entries are shown as well as the median and $\pm$\SI{25}{\percent} calculated per vertical column, to get an idea of the distribution for a given energy slice. The color scale is showing the PDF along in each true energy slice, which is the full information combined into the median$\pm$\SI{25}{\percent} lines. The reconstructed energy is only the energy that is observable from photons, while the true energy is the total cascade energy, including the parts that go into EM neutral particles that do not produce light. It is therefore not expected that the median lines up with the axis diagonal, but rather the reconstructed energy is going to be lower.
 
@@ -90,30 +90,24 @@ The histogram for the first cascade energy is shown on the left and above an ene
 
 For the second cascade the overall behavior is similar, only that the energy where the reconstruction starts to perform good is higher around $\sim$\SI{20}{\gev}. The spread around the median is also larger and starts to expand a lot above \SI{200}{\gev}, where the statistics are lower as can be seen from the bin counts. It is also very apparent that the majority of energies of the second cascade are at lower true energy values between \SIrange[range-phrase=~and~]{1}{20}{\gev}.
 
-For both cascade resolutions the effect of the reconstruction being biased towards lower values, due to the comparison of the full true energy to just the reconstructed EM energy can be seen.
+For both cascade resolutions the effect of the reconstruction being biased towards lower values, due to the comparison of the full true energy to the reconstructed EM energy can be seen.
 
 
 \subsubsection{Length Resolutions}
 
-
-\paragraph{Ideas to write about:}
-\begin{itemize}
-    \item explain/reference again the setup of the 2d plots
-    \item at short true decay lengths, reco always overestimates (why)
-    \item above ~25m, the median reconstruction starts to be almost unbiased up to ~80m, but the spread starts to increase towards lower reco lengths
-    \item but then the median resolution starts to fall below the diagonal and a large population of events which have a very short reconstructed starts to dominate completely above ~150m
-    \item there is still some events that line up with the diagonal, but it is only a small fraction
-    \item the assumption for the badly reconstructed population is, that for those events only one cascade was observed with enough light and could therefore be reconstructed
-    \item increasing the minimum cascade energy to 10 GeV already improves the resolution a lot, as can be seen in the right part of the figure, where the median resolution now aligns with the expectation between ~40 and ~160m, but the spread towards lower reco lengths is still very large and above ~200 meters the badly reconstructed population starts to dominate again
-\end{itemize}
+The decay length resolution is also investigated by looking at a similar style of 2-d histograms than for the energies, where the reconstructed decay length is plotted versus the true decay length. The left part of \reffig{selected_routine_2d_length_results} shows the distributions after the same selection criteria from \refsec{190607_energy_resolutions} are applied. It can be observed that for short true lengths the reconstruction is over-estimating the length, while for long true lengths the reconstruction is strongly under-estimating the length. There is a region between true lengths of \SIrange[range-phrase=~and~]{20}{80}{\meter} where the median reconstruction is almost unbiased, but the \SI{50}{\percent} interquartile range is large and increasing from $\sim$\SI{50}{\meter} to $\sim$\SI{70}{\meter} with true decay lengths.
 
 \begin{figure*}[h]
     \centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_step_contours.png}
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above10_step_contours.png}
-    \caption[Preliminary 2-d reconstructed versus true decay length resolutions]{Reconstructed decay length versus true decay length for a $\sim$\SI{3}{\gev} (left) and $\sim$\SI{10}{\gev} (right) minimum reconstructed cascade energies. The color scale is according to the PDF in each vertical true length slice, with the solid and dashed lines showing the median$\pm$\SI{25}{\percent} quantiles. The bin entries are shown as numbers.}
-    \labfig{selected_routine_length_results_10_gev}
+    \caption[Preliminary 2-d reconstructed versus true decay length resolutions]{Reconstructed decay length versus true decay length for $\sim$\SI{3}{\gev} (left) and $\sim$\SI{10}{\gev} (right) minimum reconstructed cascade energies. The color scale is according to the PDF in each vertical true length slice, with the solid and dashed lines showing the median$\pm$\SI{25}{\percent} quantiles. The bin entries are shown as numbers.}
+    \labfig{selected_routine_2d_length_results}
 \end{figure*}
+
+The over-estimation at small true lengths can be explained for multiple reasons, one being that the shortest DOM spacing is $\sim$\SI{7}{\meter}, vertically for DeepCore strings, but mostly larger than that, so resolving lengths below this is very complicated, and the reconstruction tends to be biased towards estimating the length around where the light was observed. Another reason is a similar argument to why the energies are over-estimated at small true values, namely that events that passed the selection and were reconstructed in those cases, probably have an over fluctuation in light deposition, extending further out from the vertices, so the reconstructed length is larger. Additionally, approaching a length of 0.0, the reconstructed length will of course always be a one-sided distribution, because the lengths have to be positive.
+
+The under-estimation at large true lengths is more puzzling, and it seems like the distribution becomes bimodal in the reconstructed lengths, with on population around the diagonal, meaning that they are properly reconstructed, and one population at very short reconstructed lengths, which are badly reconstructed. Above \SI{150}{\meter} the badly reconstructed population starts to dominate, and the median resolution drops off strongly. The assumption is that for these events, only one cascade was observed with enough light to be reconstructed, and the reconstruction describes the one observed cascade in two parts, separated by a short distance, driven by similar factors as mentioned before. A check to confirm whether this is the case was to increase the minimum cascade energies to \SI{10}{\gev}, which is shown in the right part of \reffig{selected_routine_2d_length_results}. It can be seen that the median resolution is already much better, aligning with the expectation between \SIrange[range-phrase=~and~]{40}{160}{\meter}. Judging from the median resolution and the $+$\SI{25}{\percent} quantile in this range, there is very few events with an over-expectation in the energy, since both of them are alidgning with the diagonal. The spread towards lower reconstructed lengths, on the other hand, is still very large and above \SI{200}{\meter} the badly reconstructed population starts to dominate again.
 
 
 % \begin{figure*}[h]
@@ -121,7 +115,7 @@ For both cascade resolutions the effect of the reconstruction being biased towar
 %     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_n_events.png}
 %     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/median_decay_length_resolution_Good + L7 + reco E1,E2 above 10_n_events.png}  
 %     \caption[]{}
-%     \labfig{selected_routine_length_results_3_gev}
+%     \labfig{selected_routine_1d_length_results}
 % \end{figure*}
 % \todo{fix caption of this figure (RED)}
 
