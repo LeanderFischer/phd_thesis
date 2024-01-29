@@ -139,7 +139,7 @@ The under-estimation at large true lengths is more puzzling, and it seems like t
 \begin{figure*}[h]
     \centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_in_step_contours.png}
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_in_step_contours.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_out_step_contours.png}
     \caption[]{}
     \labfig{true_energies_vs_true_length}
 \end{figure*}
@@ -168,7 +168,6 @@ The under-estimation at large true lengths is more puzzling, and it seems like t
 \todo{fix caption (RED)}
 
 
-
 \begin{figure*}[h]
     \centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/true_decayL_vs_casc0_true_energy_reco_above3_step_contours.png}
@@ -176,6 +175,8 @@ The under-estimation at large true lengths is more puzzling, and it seems like t
     % \caption[Preliminary 2-d reconstructed versus true decay length resolutions]{Reconstructed decay length versus true decay length for a $\sim$\SI{3}{\gev} (left) and $\sim$\SI{10}{\gev} (right) minimum reconstructed cascade energies. The color scale is according to the PDF in each vertical true length slice, with the solid and dashed lines showing the median$\pm$\SI{25}{\percent} quantiles. The bin entries are shown as numbers.}
     \labfig{true_energies_vs_true_length}
 \end{figure*}
+\todo{fix caption (RED)}
+\todo{I think from these plots it's probably enough if I state the median energy of first and second cascade at final level, as a benchmark for the energies of the two cascades (ORANGE)}
 
 
 \section{Double Cascade Classification}
@@ -190,46 +191,38 @@ The under-estimation at large true lengths is more puzzling, and it seems like t
 \end{itemize}
 
 
-\section{Generic Double Cascada Performance}
-
-\subsection{Cross Checks}
-
-\subsubsection{Simplistic Sets}
-
-\todo{From HNL Note, re-write/change (RED)}
-
-After generation the events are processed with standard Photon, Detector, L1, and L2 processing and then Taupede+MuMillipede is run on top of the L2 files. Multiple versions with different parameters were produced, some with the OscNext baseline parameters, some without detector noise (in Det level) and some with h2-50cm holeice model, to match the holeice model that was used to generate the photonics tables.
+\section{Generic Double Cascade Performance}
 
 
-\paragraph{BrightDom Cleaning}
+\paragraph{Ideas:}
+\begin{itemize}
+    \item why do these checks again with the model independent samples? (controllable parameter space and distributions, especially energy and length)
+    \item benchmark some edge cases (e.g. "best case" of up-going string centered, purely horizontal, and realistic case)
+    \item investigate where the reconstructions breaks down (in terms of cascade energies, which are the main factor as shown before)
+\end{itemize}
 
-To investigate the effect of the BrightDom cleaning cut the 194601 sample without detector noise (and baseline hole ice model) is used. The BrightDom cleaning is needed to stop a few DOMs with many photon hits to drive the reconstruction because this leads to large biases in the energy estimations. Historically, the BrightDom cleaning was removing all DOMs that had a charge larger than 10 times the mean charge. After quickly checking some charge distributions and how the mean behaves it was clear that the cut should better be defined based on a metric that is less affected by outliers, like the median. \reffig{bright_dom_cleaning_charges_mean_median} shows where the mean and the median are located for an example event. The cut was re-defined to use the median instead of the mean and 10\% of the simulation were processed with \href{https://github.com/LeanderFischer/I3_HNL_Decay/blob/a6838ec48e0a2d4f6547cbe064d2928ec55fb76d/submission_scripts/process/process_Taupede.py}{Taupede} using 30x and 100x the median as BrightDom cutoff. \reffig{bright_dom_cleaning_charges_median_scales} shows where these values fall for the same example event.
+\subsection{Idealistic Performance}
 
-% \begin{figure}[h!]
-%     \subfloat[\labfig{bright_dom_cleaning_charges_mean_median}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/brightdom_cleaning/median_and_mean_L2_00001.i3.zst_SplitInIcePulses_frame_0.png}
-%         }
-%     \subfloat[\labfig{bright_dom_cleaning_charges_median_scales}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/brightdom_cleaning/median_scales_L2_00001.i3.zst_SplitInIcePulses_frame_0.png}
-%         }
-%     \caption{Charge distribution of example event showing mean and median charge (left) and different scales of median charge (right).}
-%     \labfig{bright_dom_cleaning_charges}
-% \end{figure}
+\begin{itemize}
+    \item for the perfect edge case of the event being directly on top of a DeepCore string with an up-going direction the length can be very well reconstructed above a true length of around \SI{20}{\meter}
+    \item 2-d histogram shows that up to a true decay length of $\sim$\SI{210}{\meter}, there is no under-estimation of the length
+    \item this means that the under-estimation observed before is only possible if there is no DOMs in between the two cascades
+    \item this makes a lot of sense, since DOMs being present, but not observing any light is affecting the light expectation that goes into the reconstruction likelihood and therefore makes these hypotheses less likely and therefore incompatible with the data
+    \item do I want more detailed plots here? I feel like this is enough.. 
+\end{itemize}
 
-As a quick check of the performance of both cuts the decay length resolution/bias and the resolutions/biases of all energies were checked. The reconstructed decay length is almost not affected by applying this cut, which is as expected, because it is mostly dependent on the arrival time of the photons. The effect on the reconstructed energy is much stronger, where a looser cut (100x) shows a significantly larger bias than the tighter cut at (30x). Even though this was not a highly sophisticated optimization of the BrightDom cut, an improvement was achieved by changing from mean to median and selecting the tighter cut (of the two tested). It's hard to tell how this would perform for high energy events, but I'm quite certain that a definition based on the median would be more reliable than on the mean.
+\begin{figure*}[h]
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/idealistic/194601_median_decay_length_resolution_goodfit_log_unweighted.png}
+    \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/idealistic/194601_reco_decay_length_vs_true_decay_length_goodfit_step_contours.png}
+    \caption[]{}
+    \labfig{idealistic_length_resolutions}
+\end{figure*}
+\todo{fix caption of this figure (RED)}
 
-% \begin{figure}[h!]
-%     \subfloat[\labfig{bright_dom_cleaning_performance_decay_length_bias}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/brightdom_cleaning/median_decay_length_bias_fullset_larger_range_unweighted.png}
-%         }
-%     \subfloat[\labfig{bright_dom_cleaning_performance_total_energy_bias}]{
-%         \includegraphics[width=.45\linewidth]{figures/upgoing_string_81_gen_level/brightdom_cleaning/compare_bright_dom_cuts_fractional_reco_total_energy_error_fully.png}
-%         }
-%     \caption{Decay length bias (left) and total energy bias (right).}
-%     \labfig{bright_dom_cleaning_performance}
-% \end{figure}
 
-\subsection{Performance}
+
+\subsection{Realistic Performance}
 
 \subsubsection{Energy/Decay Length Resolution}
 
@@ -319,6 +312,9 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 
 \paragraph{Discussion ideas:}
 \begin{itemize}
+    \item Show energy, length distribution across the different levels?
+    \item Show efficiency as table across the different levels (MC events + fraction?)
+    \item Compare this to BG efficiency? (maybe rather for the discussion)
     \item At which level does the selection reduce the HNL the most?
     \item Is there a place to improve the HNL selection? (Might have to factor in the BG efficiency, as well..)
     \item What of this might change with Upgrade? (maybe rather for the discussion)

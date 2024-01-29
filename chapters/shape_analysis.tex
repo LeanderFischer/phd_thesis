@@ -221,15 +221,18 @@ Without fluctuations the fit is expected to always recover the injected paramete
 
 \subsection{Goodness of Fit} \labsec{pseudo_data_ensemble}
 
-To estimate the GOF, pseudo-data is generated from the MC by injecting the BFP parameters as true parameters and then fluctuating the expected bin counts to account for MC uncertainty and Poisson fluctuations in data. First, the expectation value of each bin is drawn from a Gaussian distribution centered at the nominal expectation value with a standard deviation corresponding to the MC uncertainty of the bin. Based on this sampled expectation value, each bin count is drawn from a Poisson distribution, independently, to get the final pseudo-data set. These pseudo-data sets are then fit back with the analysis chain. By comparing the distribution of TS values from this \textit{ensemble} of pseudo-data trials to the TS\todo{here again, this is just the fit metric, right? (RED)} of the fit to real data, a p-value can be calculated. The p-value is the probability of finding a TS value at least as large as the one from the data fit. \reffig{pseudo_data_ensemble_0.6_GeV}\todo{Add bin-wise TS distribution? Add 3D TS maps? (RED)} shows the TS distribution from the ensemble tests for the \SI{0.6}{\gev} mass sample and the observed TS value from the fit, resulting in a p-value of \SI{28.5}{\percent}. The p-values for the \SI{0.3}{\gev} and \SI{1.0}{\gev} are \SI{28.3}{\percent} and \SI{26.0}{\percent}, respectively and the correspoinding plots are shown in \refsec{pseudo_data_ensemble_appendix}. Based on this test, it is concluded that the fit result is compatible with the expectation from the ensemble of pseudo-data trials.
+To estimate the GOF, pseudo-data is generated from the MC by injecting the BFP parameters as true parameters and then fluctuating the expected bin counts to account for MC uncertainty and Poisson fluctuations in data. First, the expectation value of each bin is drawn from a Gaussian distribution centered at the nominal expectation value with a standard deviation corresponding to the MC uncertainty of the bin. Based on this sampled expectation value, each bin count is drawn from a Poisson distribution, independently, to get the final pseudo-data set. These pseudo-data sets are then fit back with the analysis chain. By comparing the distribution of TS values from this \textit{ensemble} of pseudo-data trials to the TS\todo{here again, this is just the fit metric, right? (RED)} of the fit to real data, a p-value can be calculated. The p-value is the probability of finding a TS value at least as large as the one from the data fit. \reffig{pseudo_data_ensembles}\todo{Add bin-wise TS distribution? Add 3D TS maps? (RED)} shows the TS distribution from the ensemble tests for the \SI{0.6}{\gev} mass sample and the observed TS value from the fit, resulting in a p-value of \SI{28.5}{\percent}. The p-values for the \SI{0.3}{\gev} and \SI{1.0}{\gev} are \SI{28.3}{\percent} and \SI{26.0}{\percent}, respectively, and the corresponding plots are shown in \refsec{pseudo_data_ensemble_appendix}. Based on this test, it is concluded that the fit result is compatible with the expectation from the ensemble of pseudo-data trials.
 
 % \sidenote{The p-values for the \SI{0.3}{\gev} and \SI{1.0}{\gev} are \SI{28.3}{\percent} and \SI{26.0}{\percent}, respectively.}
 % 
-\begin{figure}[h]
-    \includegraphics{figures/results/blind_fits/full_blind_fit_0.3_GeV_gauss_plus_poisson_step_3_4-1.png}
+\begin{figure*}[h]
+    \includegraphics[width=0.32\linewidth]{figures/results/blind_fits/full_blind_fit_0.3_GeV_gauss_plus_poisson_step_3_4-1.png}
+    \includegraphics[width=0.32\linewidth]{figures/results/blind_fits/full_blind_fit_0.6_GeV_gauss_plus_poisson_step_3_4-1.png}
+    \includegraphics[width=0.32\linewidth]{figures/results/blind_fits/full_blind_fit_1.0_GeV_gauss_plus_poisson_step_3_4-1.png}
 	\caption[Pseudo-data trials TS distribution (\SI{0.6}{\gev})]{Observed fit TS and TS distribution from pseudo-data trials for the \SI{0.6}{\gev} mass sample.}
-    \labfig{pseudo_data_ensemble_0.6_GeV}
-\end{figure}
+    \labfig{pseudo_data_ensembles}
+\end{figure*}
+\todo{fix dimension to fit them in one row! (RED)}
 
 
 \section{Results}
