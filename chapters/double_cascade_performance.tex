@@ -138,6 +138,39 @@ The under-estimation at large true lengths is more puzzling, and it seems like t
 
 \begin{figure*}[h]
     \centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_in_step_contours.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_in_step_contours.png}
+    \caption[]{}
+    \labfig{true_energies_vs_true_length}
+\end{figure*}
+\todo{make on figure, where the two selected regions are highlighted? (RED)}
+\todo{fix caption (RED)}
+
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/casc0_energy.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/casc1_energy.png}
+    \caption[]{}
+    \labfig{true_energies_vs_true_length}
+\end{figure*}
+\todo{re-make normalized? (ORANGE)}
+\todo{fix caption (RED)}
+
+
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/casc1_rho36.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/reco_true_cos_zenith_error_populations.png}
+    \caption[]{}
+    \labfig{true_energies_vs_true_length}
+\end{figure*}
+\todo{re-make normalized? (ORANGE)}
+\todo{fix caption (RED)}
+
+
+
+\begin{figure*}[h]
+    \centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/true_decayL_vs_casc0_true_energy_reco_above3_step_contours.png}
     \includegraphics[width=0.49\linewidth]{figures/results/190607/true_decayL_vs_casc1_true_energy_reco_above3_step_contours.png}
     % \caption[Preliminary 2-d reconstructed versus true decay length resolutions]{Reconstructed decay length versus true decay length for a $\sim$\SI{3}{\gev} (left) and $\sim$\SI{10}{\gev} (right) minimum reconstructed cascade energies. The color scale is according to the PDF in each vertical true length slice, with the solid and dashed lines showing the median$\pm$\SI{25}{\percent} quantiles. The bin entries are shown as numbers.}
@@ -149,15 +182,19 @@ The under-estimation at large true lengths is more puzzling, and it seems like t
 
 \paragraph{Missing Points}
 \begin{itemize}
-    \item MuMillipede "reconstruction" (depending on how deep I want to go into the classifier I tested?)
-    \item Calculated variables to input the classifier (distributions?)
-    \item cuts applied to make sure the classifier is trained on well reconstructed events
+    \item Briefly mention MuMillipede "reconstruction" (depending on how deep I want to go into the classifier I tested?)
+    \item Calculated variables to input the classifier (distributions?) I guess some examples might do?
+    \item Cuts applied to make sure the classifier is trained on well reconstructed events (energy, length, true, reco..)
     \item Tested classifier (BDT) versions and their performance
-    \item takeaway
+    \item takeaway? (not sure how to deal with the caveat of the weight being kind of wrong for these..)
 \end{itemize}
 
-\section{Cross Checks}
-\subsection{Simplistic Sets}
+
+\section{Generic Double Cascada Performance}
+
+\subsection{Cross Checks}
+
+\subsubsection{Simplistic Sets}
 
 \todo{From HNL Note, re-write/change (RED)}
 
@@ -192,9 +229,9 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 %     \labfig{bright_dom_cleaning_performance}
 % \end{figure}
 
-\section{Performance}
+\subsection{Performance}
 
-\subsection{Energy/Decay Length Resolution}
+\subsubsection{Energy/Decay Length Resolution}
 
 \todo{describe the "good fit" selection when I first show plots that use it (ORANGE)}
 \todo{add some 1D resolution plots (ORANGE)}
@@ -230,7 +267,7 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 \todo{fix caption of this figure (RED)}
 
 
-\subsubsection{Energy Resolution}
+\paragraph{Energy Resolution}
 
 \textbf{Things to mention about the energy resolution:}
 \begin{itemize}
@@ -246,7 +283,7 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 \todo{fix caption of this figure (RED)}
 
 
-\subsubsection{Decay Length Resolution}
+\paragraph{Decay Length Resolution}
 
 \textbf{Things to mention about the decay length resolution:}
 \begin{itemize}
@@ -276,7 +313,7 @@ As a quick check of the performance of both cuts the decay length resolution/bia
 \todo{fix caption of this figure (RED)}
 
 
-\section{Low Energy Event Selection Efficiency}
+\subsection{Low Energy Event Selection Efficiency}
 
 \todo{Make plot to show efficiency of the OscNext selection for HNL events. (ORANGE)}
 
