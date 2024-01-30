@@ -1,12 +1,15 @@
 \setchapterstyle{kao}
 \setchapterpreamble[u]{\margintoc}
 
-\chapter{Search for an Excess of Heavy Neutral Lepton Events}
+\chapter{Search for Tau Neutrino Induced Heavy Neutral Lepton Events}
+% \chapter{Search for tau neutrinoo-induced Heavy Neutral Lepton Events}
 \labch{analysis}
 
-This chapter describes the search for HNL events using \SI{10}{years} of IceCube DeepCore data. In principle the two physics parameters to be probed are the mass of the HNL, $m_4$, and the mixing between the fourth heavy mass state and the SM $\tau$ sector, $|U_{\tau4}|^2$. Since the mass itself influences the production and decay kinematics of the event and the accessible decay modes, individual mass samples were produced as described in \refsec{model_specific_simulation}. The mass influences the energy distribution, while the mixing both changes the overall scale of the HNL events and the shape in energy and PID.
+This chapter describes the search for HNL events\todo{make sure I don't use the phrasing "search for an excess of HNL events" anywhere.. (ORANGE)} using \SI{10}{years} of IceCube DeepCore data. The expected number of HNL events in the data sample depends on the mass of the additional heavy state, $m_4$, and the mixing element $|U_{\alpha4}^2|$, with $\alpha=e,\mu,\tau$, between the SM flavors and the new mass state. As discussed in \refsec{HNL_model_to_be_tested}, this work focuses on the mixing to the tau sector, $|U_{\tau4}^2|$, which has the weakest constraints to date.
+% In principle the two physics parameters to be probed are the mass of the HNL, $m_4$, and the mixing between the fourth heavy mass state and the SM $\tau$ sector, $|U_{\tau4}|^2$.
+Since the mass itself influences the production and decay kinematics of the event and the accessible decay modes, individual mass samples were produced as described in \refsec{model_specific_simulation}. The mass influences the energy distribution, while the mixing both changes the overall scale of the HNL events and the shape in energy and PID.
 % IceCube DeepCore is suited to measure the excess which appears around and below \SI{20}{\gev}, due to its production from the atmospheric tau neutrinos, although a reduced lower energy threshold might improve the analysis.
-The search is performed for the three mass samples individually, while the mixing is the parameter that can be varied continuously and is measured in the fit. 
+The search is performed for the three mass samples individually, while the mixing is the parameter that can be varied continuously and is measured in the fit.
 
 
 \section{Final Level Sample} \labsec{analysis_samples}
@@ -72,7 +75,18 @@ The rates and the expected number of events for the SM background are shown in \
 
 \subsection{Analysis Binning}
 
-An identical binning to the analysis performed in \sidecite{flercnn_analysis_result} is used. It was chosen such that the track-like bin has the largest $\nu_\mu$-CC fraction. Extending the binning towards lower energies or increasing the number of bins in energy or cosine of the zenith angle did not improve the HNL sensitivities significantly. It also has to be considered that sufficient data events need to end up in the individual bins to result in a good fit, which was already investigated in the previous analysis. To mitigate the low data statistics, a few bins were not taken into account in the analysis. There are three bins in PID (cascade-like, mixed, and track-like), 12 bins in reconstructed energy, and 8 bins in cosine of the reconstructed zenith angle as specified in \reftab{analysis_binning}. Originally, there were two more bins in $\cos(\theta)$, which were removed to reduce muons coming from the horizon and some low energy bins in the cascade-like bin are removed due to the low event statistics.
+\begin{figure*}[h]
+    \includegraphics[trim=7cm 0cm 12cm 1cm, clip]{figures/results/labeled_s_to_sqrt_b_1.0_GeV_combined_U_tau4_sq_0.1000_total.png}
+    \caption[]{}
+    \labfig{s_to_sqrt_b_1.0_GeV_0.1_mixing}
+\end{figure*}
+\todo{fix caption (RED)}
+
+An identical binning to the analysis performed in \sidecite{flercnn_analysis_result} is used. In total, there are three bins in PID (cascade-like, mixed, and track-like), 12 bins in reconstructed energy, and 8 bins in cosine of the reconstructed zenith angle as specified in \reftab{analysis_binning}.
+% It was chosen such that the track-like bin has the largest $\nu_\mu$-CC fraction and a bin with a mixture of track and cascade events exists.
+Extending the binning towards lower energies or increasing the number of bins in energy or cosine of the zenith angle did not improve the HNL sensitivities significantly, because the dominant signal region is already covered with a sufficiently fine binning to observe the shape and magnitude of the HNL events. This can be seen in the middle panel of \reffig{s_to_sqrt_b_1.0_GeV_0.1_mixing}. To ensure that sufficient data events end up in the individual bins to result in a good fit, a few bins were not taken into account in the analysis that showed low data statistics. Those are shown in dark green in the 3-d histogram.
+% Originally, there were two more bins in $\cos(\theta)$, which were removed to reduce muons coming from the horizon and some low energy bins in the cascade-like bin are removed due to the low event statistics.
+
 \begin{table}[h]
         \begin{tabular}{ llll }
         \hline\hline    
@@ -87,7 +101,7 @@ An identical binning to the analysis performed in \sidecite{flercnn_analysis_res
     \labtab{analysis_binning}
 \end{table}
 
-\todo{add 3D expectation and/or S/sqrt(B) plots }
+\todo{add 3D data histograms (RED)}
 \todo{Add fractions of the different particle types in the bins for benchmark mass/mixing (another table?) (ORANGE)}
 
 
@@ -124,13 +138,13 @@ The variable physics parameter in this analysis is the mixing between the HNL an
     \labfig{systematic_impact_test}
 \end{marginfigure}
 \todo{Blow up labels/legend/title and make it more readable in the margin or move it into the main text? (RED)}
-To decide which systematic uncertainties should be included in the fit, we test the potential impact they have on the TS if they are neglected. The test is performed by creating Asimov data using the BG simulation and the HNL simulation of the \SI{1.0}{\gev} mass sample at a mixing value of $0.1$, which is chosen as a benchmark physics parameter and does not have a significant impact on the test. The systematic parameter of interest is set to a value above its nominal expectation, either pulled up by $+1\sigma$ or by an educated estimate for parameters without a well-defined uncertainty. A fit is performed fixing the systematic parameter of interest and leaving all additional parameters free. The resulting TS is the mis-modeling significance between this fit and a fit with all parameters free, which would result in a TS of 0.0 for this Asimov test\todo{I don't like this formulation, but don't know better right now.. (YELLOW)}. Parameters below a significance of \SI{0.1}{\sigma} are fixed and the test is perfomed in an iterative manner until the final set of free parameters is found. \reffig{systematic_impact_test} shows the resulting significances of one of these tests. In the final selection of free parameters the Barr $h_{\pi^+}$ parameter was also left free\todo{elaborate why this is also done to cover the whole energy range for the pion production, referencing the Barr Block plot that I haven't included yet :D (RED)} and the ice absorption is still kept free, despite showing a small significance. This is done because the bulk ice parameters are not well constrained and are known to have a large impact, which might be concealed in the test, due to correlations with the other parameters\todo{I truly dislike this sentence, too, better ideas? (YELLOW)}.
+To decide which systematic uncertainties should be included in the fit, we test the potential impact they have on the TS if they are neglected. The test is performed by creating Asimov data using the BG simulation and the HNL simulation of the \SI{1.0}{\gev} mass sample at a mixing value of $0.1$, which is chosen as a benchmark physics parameter and does not have a significant impact on the test. The systematic parameter of interest is set to a value above its nominal expectation, either pulled up by $+1\sigma$ or by an educated estimate for parameters without a well-defined uncertainty. A fit is performed fixing the systematic parameter of interest and leaving all additional parameters free. The resulting TS is the mis-modeling significance between this fit and a fit with all parameters free, which would result in a TS of 0.0 for this Asimov test\todo{I don't like this formulation, but don't know better right now.. (YELLOW)}. Parameters below a significance of \SI{0.1}{\sigma} are fixed, and the test is performed in an iterative manner until the final set of free parameters is found. \reffig{systematic_impact_test} shows the resulting significances of one of these tests. In the final selection of free parameters the Barr $h_{\pi^+}$ parameter was also left free\todo{elaborate why this is also done to cover the whole energy range for the Pion production, referencing the Barr Block plot that I haven't included yet :D (RED)} and the ice absorption is still kept free, despite showing a small significance. This is done because the bulk ice parameters are not well constrained and are known to have a large impact, which might be concealed in the test, due to correlations with the other parameters\todo{I truly dislike this sentence, too, better ideas? (YELLOW)}.
 
 \todo{I'm just writing out the data from the table, but I need to mention/motivate the included priors here and maybe just point to the table for the ranges/nominal values? (Not quite sure about this) (RED)}The scaling parameter $N_{\nu}$ is included to account for the unknown overall normalization of the neutrino rate. It has the identical effect on the SM neutrino events and the BSM HNL events and its nominal value is set to 1.0 with a wide range of [$0.1$, $2.0$].
 
 Concerning the atmospheric neutrino flux, the CR power law flux correction factor $\Delta \gamma_\nu$ is included with nominal value of 0.0 and a range of [$-0.5$, $0.5$]. The nominal value corresponds to a CR power law of $E^{-2}$ and a slightly conservative prior of 0.1 is applied to the parameter, while latest measurements have an uncertainty of 0.05 \sidecite{PhysRevD.95.023012}.
 
-Additionally, the Barr $h_{\pi^+}$, Barr $i_{\pi^+}$, and Barr $y_{K^+}$ parameters of the pion and kaon production uncertainties are included with nominal values of $0.0$ and ranges of [$-0.75$, $0.75$], [$-3.05$, $3.05$], and [$-1.5$, $1.5$], respectively.\todo{say something about their priors (RED)}
+Additionally, the Barr $h_{\pi^+}$, Barr $i_{\pi^+}$, and Barr $y_{K^+}$ parameters of the Pion and Kaon production uncertainties are included with nominal values of $0.0$ and ranges of [$-0.75$, $0.75$], [$-3.05$, $3.05$], and [$-1.5$, $1.5$], respectively.\todo{say something about their priors (RED)}
 
 From the cross-section uncertainties introduced in \refsec{cross_section_uncertainties}, all three parameters, $\rm{DIS}$, $M_\rm{A,QE}$, and $M_\rm{A,res}$ are included in the fit with nominal values of $0.0$ for all of them and range [$-0.5$, $1.5$] for $\rm{DIS}$ and [$-2.0$, $2.0$] for the axial mass parameters $M_\rm{A,QE}$, and $M_\rm{A,res}$.\todo{say something about their priors (RED)}
 
