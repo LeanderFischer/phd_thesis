@@ -43,6 +43,13 @@
 \newcommand{\mev}{\mega\electronvolt}
 \fi
 
+% define HNL mixing abbreviations
+\def\ue4{$|U_{e4}|^2$}
+\def\um4{$|U_{\mu4}|^2$}
+\def\ut4{$|U_{\tau4}|^2$}
+
+
+
 % Load mathematical packages for theorems and related environments
 \usepackage[framed=true]{kaotheorems}
 \usepackage{amsmath}
@@ -57,11 +64,6 @@
 
 \makeindex[columns=3, title=Alphabetical Index, intoc] % Make LaTeX produce the files required to compile the index
 
-\ifdefined\rm
-\renewcommand{\rm}{\mathrm}
-\else
-\newcommand{\rm}{\mathrm}
-\fi
 
 % for Alex' crazy tikz stuff...
 \usepackage{pgfplots}

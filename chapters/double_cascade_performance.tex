@@ -95,7 +95,7 @@ For both cascade resolutions the effect of the reconstruction being biased towar
 
 \subsubsection{Length Resolutions}
 
-The decay length resolution is also investigated by looking at a similar style of 2-d histograms than for the energies, where the reconstructed decay length is plotted versus the true decay length. The left part of \reffig{selected_routine_2d_length_results} shows the distributions after the same selection criteria from \refsec{190607_energy_resolutions} are applied. It can be observed that for short true lengths the reconstruction is over-estimating the length, while for long true lengths the reconstruction is strongly under-estimating the length. There is a region between true lengths of \SIrange[range-phrase=~and~]{20}{80}{\meter} where the median reconstruction is almost unbiased, but the \SI{50}{\percent} interquartile range is large and increasing from $\sim$\SI{50}{\meter} to $\sim$\SI{70}{\meter} with true decay lengths.
+The decay length resolution is also investigated by looking at a similar style of 2-d histograms as for the energies, where the reconstructed decay length is plotted versus the true decay length. The left part of \reffig{selected_routine_2d_length_results} shows the distributions after the same selection criteria from \refsec{190607_energy_resolutions} are applied. It can be observed that for short true lengths the reconstruction is over-estimating the length, while for long true lengths the reconstruction is strongly under-estimating the length. There is a region between true lengths of \SIrange[range-phrase=~and~]{20}{80}{\meter} where the median reconstruction is almost unbiased, but the \SI{50}{\percent} interquartile range is large and increasing from $\sim$\SI{50}{\meter} to $\sim$\SI{70}{\meter} with true decay lengths.
 
 \begin{figure*}[h]
     \centering
@@ -107,7 +107,7 @@ The decay length resolution is also investigated by looking at a similar style o
 
 The over-estimation at small true lengths can be explained for multiple reasons, one being that the shortest DOM spacing is $\sim$\SI{7}{\meter}, vertically for DeepCore strings, but mostly larger than that, so resolving lengths below this is very complicated, and the reconstruction tends to be biased towards estimating the length around where the light was observed. Another reason is a similar argument to why the energies are over-estimated at small true values, namely that events that passed the selection and were reconstructed in those cases, probably have an over fluctuation in light deposition, extending further out from the vertices, so the reconstructed length is larger. Additionally, approaching a length of 0.0, the reconstructed length will of course always be a one-sided distribution, because the lengths have to be positive.
 
-The under-estimation at large true lengths is more puzzling, and it seems like the distribution becomes bimodal in the reconstructed lengths, with on population around the diagonal, meaning that they are properly reconstructed, and one population at very short reconstructed lengths, which are badly reconstructed. Above \SI{150}{\meter} the badly reconstructed population starts to dominate, and the median resolution drops off strongly. The assumption is that for these events, only one cascade was observed with enough light to be reconstructed, and the reconstruction describes the one observed cascade in two parts, separated by a short distance, driven by similar factors as mentioned before. A check to confirm whether this is the case was to increase the minimum cascade energies to \SI{10}{\gev}, which is shown in the right part of \reffig{selected_routine_2d_length_results}. It can be seen that the median resolution is already much better, aligning with the expectation between \SIrange[range-phrase=~and~]{40}{160}{\meter}. Judging from the median resolution and the $+$\SI{25}{\percent} quantile in this range, there is very few events with an over-expectation in the energy, since both of them are alidgning with the diagonal. The spread towards lower reconstructed lengths, on the other hand, is still very large and above \SI{200}{\meter} the badly reconstructed population starts to dominate again.
+The under-estimation at large true lengths is more puzzling, and it seems like the distribution becomes bimodal in the reconstructed lengths, with one population around the diagonal, meaning that they are properly reconstructed, and one population at very short reconstructed lengths, which are badly reconstructed. Above \SI{150}{\meter} the badly reconstructed population starts to dominate, and the median resolution drops off strongly. The assumption is that for these events, only one cascade was observed with enough light to be reconstructed, and the reconstruction describes the one observed cascade in two parts, separated by a short distance, driven by similar factors as mentioned before. A quick check to confirm whether this is the case, was to increase the selection criteria to minimum reconstructed cascade energies of \SI{10}{\gev}, which is shown in the right part of \reffig{selected_routine_2d_length_results}. It can be seen that the median resolution is already much better, aligning with the expectation between \SIrange[range-phrase=~and~]{40}{160}{\meter}. Judging from the median resolution and the $+$\SI{25}{\percent} quantile in this range, there is very few events with an over-expectation in the energy, since both of them are alidgning with the diagonal. The spread towards lower reconstructed lengths, on the other hand, is still very large and above \SI{200}{\meter} the badly reconstructed population starts to dominate again.
 
 
 % \begin{figure*}[h]
@@ -120,63 +120,59 @@ The under-estimation at large true lengths is more puzzling, and it seems like t
 % \todo{fix caption of this figure (RED)}
 
 
-
 \subsubsection{Badly Reconstructed Cascade Population}
-
-\paragraph{Ideas to write about:}
-\begin{itemize}
-    \item Show/highlight 2d decay length resolution again, basically 2 populations at higher energies
-    \item only looking at events with >10 GeV instead of >3 GeV already improves the resolution a lot (low energy and therefore low light is a problem)
-    \item take a closer look at those populations to find out what's going on
-    \item multiple things were checked (bad direction (possibly due to seed), cascade position in DC, energies)
-    \item the direction is worse for the badly reconstructed population, which could be due to a bad seed direction
-    \item the events are a little further out radially, where the string/DOM spacing is not so tight, which also leads to less light being observed
-    \item the energy of the second cascade is much lower than the first
-    \item conclusion: it's a combination of all of them, but the main problem is the low energy
-    \item true energies vs true length shows that first cascade energies are much larger than second (pick benchmark lengths and state the values!)
-\end{itemize}
 
 \begin{figure*}[h]
     \centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_in_step_contours.png}
     \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_out_step_contours.png}
     \caption[]{}
-    \labfig{true_energies_vs_true_length}
+    \labfig{true_energies_vs_true_length_populations_in_out}
 \end{figure*}
 \todo{make on figure, where the two selected regions are highlighted? (RED)}
 \todo{fix caption (RED)}
 
-\begin{figure*}[h]
-    \centering
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/casc0_energy.png}
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/casc1_energy.png}
-    \caption[]{}
-    \labfig{true_energies_vs_true_length}
-\end{figure*}
-\todo{re-make normalized? (ORANGE)}
-\todo{fix caption (RED)}
+To investigate the badly reconstructed population further, a rough separation was made to find out what the cause of the difference is. It was already established that a larger reconstructed energy in both cascades, which is related to a larger true energy in form of more deposited light, leads to a better reconstruction in more events. As shown in \reffig{true_energies_vs_true_length_populations_in_out}, only events with true decay length larger than \SI{80}{\meter} are used, where the populations are split by the reconstructed decay length being larger or smaller than \SI{80}{\meter}. Based on a few potential sourced of bad reconstruction, several variables were checked to see if there is a difference between the two populations.
 
+The left part of \reffig{population_position_direction} shows the true horizontal distance of the second cascade from string 36. The distance is denoted as $\rho_{36}$ and is a very good proxy for the distance to the center of the detector, because string 36 is almost at the center. While the distributions looks very similar for the first cascade (not shown), for the second cascade the badly reconstructed population extends to larger values. Considering that the DeepCore strings are roughly inside a \SI{70}{\meter} radius from the center, and the next layer of IceCube strings is at a radius of \SI{125}{\meter}, this is a plausible explanation for a worse reconstruction, because for the badly reconstructed population the second cascades are more often in regions without DOMs, so less or no light is observed from them.
 
 \begin{figure*}[h]
     \centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/casc1_rho36.png}
     \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/reco_true_cos_zenith_error_populations.png}
     \caption[]{}
-    \labfig{true_energies_vs_true_length}
+    \labfig{population_position_direction}
 \end{figure*}
 \todo{re-make normalized? (ORANGE)}
 \todo{fix caption (RED)}
 
+Another possible reason why the reconstruction underperforms could be that the initial seed direction was off and therefore one of the cascades cannot be found properly. Looking at the error of the cosine of the reconstructed zenith angle shown in the right of \reffig{population_position_direction}, we see that the badly reconstructed population has a larger error, and is less peaked around 0.0. This could be a hint that the direction is worse for the badly reconstructed population, which could be due to a bad seed direction, or just the result of one cascade not being observed properly.
 
 \begin{figure*}[h]
     \centering
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/true_decayL_vs_casc0_true_energy_reco_above3_step_contours.png}
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/true_decayL_vs_casc1_true_energy_reco_above3_step_contours.png}
-    % \caption[Preliminary 2-d reconstructed versus true decay length resolutions]{Reconstructed decay length versus true decay length for a $\sim$\SI{3}{\gev} (left) and $\sim$\SI{10}{\gev} (right) minimum reconstructed cascade energies. The color scale is according to the PDF in each vertical true length slice, with the solid and dashed lines showing the median$\pm$\SI{25}{\percent} quantiles. The bin entries are shown as numbers.}
-    \labfig{true_energies_vs_true_length}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/casc0_energy.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/casc1_energy.png}
+    \caption[]{}
+    \labfig{population_energy_distributions}
 \end{figure*}
+\todo{re-make normalized? (ORANGE)}
 \todo{fix caption (RED)}
-\todo{I think from these plots it's probably enough if I state the median energy of first and second cascade at final level, as a benchmark for the energies of the two cascades (ORANGE)}
+
+The true energies of both cascades are shown in \reffig{true_energies_vs_true_length_populations_in_out}, where it can be observed that the first cascade energy is generally much larger than the second, peaking between \SIrange[range-phrase={~and~}]{10}{20}{\gev}, while the second cascade peaks below \SI{10}{\gev}. For the first cascade there is no significant difference beteween the two populations, but for the second cascade the badly reconstructed population has a larger fraction of events with lower energies and the distribution is almost uniform in the range of \SIrange{2}{10}{\gev}, while the well reconstructed population has a peak around \SI{10}{\gev} and falls off faster towards lower energies. This is a strong indication that the main reason for the bad reconstruction is the low energy of the second cascade.
+
+Despite the fact that the split into the two populations was very rudimentary, it is clear that the main reason for the bad reconstruction is the low energy of the second cascade, while other factors, like the position of the second cascade, or the potentially bad input seed direction are also contributing to the bad reconstruction. For a more thorough investigation, a more sophisticated separation would be needed, but this is sufficient to conclude that the main reason for the bad reconstruction is the low energy of the second cascade.
+
+\todo{circle back to the energy distributions I showed somehwere else, and state how the cascade energies are distributed in general (ORANGE)}
+
+% \begin{figure*}[h]
+%     \centering
+%     \includegraphics[width=0.49\linewidth]{figures/results/190607/true_decayL_vs_casc0_true_energy_reco_above3_step_contours.png}
+%     \includegraphics[width=0.49\linewidth]{figures/results/190607/true_decayL_vs_casc1_true_energy_reco_above3_step_contours.png}
+%     % \caption[Preliminary 2-d reconstructed versus true decay length resolutions]{Reconstructed decay length versus true decay length for a $\sim$\SI{3}{\gev} (left) and $\sim$\SI{10}{\gev} (right) minimum reconstructed cascade energies. The color scale is according to the PDF in each vertical true length slice, with the solid and dashed lines showing the median$\pm$\SI{25}{\percent} quantiles. The bin entries are shown as numbers.}
+%     \labfig{true_energies_vs_length_2d}
+% \end{figure*}
+% \todo{fix caption (RED)}
+% \todo{I think from these plots it's probably enough if I state the median energy of first and second cascade at final level, as a benchmark for the energies of the two cascades (ORANGE)}
 
 
 \section{Double Cascade Classification}
