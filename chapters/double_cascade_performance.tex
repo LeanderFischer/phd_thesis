@@ -5,7 +5,7 @@
 \labch{double_cascade_performance}
 
 
-\section{Reconstruction}
+\section{Reconstruction} \labsec{dc_reconstruction}
 
 All existing reconstruction algorithms applied for low energetic atmospheric neutrino events mentioned in \refsec{reconstruction} are either assuming a single cascade hypothesis or a track and cascade hypothesis, which are the two SM morphologies observable at these energies, as was described in \refsec{icecube_signatures}. A HNL being produced and decaying inside the IceCube detector however, will produce two cascade like light depositions. The morphology and how the cascade properties and their spatial separation depend on the model parameters was introduced in \refsec{double_cascade_morphology}. To investigate the performance of the detector to observe these events, a low energetic double cascade reconstruction algorithm was developed, based on a pre-existing algorithm used to search for double cascades produced from high energetic astrophysical tau neutrinos \sidecite{Abbasi:2020zmr} that was established in \sidecite{MUsner}, but first mentioned in \sidecite{PHallen}.
 
@@ -177,14 +177,32 @@ Despite the fact that the split into the two populations was very rudimentary, i
 
 \section{Double Cascade Classification}
 
-\paragraph{Missing Points}
-\begin{itemize}
-    \item Briefly mention MuMillipede "reconstruction" (depending on how deep I want to go into the classifier I tested?)
-    \item Calculated variables to input the classifier (distributions?) I guess some examples might do?
-    \item Cuts applied to make sure the classifier is trained on well reconstructed events (energy, length, true, reco..)
-    \item Tested classifier (BDT) versions and their performance
-    \item takeaway? (not sure how to deal with the caveat of the weight being kind of wrong for these..)
-\end{itemize}
+Even though the performance results show that it is very complicated to reconstruct these low energetic double cascade events, the attempt to identify them over the background of SM neutrino events was made
+
+tested training a classifier to distinguish between HNL events and SM neutrino events, using the same preliminary sample of HNL events as was used for the reconstruction performance
+
+for the training a set of cuts was applied to make sure the classifier is trained on well reconstructed events, which are events with a minimum reconstructed energy of both cascades of \SI{5}{\gev}, a minimum reconstructed decay length of \SI{40}{\meter}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{figures/results/190607/classification/reco_decayL_vs_true_decayL_reco_energy_cut_and_reco_length_cut_and_true_energy_cut_and_true_length_cut_step_contours_weighted.png}
+    \caption[]{}
+    \labfig{classifier_cuts_length_2d_hist}
+\end{figure}
+\todo{fix caption (RED)}
+
+additionally for the HNL events some cuts on the true energy and decay length were applied, which are a minimum true energy of both cascades of \SI{5}{\gev} and a minimum true decay length of \SI{40}{\meter}, these were chosen to make sure the HNL events were double cascade like
+
+\todo{add table with cuts? (YELLOW)}
+
+the classifier used was a Boosted Decision Tree (BDT) from the \textit{\textsc{scikit-learn} (sklearn)} package and the input features are taken from the double cascade reconstruction explained in \refsec{dc_reconstruction} as well as some additional variables from earlier levels of the processing explained in \refsec{processing_chain}
+
+\todo{add example features? maybe like 2 or so? (RED)}
+
+both a single classifier trained to distinguish between HNL and all SM neutrino events was tested and two classifiers trained to distinguish HNLs from SM track-like and cascade-like events separately were tested
+
+
+takeaway? (not sure how to deal with the caveat of the weight being kind of wrong for these..)
 
 
 \section{Generic Double Cascade Performance}
