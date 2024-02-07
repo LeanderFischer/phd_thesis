@@ -96,84 +96,63 @@ The mass term for charged fermions with spin-1/2 is given by
 \end{equation}
 composed of the product of left- and right-handed Weyl spinors $\Psi_{L/R}$. This term is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations, but adding a Yukawa term
 \begin{equation}
-    \mathcal{L}_\rm{Yukawa} = -y \bar{L}_L \Phi e_R + h.c.
+    \mathcal{L}_\rm{Yukawa} = -Y^e \bar{L}_L \Phi e_R + h.c.
     \;,
     \labeq{up_type_yukawa_lagrangian}
 \end{equation}
-coupling the fermion fields to the Higgs field, recovers the invariance and gives the fermions their masses. Here, $y$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{y v}{\sqrt{2}}$. With $\tilde{\Phi} = i \sigma_2 \Phi^*$, a similar Yukawa term can be written as $-y \bar{L}_L \tilde{\Phi} u_R + h.c.$, which leads to the masses of the up-type quarks.
+coupling the fermion fields $e_R$ to the Higgs field $\Phi$, recovers the invariance and gives the fermions their masses. Here, $Y^e$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{Y^e v}{\sqrt{2}}$. With $\tilde{\Phi} = i \sigma_2 \Phi^*$, a similar Yukawa term can be written as $-Y^u \bar{L}_L \tilde{\Phi} u_R + h.c.$, which leads to the masses of the up-type quarks.
 
 
-\subsection{Weak Interactions after Symmetry Breaking} \labsec{weak_interactions}
-
-After the spontaneous symmetry breaking, the leptonic part of the electroweak Lagrangian can be written as
-\begin{equation}
-    \begin{aligned}
-        \mathcal{L}^{\ell}_{\rm EW} &= \frac{g}{\sqrt{2}}W^+ \sum _{\alpha=e,\mu,\tau} {\bar{\nu}}_{\alpha}\gamma ^\mu P_L \ell _\alpha + \frac{g}{4c_w} Z \nonumber \\& \times \left\{ \sum _{\alpha=e,\mu,\tau} {\bar{\nu}}_{\alpha}\gamma ^\mu P_L \nu_{\alpha} + \sum _\alpha {\bar{\ell }}_\alpha \gamma ^\mu \left[ 2s_w^2P_R\!-\!(1\!-\!2s_w^2)P_L \right] \ell _\alpha \right\} \nonumber + h.c.
-        \;,
-    \end{aligned}
-    \labeq{leptonic_ew_lagrangian}
-\end{equation}
-where $c_w \equiv \cos \theta _w$, $s_w \equiv \sin \theta _w$, and $\theta _w$ the SM weak mixing angle or \textit{Weinberg angle}. $P_L$ and $P_R$ are the left and right projectors, respectively, while
-
-\todo{Introduce SM EW NC/CC Lagrangian to build upon in the next chapter}
-
-
-\textbf{Stuff from my MSc thesis to re-write:}
+\subsection{Leptonic Weak Interactions after Symmetry Breaking} \labsec{weak_interactions}
 
 \begin{marginfigure}
-	\centering
+    \centering
     \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
     \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
     \caption[Feynman diagrams of neutrino weak interactions]{Feynman diagrams of charged-current (left) and neutral-current (right) neutrino weak interactions, taken from \cite{ATerliuk}.}
     \labfig{weak_interactions}
-\end{marginfigure}
-\todo{Plot is missing + for W and 0 for Z boson.}
+\end{marginfigure}    
+\todo{Plot is missing + for W and 0 for Z boson. (RED)}
 
-In the SM, weak interactions are mediated by the three massive bosons $\textbf{W}^+$, $\textbf{W}^-$, and $\textbf{Z}^0$ \sidecite{Thomson_Particle}.
-The large boson masses ($m_{\textbf{W}}\sim\SI{80}{\gev}, m_{\textbf{Z}}\sim\SI{90}{\gev}$) result in a short range of the force of about \SI{10e-18}{\meter}.
-Weak interactions carried by $\textbf{W}^\pm$ bosons are called CC interactions, because charge is transferred between the interacting particles.
-In CC interactions, a neutrino is converted into its corresponding charged lepton or vice versa.
-Neutral current (NC) interactions are those mediated by $\textbf{Z}^0$ bosons.
-Here no charge is transferred.
-The Feynman diagrams for CC and NC interactions are shown in \reffig{weak_interactions}.
-
-The observed phenomenon of neutrino oscillations (see Section \refsec{neutrino_oscillations}) is based on the fact that there is a mass difference between the three neutrino mass eigenstates.
+After the spontaneous symmetry breaking, the leptonic part of the electroweak Lagrangian can be written as
+\begin{equation}
+    \begin{aligned}
+        \mathcal{L}^{\ell}_{\rm EW} &= \frac{g}{\sqrt{2}}W^+ \sum _{\alpha=e,\mu,\tau} {\bar{\nu}}_{\alpha}\gamma ^\mu P_L \ell _\alpha + \frac{g}{4c_w} Z \\& \times \left\{ \sum _{\alpha=e,\mu,\tau} {\bar{\nu}}_{\alpha}\gamma ^\mu P_L \nu_{\alpha} + \sum _\alpha {\bar{\ell }}_\alpha \gamma ^\mu \left[ 2s_w^2P_R-(1-2s_w^2)P_L \right] \ell _\alpha \right\} + h.c.
+        \;,
+    \end{aligned}
+    \labeq{leptonic_ew_lagrangian}
+\end{equation}
+where $c_w \equiv \cos \theta _w$, $s_w \equiv \sin \theta _w$, $P_L$ and $P_R$ are the left and right projectors, respectively, while $\nu_{\alpha}$ and $\ell _\alpha$, are the neutrino and charged lepton weak eigenstates. The $W^+$ and $Z$ bosons are the massive gauge bosons of the weak interaction. The large boson masses $m_{{W}}\sim\SI{80}{\gev}$ and $m_{{Z}}\sim\SI{90}{\gev}$ result in a short range of the force of about \SI{1e-18}{\meter}. Interactions carried out by the ${W}^\pm$ bosons are called \textit{charged current (CC)} interactions, as they propagate a charge, therefore changing the interacting lepton to its charged/neutral counterpart. \textit{Neutral current (NC)} interactions are those mediated by the ${Z}^0$ boson, where no charge is transferred. NC interactions couple neutrinos to neutrinos and charged leptons to charged leptons, but not to each other. The Feynman diagrams for CC and NC interactions are shown in \reffig{weak_interactions}.
 
 
 \section{Beyond the Standard Model}
 
-\textbf{Open questions related to neutrinos:}
-\begin{itemize}
-    \item question of neutrino nature, e.g. dirac or majorana?
-    \item absolute mass values? (mass ordering + absolute mass scale)
-    \item is there leptonic cp violation and what is the precise delta\_cp value?
-    \item what are the mixing angle values and is there a flavor principle
-    \item is there additional effects like steriles, non-standard, lorentz violation
-\end{itemize}
+The fundamentals of the SM described above \textbf{are not} enough to explain all observed phenomena. Gravity cannot be explained by the SM, as it is incompatible with general relativity, neither can some of the cosmological observations like dark matter, and the matter-antimatter asymmetry be explained. But most importantly, the SM does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extension to the SM is needed in order to explain the observed phenomena.
 
-
-Are the fundamentals of the SM described above enough to explain \textit{all} observed phenomena? Gravity cannot be explained by the SM, as it is incompatible with general relativity. Neither can the SM explain some cosmological observations like dark matter, and the matter-antimatter asymmetry, and it does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extensions to the SM is needed in order to explain them.
-
-Standard cosmology ($\Lambda$CDM\todo{Cite and/or sidenote this.}) assumes that equal amounts of matter and anti-matter were produced in the early universe. However, the universe today is dominantly made up of matter. This so-called \textit{baryon asymmetry} can be measured by the difference between the number densities of baryons and anti-baryons normalized to the number density of photons as
+Standard cosmology ($\Lambda$CDM\todo{Cite and/or sidenote this. (RED)}) assumes that equal amounts of matter and anti-matter were produced in the early universe. However, the universe today is dominantly made up of matter. This so-called \textit{baryon asymmetry} can be measured by the difference between the number densities of baryons and anti-baryons normalized to the number density of photons as
 \begin{equation}
     \eta_B = \frac{n_B - n_{\bar{B}}}{n_\gamma}
     \;,
 \end{equation}
-where $n_B$, $n_{\bar{B}}$, and $n_\gamma$ are the number densities of baryons, anti-baryons, and photons, respectively. Baryons are the dominant component with  $\eta_B$ being observed to be around $6 \times 10^{-10}$\todo{cite this}. Leptogenesis and EW baryogenesis are scenarios that could explain this phenomenon, where the former could be realized by the existence of heavy RH neutrinos.
+where $n_B$, $n_{\bar{B}}$, and $n_\gamma$ are the number densities of baryons, anti-baryons, and photons, respectively. Baryons are the dominant component with  $\eta_B$ being observed to be around $6 \times 10^{-10}$\todo{cite this (RED)}. Leptogenesis and EW baryogenesis are scenarios that could explain this phenomenon, where the former could be realized by the existence of heavy RH neutrinos.
 
-The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments\sidecite{homestake, super_k_atm_osc, snolab_flavor_conv}\todo{cite neutrino oscillations/flavor conversions} is the strongest evidence for physics beyond the SM measured in laboratories. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. From the measurements and cosmological observations, we know that the masses are very small as compared to the lepton masses. Neither their existence, nor their smallness is not predicted by the SM, but adding additional RH neutrinos states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments. But the addition of RH neutrino fields is not the only possible explanation for neutrino masses. Radiative neutrino mass mechanisms could also explain their origin and their smallness, but those would need the introduction of additional symmetries to the theory.
+The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments \sidecite{homestake, super_k_atm_osc, snolab_flavor_conv} is the strongest evidence for physics beyond the SM measured in laboratories to date. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. From those measurements we know the mass differences are very small as compared to the lepton masses, but neither their existence, nor their smallness is predicted by the SM. There are upper limits on the sum of all neutrino masses from cosmological observations at \SI{1.2}{\electronvolt} \sidecite{BOS_nu_masses, planck_nu_mass} and at \SI{0.8}{\electronvolt} from the KATRIN experiment \sidecite{katrin_nu_mass}. Adding RH neutrino states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments.
 
+\todo{highlight a few more neutrino related open questions, to circle back to related to the HNL searches maybe? (YELLOW)}
 
-Maybe also add this somehow: "From neutrino oscillation measurements the absolute mass scale cannot be determined, since they only depend on the mass differences, but there are upper limits on the sum of all neutrino masses from cosmological observations.
-These upper limits are typically between $0.3$ and $1.3$\,eV \sidecite{PhysRevD.98.030001}."
-"Actually \SI{0.8}{\electronvolt} \sidecite{katrin_nu_mass} from KATRIN and \SI{1.2}{\electronvolt} \sidecite{BOS_nu_masses, planck_nu_mass} from cosmological observations. 
+% \textbf{Open questions related to neutrinos:}
+% \begin{itemize}
+%     \item question of neutrino nature, e.g. dirac or majorana?
+%     \item absolute mass values? (mass ordering + absolute mass scale)
+%     \item is there leptonic cp violation and what is the precise delta\_cp value?
+%     \item what are the mixing angle values and is there a flavor principle
+%     \item is there additional effects like steriles, non-standard, lorentz violation
+% \end{itemize}
 
 
 \subsection{Mass Mechanisms}
 
-\todo{namedrop RH=sterile=HNL and why they are called like this based on the SM EW Lagrangian introduced above}
-
-There are no RH neutrinos in the SM and therefore the mass mechanism described in \refsec{fermion_masses}, which couples the Higgs field to LH and RH Weyl fields, predicts them to be massless. From experimental observations it is known that at least two of the three neutrino generations need to have a non-zero mass. Assuming the existence of RH neutrinos fields $\nu_{R}$, one way of producing the neutrino masses is by adding a Yukawa coupling term similar to the one for up-type quarks mentioned in \refsec{fermion_masses}, to write the full Yukawa Lagrangian as
+Since there are no RH neutrinos in the SM, the mass mechanism described in \refsec{fermion_masses}, which couples the Higgs field to LH and RH Weyl fields, predicts the LH neutrinos to be massless. From experimental observations it is known that at least two of the three neutrino generations need to have a non-zero mass. Assuming the existence of RH neutrinos fields $\nu_{R}$, one way of producing the neutrino masses is by adding a Yukawa coupling term similar to the one for up-type quarks mentioned in \refsec{fermion_masses}, to write the full Yukawa Lagrangian as
 \begin{equation}
     \mathcal{L}_\rm{Yukawa} = -Y^e_{ij} \bar{L}^i_L \Phi e^j_R - Y^\nu_{ij} \bar{L}^i_L \tilde{\Phi} \nu^j_R + h.c.
     \;,
@@ -193,12 +172,12 @@ An additional way of generating neutrino masses is by adding a Majorana mass ter
     \;,
     \labeq{majorana_mass_lagrangian}
 \end{equation}
-with $M_{ij}$ being the Majorana mass matrix and the indices $i, j$ running over all $N_R$ RH neutrino generations. The superscript $c$ denotes the charge conjugate field. Combining the charge conjugated RH neutrino fields with the LH neutrino fields as
+with $M_{ij}$ being the Majorana mass matrix and the indices $i, j$ running over all $n_R$ RH neutrino generations. The superscript $c$ denotes the charge conjugate field. Combining the charge conjugated RH neutrino fields with the LH neutrino fields as
 \begin{equation}
     \boldsymbol{N} = \binom{\boldsymbol{\nu}_L}{\boldsymbol{\nu}_R^c}
     \;,
 \end{equation}
-with $\boldsymbol{\nu}_R$ containing the $N_R$ RH fields. The full neutrino mass Lagrangian is then given by the combined \textbf{Dirac and Majorana mass term} as
+with $\boldsymbol{\nu}_R$ containing the $n_R$ RH fields. The full neutrino mass Lagrangian is then given by the combined \textbf{Dirac and Majorana mass term} as
 \begin{equation}
     \mathcal{L}^\rm{mass, \nu}_\rm{Dirac+Majorana} = \frac{1}{2} \boldsymbol{N}^T \hat{C} M^\rm{D+M} \boldsymbol{N} + h.c.
     \;,
@@ -216,16 +195,20 @@ and the mass matrix is given by
 On top of explaining the origin of neutrino masses itself, a combined Dirac and Majorana mass term could also solve the question of their smallness. If the mass of the RH neutrinos is very large, the masses of the active neutrino flavors is suppressed, which is known as \textit{see-saw mechanism}.
 
 
-\subsection{Neutrino Minimal Standard Model ($\nu$MSM)}
+
+minimal scenario needed to explain the two observed non-zero SM neutrino masses is two RH neutrinos
+
+mixing between mass and flavor eigenstates is then described by a 5x5 mixing matrix
+
+\todo{I need to esplain the SM PMNS matrix before this, otherwise I'm missing that here.. (RED)}
 
 
 
 \subsection{Observational Avenues for Right-Handed Neutrinos}
 
-\begin{itemize}
-    \item oscillations searches for light steriles
-    \item potential searches for heavy steriles
-\end{itemize}
+if the RH neutrinos have masses at the eV scale, they can be observed through variations in neutrino oscillation experiments as was done in OscNext and MEWOWs analysis in IceCube \todo{cite these and add some more (RED)} and they could explain the observed anomalies in xyz (take some info from Alex), cite alex thesis for a more thorough overview?
+
+heavy RH neutrinos, also known as heavy neutral leptons, are too massive to be produced in oscillations and would have to be searched for in direct production and decay experiments that will be discussed in more detail in the following
 
 
 \subsection{Searching for Heavy Neutral Leptons} \labsec{HNL_mixing_constraints}
@@ -248,10 +231,10 @@ HNL decays: to lepton number conserving (dirac), or lepton number conserving and
 
 Atlas results set constraints on mixing with e and mu:
 
-Atlas in minimal extension: ~$10^-6$ with $U_mu4$ at 4-10 GeV
-same for CMS: ~$10^-5$ with $U_mu4$ and $U_e4$ at 10-600 GeV
+Atlas in minimal extension: ~$10^-6$ with \um4 at 4-10 GeV
+same for CMS: ~$10^-5$ with \um4 and \ue4 at 10-600 GeV
 
-CMS: final state of 3 leptons (two opposite charged and nu) giving $U_mu4$ ~$4*10^-7$ at 8-14 GeV
+CMS: final state of 3 leptons (two opposite charged and nu) giving \um4 ~$4*10^-7$ at 8-14 GeV
 
 the above mentioned (strong) constraints are mostly based on a model with one HNl coupling to one flavor
 in type 1 seesaw at least 2 are needed to see the two SM nu masses, both coupling to several flavors
@@ -265,9 +248,9 @@ type III seesaw (HNL as SM EW triplets) can be observed as they are produced in 
 
 LHCb: low mass and high mass results (above below mW), competitive in low mass
 
-low mass channel: B+ -> mu+ N -> pi+ mu-, at order ~$10^-3$ for $U_mu4$ at 0.5-3.5 GeV
+low mass channel: B+ -> mu+ N -> pi+ mu-, at order ~$10^-3$ for \um4 at 0.5-3.5 GeV
 
-high mass channel: W+ -> mu+ mu+-jet, at order $10^-3$-$10^-2$ / $10^-4$-$10^-3$ for $U_mu4$ at 5-50 GeV for LNC/LNV
+high mass channel: W+ -> mu+ mu+-jet, at order $10^-3$-$10^-2$ / $10^-4$-$10^-3$ for \um4 at 5-50 GeV for LNC/LNV
 
 
 there is a shit ton of future colliders and/or experiments at the LHC planned, that have sensitivities to HNLs.. think about which/how to discuss them
@@ -404,8 +387,6 @@ leave these out for the moment?
 
 \section{Atmospheric Neutrinos as Source of Heavy Neutral Leptons}
 
-\todo{write some interlude to motivate atm. neutrinos as source for HNL searches/production etc.}
-
 
 \subsection{Production of Neutrinos in the Atmosphere}
 
@@ -429,7 +410,7 @@ where muon neutrinos $\nu_\mu$ and muons $\mu^\pm$ are produced in the first dec
 
 The different atmospheric flux components are shown in \reffig{honda_flux} (left), for a much broader energy range than relevant for this work. Both neutrinos and antineutrino fluxes are shown for electron  and muon neutrinos and all fluxes are the directionally averaged expectation calculated at the South Pole. Muon neutrinos are dominating the flux and from \refeq{pion_decay} the naive assumption would be that the ratio between muon and electron neutrinos is $(\nu_\mu+\bar{\nu}_\mu)/(\nu_e+\bar{\nu}_e)=2$. This is roughly true at energies below \SI{1}{\gev}, where all muons decay in flight, but at larger energies muons can reach the detector before decaying, which increases the ratio to approximately 10:1 at around \SI{100}{\gev}. Additionally, kaon decays start to contribute which also increases the number of muons and muon neutrinos. The increasing ratio can be seen in \reffig{honda_flux} (right), which also shows the ration between neutrinos and antineutrinos for both flavors.
 
-Charged mesons or tau particles can also be produced in cosmic ray interactions. Their decays lead to the production of tau neutrinos. At the energies relevant for this work however, the resulting tau neutrino flux is negligible as compared to the muon neutrino flux \sidecite{2015EPJWC..9908001F_lepton_fluxes} and is not considered in the analysis. This is because both charged mesons and tau particles are much heavier than pions and kaons and therefore their production is suppressed at high energies.\todo{Say something about atmospheric neutrino flux uncertainties, based on recent JP/Anatoli papers.}
+Charged mesons or tau particles can also be produced in cosmic ray interactions. Their decays lead to the production of tau neutrinos. At the energies relevant for this work however, the resulting tau neutrino flux is negligible as compared to the muon neutrino flux \sidecite{2015EPJWC..9908001F_lepton_fluxes} and is not considered in the analysis. This is because both charged mesons and tau particles are much heavier than pions and kaons and therefore their production is suppressed at high energies.\todo{Say something about atmospheric neutrino flux uncertainties, based on recent JP/Anatoli papers. (YELLOW)}
 % It should be stated here that there is a rather large uncertainty on the normalization of the atmospheric neutrino flux on the order of 20-30\,\% \sidecite{PhysRevD.75.043006_neutino_flux_honda} in the energy region of interest.
 % This is mainly due to uncertainties in the primary cosmic ray spectrum and modeling of the hadronic interactions.\todo{SB:
 % I don't think this is true - the normalization is known to ~5\% if you trust Anatoli/Juan Pablo. Please have a look at more recent publications on this topic.}
@@ -469,7 +450,7 @@ with the weak flavor states $\ket{\nu_\alpha}$, $\alpha=e,\mu,\tau$, and the mas
     \;,
     \labeq{PMNS_matrix}
 \end{equation}
-where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates $i$ and $j$, and $\delta_{CP}$ is the neutrino CP-violating phase.\todo{add current BF values from nufit or so?}
+where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates $i$ and $j$, and $\delta_{CP}$ is the neutrino CP-violating phase.\todo{add current BF values from nufit or so? (YELLOW)}
 
 Describing neutrinos in their mass state is crucial to understand their propagation through space and time. Their propagation in vacuum can be expressed by applying a plane wave approach, where the mass eigenstates evolve as
 \begin{equation}
@@ -512,7 +493,7 @@ for small neutrino masses compared to their kinetic energy. Here, $\Delta m^2_{k
     \end{split}
     \labeq{probability_detailed}
 \end{equation}
-which is called the survival probability if $\alpha=\beta$, and the transition probability if $\alpha\neq\beta$. Once again, this probability is only non-zero if there are neutrino mass eigenstates with masses greater than zero. Additionally, there must be a mass-squared difference $\Delta m^2$ and non-zero mixing between the states. Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing. \todo{say something about how this changes with matter}
+which is called the survival probability if $\alpha=\beta$, and the transition probability if $\alpha\neq\beta$. Once again, this probability is only non-zero if there are neutrino mass eigenstates with masses greater than zero. Additionally, there must be a mass-squared difference $\Delta m^2$ and non-zero mixing between the states. Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing. \todo{say something about how this changes with matter (YELLOW)}
 
 
 \subsection{Interactions with Nuclei}
@@ -572,7 +553,7 @@ At energies below \SI{5}{\gev}, \textbf{\textit{quasi-elastic scattering (QE)}} 
 \end{figure}
 
 
-\todo{Re-write/re-formulate this section (copied from HNL technote).}
+\todo{Re-write/re-formulate this section (copied from HNL technote). (RED)}
 
 % Extensions to the Standard Model (SM) that add \textit{Heavy Neutral Leptons (HNLs)} provide a good explanation for the origin of neutrino masses through different seesaw mechanisms \sidecite{PTP.64.1103}.
 % \begin{figure}
@@ -616,7 +597,7 @@ To explain the signature we can observe in IceCube we first have to revisit the 
     \mathcal{L}_{\nu }^{\rm mass} \supset - \sum _{\alpha = e,\mu ,\tau} \sum _{i=4}^{3+n} Y_{\nu , \alpha i} {\overline{L}}_{L,\alpha} {\tilde{\phi }} \nu_{i} - \frac{1}{2} \sum _{i=4}^{3+n} M_{i} {\overline{\nu}}_{i} \nu^c_{i} + h.c.,
     \labeq{hnl_mass_lagrangian}
 \end{equation}
-in a basis where the Majorana mass terms are diagonal. $Y_{\nu , \alpha i}$ are the Yukawa couplings to the lepton doublets and $M$ the Majorana masses for the heavy singlets. $L_{L,\alpha}$ stands for the SM LH lepton doublet of flavor $\alpha$ while $\phi$ is the Higgs field, and ${\tilde{\phi }} = i \sigma _2 \phi ^*$ and $\nu^c_{i} \equiv C {\bar{\nu}}_{i}^t$, with $C = i \gamma _0 \gamma _2$ in the Weyl representation. The full neutrino mass matrix with the Higgs vacuum expectation value $v/\sqrt{2}$ reads\todo{Not adding information about the case where the neutrinos have Dirac or pseudo-Dirac masses}
+in a basis where the Majorana mass terms are diagonal. $Y_{\nu , \alpha i}$ are the Yukawa couplings to the lepton doublets and $M$ the Majorana masses for the heavy singlets. $L_{L,\alpha}$ stands for the SM LH lepton doublet of flavor $\alpha$ while $\phi$ is the Higgs field, and ${\tilde{\phi }} = i \sigma _2 \phi ^*$ and $\nu^c_{i} \equiv C {\bar{\nu}}_{i}^t$, with $C = i \gamma _0 \gamma _2$ in the Weyl representation. The full neutrino mass matrix with the Higgs vacuum expectation value $v/\sqrt{2}$ reads
 \begin{equation}
     {\mathcal {M}} = \left( \begin{array}{cc} {\mathbf {0}}_{3\times 3} &{} Y_\nu v/\sqrt{2} \\ Y_\nu ^t v/\sqrt{2} &{} M \end{array} \right),
     \labeq{majorana_mass_matrix}
@@ -629,11 +610,12 @@ and can be diagonalized by a $(3+n)$ x $(3+n)$ full unitary roation $U$, that it
 and the leptonic part of the EW Lagrangian can be written as
 \begin{equation}
     \begin{aligned}
-        \mathcal{L}^{\ell}_{\rm EW} &= \frac{g}{\sqrt{2}}W^+_\mu \sum _{\alpha } \sum _{i} U_{\alpha i}^* {\bar{\nu}}_{i}\gamma ^\mu P_L \ell _\alpha + \frac{g}{4c_w} Z_\mu \nonumber \\& \times \left\{ \sum _{i, j} C_{ij} {\bar{\nu}}_{i}\gamma ^\mu P_L \nu_j + \sum _\alpha {\bar{\ell }}_\alpha \gamma ^\mu \left[ 2s_w^2P_R\!-\!(1\!-\!2s_w^2)P_L \right] \ell _\alpha \right\} \nonumber + h.c.,
+        \mathcal{L}^{\ell}_{\rm EW} &= \frac{g}{\sqrt{2}}W^+_\mu \sum _{\alpha } \sum _{i} U_{\alpha i}^* {\bar{\nu}}_{i}\gamma ^\mu P_L \ell _\alpha + \frac{g}{4c_w} Z_\mu \\& \times \left\{ \sum _{i, j} C_{ij} {\bar{\nu}}_{i}\gamma ^\mu P_L \nu_j + \sum _\alpha {\bar{\ell }}_\alpha \gamma ^\mu \left[ 2s_w^2P_R\!-\!(1\!-\!2s_w^2)P_L \right] \ell _\alpha \right\} + h.c.,
     \end{aligned}
     \labeq{leptonic_ew_lagrangian}
 \end{equation}
-where $c_w \equiv \cos \theta _w$, $s_w \equiv \sin \theta _w$, and $\theta _w$ the SM weak mixing angle or \textit{Weinberg angle}. $P_L$ and $P_R$ are the left and right projectors, respectively, while
+% where $c_w \equiv \cos \theta _w$, $s_w \equiv \sin \theta _w$, $P_L$ and $P_R$ are the left and right projectors, respectively, while $\nu_{\alpha}$ and $\ell _\alpha$, are the neutrino and charged lepton weak eigenstates
+while
 \begin{equation}
     C_{ij} \equiv \sum _\alpha U^*_{\alpha i} U_{\alpha j}.
     \labeq{general_squared_mixing}

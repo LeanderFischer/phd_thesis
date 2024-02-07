@@ -5,7 +5,7 @@
 \chapter{Standard Model Background Simulation and Data Processing}
 \labch{simulation_and_processing}
 
-\todo{Adapt chapter to reflect switched chapter order}
+\todo{Adapt chapter to reflect switched chapter order (RED)}
 
 \todo{SB:
 Have you considered instead to have a chapter on all Simulation (signal and background) and then another chapter on Data processing and reconstruction? The model independent simulation description can either go into the simluation chapter OR it can go into the double cascade reconstruction chapter at an appropriate location/subsection (ORANGE)
@@ -187,7 +187,7 @@ To simulate the neutrino interaction with the ice, the \textsc{Genie} event gene
 
 Atmospheric muons are generated on a cylinder surface enclosing the full IceCube detector array. The cylinder has a height of \SI{1600}{\meter} and a radius of \SI{800}{\meter}. The energy is sampled from an $E^{-3}$ power law while the other sampling distributions (position, direction) are found from parameterizations based on \sidecite{muon_parameterization}. This work uses full \textsc{Corsika} \sidecite{corsika} simulations of muons to tailor the parameterizations, starting from \textit{cosmic ray (CR)} interactions with atmospheric nuclei using the CR flux model from \sidecite{gaisser_cosmic_ray} and producing the muons applying the \textit{hadronic interaction (HI)} model SIBYLL 2.1 \sidecite{sibyll_hadronic}. After the generation, they are propagated through the ice with PROPOSAL producing photons, treating them exactly like the muons produced in neutrino interactions.
 
-Since the offline processing and selection steps described in \refsec{event_selection} and \refsec{reconstruction} reduce the muon contamination to an almost negligible level, the statistical uncertainty on the number of expected muon events at the final selection level is large and therefore two separate sets of muon simulation are produced. \textbf{A first set} including all events resulting from the above described generation to tune the lower level selection (up to L4) and \textbf{a second set} to estimate the muon contamination at higher levels (above L5), which only accepts muon events if they pass through a smaller cylinder centered in DeepCore (height of \SI{400}{\meter} and radius of \SI{180}{\meter}) and rejects events based on a KDE estimated muon density at L5 (in energy and zenith) increasing the simulation efficiency at L5 significantly \todo{put a number on this significant increase?}.
+Since the offline processing and selection steps described in \refsec{event_selection} and \refsec{reconstruction} reduce the muon contamination to an almost negligible level, the statistical uncertainty on the number of expected muon events at the final selection level is large and therefore two separate sets of muon simulation are produced. \textbf{A first set} including all events resulting from the above described generation to tune the lower level selection (up to L4) and \textbf{a second set} to estimate the muon contamination at higher levels (above L5), which only accepts muon events if they pass through a smaller cylinder centered in DeepCore (height of \SI{400}{\meter} and radius of \SI{180}{\meter}) and rejects events based on a KDE estimated muon density at L5 (in energy and zenith) increasing the simulation efficiency at L5 significantly \todo{put a number on this significant increase? (YELLOW)}.
 
 
 \section{Detector Simulation}
@@ -200,7 +200,7 @@ The detector simulation is performed after the event generation, where the initi
 % For any Cherenkov detector, but especially for ice-Cherenkov detectors, like IceCube, the propagation of the photons is a crucial part of the detector simulation.
 Any photon that was produced in the event generation is individually traced through the ice, simulating scattering and absorption processes.
 % , taking into account the local ice properties, estimated with a chosen ice model.
-The propagation is done using \textsc{clsim} \cite{clsim} which is an implementation of the \textit{Photon Propagation Code (\textsc{PPC})} \sidecite{ppc} in \textsc{OpenCL}. It is optimized to be run very efficiently on GPUs, which is what is done for IceCube simulation production. The ice is modeled as a set of \SI{10}{\meter} thick, almost horizontal layers with specific absorption and scattering lengths. The \textit{South Pole ice (SPICE)} model \sidecite{spice_ice_model} accounts for the layers being tilted by a small amount (\todo{put a number on the tilt angle?}) and the absorption and scattering lengths having a non-uniformity with respect to the azimuth direction. \reffig{simulation_ice_model} shows the values of this model for the different depths, indicating the location of IceCube, DeepCore, and the dust layer.
+The propagation is done using \textsc{clsim} \cite{clsim} which is an implementation of the \textit{Photon Propagation Code (\textsc{PPC})} \sidecite{ppc} in \textsc{OpenCL}. It is optimized to be run very efficiently on GPUs, which is what is done for IceCube simulation production. The ice is modeled as a set of \SI{10}{\meter} thick, almost horizontal layers with specific absorption and scattering lengths. The \textit{South Pole ice (SPICE)} model \sidecite{spice_ice_model} accounts for the layers being tilted by a small amount (\todo{put a number on the tilt angle? (YELLOW)} () and the absorption and scattering lengths having a non-uniformity with respect to the azimuth direction. \reffig{simulation_ice_model} shows the values of this model for the different depths, indicating the location of IceCube, DeepCore, and the dust layer.
 
 \begin{figure}
     \input{figures/icecube_deepcore/spice_3.2.1.tex}
@@ -215,7 +215,7 @@ In an initial step, each photon's absorption length is sampled from an exponenti
 
 The second part of simulating the IceCube detector is the DOM response. Whether a photon that reached a DOM produces a signal depends on the total efficiency and the angular acceptance curve of the specific DOM. The total efficiency includes effects of the DOM glass, PMT quantum and photo-electron collection efficiencies, and it is wavelength dependent. Additionally, there is another angle dependent effect called \textit{hole ice} \sidecite{Fiedlschuster:2019unl}. This effect is due to varied ice properties resulting from the re-freezing process of the water column inside the borehole after deployment of the string.
 % Due to bubble formation the ice is less transparent than the surrounding ice and an additional angular acceptance is added, which can increase or decrease the efficiency to detect photons.
-Accepted photons are converted into a so-called \textit{Monte Carlo photo-electron (MCPE)}. The amount of charge measured for each MCPE is determined by sampling from a mixture of two exponential distributions and a normal distribution. This \textit{single photo-electron (SPE)} distribution was tuned to match the observed distribution in each DOM in an \textit{in-situ} calibration study \sidecite{spe_respose_pmt}. \reffig{spe_distribution}\todo{Add SPE distribuiton plot} shows the distribution compared to a lab measurement. Based on the sampled charges and times of MCPEs, the voltage waveforms for the (two) different readout channels are simulated and passed on to the trigger simulation starting with \textit{WaveDeform}, which was already mentioned in \refsec{ice_and_DOMs}.
+Accepted photons are converted into a so-called \textit{Monte Carlo photo-electron (MCPE)}. The amount of charge measured for each MCPE is determined by sampling from a mixture of two exponential distributions and a normal distribution. This \textit{single photo-electron (SPE)} distribution was tuned to match the observed distribution in each DOM in an \textit{in-situ} calibration study \sidecite{spe_respose_pmt}. \reffig{spe_distribution}\todo{Add SPE distribuiton plot (RED)} shows the distribution compared to a lab measurement. Based on the sampled charges and times of MCPEs, the voltage waveforms for the (two) different readout channels are simulated and passed on to the trigger simulation starting with \textit{WaveDeform}, which was already mentioned in \refsec{ice_and_DOMs}.
 
 \begin{margintable}
 \small
@@ -248,9 +248,7 @@ After the detector simulation is performed, all MC and data are processed in exa
 
 \subsection{Trigger and Filter} \labsec{trigger_and_filter}
 
-Before the data can be sent to the North, the initial signal coming from the PMT (for data) or from the detector response simulation (for MC)\todo{AT:
-Das klingt so, als würde die MC Simulation ein analoges Signal erzeugen, was auch digitalisiert wird. Vllt kann man das nochmal nachforschen, aber zumindest in meiner Arbeit habe ich geschrieben, dass die MCPEs direkt in ATWD und fADC Readouts umgewandelt werden.
-} is a voltage waveform, which has to be digitized and information of photon hits has to be extracted. The trigger and filter explained here are tailored to select events that passed through the DeepCore volume, while rejecting background events (either from atmospheric muons or from random noise). There are other filters used in IceCube which will not be explained here, since they are not relevant for this work. A full description of the instrumentation and the online systems can be found in \sidecite{Aartsen:2016nxy}.
+Before the data can be sent to the North, the initial signal coming from the PMT is a voltage waveform that has to be digitized (for data) and then information of photon hits has to be extracted (also for the MC coming from the detector response simulation). The trigger and filter explained here are tailored to select events that passed through the DeepCore volume, while rejecting background events (either from atmospheric muons or from random noise). There are other filters used in IceCube which will not be explained here, since they are not relevant for this work. A full description of the instrumentation and the online systems can be found in \sidecite{Aartsen:2016nxy}.
 
 
 \subsubsection{In-ice Trigger} \labsec{trigger}
@@ -292,7 +290,7 @@ If a muon enters the detector after the data acquisition was already triggered, 
 
 The L3 cuts remove \SI{95}{\percent} of the atmospheric muons and >\SI{99}{\percent} of pure noise hits, while keeping >\SI{60}{\percent} of the neutrino events. The sample now roughly contains muons/neutrinos/noise at a ratio of 100:10:1 with a total rate of $\sim$\SI{0.5}{\hertz}.
 
-\todo{add example plots (2?) for L3 cut variables and applied cuts}
+\todo{add example plots (2?) for L3 cut variables and applied cuts (YELLOW)}
 
 \subsubsection{Level 4} \labsec{level_4}
 
@@ -310,9 +308,9 @@ After the total rate was reduced by the simple cuts of L3 and the overall agreem
 
 \subsubsection{Level 5} \labsec{level_5}
 
-Level 5 is the final selection level, before event reconstructions are applied. This level aims to reduce the remaining atmospheric muon rate below the rate of neutrinos. Muons not rejected by the earlier levels are those that produced little or no light in the veto regions. One possible reason is that they passed through one of the un-instrumented regions between the strings \todo{add some figure showing the corridors?} called \textit{corridors}. To reject those, special corridor cuts, based on the number of hits they produced close to a potential corridor they passed through. The potential corridor in questions is identified based on a simple infinite track fit. In addition to the corridor cuts, starting containment cuts are applied to reject events that start at the edge of the fiducial volume. Events with more than seven hits in the outermost strings of the detector or those that have a down going direction in the uppermost region are rejected. This further reduces the fraction of muons by \SI{96}{\percent} while keeping \SI{48}{\percent} of neutrinos. The rates after this level are \SI{1}{\milli\hertz} and \SI{2}{\milli\hertz} for neutrinos and muons, respectively, making it a neutrino dominated sample.
+Level 5 is the final selection level, before event reconstructions are applied. This level aims to reduce the remaining atmospheric muon rate below the rate of neutrinos. Muons not rejected by the earlier levels are those that produced little or no light in the veto regions. One possible reason is that they passed through one of the un-instrumented regions between the strings \todo{add some figure showing the corridors? (YELLOW)} called \textit{corridors}. To reject those, special corridor cuts, based on the number of hits they produced close to a potential corridor they passed through. The potential corridor in questions is identified based on a simple infinite track fit. In addition to the corridor cuts, starting containment cuts are applied to reject events that start at the edge of the fiducial volume. Events with more than seven hits in the outermost strings of the detector or those that have a down going direction in the uppermost region are rejected. This further reduces the fraction of muons by \SI{96}{\percent} while keeping \SI{48}{\percent} of neutrinos. The rates after this level are \SI{1}{\milli\hertz} and \SI{2}{\milli\hertz} for neutrinos and muons, respectively, making it a neutrino dominated sample.
 
-\todo{add table with rates per level (split in flavor) - maybe better in analysis chapter to also show signal?}
+\todo{add table with rates per level (split in flavor) - maybe better in analysis chapter to also show signal? (RED)}
 
 
 \section{Reconstruction} \labsec{reconstruction}
@@ -329,7 +327,7 @@ As the name \textit{Fast Low Energy Reconstruction using Convolutional Neural Ne
 % The network is trained to find the connection between the hit pattern and the events properties by identifying patterns similar to how CNNs are applied effectively in image classification.\todo{add references for CNN image classification?} The patterns are an imprint of the neutrino interactions that can happen anywhere in the detector, which should result in translational invariance of the events. CNNs were shown to have very good performance in identifying patterns in images, independent of their location. By combining several layers of filters of different dimensions, a map of spatial features is created from the input data and more complex features can be reconstructed.
 The architecture of the network is very similar to the preexisting IceCube CNN event reconstruction \sidecite{dnn_reco_mirco}, but optimized on low energy events and specifically tailored to include the DeepCore sub-array. Only the eight DeepCore strings and the central 19 IceCube strings are used for the reconstruction (compare to \reffig{icecube_top_view}). Because of the different z-positions of the DeepCore and IceCube DOMs, they are divided into two networks that are combined in the final layer of the network. The full architecture is shown in \reffig{flercnn_network_structure}. The first dimension of the network is the string index, while the second dimension is the order of the DOMs along the vertical axis. The horizontal position of the DOMs is not used, since the strings are arranged in an irregular pattern. The information from the DOM hits is summarized into five charge and time variables, which make up the last dimension of the input layer. The variables are the total summed charge, the time of the first hit, the charge weighted mean time of the hits, the time of the last hit, and the charge weighted standard deviation of the hit times.
 
-\todo{add image with selected strings used for flercnn IC and DC}
+\todo{add image with selected strings used for flercnn IC and DC (YELLOW)}
 
 \begin{figure}
     \includegraphics{figures/simulation_and_processing/flercnn/Detailed_CNN_Architecture_combined.png}
@@ -342,9 +340,9 @@ Five different networks are trained using this architecture. Three networks do t
 % Additionally, the activation function and the loss function are adapted, according to the wanted output of the network.
 For the classification tasks the loss function is the \textit{binary cross entropy} and the activation function is a \textit{sigmoid}. To perform the regression of zenith and vertex position, the loss function is the \textit{mean squared error (MSE)}, while for the energy it is the \textit{mean absolute percentage error}. The activation for all regression tasks is \textit{linear}.
 
-\todo{add some performance plots of the FLERCNN reconstruction}
+\todo{add some performance plots of the FLERCNN reconstruction (ORANGE)}
 
-\todo{There is more information on pre-processing the samples and preparing the input features, and training each cnn, but I'm not sure if that might be too much detail?}
+\todo{There is more information on pre-processing the samples and preparing the input features, and training each cnn, but I'm not sure if that might be too much detail? (YELLOW)}
 
 % \textit{INFO on resolutions:} Note that all analysis cuts are included in these resolution calculations, which results in an artificial resolution decrease near $E_{true} \approx 100$ GeV in Figure \ref{fig:EnergyResolution} due to the cut at $E_{reco} < 100$ GeV.
 
@@ -360,7 +358,7 @@ Before the reconstruction is applied a few additional high level variables are c
 \labfig{muon_bdt_id}
 \end{figure*}
 
-\todo{add reference for flercnn analysis internal note}
+\todo{add reference for flercnn analysis internal note (ORANGE)}
 
 To get the final, pure sample of well reconstructed neutrinos another set of cuts is applied. The first cuts are meant to reject events with poor reconstruction quality, by requiring the events to fall into the DeepCore volume, where the denser, better instrumented detector leads to enhanced resolution. The cuts are applied on the vertex $z$ and $\rho_{36}$ and are listed in \reftab{analysis_cuts}. The FLERCNN reconstruction was optimized for atmospheric neutrino analyses which are mainly in the region below \SI{100}{\gev} and there are very few events with energies below \SI{5}{\gev}, so the reconstructed energy is required to be in that range. Additionally, rejecting events with fewer than seven hits in the selected DOMs used for FLERCNN showed to increase the resolution.
 
@@ -392,17 +390,12 @@ Another set of cuts is applied to make sure the agreement between data and MC is
     \caption[Final analysis cuts]{Cuts performed to select the final analysis sample. Parts of the cuts are meant to increase the data/MC agreement, while others are meant to reject events with poor reconstruction quality.}
     \labtab{analysis_cuts}
     \end{table}
-    
-
-\todo{add final sample composition, but maybe also in analysis chapter to show signal and background?}
-
-\todo{at some place I will want a selection efficiency plot for SM BG and HNL signal, but I'm not sure where to put it yet}
 
 
 \section{Systematic Uncertainties} \labsec{systematic_uncertainties}
 
 \todo{SB:
-I think its better to discuss the sources of uncertainty when you introduce each component, e.g. when you talk about cross-sections you can explain the existing measurements and models, and how the uncertainty is derived. Same for the detector calibration uncertainties - you can discuss the manitude of the errors and how they are derived when you discuss the detector.
+I think its better to discuss the sources of uncertainty when you introduce each component, e.g. when you talk about cross-sections you can explain the existing measurements and models, and how the uncertainty is derived. Same for the detector calibration uncertainties - you can discuss the magnitude of the errors and how they are derived when you discuss the detector. (ORANGE)
 }
 
 There are multiple sources of systematic uncertainties related to the event generation and processing explained in this chapter. 
@@ -434,7 +427,7 @@ Neutrinos are produced in the decaying hadrons in CR air showers, spanning a lar
     \;.
     \labeq{mceq_flux_variations}
 \end{equation}
-Matching the work in \sidecite{Barr:2006it}, the parameter space is divided in regions of the primary energy $E_i$ and the energy fraction of the secondary meson $x_\rm{lab}$, with varying uncertainties, derived from fixed target experiment data\todo{add figure with Barr blocks?}. The Sibyll2.3c \sidecite{sibyll2.3d} HI model and the GSF CR flux \sidecite{cosmic_ray_composition_and_GSF} were used to calculate the related flux changes\sidenote{The choice of flux and HI model have minor impact on the variations.} for the different regions in $E_i$ and $x_\rm{lab}$, resulting in 17 variables, encoding the possible changes.
+Matching the work in \sidecite{Barr:2006it}, the parameter space is divided in regions of the primary energy $E_i$ and the energy fraction of the secondary meson $x_\rm{lab}$, with varying uncertainties, derived from fixed target experiment data\todo{add figure with Barr blocks? (RED)}. The Sibyll2.3c \sidecite{sibyll2.3d} HI model and the GSF CR flux \sidecite{cosmic_ray_composition_and_GSF} were used to calculate the related flux changes\sidenote{The choice of flux and HI model have minor impact on the variations.} for the different regions in $E_i$ and $x_\rm{lab}$, resulting in 17 variables, encoding the possible changes.
 
 
 \subsection{Cross-Section Uncertainties} \labsec{cross_section_uncertainties}
@@ -446,7 +439,7 @@ At low energies two parameters are included accounting for uncertainties in form
     F(Q^2) \sim \frac{1}{(1 - (\frac{Q}{M_\rm{A}})^2)^2}
     \;,
 \end{equation}
-where $Q^2$ is the momentum transfer squared. The axial mass can be determined experimentally\todo{which experiments measure the axial mass?} and to include uncertainties on the values of $M_\rm{A}^\rm{CCQE}$ and $M_\rm{A}^\rm{CCRES}$, the cross-sections are computed with GENIE, where the form factors are calculated varying the axial mass by $\pm 20\% (1\sigma)$/$\pm 40\% (1\sigma)$ around the nominal value. This is an approximation of the recommended uncertainties by the GENIE collaboration, which are $-15\%$, $+25\%$ for $M_\rm{A}^\rm{CCQE}$ and $\pm 20\%$ for $M_\rm{A}^\rm{CCRES}$ \cite{genie}. To apply a continuous uncertainty variation of the axial mass in a fit, the total cross-section is fit with a quadratic function to interpolate between the cross-sections computed with the different axial masses.
+where $Q^2$ is the momentum transfer squared. The axial mass can be determined experimentally\todo{which experiments measure the axial mass? (ORANGE)} and to include uncertainties on the values of $M_\rm{A}^\rm{CCQE}$ and $M_\rm{A}^\rm{CCRES}$, the cross-sections are computed with GENIE, where the form factors are calculated varying the axial mass by $\pm 20\% (1\sigma)$/$\pm 40\% (1\sigma)$ around the nominal value. This is an approximation of the recommended uncertainties by the GENIE collaboration, which are $-15\%$, $+25\%$ for $M_\rm{A}^\rm{CCQE}$ and $\pm 20\%$ for $M_\rm{A}^\rm{CCRES}$ \cite{genie}. To apply a continuous uncertainty variation of the axial mass in a fit, the total cross-section is fit with a quadratic function to interpolate between the cross-sections computed with the different axial masses.
 
 Even though the DIS interactions can be calculated very precisely, there are still uncertainties in the input PDF, describing the probability of finding a specific parton (quark) with a specific momentum fraction $x$ inside a nucleon. To account for differences between the used method and more sophisticated methods using newer PDFs seen at high energies, an uncertainty parameter is introduced. The parameter is based on the discrepancy between the cross-sections computed with GENIE and the ones computed with CSMS \sidecite{csms} above \SI{100}{\gev}. The included parameter scales the cross-section from the GENIE values to the CSMS values, which are considered more accurate above \SI{100}{\gev}. The scaling is done as a function of energy and inelasticity and to guarantee continuity, the scaling is extrapolated linearly below \SI{100}{\gev}. The parameter is designed such that a value of 0.0 corresponds to the GENIE cross-sections and a value of 1.0 gives an approximation of the CSMS cross-sections. A comparison of the total cross-sections GENIE (scaled/unscaled) with the data is shown in \reffig{dis_systematic_effect}.
 
@@ -488,4 +481,4 @@ Due to bubble formation in the re-freezing process of the boreholes, the hole ic
 
 \subsection{Muon Uncertainties}
 
-The muon fraction in the final level selection (see \refsec{analysis_cuts}) is below \SI{1}{\percent}, therefore additional muon systematic uncertainties apart from the spectral index are not implemented, but rather a total muon scaling parameter is added. This total scale is somewhat degenerate with the DOM efficiency, since an increased DOM efficiency leads to better muon rejection\todo{cite this?}. Both the total muon scaling and the muon spectral index have a very small impact on the analysis as will be shown in \refsec{parameter_selection}.
+The muon fraction in the final level selection (see \refsec{analysis_cuts}) is below \SI{1}{\percent}, therefore additional muon systematic uncertainties apart from the spectral index are not implemented, but rather a total muon scaling parameter is added. This total scale is somewhat degenerate with the DOM efficiency, since an increased DOM efficiency leads to better muon rejection\todo{cite this? (YELLOW)}. Both the total muon scaling and the muon spectral index have a very small impact on the analysis as will be shown in \refsec{parameter_selection}.
