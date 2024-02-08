@@ -93,7 +93,7 @@ For the second cascade the overall behavior is similar, only that the energy whe
 For both cascade resolutions the effect of the reconstruction being biased towards lower values, due to the comparison of the full true energy to the reconstructed EM energy can be seen.
 
 
-\subsubsection{Length Resolutions}
+\subsubsection{Length Resolutions} \labsec{190607_length_resolutions}
 
 The decay length resolution is also investigated by looking at a similar style of 2-d histograms as for the energies, where the reconstructed decay length is plotted versus the true decay length. The left part of \reffig{selected_routine_2d_length_results} shows the distributions after the same selection criteria from \refsec{190607_energy_resolutions} are applied. It can be observed that for short true lengths the reconstruction is over-estimating the length, while for long true lengths the reconstruction is strongly under-estimating the length. There is a region between true lengths of \SIrange[range-phrase=~and~]{20}{80}{\meter} where the median reconstruction is almost unbiased, but the \SI{50}{\percent} interquartile range is large and increasing from $\sim$\SI{50}{\meter} to $\sim$\SI{70}{\meter} with true decay lengths.
 
@@ -177,11 +177,7 @@ Despite the fact that the split into the two populations was very rudimentary, i
 
 \section{Double Cascade Classification}
 
-Even though the performance results show that it is very complicated to reconstruct these low energetic double cascade events, the attempt to identify them over the background of SM neutrino events was made
-
-tested training a classifier to distinguish between HNL events and SM neutrino events, using the same preliminary sample of HNL events as was used for the reconstruction performance
-
-for the training a set of cuts was applied to make sure the classifier is trained on well reconstructed events, which are events with a minimum reconstructed energy of both cascades of \SI{5}{\gev}, a minimum reconstructed decay length of \SI{40}{\meter}
+Even though the performance results show that it is very complicated to reconstruct these low energetic double cascade events, the attempt to identify them in the background of SM neutrino events was made. For this purpose a classifier was trained to distinguish between HNL \textit{signal} events and SM neutrino \textit{background} events, using the same preliminary sample of HNL events as was used to assess the reconstruction performance. To mitigate the effect of the bad reconstruction, a set of cuts was applied to make sure the classifier is trained on well reconstructed events, which were chosen as events with a minimum reconstructed energy of both cascades of \SI{5}{\gev} and a minimum reconstructed decay length of \SI{40}{\meter}. These cuts were applied to both signal and background events.
 
 \begin{figure}[h]
     \centering
@@ -191,39 +187,69 @@ for the training a set of cuts was applied to make sure the classifier is traine
 \end{figure}
 \todo{fix caption (RED)}
 
-additionally for the HNL events some cuts on the true energy and decay length were applied, which are a minimum true energy of both cascades of \SI{5}{\gev} and a minimum true decay length of \SI{40}{\meter}, these were chosen to make sure the HNL events were double cascade like
+Additionally, some cuts on the true energies and decay length were applied for the signal, which are a minimum true energy of both cascades of \SI{5}{\gev}, and a true decay length between \SIrange[range-phrase={~and~}]{40}{150}{\meter}. These were chosen to make sure the HNL events were theoretically double cascade like and at a sensible length scale inside DeepCore.\todo{add table with cuts? (YELLOW)} \reffig{classifier_cuts_length_2d_hist} shows the decay length 2-d histograms after the cuts were applied.
 
-\todo{add table with cuts? (YELLOW)}
+The classifier used was a \textit{Boosted Decision Tree (BDT)} from the \textit{\textsc{scikit-learn} (sklearn)} package \sidecite{sklearn} and the input features are taken from the double cascade reconstruction explained in \refsec{dc_reconstruction} as well as some additional variables from earlier levels of the processing explained in \refsec{processing_chain}.\todo{add example features? maybe like 2 or so? decay length and one other? (RED)}
 
-the classifier used was a Boosted Decision Tree (BDT) from the \textit{\textsc{scikit-learn} (sklearn)} package and the input features are taken from the double cascade reconstruction explained in \refsec{dc_reconstruction} as well as some additional variables from earlier levels of the processing explained in \refsec{processing_chain}
+\begin{figure*}[h]
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/classification/1_d_distr_L7_PIDClassifier_FullSky_ProbTrack_with_ratio_unweighted.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/classification/1_d_distr_reco_decayL_with_ratio_unweighted.png}
+    \caption[]{}
+    \labfig{example_BDT_features}
+\end{figure*}
+\todo{fix caption of this figure (RED)}
 
-\todo{add example features? maybe like 2 or so? (RED)}
-
-both a single classifier trained to distinguish between HNL and all SM neutrino events was tested and two classifiers trained to distinguish HNLs from SM track-like and cascade-like events separately were tested
+Both a single classifier trained to distinguish between HNL signal events and all SM background events was tested as well as two classifiers, one trained to distinguish signal from track like background and the other signal from cascade like background separately. Since the SM neutrino events at these energies are either track like or cascade like, the latter approach was expected to perform better.
 
 
-takeaway? (not sure how to deal with the caveat of the weight being kind of wrong for these..)
+\subsection{Classification Results}
+
+Despite the fact that several combinations of features and classifier hyperparameters were tested, it was not possible to identify a pure double cascade region with a single classifier. \reffig{example_classifier_probability} shows the output probability of the classifier trained to distinguish double cascade like signals from track like background, applied to the full data sample containing all signal and background events. A probability of 1 means very signal like, and only the region close to 1 is shown to highlight that there is always signal and background events in every bin.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{figures/results/190607/classification/1_d_distr_hnl_prob_track_classifier_full_stats_unweighted.png}
+    \caption[]{}
+    \labfig{example_classifier_probability}
+\end{figure}
+\todo{fix caption (RED)}
+
+Applying the two classifiers trained to distinguish signal from track and signal from cascade, it is possible to select a region with only signal events. This is visualized in \reffig{two_classifier_selection} \todo{Make a single plot, showing S/B or so? (RED)}, but when applying a weight to the signal events selected by applying two cuts on the probabilities, the rate of the selected signal events is very low. Assuming a very optimistic mixing of 1 it would take more than \SI{20}{years} of data taking to observe a single event and with this low simulation statistics the prediction is not very reliable.
+
+Making a weaker cut to select a signal like region will contain a large amount of background events, which dominate over the signal at $\sim2$ orders of magnitude for a mixing of $0.1$. The conclusion from this is, that with the current selection and reconstruction chain and a classical BDT, it is not possible to distinguish signal events at a level feasible to perform an analysis
+
+\begin{figure*}[h]
+	\centering
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/classification/cascade_vs_track_class_prob_background_full_stats.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/classification/cascade_vs_track_class_prob_hnl_full_stats.png}
+    \caption[]{}
+    \labfig{two_classifier_selection}
+\end{figure*}
+\todo{fix caption of this figure (RED)}
 
 
 \section{Generic Double Cascade Performance}
 
+\todo{describe the "good fit" selection when I first show plots that use it (ORANGE)}
 
-\paragraph{Ideas:}
-\begin{itemize}
-    \item why do these checks again with the model independent samples? (controllable parameter space and distributions, especially energy and length)
-    \item benchmark some edge cases (e.g. "best case" of up-going string centered, purely horizontal, and realistic case)
-    \item investigate where the reconstructions breaks down (in terms of cascade energies, which are the main factor as shown before)
-\end{itemize}
+All the above results were obtained using a preliminary version of the model dependent HNL simulation. To investigate the effect of the low energy event selection and the double cascade reconstruction performance in a more generic way, the model independent simulation introduced in \refsec{model_independent_simulation} was used to perform the same tests and a series of additional checks. The important advantage is the controllable parameter space, especially in cascade energies and decay length, because the event kinematics are not coupled to the underlying HNL model, but can be chosen freely. This means that some benchmark edge cases can be investigated, and the performance can also be assessed for a realistic scenario in addition to mapping out the effects of the event selection and where the reconstruction breaks down.
 
-\subsection{Idealistic Performance}
 
-\begin{itemize}
-    \item for the perfect edge case of the event being directly on top of a DeepCore string with an up-going direction the length can be very well reconstructed above a true length of around \SI{20}{\meter}
-    \item 2-d histogram shows that up to a true decay length of $\sim$\SI{210}{\meter}, there is no under-estimation of the length
-    \item this means that the under-estimation observed before is only possible if there is no DOMs in between the two cascades
-    \item this makes a lot of sense, since DOMs being present, but not observing any light is affecting the light expectation that goes into the reconstruction likelihood and therefore makes these hypotheses less likely and therefore incompatible with the data
-    \item do I want more detailed plots here? I feel like this is enough.. 
-\end{itemize}
+\subsection{Idealistic Events}
+
+\begin{marginfigure}
+    \centering
+    % [trim=left bottom right top, clip]
+    \includegraphics[trim=270 45 225 35, clip]{figures/model_independent_simulation/upgoing_e0_2.4_e1_4.9_v2.png}
+    \caption[]{}
+    \labfig{up-going_example_event}
+\end{marginfigure}
+\todo{fix caption (RED)}
+
+The \textit{best case} scenario to observe an event is to be directly on top of a string with a straight up-going direction. Using the simulation sample introduced in \refsec{simplistic_samples} and running the double cascade reconstruction from \refsec{dc_reconstruction} on the events, it is possible to estimate the performance limit of the reconstruction. \reffig{up-going_example_event} shows one example event view from that sample, where the cascade energies are \SI{2.4}{\gev} and \SI{4.9}{\gev}, and the decay length is \SI{20}{\meter}\todo{Check this number (RED)}. It can be seen that despite the low energies, both cascades deposit light in the DOMs and the reconstruction is expected to work.
+
+The performance of the length reconstruction is shown in \reffig{idealistic_length_resolutions}, where the median of the absolute, fractional decay length resolution is shown on the left and the 2-d histogram of the reconstructed versus the true decay length is shown on the right. The length is very well reconstructed, with the median resolution being below \SI{30}{\percent} above a true decay length of $\sim$\SI{10}{\meter}, and falling off with increasing true length, down to $\sim$\SI{10}{\percent} at \SI{100}{\meter}.
 
 \begin{figure*}[h]
 	\centering
@@ -234,26 +260,47 @@ takeaway? (not sure how to deal with the caveat of the weight being kind of wron
 \end{figure*}
 \todo{fix caption of this figure (RED)}
 
+The 2-d histogram shows that there is no under-estimation of the length up to a true decay length of $\sim$\SI{210}{\meter}, which shows that if there are DOMs in the region between the two cascades that have not observed any light, the reconstruction is very stable. Considering the underlying Poisson likelihood in \refeq{millipede_likelihood} used for the reconstruction, this makes sense, since DOMs being present, but not observing any light is affecting the light expectation that goes into the likelihood and therefore makes these hypotheses unlikely and therefore incompatible with the data.
 
 
-\subsection{Realistic Performance}
+\subsection{Realistic Events}
 
-\subsubsection{Energy/Decay Length Resolution}
+\begin{marginfigure}
+    \centering
+    % [trim=left bottom right top, clip]
+    \includegraphics[trim=230 45 230 65, clip]{figures/model_independent_simulation/diagonal_e0_30.8_e1_25.3_v0.png}
+    \caption[]{}
+    \labfig{realistic_example_event}
+\end{marginfigure}
+\todo{fix caption (RED)}
 
-\todo{describe the "good fit" selection when I first show plots that use it (ORANGE)}
-\todo{add some 1D resolution plots (ORANGE)}
+The sample of HNL events introduced in \refsec{realistic_sample}, which is a more realistic representation of the expected HNL events, but still offers more controlled energy and length distributions, is used to investigate the selection efficiency, to cross check the reconstruction performance, and to benchmark the limits where the reconstruction breaks down. An example event view is shown in \reffig{realistic_example_event}, for cascade energies of \SI{30.8}{\gev} and \SI{25.3}{\gev}, and a decay length of \SI{100}{\meter}\todo{Check this number (RED)}. Here it can be seen that even for these higher energies, if the cascades are further away from the strings, only individual photons are observed in the DOMs, and detecting and reconstructing them gets significantly more challenging.
 
-\subsubsection{2-D Histograms}
 
-\textbf{Things to mention about the 2d-hists:}
-\begin{itemize}
-    \item total energy resolution looks very good, above \SI{10}{\gev} it's almost unbiased and the 1-sigma resolution band is below \SI{20}{\percent}
-    \item individual cascade resolutions mirror this behavior, but are starting to stabilize in energy at lower energies around \SIrange{5}{6}{\gev} with a broader resolution band of \SI{50}{\percent}, but reducing drastically with increasing energy (down to \SI{20}{\percent} at \SI{100}{\gev})
-    \item interestingly, the second cascade energy reconstruction performs slightly worse, although they have the same energy ranges. This could hint at an asymmetry in the reconstruction process (might relate to how the two cascades are parameterized) or be due to the different positions and the dominantly up-going direction used in the sampling combined with the DOMs looking down (relate this to the sampling distribuitons explained/shown in the previous chapter)
-    \item the decay length resolution looks much worse. In the region between \SIrange[range-phrase={~and~}]{20}{80}{\meter} it's roughly unbiased, but 1-sigma resolution band is quite wide with a lot of outliers towards short reconstructed lengths. Below \SI{20}{\meter} the reconstructed lengths are always over-estimating the true and above \SI{80}{\meter} a population of events start to dominate where the decay lengths isn't getting reconstructed at all, which might indicate that one of the cascades wasn't observers. (Relate to the fact that this marginalizes over all energies, meaning also all events which have one cascade with very low energy are included here.)
-    \item another interesting feature is the band of reconstructed lengths around \SI{100}{\meter}, which is probabaly related to the spacing between most of the strings, which favors the reconstruction to be around this value, because that's the distance at which light can be observed, just from the fact that the DOMs are spaced at this distance (for low energetic cascades, this can dominate the reconstruction)
-\end{itemize}
+\subsection{Selection Efficiency}
 
+To assess the efficiency of the low energy event selection introduced in \refsec{processing_chain}, the energy and length distributions are shown across the different selection levels in \reffig{realistic_selection}\todo{Make/add relevant plots here (RED)}. \reftab{realistic_selection_efficiency} shows the total efficiency of the selection, where it can be seen that at level xx it is reduced the most and only xx\% of the events pass the selection to level 5.
+
+\todo{Plot energy (true total) and true decay length across the different levels (RED)}
+\todo{Make table with the rates across the different levels for benchmark mass/mixing (RED)}
+
+
+\subsection{Performance}
+
+\subsubsection{2-Dimensional Distributions}
+
+Looking at the energy distributions in \reffig{cascade_energy_2dhists} shows a similar behavior to results discussed in \refsec{190607_energy_resolutions}, but here there is no bias in the reconstructed energy, because the events are simulated as EM cascades, which means all energy is deposited in light and can be reconstructed. Above around \SIrange{5}{6}{\gev} the median is very stable, and the 1-sigma resolution band is \SI{50}{\percent} narrow and decreasing with energy down to \SI{20}{\percent} at \SI{100}{\gev}. Interestingly, the second cascade energy reconstruction performs slightly worse, although they have the same energy ranges for this sample. This could hint at an asymmetry in the reconstruction process, which might relate to how the two cascades are parameterized, or be due to the different positions and the dominantly up-going direction used in the sampling combined with the DOMs looking down. The total energy resolution shown in the left part of \reffig{total_energy_decay_length_2dhists} is very good, above \SI{10}{\gev} it is unbiased and the 1-sigma resolution band is below \SI{20}{\percent}.
+
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/2d_hists/194603_casc0_reco_energy_vs_casc0_true_energy_goodfit_step_contours.png}
+    \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/2d_hists/194603_casc1_reco_energy_vs_casc1_true_energy_goodfit_step_contours.png}
+    \caption[]{}
+    \labfig{cascade_energy_2dhists}
+\end{figure*}
+\todo{fix caption of this figure (RED)}
+
+The decay length resolution shown in the right part of \reffig{total_energy_decay_length_2dhists} looks similarly bad to the results discussed in \refsec{190607_length_resolutions} and shows the same features with a region between \SIrange[range-phrase={~and~}]{20}{80}{\meter} where it is roughly unbiased, but the 1-sigma resolution band is wide with a lot of outliers towards short reconstructed lengths. Below \SI{20}{\meter} the reconstructed lengths are always over-estimating the true and above \SI{80}{\meter} a population of events start to dominate where the decay lengths is not getting reconstructed at all, as investigated before.
 
 \begin{figure*}[h]
 	\centering
@@ -264,42 +311,19 @@ takeaway? (not sure how to deal with the caveat of the weight being kind of wron
 \end{figure*}
 \todo{fix caption of this figure (RED)}
 
-\begin{figure*}[h]
-	\centering
-    \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/2d_hists/194603_casc0_reco_energy_vs_casc0_true_energy_goodfit_step_contours.png}
-    \includegraphics[width=0.49\linewidth]{figures/model_independent_simulation/results/realistic/2d_hists/194603_casc1_reco_energy_vs_casc1_true_energy_goodfit_step_contours.png}
-    \caption[]{}
-    \labfig{cascade_energy_2dhists}
-\end{figure*}
-\todo{fix caption of this figure (RED)}
-
-
-\paragraph{Energy Resolution}
-
-\textbf{Things to mention about the energy resolution:}
-\begin{itemize}
-    \item Here it can be seen more clearly how the median total energy resolution starts to stabilize around 0.0 at \SI{10}{\gev}, while for lower energies the reconstruction is over-estimating the true energy. This is a known behavior of energy reconstructions in IceCube, which is mainly due to a selection effect. Only events with a certain amount of light can be reconstructed, which means that the ones with true small energies that are still in the sample are events with over average light production due to fluctuations or other effects?
-\end{itemize}
-
-\begin{figure}[h]
-	\centering
-    \includegraphics{figures/model_independent_simulation/results/realistic/resolutions/194603_fractional_reco_total_energy_error_goodfit.png}
-    \caption[]{}
-    \labfig{total_energy_bias_vs_energy}
-\end{figure}
-\todo{fix caption of this figure (RED)}
-
 
 \paragraph{Decay Length Resolution}
 
-\textbf{Things to mention about the decay length resolution:}
-\begin{itemize}
-    \item As already mentioned before, the decay length resolution is much worse than the energy resolutions. \reffig{decay_length_bias_vs_length} also shows that the median is below 0.0 for short true length and above 0.0 and approaching 1.0 for long true lengths.
-    \item To investigate whether this is really due to the fact that one of the cascades is not observed, the decay length resolution was plotted against the total energy of the event and the minimum energy of the two cascades \reffig{decay_length_bias_vs_energies}.
-    \item It can be seen that the median of the decay length resolution stabilizes at 0.0 for a total energy above \SI{20}{\gev}, but the spread of the distribution is still quite large with a 1-sigma band of \SIrange{80}{100}{\percent}.
-    \item From the plot against the minimum energy it can be seen that the decay length resolution starts to be unbiased for a minimum energy of the cascades of \SI{7}{\gev}, with an equivalently large spread.
-    \item A preliminary takeaway from this is that the decay length reconstruction is not reliable at all for events with a total energy below \SI{20}{\gev} or a minimum cascade energy below \SI{7}{\gev}.
-\end{itemize}
+
+As already mentioned before, the decay length resolution is much worse than the energy resolutions. \reffig{decay_length_bias_vs_length} also shows that the median is below 0.0 for short true length and above 0.0 and approaching 1.0 for long true lengths.
+
+To investigate whether this is really due to the fact that one of the cascades is not observed, the decay length resolution was plotted against the total energy of the event and the minimum energy of the two cascades \reffig{decay_length_bias_vs_energies}.
+
+It can be seen that the median of the decay length resolution stabilizes at 0.0 for a total energy above \SI{20}{\gev}, but the spread of the distribution is still quite large with a 1-sigma band of \SIrange{80}{100}{\percent}.
+
+From the plot against the minimum energy it can be seen that the decay length resolution starts to be unbiased for a minimum energy of the cascades of \SI{7}{\gev}, with an equivalently large spread.
+
+A preliminary takeaway from this is that the decay length reconstruction is not reliable at all for events with a total energy below \SI{20}{\gev} or a minimum cascade energy below \SI{7}{\gev}.
 
 \begin{figure}[h]
 	\centering
@@ -319,19 +343,3 @@ takeaway? (not sure how to deal with the caveat of the weight being kind of wron
 \end{figure*}
 \todo{fix caption of this figure (RED)}
 
-
-\subsection{Low Energy Event Selection Efficiency}
-
-\todo{Make plot to show efficiency of the OscNext selection for HNL events. (ORANGE)}
-\todo{Plot energy (true total) and true decay length across the different levels (ORANGE)}
-\todo{Make table with the rates across the different levels for benchmark mass/mixing (ORANGE)}
-
-\paragraph{Discussion ideas:}
-\begin{itemize}
-    \item Show energy, length distribution across the different levels?
-    \item Show efficiency as table across the different levels (MC events + fraction?)
-    \item Compare this to BG efficiency? (maybe rather for the discussion)
-    \item At which level does the selection reduce the HNL the most?
-    \item Is there a place to improve the HNL selection? (Might have to factor in the BG efficiency, as well..)
-    \item What of this might change with Upgrade? (maybe rather for the discussion)
-\end{itemize}
