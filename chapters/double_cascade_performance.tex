@@ -287,8 +287,6 @@ To assess the efficiency of the low energy event selection introduced in \refsec
 
 \subsection{Performance}
 
-\subsubsection{2-Dimensional Distributions}
-
 Looking at the energy distributions in \reffig{cascade_energy_2dhists} shows a similar behavior to results discussed in \refsec{190607_energy_resolutions}, but here there is no bias in the reconstructed energy, because the events are simulated as EM cascades, which means all energy is deposited in light and can be reconstructed. Above around \SIrange{5}{6}{\gev} the median is very stable, and the 1-sigma resolution band is \SI{50}{\percent} narrow and decreasing with energy down to \SI{20}{\percent} at \SI{100}{\gev}. Interestingly, the second cascade energy reconstruction performs slightly worse, although they have the same energy ranges for this sample. This could hint at an asymmetry in the reconstruction process, which might relate to how the two cascades are parameterized, or be due to the different positions and the dominantly up-going direction used in the sampling combined with the DOMs looking down. The total energy resolution shown in the left part of \reffig{total_energy_decay_length_2dhists} is very good, above \SI{10}{\gev} it is unbiased and the 1-sigma resolution band is below \SI{20}{\percent}.
 
 \begin{figure*}[h]
@@ -311,28 +309,7 @@ The decay length resolution shown in the right part of \reffig{total_energy_deca
 \end{figure*}
 \todo{fix caption of this figure (RED)}
 
-
-\paragraph{Decay Length Resolution}
-
-
-As already mentioned before, the decay length resolution is much worse than the energy resolutions. \reffig{decay_length_bias_vs_length} also shows that the median is below 0.0 for short true length and above 0.0 and approaching 1.0 for long true lengths.
-
-To investigate whether this is really due to the fact that one of the cascades is not observed, the decay length resolution was plotted against the total energy of the event and the minimum energy of the two cascades \reffig{decay_length_bias_vs_energies}.
-
-It can be seen that the median of the decay length resolution stabilizes at 0.0 for a total energy above \SI{20}{\gev}, but the spread of the distribution is still quite large with a 1-sigma band of \SIrange{80}{100}{\percent}.
-
-From the plot against the minimum energy it can be seen that the decay length resolution starts to be unbiased for a minimum energy of the cascades of \SI{7}{\gev}, with an equivalently large spread.
-
-A preliminary takeaway from this is that the decay length reconstruction is not reliable at all for events with a total energy below \SI{20}{\gev} or a minimum cascade energy below \SI{7}{\gev}.
-
-\begin{figure}[h]
-	\centering
-    \includegraphics{figures/model_independent_simulation/results/realistic/resolutions/194603_median_decay_length_bias_goodfit_log_unweighted.png}
-    \caption[]{}
-    \labfig{decay_length_bias_vs_length}
-\end{figure}
-\todo{fix caption of this figure (RED)}
-
+To get an estimate of what minimum energies are necessary for the reconstruction to perform reasonably well, the fractional decay length resolution is shown as a function of the total true energy and the minimum energy of both individual cascades in \reffig{decay_length_bias_vs_energies}. In the left part it can be seen that the median of the decay length resolution stabilizes around 0 for a total energy above \SI{20}{\gev}, but the spread of the distribution is still quite large with a 1-sigma band of \SIrange{80}{100}{\percent}, decreasing down to $\sim$\SI{60}{\percent} at \SI{100}{\gev}. Based on the right part of the figure, the decay length resolution starts to be unbiased for a minimum energy of any cascade of \SI{7}{\gev}, with an equivalently large spread. A rough takeaway from this is that the decay length reconstruction is not reliable for events with a total energy below \SI{20}{\gev} or a minimum cascade energy below \SI{7}{\gev}.
 
 \begin{figure*}[h]
 	\centering
@@ -342,4 +319,3 @@ A preliminary takeaway from this is that the decay length reconstruction is not 
     \labfig{decay_length_bias_vs_energies}
 \end{figure*}
 \todo{fix caption of this figure (RED)}
-
