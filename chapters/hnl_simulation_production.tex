@@ -313,14 +313,14 @@ consider also writing down the (trivial) 2-body decay kinematics for completenes
 
 \subsubsection{3-Body Decay Kinematics with MadGraph} \labsec{madgraph_3body_decays}
 
-The specific MadGraph version used to produce the 3-body decay kinematics is \textsc{MadGraph4 v3.4.0} \cite{madgraph4}, which uses the decay diagrams calculated with \textsc{FeynRules 2.0} \sidecite{feynrules2} and the Lagrangians derived in \sidecite{Coloma:2020lgy} as input. The \textit{Universal FeynRules Output (UFO)} from \textsc{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each mass and corresponding decay channels, we produce \SI{1e06}{} decay kinematic variations in the rest frame and store those in a text file. During event generation, we uniformly select an event from that list, to simulate the decay kinematics of a 3-body decay.
+The specific MadGraph version used to produce the 3-body decay kinematics is \textsc{MadGraph4 v3.4.0} \cite{madgraph4}, which uses the decay diagrams calculated with \textsc{FeynRules 2.0} \sidecite{feynrules2} and the Lagrangians derived in \sidecite{Coloma:2020lgy} as input. The \textit{Universal FeynRules Output (UFO)} from \textsc{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each mass and corresponding decay channels, we produce \SI{1e06} decay kinematic variations in the rest frame and store those in a text file. During event generation, we uniformly select an event from that list, to simulate the decay kinematics of a 3-body decay.
 
 
 \subsection{Sampling Distributions} \labsec{hnl_sampling_distributions}
 
 In principle, the generation level sampling distributions should be chosen such that at final level of the selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Initial distributions insufficiently covering the phase space leads to an underestimate of the expected rates, because part of the events that would pass the selection are not produced. This limits the expected analysis potential.
 % This would still be correct as in being the more conservative estimate, but it would limit the analysis potential.
-Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV}, \SI{0.6}{\GeV}, and \SI{1.0}{\GeV}. Because during development it became clear that the low lengths component is crucial to get a reasonable event estimate, each sample consists of a part that is generated for very short decay lengths and one for long decay lengths. The remaining sampling distributions are identical for all samples and are listed in \reftab{hnl_realistic_sample_sampling_distributions}. The target number of events for each sample was \SI{2.5e9}{}.
+Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV}, \SI{0.6}{\GeV}, and \SI{1.0}{\GeV}. Because during development it became clear that the low lengths component is crucial to get a reasonable event estimate, each sample consists of a part that is generated for very short decay lengths and one for long decay lengths. The remaining sampling distributions are identical for all samples and are listed in \reftab{hnl_realistic_sample_sampling_distributions}. The target number of events for each sample was \SI{2.5e9}. \reffig{hnl_gen_distris} shows some selected generation level distributions. Additional distributions can be found in \reffig{hnl_gen_distris_appendix}.\todo{What is the message of these plots? Make it clear in the text and also in the captions. Potentially cut down to one or two and leave the rest or move them to the appendix. (RED)}
 
 \begin{table}[h]
     \centering
@@ -340,6 +340,30 @@ Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV
     \caption[Model dependent simulation sampling distributions]{Generation level sampling distributions and ranges/values of the model dependent simulation samples.}
     \labtab{hnl_realistic_sample_sampling_distributions}
 \end{table}
+
+\todo{Combine low/high plots and remove all traces of the separation in the thesis (tables/text/etc.) (ORANGE)}
+
+\begin{figure*}[h]
+    \centering
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/hnl_simulation/generation/1_d_distr_HNL_true_energy_gen_level_unweighted.png}
+        \caption{HNL energy}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/hnl_simulation/generation/1_d_distr_distance_gen_level_unweighted.png}
+        \caption{Decay length}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/hnl_simulation/generation/1_d_distr_casc0_true_energy_gen_level_unweighted.png}
+        \caption{First cascade energy}
+    \end{subfigure}
+    \begin{subfigure}{0.49\linewidth}
+        \includegraphics{figures/hnl_simulation/generation/1_d_distr_casc1_true_energy_gen_level_unweighted.png}
+        \caption{Second cascade energy}
+    \end{subfigure}
+    \caption[Model dependent simulation generation level distributions]{Generation level distributions of the model dependent simulation.}
+    \labfig{hnl_gen_distris}
+\end{figure*}
 
 
 \subsection{Weighting Scheme} \labsec{hnl_weighting_scheme}
@@ -400,34 +424,3 @@ Adding another factor of $|U_{\tau4}|^2$ to account for the mixing at the intera
     \labeq{weight_full}
 \end{equation}
 If this additional weighting factor is multiplied to a generation weight with units \si{\meter^2} (like in \refeq{neutrino_generation_weight}), the livetime in \si{\second}, and the oscillated primary neutrino flux in \si{\meter^{-2}\second^{-1}}, it results in the number of expected events in the detector for this particular MC event for a chosen mixing (and mass).
-
-
-\subsection{Generation Level Distributions}
-
-\reffig{hnl_gen_distris} shows some selected generation level distributions. Additional distributions can be found in \reffig{hnl_gen_distris_appendix}.
-
-\todo{Combine low/high plots and remove all traces of the separation in the thesis (tables/text/etc.) (ORANGE)}
-
-\begin{figure*}[h]
-    \centering
-    \begin{subfigure}{0.49\linewidth}
-        \includegraphics{figures/hnl_simulation/generation/1_d_distr_HNL_true_energy_gen_level_unweighted.png}
-        \caption{HNL energy}
-    \end{subfigure}
-    \begin{subfigure}{0.49\linewidth}
-        \includegraphics{figures/hnl_simulation/generation/1_d_distr_distance_gen_level_unweighted.png}
-        \caption{Decay length}
-    \end{subfigure}
-    \begin{subfigure}{0.49\linewidth}
-        \includegraphics{figures/hnl_simulation/generation/1_d_distr_casc0_true_energy_gen_level_unweighted.png}
-        \caption{First cascade energy}
-    \end{subfigure}
-    \begin{subfigure}{0.49\linewidth}
-        \includegraphics{figures/hnl_simulation/generation/1_d_distr_casc1_true_energy_gen_level_unweighted.png}
-        \caption{Second cascade energy}
-    \end{subfigure}
-    \caption[Model dependent simulation generation level distributions]{Generation level distributions of the model dependent simulation.}
-    \labfig{hnl_gen_distris}
-\end{figure*}
-
-\todo{What is the message of these plots? Make it clear in the text and also in the captions. Potentially cut down to one or two and leave the rest or move them to the appendix. (RED)}
