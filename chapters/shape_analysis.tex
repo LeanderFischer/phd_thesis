@@ -177,7 +177,6 @@ The two atmospheric neutrino oscillation parameters $\theta_{23}$ and $\Delta m^
     $M_\rm{A,QE}$ & 0.0 & [-2.0, 2.0] & 1.0 \\
     $M_\rm{A,res}$ & 0.0 & [-2.0, 2.0] & 1.0\\
     \hline
-    % $|U_{\tau 4}|^2$ & 0.0 & [0.0, 1.0] & - \\
     $\epsilon_{\rm{DOM}}$ & 1.0 & [0.8, 1.2] & 0.1 \\
     $\rm{hole \, ice} \, p_0$ & 0.101569 & [-0.6, 0.5] & - \\
     $\rm{hole \, ice} \, p_1$ & -0.049344  & [-0.2, 0.2] & - \\
@@ -190,43 +189,22 @@ The two atmospheric neutrino oscillation parameters $\theta_{23}$ and $\Delta m^
 \labtab{free_parameters}
 \end{table}
 
-\subsection{Treatment of Detector Response Uncertainties via a Likelihood-Free Inference Method} \labsec{ultrasurfaces}
+
+\subsubsection{Treatment of Detector Systematic Uncertainties} \labsec{ultrasurfaces}
+
+Since the variations related to the detector calibration uncertainties introduced in \refsec{detector_uncertainties} are estimated by simulating MC at discrete values of the systematic parameters, a method to derive continuous variations is needed to perform the fit. The method applied here was initially introduced in \sidecite{Fischer_2023} and first used in the low energy sterile neutrino search in \sidecite{ATrettin_phd} (section 7.4.3). Using a \textit{likelihood-free inference} technique, re-weighting factors are found for every event in the nominal MC sample, given a specific choice of detector systematic parameters. These factors quantify how much more or less likely the event would be for the corresponding change in detector response from the nominal parameters. Without going into the details of the method, which were already exhaustively discussed in \cite{Fischer_2023} and \cite{ATrettin_phd}, the performance is assessed here for the HNL signal simulation. In order to do so, the weights are applied to the nominal MC samples, choosing the detector systematic values used to produce the discrete samples and the resulting event expectations are compared to the expectations from the individual, discrete MC samples. The bin counts are compared by calculating the pull defined as
+\begin{equation}
+    p = \frac{N_{\rm{reweighted}}-N_{{\rm sys}}}{\sqrt{\sigma^2_\rm{reweighted}+\sigma^2_{\rm sys}}}
+    \;,
+    \labeq{bin_wise_pull}
+\end{equation}
+where $N$ are the bin-wise event expectations and $\sigma$ are their MC uncertainty. For the SM BG simulation, the performance was already investigated in \sidecite{ELohfink_phd} (section 7.4.4, appendix B5) and the re-weighted nominal MC was shown to be in agreement with the discrete systematic sets at a sufficient level.
+
+
+
+
 
 \todo{I still need to write this section... (RED)}
-
-\sidecite{Fischer_2023}
-
-% Copy paste from OVS PRD about hypersurfaces (and interpolation of those):
-
-% To evaluate the expected impact of detection uncertainties, data sets are produced with different variations of detector response, processed to the final level of selection, and then they are parameterized following a model of the uncertainties to evaluate how the final sample would look like for any reasonable choice of parameters. The parametrizations are done at the analysis bin level, assuming that every effect considered is independent and that they can be approximated by a linear function. Under these assumptions we can compute a reweighting factor in every bin that depends on $N$ parameters, which correspond to the number of systematic effects being considered, plus an offset $c$, as
-
-% \begin{equation}
-%     f(p_1,...,p_N)=c+\sum_{n=1}^N m_n \Delta p_n.
-% \end{equation}
-% Here $m_n$ are the reweighting factors obtained from simulation sets with a systematic variation and $\Delta p_n$ is the test value of a specific systematic variation.
-
-% The fit of the parameters $m_n$ is done over all systematic MC sets, reducing the uncertainty on the MC prediction in each bin as a side effect since the error on the fitted function is smaller than the statistical error from the nominal MC set. The set of all fitted functions in all histogram bins are called ``hypersurfaces". An example of such a fit from a single bin, projected onto one dimension, is shown in Fig. \ref{fig:hypersurface-example}. %The result of using hypersurfaces accurately predicted the bin content of simulation sets that were left out of the parameterization.
-
-% The event counts coming from different flavors and interactions have a different response to varying the same detector parameter. Therefore, the hypersurfaces in each bin are fit separately for three groups of events:
-% \begin{itemize}
-%     \item ($\nu_{\mathrm{all}} + \bar{\nu}_{\mathrm{all}}$) NC + ($\nu_e + \bar{\nu}_e$) CC: These events all produce cascade signatures in the detector.
-%     \item ($\nu_\tau + \bar{\nu}_\tau$) CC: These interactions may differ from the previous group because they have a production threshold of $E_\nu \gtrsim 3.5\,\mathrm{GeV}$ and also produce muons with a branching ratio of 17\%.
-%     \item ($\nu_\mu + \bar{\nu}_\mu$) CC: These interactions produce track-like signatures.
-% \end{itemize}
-
-% % \begin{figure}[t!]
-% %     \centering
-% %     \includegraphics[width=.95\linewidth]{Figures/detector_syst/hypersurface_example_v5.pdf}
-% %     \caption{Example of a hypersurface function in one bin projected on the DOM efficiency dimension. Each data point corresponds to one systematic set. Translucent datapoints are from sets where one or more systematic parameter \emph{besides} DOM efficiency is off-nominal. Those points are projected along the fitted plane to the nominal point. Several systematic sets have a nominal DOM efficiency of 1.0. The translucent error band corresponds to the standard deviation of the fitted function.}
-% %     \label{fig:hypersurface-example}
-% % \end{figure}
-
-% The distribution of $\chi^{2}$/d.o.f. from the fits in all analysis bins is used as a diagnostic to ensure that the fitted, linear hypersurfaces provide a good estimate for the expected number of events for the full range of simulated detector configurations. We find that the means of these $\chi^{2}$/d.o.f. distributions are all consistent with 1.0 as expected from good fits for each of the three categories described above (NC + $\nu_{e}$ CC, $\nu_{\tau}$ CC and $\nu_{\mu}$ CC). Attempts to use higher order polynomial fits did not yield a significantly improved $\chi^{2}$/d.o.f., and in fact often rendered the fits less stable. 
-
-% To produce the histograms for fitting the hypersurfaces, a choice must be made for the values of flux, cross-section and oscillation parameters. We found that the hypersurface fits are sensitive to the choice of parameters that have correlations with the effect they encode. Most notably, this effect is observed between the mass splitting and DOM optical efficiency as demonstrated in Fig.~\ref{fig:interpolatedHS}, which shows the difference between fitted hypersurface gradients for the DOM efficiency dimension for two values of $\Delta m^{2}_{32}$. 
-% %Moreover, we found that assuming the wrong mass splitting can introduce a significant bias in the measurement if the fitted DOM efficiency is pulled by only 1$\sigma$. 
-
-% This problem arises because we are only fitting the hypersurfaces in reconstructed phase space, without accounting for the different true energy and zenith distributions of MC in each analysis bin, which change with each detector systematic variation. To mitigate this problem, we fit the hypersurfaces for 20 different values in mass splitting between $1.5\times 10^{-3}\,\mathrm{eV}^2$ and $3.5\times 10^{-3}\,\mathrm{eV}^2$, and then apply a piece-wise linear interpolation to all slopes, intercepts and covariance matrix elements. The oscillation parameter fit can then dynamically adapt the hypersurfaces for each value of $\Delta m^{2}_{32}$ that is tested using these interpolated functions. The effects of other parameter choices were evaluated as well, but none were found to introduce a significant bias.
 
 
 \subsection{Low Energy Analysis Framework} \labsec{analysis_framework}
@@ -328,34 +306,25 @@ The fitted mixing values are
 with their $+$\SI{1}{\sigma} uncertainty. All of them are compatible with the null hypothesis of \SI{0.0} mixing, although the \SI{0.6}{\gev} and \SI{1.0}{\gev} fits indicate a mixing value of \SI{0.08} and \SI{0.106}, respectiveley. The best fit mixing values and the corresponding upper limits at \SI{68}{\percent} and \SI{90}{\percent} \textit{confidence level (CL)} are listed in \reftab{best_fit_parameters_and_confidence_levels}, also showing the $p$-value to reject the null hypothesis. The CLs and $p$-value are estimated by assuming that \textit{Wilks' theorem} \sidecite{the_not_to_be_mentioned_theorem} holds, meaning that the TS follows a $\chi^2$ distribution with one degree of freedom.
 
 \begin{table}[h]
-    % \footnotesize
-    
-    % \begin{tabular}{ lllll }
     \begin{tabular}{ ccccc }
         \hline\hline
-
-        \textbf{HNL mass} & \textbf{$|U_{\tau4}|^2$} & \textbf{68 \si{\percent} CL} & \textbf{90 \si{\percent} CL} & \textbf{NH $p$-value} \\
-    
+        \textbf{HNL mass} & \textbf{$|U_{\tau4}|^2$} & \textbf{68 \si{\percent} CL} & \textbf{90 \si{\percent} CL} & \textbf{NH $p$-value} \\    
         \hline\hline
-
         \SI{0.3}{\gev} & 0.003 & 0.087 & 0.194 & \SI{0.97}{} \\
         \SI{0.6}{\gev} & 0.080 & 0.214 & 0.355 & \SI{0.79}{} \\
         \SI{1.0}{\gev} & 0.106 & 0.238 & 0.396 & \SI{0.63}{} \\
-
         \hline
     \end{tabular}
-
-    \caption[xx]{xx}
+    \caption[Best fit mixing values and confidence limits]{Best fit mixing values and the corresponding upper limits at \SI{68}{\percent} and \SI{90}{\percent} confidence level, as well as the $p$-value to reject the null hypothesis, estimated by assuming that Wilks' theorem holds.}
     \labtab{best_fit_parameters_and_confidence_levels}
 \end{table}
-\todo{fix table caption (RED)}
 
 \reffig{brazil_bands} shows the observed TS profiles as a function of $|U_{\tau4}|^2$ for all three fits. The TS profile is the difference in $\chi^2_{\mathrm{mod}}$ between the free fit and a fit where the mixing is fixed to a specific value. Also shown is the expected TS profile, based on 100 pseudo-data trials, produced at the BFP and then fluctuated using both Poisson and Gaussian fluctuations, to include the data and the MC uncertainty as was explained in \refsec{pseudo_data_ensemble}. The median expectation and the \SI{68}{\percent} and \SI{90}{\percent} bands are shown and the observed TS profiles lie within the \SI{68}{\percent} band for all three, confirming that they are compatible with data fluctuations. For the \SI{0.3}{\gev} fit, the observed contour is slightly left of the median expectation, meaning that the observed upper limits in $|U_{\tau4}|^2$ are slightly stronger than expected. For the \SI{0.6}{\gev} the opposite is the case and the observed upper limit is therefore slightly weaker than expected. For the \SI{1.0}{\gev} fit, the observed upper limit is very close to the median expectation in the region where the \SI{68}{\percent} and \SI{90}{\percent} CLs thresholds are crossed\todo{add horizontal CL lines?}. The observed upper limits are also shown in \reftab{best_fit_parameters_and_confidence_levels}.
 
 \begin{figure*}[h]
-    \includegraphics[width=0.32\linewidth]{figures/results/best_fit/brazil_band_with_asimov_0.3_GeV_with_bfp.png}
-    \includegraphics[width=0.32\linewidth]{figures/results/best_fit/brazil_band_with_asimov_0.6_GeV_with_bfp.png}
-    \includegraphics[width=0.32\linewidth]{figures/results/best_fit/brazil_band_with_asimov_1.0_GeV_with_bfp.png}
+    \includegraphics[width=0.32\linewidth]{figures/results/best_fit/brazil_band_with_asimov_0.3_GeV_updated_with_bfp_with_1sigma.png}
+    \includegraphics[width=0.32\linewidth]{figures/results/best_fit/brazil_band_with_asimov_0.6_GeV_updated_with_bfp_with_1sigma.png}
+    \includegraphics[width=0.32\linewidth]{figures/results/best_fit/brazil_band_with_asimov_1.0_GeV_updated_with_bfp_with_1sigma.png}
 	\caption[xx]{xx}
     \labfig{brazil_bands}
 \end{figure*}

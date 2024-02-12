@@ -400,7 +400,7 @@ I think its better to discuss the sources of uncertainty when you introduce each
 
 There are multiple sources of systematic uncertainties related to the event generation and processing explained in this chapter. 
 % Since variations in the range of these uncertainties change the expected number of events in the analysis, it is important to estimate their impact on the final results.
-All uncertainties considered in this work are implemented with parameters that can be varied continuously so that a simultaneous fit of the physics and systematic parameters can be performed. Where possible, a correct model of the effect is used, but in many cases the variations are captured by effective parameters. Uncertainties that solely scale the total event rate are not included individually, since the analysis only uses the relative distribution of events and a single scaling parameter $N_{\nu}$ is used to scale the total neutrino rate instead.
+All uncertainties considered in this work need to be implemented with parameters that can be varied continuously so that a simultaneous fit of the physics and systematic parameters can be performed. Where possible, a correct model of the effect is used, but in many cases the variations are captured by effective parameters. Uncertainties that solely scale the total event rate are not included individually, since the analysis only uses the relative distribution of events and a single scaling parameter $N_{\nu}$ is used to scale the total neutrino rate instead.
 
 
 \subsection{Atmospheric Flux Uncertainties} \labsec{flux_uncertainties}
@@ -453,12 +453,13 @@ Even though the DIS interactions can be calculated very precisely, there are sti
 \end{figure*}
 
 
-\subsection{Detector Calibration Uncertainties}
+\subsection{Detector Calibration Uncertainties} \labsec{detector_uncertainties}
 
-There are multiple sources of systematic uncertainties related to the detection process of neutrinos in IceCube. Dominant for this analysis are the effects of the properties of the ice itself and the optical efficiency of the DOMs. None of these uncertainties can be described by an analytic expression, so they have to be estimated using MC simulation. The method used to derive the continuous variations based on the MC simulation is described in \refsec{ultrasurfaces}. The five relevant uncertainty parameters are the absolute efficiency of the DOMs, a global scaling of bulk ice scattering and absorption lengths, and variations of the relative angular acceptance due to hole ice variations in two parameters.
+The detection process of neutrinos in IceCube has several sources of uncertainties, where the effects of the properties of the ice itself and the optical efficiency of the DOMs are dominant for this analysis. None of these uncertainties can be described by an analytic expression, so they have to be estimated using MC simulation. This is done by producing additional systematic simulation samples at discrete values of those parameters. The five relevant uncertainty parameters are the absolute efficiency of the DOMs, a global scaling of bulk ice scattering and absorption lengths, and variations of the relative angular acceptance due to hole ice variations in two parameters. To perform the fit, continuous variations with respect to these parameters, will be derived with a method explained in \refsec{ultrasurfaces}.
 
 
 \paragraph{DOM efficiency:}
+
 As was already mentioned in \refsec{ice_and_DOMs}, the absolute efficiency of the DOMs, $\epsilon_\rm{DOM}$ is calibrated using minimum ionizing muons from air showers, due to the lack of a calibrated light source in the detector. Using the muons as a steady, controlled source of light, the efficiency can be estimated by comparing simulated muon data sets with varied DOM response to the measured data. Since the uncertainties found in multiple iterations of this study \sidecite{JFeintzeig_phd, domeff_nick} are at the order of \SI{10}{\percent}, this systematic is highly relevant and has to be included in the analysis.
 
 
@@ -477,6 +478,10 @@ Due to bubble formation in the re-freezing process of the boreholes, the hole ic
     \caption[Hole ice angular acceptance modification]{Relative angular acceptance modification due to hole ice. Shown is the current baseline model, the variations from changing $p_0$ and $p_1$, and a laboratory measurement. Modified from \cite{ATrettin_phd}.}
     \labfig{hole_ice_variations}
 \end{figure}
+
+\paragraph{Ice Model:}
+
+\todo{explain the BFR ice thingie (RED)}
 
 
 \subsection{Muon Uncertainties}
