@@ -105,14 +105,104 @@ coupling the fermion fields $e_R$ to the Higgs field $\Phi$, recovers the invari
 
 \subsection{Leptonic Weak Interactions after Symmetry Breaking} \labsec{weak_interactions}
 
+% \begin{marginfigure}
+%     \centering
+%     \begin{subfigure}[t]{0.49\linewidth}
+%         \begin{tikzpicture}
+%             \begin{feynman}
+%             \def\flen{1.2}
+%             \def\boslen{1.2}
+%             \def\fangle{45}
+    
+%             % in order to get the [dot] to work, we need to add the empty braces
+%             \vertex (v1) [dot] at (0, \boslen) {};
+%             \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) {\(\pbar{\nu}_\mathcal{l}\)};
+%             \vertex (f1) at ($(v1) + (\fangle:\flen)$) {\(\pbar{\nu}_\mathcal{l}\)};
+%             \vertex (v2) at (0, 0);
+    
+%             \diagram* {
+%               (i1) -- [fermion] (v1) -- [fermion] (f1),
+%               (v1) -- [boson, edge label=$Z^0$] (v2)
+%             };
+%             \end{feynman}
+%         \end{tikzpicture}
+%         \caption{neutrinos}
+%     \end{subfigure}
+%     \begin{subfigure}[t]{0.49\linewidth}
+%         \begin{tikzpicture}
+%             \begin{feynman}
+%             \def\flen{1.2}
+%             \def\boslen{1.2}
+%             \def\fangle{45}
+    
+%             % in order to get the [dot] to work, we need to add the empty braces
+%             \vertex (v1) [dot] at (0, \boslen) {};
+%             \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) {\(\mathcal{l}^\pm\)};
+%             \vertex (f1) at ($(v1) + (\fangle:\flen)$) {\(\mathcal{l}^\pm\)};
+%             \vertex (v2) at (0, 0);
+    
+%             \diagram* {
+%               (i1) -- [fermion] (v1) -- [fermion] (f1),
+%               (v1) -- [boson, edge label=$Z^0$] (v2)
+%             };
+%             \end{feynman}
+%         \end{tikzpicture}
+%         \caption{charged leptons}
+%     \end{subfigure}
+%     \caption{Neutral-current lepton interaction vertices.}
+%     \label{fig:nc-vertices}
+%     \end{marginfigure}
+
 \begin{marginfigure}
     \centering
-    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
-    \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
-    \caption[Feynman diagrams of neutrino weak interactions]{Feynman diagrams of charged-current (left) and neutral-current (right) neutrino weak interactions, taken from \cite{ATerliuk}.}
+    % \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
+    % \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
+
+    % \begin{subfigure}{0.45\textwidth}
+        \begin{tikzpicture}
+            \begin{feynman}
+            \def\flen{1.6}
+            \def\boslen{1.6}
+            \def\fangle{45}
+    
+            % in order to get the [dot] to work, we need to add the empty braces
+            \vertex (v1) [dot] at (0, \boslen) {};
+            \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) {\({\nu}_\mathcal{l}\) (\(\bar{\nu}_\mathcal{l}\))};
+            \vertex (f1) at ($(v1) + (\fangle:\flen)$) {{\(\mathcal{l}^{-}\)} ({\(\mathcal{l}^{+}\)})};
+            \vertex (v2) at (0, 0);
+    
+            \diagram* {
+              (i1) -- [fermion] (v1) -- [fermion] (f1),
+              (v1) -- [boson, edge label=$W^\pm$] (v2)
+            };
+            \end{feynman}
+        \end{tikzpicture}
+    % \end{subfigure}
+
+    % \begin{subfigure}{0.45\textwidth}
+        \begin{tikzpicture}
+            \begin{feynman}
+            \def\flen{1.6}
+            \def\boslen{1.6}
+            \def\fangle{45}
+    
+            % in order to get the [dot] to work, we need to add the empty braces
+            \vertex (v1) [dot] at (0, \boslen) {};
+            \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) {\({\nu}_\mathcal{l}\) (\(\bar{\nu}_\mathcal{l}\))};
+            \vertex (f1) at ($(v1) + (\fangle:\flen)$) {\({\nu}_\mathcal{l}\) (\(\bar{\nu}_\mathcal{l}\))};
+            \vertex (v2) at (0, 0);
+    
+            \diagram* {
+              (i1) -- [fermion] (v1) -- [fermion] (f1),
+              (v1) -- [boson, edge label=$Z^0$] (v2)
+            };
+            \end{feynman}
+        \end{tikzpicture}
+    % \end{subfigure}
+    
+    \caption[Feynman diagrams of neutrino weak interactions]{Feynman diagrams of charged-current (top) and neutral-current (bottom) neutrino weak interactions, modified from \cite{ATrettin_phd}.}
     \labfig{weak_interactions}
-\end{marginfigure}    
-\todo{Plot is missing + for W and 0 for Z boson. (RED)}
+\end{marginfigure}
 
 After the spontaneous symmetry breaking, the leptonic part of the electroweak Lagrangian can be written as
 \begin{equation}
@@ -195,13 +285,32 @@ and the mass matrix is given by
 On top of explaining the origin of neutrino masses itself, a combined Dirac and Majorana mass term could also solve the question of their smallness. If the mass of the RH neutrinos is very large, the masses of the active neutrino flavors is suppressed, which is known as \textit{see-saw mechanism}.
 
 
+\subsection{Minimal Extension and the $\nu$MSM} \labsec{minimal_model_extensions}
+
+So far we have described neutrinos in their flavor eigenstates, which are relevant for weak interactions, where the three weak flavor states $\nu_e, \nu_\mu$, and $\nu_\tau$ are related to the charged leptons they interact with in CC interactions. In order to \textit{just} explain the three oscillating flavor eigenstates, three mass states are needed, which are related to the flavor eigenstates by the unitary, 3x3 \textit{Pontecorvo-Maki-Nakagawa-Sakata (PMNS)} mixing matrix $U$, where the flavor states are a superposition of the mass states as
+\begin{equation}
+    \ket{\nu_\alpha} = \sum_kU^*_{\alpha k}\ket{\nu_k}
+    \;,
+    \labeq{neutrino_mixing}
+\end{equation}
+with the weak flavor states $\ket{\nu_\alpha}$, $\alpha=e,\mu,\tau$, and the mass states $\ket{\nu_k}$ with $k=1,2,3$. In its generic form the PMNS matrix is given by
+\begin{equation}
+    U = \begin{pmatrix}
+    U_{e1} & U_{e2} & U_{e3} \\
+    U_{\mu1} & U_{\mu2} & U_{\mu3} \\
+    U_{\tau1} & U_{\tau2} & U_{\tau3}
+    \end{pmatrix}
+    \;,
+    \labeq{3_by_3_pmns_matrix}
+\end{equation}
+which will be the basis for the discussion of neutrino oscillations in \refsec{neutrino_oscillations}.
+
+
+
 
 minimal scenario needed to explain the two observed non-zero SM neutrino masses is two RH neutrinos
 
 mixing between mass and flavor eigenstates is then described by a 5x5 mixing matrix
-
-\todo{I need to esplain the SM PMNS matrix before this, otherwise I'm missing that here.. (RED)}
-
 
 
 \subsection{Observational Avenues for Right-Handed Neutrinos}
@@ -418,13 +527,78 @@ Charged mesons or tau particles can also be produced in cosmic ray interactions.
 
 \subsection{Oscillations} \labsec{neutrino_oscillations}
 
-So far we have described neutrinos in their flavor eigenstates, which are relevant for weak interactions. In the SM three-neutrino model the weak flavor states are $\nu_e, \nu_\mu$, and $\nu_\tau$, which relate them to the charged leptons they interact with in CC interactions. There is a second way of describing neutrino wave functions based on their Hamiltonian eigenvalues \sidecite{BILENKY1978225}, namely as the mass eigenstates $\nu_1, \nu_2$, and $\nu_3$. These states are related to the flavor eigenstates by the unitary, 3x3 \textit{Pontecorvo-Maki-Nakagawa-Sakata (PMNS)} matrix $U$, where the flavor states are a superposition of the mass states as
+Describing neutrinos in their mass state as introduced in \refsec{neutrino_mass_mixing} is crucial to understand their propagation through space and time and to explain neutrino oscillations. Oscillations mean that a neutrino changes from its initial flavor, that it was produced with, to another flavor and back after traveling a certain distance.
+
+The neutrino propagation in vacuum can be expressed by applying a plane wave approach, where the mass eigenstates evolve as
 \begin{equation}
-    \ket{\nu_\alpha} = \sum_kU^*_{\alpha k}\ket{\nu_k}
-    \;,
-    \labeq{neutrino_mixing}
+    \ket{\nu_k(t)} = e^{-iE_kt/\hbar}\ket{\nu_k}
+    \;.
+    \labeq{flavor_time_evol}
 \end{equation}
-with the weak flavor states $\ket{\nu_\alpha}$, $\alpha=e,\mu,\tau$, and the mass states $\ket{\nu_k}$ with $k=1,2,3$. The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
+The energy of the mass eigenstate $\ket{\nu_k}$ is $E_k=\sqrt{\vec{p}^2c^2+m_k^2c^4}$, with momentum $\vec{p}$ and mass $m_k$, $\hbar$ is the reduced Planck constant, and c is the speed of light in vacuum.
+% The existence of non-zero, non-equal masses and the neutrino mixing relation in \refeq{neutrino_mixing}, lead to the observed phenomenon of neutrino oscillations.
+A neutrino is produced as a flavor eigenstate $\ket{\nu_\alpha}$ in a CC weak interaction, but its propagation happens as the individual mass states it is composed of. The probability of finding the neutrino with initial flavor $\ket{\nu_\alpha}$ in the flavor state $\ket{\nu_\beta}$ after the time $t$ is calculated as
+\begin{equation}
+    P_{\nu_\alpha \rightarrow \nu_\beta}(t)
+    =
+    |\braket{\nu_\beta|\nu_\alpha(t)}|^2
+    \;,
+    \labeq{fermis_golden_rule}
+\end{equation}
+by applying Fermi's Golden Rule \sidecite{1927RSPSA.114..243D}, which defines the transition rate from one eigenstate to another by the strength of the coupling between them. This coupling strength is the square of the matrix element and using the fact that the mixing matrix is unitary ($U^{-1}=U^\dagger$) to describe the mass eigenstates as flavor eigenstates, we find the time evolution of the flavor state $\ket{\nu_\alpha(t)}$, which can be inserted into \refeq{fermis_golden_rule} to find the probability as
+\begin{equation}
+    P_{\nu_\alpha \rightarrow \nu_\beta}(t)
+    =
+    \sum_{j,k}U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k}e^{-i(E_k-E_j)t/\hbar}
+    \;.
+    \labeq{probability_raw}
+\end{equation}
+The indices $j$ and $k$ run over the mass eigenstates.
+
+We can approximate the energy as
+\begin{equation}
+    E_k \approx E+\frac{c^4m^2_k}{2E} \hspace{0.25cm} \longrightarrow \hspace{0.25cm} E_k-E_j \approx \frac{c^4\Delta m^2_{kj}}{2E}
+    \;,
+\end{equation}
+for small neutrino masses compared to their kinetic energy. Here, $\Delta m^2_{kj}=m^2_k-m^2_j$ is the mass-squared splitting between states $k$ and $j$. Replacing the time in \refeq{probability_raw} by the distance traveled by relativistic neutrinos $t\approx L/c$ we get
+\begin{equation}
+    \begin{split}
+        P_{\nu_\alpha \rightarrow \nu_\beta}(t)
+        = 
+        \delta_{\alpha \beta}
+        -
+        4\sum_{j>k}&\textbf{Re}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big) \\
+        +
+        2\sum_{j>k}&\textbf{Im}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big)
+        \;,
+    \end{split}
+    \labeq{probability_detailed}
+\end{equation}
+which is called the survival probability if $\alpha=\beta$, and the transition probability if $\alpha\neq\beta$. Once again, this probability is only non-zero if there are neutrino mass eigenstates with masses greater than zero. Additionally, there must be a mass-squared difference $\Delta m^2$ and non-zero mixing between the states. Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing.
+
+{\renewcommand{\arraystretch}{1.2}
+\begin{margintable}[6cm]
+    \footnotesize
+    \begin{tabular}{ cc }
+    \hline\hline    
+    Parameter & Global Fit \\
+    \hline\hline    
+    $\theta_{12}$ [\si{\degree}] & $33.41^{+0.75}_{-0.72}$ \\
+    $\theta_{13}$ [\si{\degree}] & $8.54^{+0.11}_{-0.12}$ \\
+    $\theta_{23}$ [\si{\degree}] & $49.1^{+1.0}_{-1.3}$ \\
+    \hline
+    $\Delta m^2_{21}$ [$10^{-5}$\si{\electronvolt^2}] & $7.41^{+0.21}_{-0.20}$ \\
+    $\Delta m^2_{31}$ [$10^{-3}$\si{\electronvolt^2}] & $2.511^{+0.028}_{-0.027}$ \\
+    \hline
+    $\delta_{CP}$ [\si{\degree}] & $197^{+42}_{-25}$ \\
+    \hline
+    \end{tabular}
+\caption[Global fit neutrino mixing parameter results]{Results from the latest global fit of neutrino mixing parameters from \cite{nufit_5.2}.}
+\labtab{nufit_5.2}
+\end{margintable}
+}
+
+The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
 \begin{equation}
     U=\left( 
     \begin{matrix}
@@ -448,52 +622,42 @@ with the weak flavor states $\ket{\nu_\alpha}$, $\alpha=e,\mu,\tau$, and the mas
     \end{matrix} 
     \right)  
     \;,
-    \labeq{PMNS_matrix}
+    \labeq{parameterized_PMNS_matrix}
 \end{equation}
-where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates $i$ and $j$, and $\delta_{CP}$ is the neutrino CP-violating phase.\todo{add current BF values from nufit or so? (YELLOW)}
-
-Describing neutrinos in their mass state is crucial to understand their propagation through space and time. Their propagation in vacuum can be expressed by applying a plane wave approach, where the mass eigenstates evolve as
+where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates $i$ and $j$, and $\delta_{CP}$ is the neutrino CP-violating phase. Experiments are sensitive to different mixing parameters, depending on the observed energy range, neutrino flavor, and the distance between the source and the detector $L$, commonly referred to as \textit{baseline}. To be able to resolve oscillations the argument
 \begin{equation}
-    \ket{\nu_k(t)} = e^{-iE_kt/\hbar}\ket{\nu_k}
-    \;.
-    \labeq{flavor_time_evol}
+    \frac{\Delta m^2L}{4E}
+    \labeq{oscillation_argument}
 \end{equation}
-The energy of the mass eigenstate $\ket{\nu_k}$ is $E_k=\sqrt{\vec{p}^2c^2+m_k^2c^4}$, with momentum $\vec{p}$ and mass $m_k$, $\hbar$ is the reduced Planck constant, and c is the speed of light in vacuum. The existence of non-zero, non-equal masses and the neutrino mixing relation in \refeq{neutrino_mixing}, lead to the observed phenomenon of neutrino oscillations. Oscillations mean that a neutrino changes from its initial flavor, that it was produced with, to another flavor and back after traveling a certain distance. A neutrino is produced as a flavor eigenstate $\ket{\nu_\alpha}$ in a CC weak interaction, but its propagation happens as the individual mass states it is composed of. The probability of finding the neutrino with initial flavor $\ket{\nu_\alpha}$ in the flavor state $\ket{\nu_\beta}$ after the time $t$ is calculated as
-\begin{equation}
-    P_{\nu_\alpha \rightarrow \nu_\beta}(t)
-    =
-    |\braket{\nu_\beta|\nu_\alpha(t)}|^2
-    \;,
-    \labeq{fermis_golden_rule}
-\end{equation}
-by applying Fermi's Golden Rule \sidecite{1927RSPSA.114..243D}, which defines the transition rate from one eigenstate to another by the strength of the coupling between them. This coupling strength is the square of the matrix element and using the fact that the mixing matrix is unitary ($U^{-1}=U^\dagger$) to describe the mass eigenstates as flavor eigenstates, we find the time evolution of the flavor state $\ket{\nu_\alpha(t)}$, which can be inserted into \refeq{fermis_golden_rule} to find the probability as
-\begin{equation}
-    P_{\nu_\alpha \rightarrow \nu_\beta}(t)
-    =
-    \sum_{j,k}U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k}e^{-i(E_k-E_j)t/\hbar}
-    \;.
-    \labeq{probability_raw}
-\end{equation}
-The indices $j$ and $k$ run over the mass eigenstates. We can approximate the energy as
-\begin{equation}
-    E_k \approx E+\frac{c^4m^2_k}{2E} \hspace{0.25cm} \longrightarrow \hspace{0.25cm} E_k-E_j \approx \frac{c^4\Delta m^2_{kj}}{2E}
-    \;,
-\end{equation}
-for small neutrino masses compared to their kinetic energy. Here, $\Delta m^2_{kj}=m^2_k-m^2_j$ is the mass-squared splitting between states $k$ and $j$. Replacing the time in \refeq{probability_raw} by the distance traveled by relativistic neutrinos $t\approx L/c$ we get
+should be at the order of 1. This divides experiments into ones that are sensitive to very slow oscillations from $\Delta m^2_{21}\approx\mathcal{O}(10^{-5}\si{\electronvolt^2})$ and ones that are sensitive to faster oscillations from $\Delta m^2_{31}\approx\mathcal{O}(10^{-3}\si{\electronvolt^2})$.
+Relevant for this work are the parameters that can be measured at the earths surface using atmospheric neutrinos, which are $\Delta m^2_{31}$, $\theta_{23}$, and $\theta_{13}$, because the flux is primarily composed of muon neutrinos and antineutrinos. Applying the parameterization from \refeq{parameterized_PMNS_matrix} to \refeq{probability_detailed} and using the fact that $\theta_{13}$ is small and $\theta_{12}$ is close to $\pi/4$, the survival probability of muon neutrinos can be approximated as
 \begin{equation}
     \begin{split}
-        P_{\nu_\alpha \rightarrow \nu_\beta}(t)
-        = 
-        \delta_{\alpha \beta}
-        -
-        4\sum_{j>k}&\textbf{Re}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big) \\
-        +
-        2\sum_{j>k}&\textbf{Im}(U^*_{\beta j}U_{\alpha j}U_{\beta k}U^*_{\alpha k})\textrm{sin}^2\Big( \frac{c^3\Delta m^2_{kj}}{4E\hbar}L \Big)
+        P_{\nu_\mu \rightarrow \nu_\mu}
+        \simeq 
+        1 - 4 |U_{\mu3}|^2(1-|U_{\mu3}|^2)\sin^2\Big( \frac{\Delta m^2_{31}L}{4E} \Big) \\
+        \simeq
+        1 - \sin^2\Big( 2\theta_{23} \Big)\sin^2\Big( \frac{\Delta m^2_{31}L}{4E} \Big)
         \;,
     \end{split}
-    \labeq{probability_detailed}
+    \labeq{probability_muon_survival}
 \end{equation}
-which is called the survival probability if $\alpha=\beta$, and the transition probability if $\alpha\neq\beta$. Once again, this probability is only non-zero if there are neutrino mass eigenstates with masses greater than zero. Additionally, there must be a mass-squared difference $\Delta m^2$ and non-zero mixing between the states. Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing. \todo{say something about how this changes with matter (YELLOW)}
+while the tau neutrino appearance probability is
+\begin{equation}
+    \begin{split}
+        P_{\nu_\mu \rightarrow \nu_\tau}
+        \simeq 
+        4 |U_{\mu3}|^2|U_{\tau3}|^2\sin^2\Big( \frac{\Delta m^2_{31}L}{4E} \Big) \\
+        \simeq
+        \sin^2\Big( 2\theta_{23} \Big)\sin^2\Big( \frac{\Delta m^2_{31}L}{4E} \Big)
+        \;.
+    \end{split}
+    \labeq{probability_tau_appearance}
+\end{equation}
+The latest global fit \sidecite{nufit_5.2} of all the parameters is shown in \reftab{nufit_5.2}.
+
+\todo{say something about matter effect? (ORANGE)}
+\todo{say something about mass ordering? (ORANGE)}
 
 
 \subsection{Interactions with Nuclei} \labsec{neutrino_interactions}
