@@ -94,7 +94,7 @@ The mass term for charged fermions with spin-1/2 is given by
     \;,
     \labeq{dirac_lagrangian}
 \end{equation}
-composed of the product of left- and right-handed Weyl spinors $\Psi_{L/R}$. This term is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations, but adding a Yukawa term
+composed of the product of LH and RH Weyl spinors $\Psi_{L/R}$. This term is not invariant under SU(2)$_L$ x U(1)$_Y$ gauge transformations, but adding a Yukawa term
 \begin{equation}
     \mathcal{L}_\rm{Yukawa} = -Y^e \bar{L}_L \Phi e_R + h.c.
     \;,
@@ -105,58 +105,8 @@ coupling the fermion fields $e_R$ to the Higgs field $\Phi$, recovers the invari
 
 \subsection{Leptonic Weak Interactions after Symmetry Breaking} \labsec{weak_interactions}
 
-% \begin{marginfigure}
-%     \centering
-%     \begin{subfigure}[t]{0.49\linewidth}
-%         \begin{tikzpicture}
-%             \begin{feynman}
-%             \def\flen{1.2}
-%             \def\boslen{1.2}
-%             \def\fangle{45}
-    
-%             % in order to get the [dot] to work, we need to add the empty braces
-%             \vertex (v1) [dot] at (0, \boslen) {};
-%             \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) {\(\pbar{\nu}_\mathcal{l}\)};
-%             \vertex (f1) at ($(v1) + (\fangle:\flen)$) {\(\pbar{\nu}_\mathcal{l}\)};
-%             \vertex (v2) at (0, 0);
-    
-%             \diagram* {
-%               (i1) -- [fermion] (v1) -- [fermion] (f1),
-%               (v1) -- [boson, edge label=$Z^0$] (v2)
-%             };
-%             \end{feynman}
-%         \end{tikzpicture}
-%         \caption{neutrinos}
-%     \end{subfigure}
-%     \begin{subfigure}[t]{0.49\linewidth}
-%         \begin{tikzpicture}
-%             \begin{feynman}
-%             \def\flen{1.2}
-%             \def\boslen{1.2}
-%             \def\fangle{45}
-    
-%             % in order to get the [dot] to work, we need to add the empty braces
-%             \vertex (v1) [dot] at (0, \boslen) {};
-%             \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) {\(\mathcal{l}^\pm\)};
-%             \vertex (f1) at ($(v1) + (\fangle:\flen)$) {\(\mathcal{l}^\pm\)};
-%             \vertex (v2) at (0, 0);
-    
-%             \diagram* {
-%               (i1) -- [fermion] (v1) -- [fermion] (f1),
-%               (v1) -- [boson, edge label=$Z^0$] (v2)
-%             };
-%             \end{feynman}
-%         \end{tikzpicture}
-%         \caption{charged leptons}
-%     \end{subfigure}
-%     \caption{Neutral-current lepton interaction vertices.}
-%     \label{fig:nc-vertices}
-%     \end{marginfigure}
-
 \begin{marginfigure}
     \centering
-    % \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_CC_nu.pdf}
-    % \includegraphics[width=0.49\linewidth]{figures/neutrinos_properties/feynman_NC_nu.pdf}
 
     % \begin{subfigure}{0.45\textwidth}
         \begin{tikzpicture}
@@ -217,9 +167,9 @@ where $c_w \equiv \cos \theta _w$, $s_w \equiv \sin \theta _w$, $P_L$ and $P_R$ 
 
 \section{Beyond the Standard Model}
 
-The fundamentals of the SM described above \textbf{are not} enough to explain all observed phenomena. Gravity cannot be explained by the SM, as it is incompatible with general relativity, neither can some of the cosmological observations like dark matter, and the matter-antimatter asymmetry be explained. But most importantly, the SM does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extension to the SM is needed in order to explain the observed phenomena.
+The fundamentals of the SM described above \textbf{are not} enough to explain all observed phenomena. Gravity cannot be explained by the SM, as it is incompatible with general relativity, neither can some of the cosmological observations like \textit{dark matter (DM)}, and the matter-antimatter asymmetry be explained. But most importantly, the SM does not predict neutrinos to have mass, which is experimentally proven by neutrino oscillations, so some extension to the SM is needed in order to explain the observed phenomena.
 
-Standard cosmology ($\Lambda$CDM\todo{Cite and/or sidenote this. (RED)}) assumes that equal amounts of matter and anti-matter were produced in the early universe. However, the universe today is dominantly made up of matter. This so-called \textit{baryon asymmetry} can be measured by the difference between the number densities of baryons and anti-baryons normalized to the number density of photons as
+Standard cosmology ($\Lambda$CDM\todo{Cite and/or sidenote this. (RED)}) assumes that equal amounts of matter and anti-matter were produced in the early universe. However, the universe today is dominantly made up of matter. This so-called \textit{baryon asymmetry of the universe (BAU)} can be measured by the difference between the number densities of baryons and anti-baryons normalized to the number density of photons as
 \begin{equation}
     \eta_B = \frac{n_B - n_{\bar{B}}}{n_\gamma}
     \;,
@@ -256,7 +206,7 @@ with $i,j$ running over the three generations of leptons $e$, $\mu$, and $\tau$,
 \end{equation}
 where $M_e$ and $M_\nu$ are the diagonal mass matrices of leptons and neutrinos, respectively. A purely Dirac mass term would not explain the smallness of the neutrino masses in a straightforward way. Only fine-tuning the Yukawa coupling constants to small values would lead to small neutrino masses.
 
-An additional way of generating neutrino masses is by adding a Majorana mass term of the form
+An additional way of generating neutrino masses is by adding a Majorana mass term\todo{add Majorana condition and mention what this means for interactions (LNV of 2) (ORANGE)} of the form
 \begin{equation}
     \mathcal{L}_\rm{Majorana} = -\frac{1}{2} M_{ij} (\nu^i_R)^c \nu^j_R + h.c.
     \;,
@@ -285,7 +235,7 @@ and the mass matrix is given by
 On top of explaining the origin of neutrino masses itself, a combined Dirac and Majorana mass term could also solve the question of their smallness. If the mass of the RH neutrinos is very large, the masses of the active neutrino flavors is suppressed, which is known as \textit{see-saw mechanism}.
 
 
-\subsection{Minimal Extension and the $\nu$MSM} \labsec{minimal_model_extensions}
+\subsection{Minimal Extensions and the $\nu$MSM} \labsec{minimal_model_extensions}
 
 So far we have described neutrinos in their flavor eigenstates, which are relevant for weak interactions, where the three weak flavor states $\nu_e, \nu_\mu$, and $\nu_\tau$ are related to the charged leptons they interact with in CC interactions. In order to \textit{just} explain the three oscillating flavor eigenstates, three mass states are needed, which are related to the flavor eigenstates by the unitary, 3x3 \textit{Pontecorvo-Maki-Nakagawa-Sakata (PMNS)} mixing matrix $U$, where the flavor states are a superposition of the mass states as
 \begin{equation}
@@ -305,19 +255,45 @@ with the weak flavor states $\ket{\nu_\alpha}$, $\alpha=e,\mu,\tau$, and the mas
 \end{equation}
 which will be the basis for the discussion of neutrino oscillations in \refsec{neutrino_oscillations}.
 
+This however is not enough to explain the neutrino masses observed in oscillation experiments. The most minimal model required to give rise to two non-zero active neutrino masses, is an additional two RH neutrinos, assuming the mass of the lightest SM neutrino is zero. If the additional neutrino states have masses $\gg$\si{\electronvolt} they are referred to as \textit{heavy neutral leptons (HNL)}, which are almost sterile, with a small mass mixing with the active neutrinos.
 
-
-
-minimal scenario needed to explain the two observed non-zero SM neutrino masses is two RH neutrinos
-
-mixing between mass and flavor eigenstates is then described by a 5x5 mixing matrix
+But the SM also fails to explain additional observations of physics beyond the standard model (BAU, DM), which could be solved by the \textit{neutrino minimal standard model ($\nu$MSM)} \sidecite{mu_msm_dm_nu_mass, mu_msm_dm_baryon_asymmetry}. In the $\nu$MSM, three RH neutrinos are added, where two of them are heavy, to explain the observed neutrino masses and oscillations, and a third one is light and serves as a DM candidate.\todo{elaborate on Leptogenesis in $\nu$MSM and sterile neutrino DM, or link some papers? (ORANGE)} The mixing between mass and flavor eigenstates is then described by an extended 6x6 mixing matrix as
+\begin{equation}
+    \begin{pmatrix}
+    \nu_e \\
+    \nu_\mu \\
+    \nu_\tau \\
+    N_1 \\
+    N_2 \\
+    N_3
+    \end{pmatrix}
+    = \begin{pmatrix}
+    U_{e1} & U_{e2} & U_{e3} & U_{e4} & U_{e5} & U_{e6} \\
+    U_{\mu1} & U_{\mu2} & U_{\mu3} & U_{\mu4} & U_{\mu5} & U_{\mu6} \\
+    U_{\tau1} & U_{\tau2} & U_{\tau3} & U_{\tau4} & U_{\tau5} & U_{\tau6} \\
+    U_{N_11} & U_{N_12} & U_{N_13} & U_{N_14} & U_{N_15} & U_{N_16} \\
+    U_{N_21} & U_{N_22} & U_{N_23} & U_{N_24} & U_{N_25} & U_{N_26} \\
+    U_{N_31} & U_{N_32} & U_{N_33} & U_{N_34} & U_{N_35} & U_{N_36}
+    \end{pmatrix}
+    \begin{pmatrix}
+    \nu_1 \\
+    \nu_2 \\
+    \nu_3 \\
+    \nu_4 \\
+    \nu_5 \\
+    \nu_6
+    \end{pmatrix}    
+    \;,
+    \labeq{6_by_6_pmns_matrix}
+\end{equation}
+where $N_i$ and $\nu_{i+3}$ ($i\in[1,2,3]$) are the sterile flavor states and the additional RH states, respectively. In the $\nu$MSM, the two heavy RH neutrinos generate the active neutrino masses through the type I seesaw mechanism\todo{add all the references here (RED)}, where they are assumed to be SM scalars and couple to the Higgs field as such.
 
 
 \subsection{Observational Avenues for Right-Handed Neutrinos}
 
-if the RH neutrinos have masses at the eV scale, they can be observed through variations in neutrino oscillation experiments as was done in OscNext and MEWOWs analysis in IceCube \todo{cite these and add some more (RED)} and they could explain the observed anomalies in xyz (take some info from Alex), cite alex thesis for a more thorough overview?
+If the RH neutrinos have masses at the \si{\electronvolt} scale, they can be observed through distortion effects in measurements of neutrino oscillation experiments. Several analyses looking for light sterile neutrinos exit in IceCube, where \sidecite{meows_short} is using higher energies and \sidecite{ATrettin_phd} the lower energy part. The latter work includes a detailed description of the expected oscillation effects and the various anomalies observed in oscillation experiments that could be explained by the existence of a light sterile neutrino.
 
-heavy RH neutrinos, also known as heavy neutral leptons, are too massive to be produced in oscillations and would have to be searched for in direct production and decay experiments that will be discussed in more detail in the following
+For this work, the focus will be on heavy RH neutrinos, heavy sterile neutrinos, or HNLs, which are too massive to be produce in oscillations and to be observed there. Several ways to observe HNLs are possible through direct production and decay experiments, which will be discussed in the following. Most of the existing searches assume the minimal model, where only one coupling between the new mass states and the SM neutrinos is non-zero and the coupling is just through mass mixing in type I seesaw scenarios, but more complex scenarios are possible and might produce various signatures.
 
 
 \subsection{Searching for Heavy Neutral Leptons} \labsec{HNL_mixing_constraints}
@@ -577,7 +553,7 @@ for small neutrino masses compared to their kinetic energy. Here, $\Delta m^2_{k
 which is called the survival probability if $\alpha=\beta$, and the transition probability if $\alpha\neq\beta$. Once again, this probability is only non-zero if there are neutrino mass eigenstates with masses greater than zero. Additionally, there must be a mass-squared difference $\Delta m^2$ and non-zero mixing between the states. Since we assumed propagation in vacuum in \refeq{flavor_time_evol}, the transition and survival probabilities correspond to vacuum mixing.
 
 {\renewcommand{\arraystretch}{1.2}
-\begin{margintable}[6cm]
+\begin{margintable}[3cm]
     \footnotesize
     \begin{tabular}{ cc }
     \hline\hline    
@@ -597,6 +573,7 @@ which is called the survival probability if $\alpha=\beta$, and the transition p
 \labtab{nufit_5.2}
 \end{margintable}
 }
+\todo{adjust margintable vertical position (RED)}
 
 The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
 \begin{equation}
