@@ -232,7 +232,9 @@ and the mass matrix is given by
     \;.
     \labeq{dirac_and_Majorana_mass_matrix}
 \end{equation}
-On top of explaining the origin of neutrino masses itself, a combined Dirac and Majorana mass term could also solve the question of their smallness. If the mass of the RH neutrinos is very large, the masses of the active neutrino flavors is suppressed, which is known as \textit{see-saw mechanism}.
+On top of explaining the origin of neutrino masses itself, a combined Dirac and Majorana mass term could also solve the question of their smallness. If the mass of the RH neutrinos is very large, the masses of the active neutrino flavors is suppressed, which is known as \textit{see-saw mechanism}.\todo{Discuss lepton number conservation (pure dirac) and lepton number violation (dirac+majorana) (ORANGE)}
+% \texit{lepton number conservation (LNC)}
+% \texit{lepton number violation (LNV)}
 
 
 \subsection{Minimal Extensions and the $\nu$MSM} \labsec{minimal_model_extensions}
@@ -291,54 +293,28 @@ where $N_i$ and $\nu_{i+3}$ ($i\in[1,2,3]$) are the sterile flavor states and th
 
 \subsection{Observational Avenues for Right-Handed Neutrinos}
 
-If the RH neutrinos have masses at the \si{\electronvolt} scale, they can be observed through distortion effects in measurements of neutrino oscillation experiments. Several analyses looking for light sterile neutrinos exit in IceCube, where \sidecite{meows_short} is using higher energies and \sidecite{ATrettin_phd} the lower energy part. The latter work includes a detailed description of the expected oscillation effects and the various anomalies observed in oscillation experiments that could be explained by the existence of a light sterile neutrino.
+If the RH neutrinos have masses at the \si{\electronvolt} scale, they can be observed through distortion effects in measurements of neutrino oscillation experiments. Several analyses looking for these so-called light sterile neutrinos exist in IceCube, where \sidecite{meows_short} is using atmospheric neutrinos in the higher energy range of \SIrange{500}{10000}{\gev} and \sidecite{ATrettin_phd} is using the lower energy region of \SIrange{6}{156}{\gev}. The latter work includes a detailed description of the expected oscillation effects and the various anomalies observed in oscillation experiments that could be explained by the existence of a light sterile neutrino, which is not covered in this work.
 
-For this work, the focus will be on heavy RH neutrinos, heavy sterile neutrinos, or HNLs, which are too massive to be produce in oscillations and to be observed there. Several ways to observe HNLs are possible through direct production and decay experiments, which will be discussed in the following. Most of the existing searches assume the minimal model, where only one coupling between the new mass states and the SM neutrinos is non-zero and the coupling is just through mass mixing in type I seesaw scenarios, but more complex scenarios are possible and might produce various signatures.
+Here, the focus will be on heavy RH neutrinos, interchangeably also called heavy sterile neutrinos, or HNLs. A defining property is that they are too massive to be produce in oscillations and to be observed as distortions thereof. Several ways to observe HNLs are possible through direct production and decay experiments, which will be discussed in the following. Most of the existing searches assume the minimal model, where only one coupling between the new mass states and the SM neutrinos is non-zero and the coupling is just through mass mixing in a type I seesaw scenario, but more complex scenarios are of course also possible and might produce various additional signatures, or stronger signals.
 
-
-\subsection{Searching for Heavy Neutral Leptons} \labsec{HNL_mixing_constraints}
-
-
-\subsubsection{Colliders}
-
-LHC: proton-proton collider
-sqrt(s): 7, 8, 13
+In general, the constraints discussed in the following are based on models, where only the coupling between the HNL and one SM flavor is non-zero. While this is the straight forward approach to test the mixing parameters individually, this might make the constraints stronger than they would be in a more complex scenario, where the HNLs couple to more than one SM flavor as was show in \sidecite{Tastet:2021vwp} for collider bounds.
 
 
-ATLAS/CMS: nearly hermetic detectors around interaction, multiple searches for HNL scenarios
-LHCB: forward detector, designed to search for new particles in decays of heavy hadrons
+\subsubsection{Collider Searches}
 
-Type I Seesaw Results:
+So far, collider searches have only been conducted using the \textit{large hadron collider (LHC)}\todo{cite the LHC? (RED)} in proton-proton mode with center of mass energies, $\sqrt{s}$, of \SI{7}{\tera\electronvolt}, \SI{8}{\tera\electronvolt}, and \SI{13}{\tera\electronvolt}. There is results from the \textit{ATLAS}\todo{cite ATLAS (RED)} and \textit{CMS}\todo{cite CMS (RED)} experiments, which are nearly hermetic, general purpose detectors around the interaction point, and the \textit{LHCb} experiment\todo{cite LHCb (RED)}, which is a forward detector designed to search for new particles in decays of heavy hadrons. In the minimal model, HNLs in the \si{\gev} mass range can be produced through mass mixing in decays of heavy mesons, tau leptons, W bosons, H bosons, or top quarks originating from the collisions. Depending on the dirac or majorana nature of the HNL, they can decay to lepton number conserving or lepton number violating channels.
 
-HNL production in GeV reange from : decays of heavy mesons, tau leptons, W bosons, H bosons, or top quarks
-HNL decays: to lepton number conserving (dirac), or lepton number conserving and violating channels (majorana), depending on mass and mixing parameters, prompt and displaced decays are possible
+Using prompt and displaced decays of the HNL, ATLAS has set constraints on \um4 at the level of $10^{-5}$ to $10^{-6}$ in the mass range of \SIrange{4}{10}{\giga\electronvolt} \sidecite{ATLAS:2019kpx}. Similarly, CMS constrained both \ue4 and \um4 at the level of $10^{-5}$ in the mass range of \SIrange{10}{60}{\giga\electronvolt} \sidecite{CMS:2022fut}. Another CMS search, looking for final states with three leptons, has set constraints on \um4 at the level of $10^{-7}$ in the mass range of \SIrange{8}{14}{\giga\electronvolt} \sidecite{CMS:2018iaf}.
 
-
-Atlas results set constraints on mixing with e and mu:
-
-Atlas in minimal extension: ~$10^-6$ with \um4 at 4-10 GeV
-same for CMS: ~$10^-5$ with \um4 and \ue4 at 10-600 GeV
-
-CMS: final state of 3 leptons (two opposite charged and nu) giving \um4 ~$4*10^-7$ at 8-14 GeV
-
-the above mentioned (strong) constraints are mostly based on a model with one HNl coupling to one flavor
-in type 1 seesaw at least 2 are needed to see the two SM nu masses, both coupling to several flavors
-it was shown (cite) that re-interpreting these results with more than one HNL can lead to much weaker constraints and to compare results, the assumed model and couplings have to be considered
-the strong reduction in constraints is due to the opening of new channels, to which the search may not be sensitive
-
-more complex scenarios are possible and might produce various signatures, but are harder to measure: extended gauge symmetries, effective field theories
-
-type III seesaw (HNL as SM EW triplets) can be observed as they are produced in pairs (no active-sterile mixing needed) and result in multi lepton states and high pt jets -> strong exclusion of masses below 790 GeV
+The LHCb experiment has HNL search results at HNL masses below and above the W boson mass, where the low mass searches are using the decay channel $B^- \rightarrow \pi^+ \mu^- \mu^-$, setting limits at the $10^{-3}$ level for \um4 in the mass range of \SIrange{0.5}{3.5}{\giga\electronvolt} \sidecite{Shuve:2016muy}. At high masses, the $W^+ \rightarrow \mu^- \mu^\pm$jet channel is used to set limits at the order of $10^{-3}$ to $10^{-2}$ for \um4 in the mass range of \SIrange{5}{50}{\giga\electronvolt} in the LNC channel and at the order of $10^{-4}$ to $10^{-3}$ in the LNV channel \sidecite{LHCb:2020wxx}.
 
 
-LHCb: low mass and high mass results (above below mW), competitive in low mass
 
-low mass channel: B+ -> mu+ N -> pi+ mu-, at order ~$10^-3$ for \um4 at 0.5-3.5 GeV
+% more complex scenarios are possible and might produce various signatures, but are harder to measure: extended gauge symmetries, effective field theories
 
-high mass channel: W+ -> mu+ mu+-jet, at order $10^-3$-$10^-2$ / $10^-4$-$10^-3$ for \um4 at 5-50 GeV for LNC/LNV
+% type III seesaw (HNL as SM EW triplets) can be observed as they are produced in pairs (no active-sterile mixing needed) and result in multi lepton states and high pt jets -> strong exclusion of masses below 790 GeV
 
-
-there is a shit ton of future colliders and/or experiments at the LHC planned, that have sensitivities to HNLs.. think about which/how to discuss them
+% there is a shit ton of future colliders and/or experiments at the LHC planned, that have sensitivities to HNLs.. think about which/how to discuss them \sidecite{present_and_future_hnl_2022}
 
 
 \subsubsection{Nuclear Decay}
@@ -426,13 +402,8 @@ show strongest limits for all three mixings?
 
 \subsubsection{Atmospheric and Solar}
 
-natural sources of neutrinos up to 20 MeV (solar) and 100s of GeV (atmospheric)
+Natural sources of neutrinos are provided up to \SI{20}{\mega\electronvolt} by the sun and up to 100s of \si{\giga\electronvolt} by neutrino production in the atmosphere. Both fluxes contain all flavors of neutrinos, due to mixing and oscillations, and can therefore be used to directly probe the mixings with $\nu_e$, $\nu_\mu$, and $\nu_\tau$. Depending on the HNL mass and the strength of the mixing, which both govern the decay length, different signatures can be used to experimentally access large regions of the HNL parameter space. The strength of the mixing defines the total rate of HNL events, which is additionally affected by whether solely the minimal mass mixing is assumed, or more complicated mixing scenarios, like the dipole portal, are considered.
 
-both provide all flavors because of mixing/oscillations and can therefore be used to probe mixing with $nu_e$, $nu_mu$, and $nu_tau$
-
-depending on the mass and mixing, which govern the decay length, different signatures can be used to probe large parts of the phase space
-
-depending on the type of coupling (just mass-mixing, or more complicated like dipole-portal) considered, the scales could be different
 
 
 \paragraph{Production in the Sun}
