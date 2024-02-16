@@ -145,7 +145,7 @@ The injection is done using the LI \textit{volume mode}, for the injection of th
 % For each frame \textit{OneWeight} and a reference weight are also calculated and stored using the \href{https://github.com/LeanderFischer/LeptonInjector-HNL/blob/main/LeptonInjector/python/hnl_weighting.py}{weighting functions} and a baseline atmospheric $\nu_\tau$ flux + oscillation spline. The weight will later be calculated inside of the analysis framework \href{https://github.com/icecube/pisa}{PISA}, based on the input OneWeight. In addition to the i3 file itself, a LeptonInjector configuration file is written which stores the needed information to produce event weights using LeptonWeighter. Optionally the script can also produce an hdf5 file with the same name in the same location. This will store a fixed set of keys, extracted from the i3 file.
 
 
-\subsubsection{Cross-Sections} \labsec{hnl_cross_sections}
+\subsubsection{Cross-Sections}
 
 \todo{Maybe decide if I want to handle git repo urls/references in a different way.. currently (without date+title) they look ugly in the margin, so I just state them as regular cites, but Cris gave me some other ideas on how to handle them.. (YELLOW)}
 
@@ -184,7 +184,7 @@ emphasize the cut-off/suppression (ORANGE)
 \todo{Add comparisons of SM cross-sections between NuXSSplMkr and genie? (YELLOW)}
 
 
-\subsubsection{Decay Channels} \labsec{hnl_decay_channels}
+\subsubsection{Decay Channels}
 
 The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the decay channels considered are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$.
 % The formulas to calculate the decay widths show up in multiple references, but we chose to match them to \sidecite{Coloma:2020lgy}, which also discusses the discrepancies in previous literature.
@@ -306,12 +306,12 @@ and
 \end{equation}
 
 
-% \subsubsection{2-Body Decay Kinematics} \labsec{2body_decay_kinematics}
+% \subsubsection{2-Body Decay Kinematics}
 \todo{JVS:
 consider also writing down the (trivial) 2-body decay kinematics for completeness and consistency. This transition is a bit jarring as it is (RED)
 }
 
-\subsubsection{3-Body Decay Kinematics with MadGraph} \labsec{madgraph_3body_decays}
+\subsubsection{3-Body Decay Kinematics with MadGraph}
 
 The specific MadGraph version used to produce the 3-body decay kinematics is \textsc{MadGraph4 v3.4.0} \cite{madgraph4}, which uses the decay diagrams calculated with \textsc{FeynRules 2.0} \sidecite{feynrules2} and the Lagrangians derived in \sidecite{Coloma:2020lgy} as input. The \textit{Universal FeynRules Output (UFO)} from \textsc{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each mass and corresponding decay channels, we produce \SI{1e06} decay kinematic variations in the rest frame and store those in a text file. During event generation, we uniformly select an event from that list, to simulate the decay kinematics of a 3-body decay.
 
