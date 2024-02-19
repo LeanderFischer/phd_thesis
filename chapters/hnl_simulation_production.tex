@@ -171,7 +171,8 @@ with $x$ and $y$ being the Bjorken variables, $m_4$ and $M$ the mass of the heav
 \begin{figure*}[h]
     \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutau-N-nc.png}
     \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutaubar-N-nc.png}
-    \caption{Custom HNL total cross-sections for the four target masses compared to the total ($\nu_\tau$/$\bar{\nu}_\tau$ NC) cross-section used for SM neutrino simulation production with GENIE.}
+    \caption
+    [Custom HNL total cross-sections]{Custom HNL total cross-sections for the four target masses compared to the total ($\nu_\tau$/$\bar{\nu}_\tau$ NC) cross-section used for SM neutrino simulation production with GENIE.}
     \labfig{custom_hnl_cross_sections}
 \end{figure*}
 \todo{Re-make plot with 3 target masses and better labels/legends etc. (RED)}
@@ -320,7 +321,7 @@ The specific MadGraph version used to produce the 3-body decay kinematics is \te
 
 In principle, the generation level sampling distributions should be chosen such that at final level of the selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Initial distributions insufficiently covering the phase space leads to an underestimate of the expected rates, because part of the events that would pass the selection are not produced. This limits the expected analysis potential.
 % This would still be correct as in being the more conservative estimate, but it would limit the analysis potential.
-Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV}, \SI{0.6}{\GeV}, and \SI{1.0}{\GeV}. Because during development it became clear that the low lengths component is crucial to get a reasonable event estimate, each sample consists of a part that is generated for very short decay lengths and one for long decay lengths. The remaining sampling distributions are identical for all samples and are listed in \reftab{hnl_realistic_sample_sampling_distributions}. The target number of events for each sample was \SI{2.5e9}. \reffig{hnl_gen_distris} shows some selected generation level distributions. Additional distributions can be found in \reffig{hnl_gen_distris_appendix}.\todo{What is the message of these plots? Make it clear in the text and also in the captions. Potentially cut down to one or two and leave the rest or move them to the appendix. (RED)}
+Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV}, \SI{0.6}{\GeV}, and \SI{1.0}{\GeV}. Because during development it became clear that the low lengths component is crucial to get a reasonable event estimate, each sample consists of a part that is generated for very short decay lengths and one for long decay lengths. The remaining sampling distributions are identical for all samples and are listed in \reftab{model_dendent_sample_sampling_distributions}. The target number of events for each sample was \SI{2.5e9}. \reffig{hnl_gen_distris} shows some selected generation level distributions. Additional distributions can be found in \reffig{hnl_gen_distris_appendix}.\todo{What is the message of these plots? Make it clear in the text and also in the captions. Potentially cut down to one or two and leave the rest or move them to the appendix. (RED)}
 
 \begin{table}[h]
     \centering
@@ -338,7 +339,7 @@ Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV
         \hline
     \end{tabular}
     \caption[Model dependent simulation sampling distributions]{Generation level sampling distributions and ranges/values of the model dependent simulation samples.}
-    \labtab{hnl_realistic_sample_sampling_distributions}
+    \labtab{model_dendent_sample_sampling_distributions}
 \end{table}
 
 \todo{Combine low/high plots and remove all traces of the separation in the thesis (tables/text/etc.) (ORANGE)}

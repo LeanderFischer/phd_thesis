@@ -34,19 +34,19 @@ maybe define that absorption and scattering lengths are? they are defined differ
 
 \begin{figure}[h]
     \includegraphics{figures/icecube_deepcore/DeepCore_sideview.pdf}
-	\caption[IceCube sideview]{Side view of IceCube and DeepCore showing the depth dependent scattering and absorption length (left panel) and the DOM positions around the dust layer.}
+	\caption[IceCube side view]{Side view of IceCube and DeepCore showing the depth dependent scattering and absorption length (left panel) and the DOM positions around the dust layer.}
     \labfig{ic_dc_sidecut}
 \end{figure}
 
 \todo{exchange for figure with scattering (check abs/sca is correct) (ORANGE)}
 
-The ice is instrumented by 5160 optical sensors called \textit{Digital Optical Modules} (DOMs) \sidecite{ABBASI2009294_data_acquisition}, which can detect the Cherenkov light produced by charged particles traveling through the ice. Each DOM is made of a spherical glass housing, containing a downward-facing Photomultiplier Tube (PMT), the main-board with control, readout, and processing-electronics, and a LED flasher-board for calibration purposes. The design and the individual components of a DOM can be seen in \reffig{DOM_design}.
+The ice is instrumented by 5160 optical sensors called \textit{digital optical modules} (DOMs) \sidecite{ABBASI2009294_data_acquisition}, which can detect the Cherenkov light produced by charged particles traveling through the ice. Each DOM is made of a spherical glass housing, containing a downward-facing Photomultiplier Tube (PMT), the main-board with control, readout, and processing-electronics, and a LED flasher-board for calibration purposes. The design and the individual components of a DOM can be seen in \reffig{DOM_design}.
 
 The majority of PMTs are the \SI{10}{"} Hamamatsu R7081-02, which have a bialkali photocathode and are sensitive to wavelengths in the range of \SIrange{300}{650}{\nano\meter}, with a peak quantum efficiency of 25\% at \SI{390}{\nano\meter}. In the central part of the IceCube array the peak efficiency reaches 34\%. The dark count rate in the temperature range of \SIrange{-40}{-20}{\degreeCelsius} is $\sim$\SI{300}{\hertz}. The DOM electronics measure the PMT voltage and control the gain. At a voltage crossing of the equivalent to \SI{0.25}{PE} the waveform readout is activated \sidecite{ABBASI2009294_data_acquisition}. Only when either one of the nearest or next to nearest DOMs above or below also sees a voltage crossing within a \SI{1}{\micro\second} time window \sidenote{This is referred to as a \textit{hard local coincidence (HLC)} \cite{ABBASI2009294_data_acquisition}.}, the voltages are digitized and sent to the ICL. Through the application of a waveform unfolding algorithm, called \textit{WaveDeform} \sidecite{IceCube:2013dkx}, the waveforms are compressed, and the results are the reconstructed times and charges of the photo-electrons. This is the basis for all further IceCube data processing.
 
 \begin{marginfigure}
     \includegraphics{figures/icecube_deepcore/DOM_schematic.png}
-	\caption[Digital Optical Module (DOM)]{Design and components of a Digital Optical Module (DOM) \cite{ABBASI2009294_data_acquisition}}
+	\caption[Digital optical module (DOM)]{Design and components of a digital optical module (DOM) \cite{ABBASI2009294_data_acquisition}}
     \labfig{DOM_design}
 \end{marginfigure}
 
@@ -55,7 +55,7 @@ The PMT is covered with a mu-metal grid (made from wire mesh), shielding the pho
 The flasher-board controls 12 LEDs that produce optical pulses with a wavelength of \SI{405}{\nano\meter} \sidecite{2017JInst..12P3012A_Instrumentation_Systems}. The LEDs can be pulsed separately or in combination with variable output levels and pulse lengths. Using the known information of the light source positions and times this can be used for in-situ calibration of the detector by measuring absorption and scattering properties of the ice. Calibrating the absolute efficiency of the DOMs itself is more accurately done using minimum ionizing muons \sidecite{JFeintzeig_phd, domeff_nick}, since the total amplitude of the LED light is not well known.\todo{Add accuracy of the efficiency calibration here. (ORANGE)}
 
 
-\subsection{IceCube} \labsec{icecube}
+\subsection{IceCube Main-Array} \labsec{icecube}
 
 The 78 strings that are arranged in a hexagonal pattern from the main part of the in-ice array, which is called \textit{IceCube}. With a $\sim$\SI{125}{\meter} horizontal spacing between the strings and a $\sim$\SI{17}{\meter} vertical spacing between DOMs, IceCube has a lower energy threshold of around \SI{100}{\gev}. IceCube was designed to detect astrophysical neutrinos with energies above \SI{1}{\tera\electronvolt}.
 
@@ -71,7 +71,7 @@ The coordinate system that is used in IceCube is centered at 46500'E, 52200'N at
 \todo{Blow up this image a bit, so it's better readable as marginfigure. (READ)}
 
 
-\subsection{DeepCore} \labsec{deepcore}
+\subsection{DeepCore Sub-Array} \labsec{deepcore}
 
 The additional 8 strings form a denser sub-array of IceCube called \textit{DeepCore} \sidecite{DeepCore_design_Abbasi2012615}. It's located at the bottom-center of the in-ice array and its \textit{fiducial volume} also includes the 7 surrounding IceCube strings as shown in \reffig{icecube_top_view}. The strings in this region have a closer average horizontal distance of about \SI{70}{\meter}. The lower 50 DeepCore DOMs on each string are placed in the region of clear ice below the dust layer between \SIrange{2100}{2450}{\meter} depth, where their vertical spacing is $\sim$\SI{7}{\meter}. The remaining 10 modules on each string are placed above the dust layer to be used as veto against atmospheric muons as can be seen in \reffig{ic_dc_sidecut}. Additionally, the DeepCore DOMs are equipped with higher quantum efficiency PMTs\sidenote{At \SI{400}{\nano\meter} they are \SI{35}{\percent} more efficient than the IceCube PMTs \cite{DeepCore_design_Abbasi2012615}}. The combination of the denser spacing, the high quantum efficiency modules, and the most favorable ice properties below the dust layer leads to a lower energy detection threshold of around \SI{5}{GeV}, allowing the more efficient observation of atmospheric neutrinos, which are mostly in the energy range of \SIrange[range-phrase={~-~}]{10}{100}{\giga\electronvolt}. The main analysis performed with DeepCore is an atmospheric neutrino oscillation measurement, but the large flux of atmospheric neutrinos allows for many other Beyond Standard Model searches, such as searches for dark matter, non-standard interactions, or sterile neutrinos.\todo{SB:
 this needs revision. the energy range you mention is particular for oscillations already (atmopsheric neutrinos are plentiful outside of this range you mentioned). If you rewrite the first part you'll have to revisit the second part. Also in general I'd suggest not to rank analyses like Main and Other - DeepCore was orginally intended as a dark matter detector, and there are probably more DM analyses unblinded / year than oscillations. Just keep it general, no need to rank. (RED)
