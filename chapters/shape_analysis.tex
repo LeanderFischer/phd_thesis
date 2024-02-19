@@ -158,11 +158,10 @@ generally you are missing a lot of references, and I don't think its very nice t
 \subsubsection{Free Parameters} \labsec{analysis_systematics}
 
 \begin{marginfigure}
-    \includegraphics{figures/results/checks/plot_systematic_impact_ranking.png}
+    \includegraphics{figures/results/checks/08_systematics_impact_test_v3_results.pdf}
 	\caption[Nuisance parameter mis-modeling impact ranking]{Mis-modeling impact ranking of the systematic parameters. The mis-modeling is calculated as the fit metric difference between a fit with the parameter fixed at its nominal value and a fit with the parameter pulled up by $+1\sigma$. The test was performed using Asimov data of the \SI{1.0}{\gev} mass sample at a reference mixing of $0.1$.}
     \labfig{systematic_impact_test}
 \end{marginfigure}
-\todo{Blow up labels/legend/title and make it more readable in the margin or move it into the main text? (RED)}
 
 To decide which systematic uncertainties should be included in the fit, we test the potential impact they have on the TS if they are neglected. The test is performed by creating Asimov data using the BG simulation and the HNL simulation of the \SI{1.0}{\gev} mass sample at a mixing value of $0.1$, which is chosen as a benchmark physics parameter, but the explicit choice does not have a significant impact on the test. The systematic parameter of interest is set to a value above its nominal expectation, either pulled up by $+1\sigma$ or by an educated estimate for parameters without a well-defined uncertainty. A fit is performed fixing the systematic parameter of interest and leaving all additional parameters free. The resulting TS is the mis-modeling significance between this fit and a fit with all parameters free, which would result in a TS of 0.0 for this Asimov test. Parameters below a significance of \SI{0.1}{\sigma} are fixed, and the test is performed in an iterative manner until the final set of free parameters is found.
 
