@@ -69,37 +69,36 @@ The rates and the expected number of events for the SM background are shown in \
 
 \subsection{Analysis Binning}
 
-\todo{add 3D data histograms (RED)}
-\todo{Add fractions of the different particle types in the bins for benchmark mass/mixing (another table?) (ORANGE)}
-
-An identical binning to the analysis performed in \sidecite{flercnn_analysis_result} is used. In total, there are three bins in PID (cascade like, mixed, and track like), 12 bins in reconstructed energy, and 8 bins in cosine of the reconstructed zenith angle as specified in \reftab{analysis_binning}.
-% It was chosen such that the track like bin has the largest $\nu_\mu$-CC fraction and a bin with a mixture of track and cascade events exists.
-Extending the binning towards lower energies or increasing the number of bins in energy or cosine of the zenith angle did not improve the HNL sensitivities significantly, because the dominant signal region is already covered with a sufficiently fine binning to observe the shape and magnitude of the HNL events. This can be seen in the middle panel of \reffig{s_to_sqrt_b_1.0_GeV_0.1_mixing}.
-
-Some low energy bins in the cascade like region have very low MC expectations (<1 event) and are therefore not taken into account in the analysis, to prevent unwanted behavior in the fit. Those are shown in dark green in the three dimensional histogram.\todo{link this to the BG 3-d histogram if I add it? (ORANGE)}
-% Originally, there were two more bins in $\cos(\theta)$, which were removed to reduce muons coming from the horizon and some low energy bins in the cascade like bin are removed due to the low event statistics.
-
+An identical binning to the analysis performed in \sidecite{flercnn_analysis_result} is used. In total, there are three bins in PID (cascade like, mixed, and track like), 12 bins in reconstructed energy, and 8 bins in cosine of the reconstructed zenith angle as specified in \reftab{analysis_binning}.\todo{Add fractions of the different particle types in the bins for benchmark mass/mixing (another table?) (ORANGE)}
 \begin{table}[h]
-        \begin{tabular}{ llll }
-        \hline\hline    
-        \textbf{Variable} & \textbf{$N_\rm{bins}$} & \textbf{Edges} & \textbf{Spacing} \\     
-        \hline\hline    
-        $P_\nu$ & 3 & [0.00, 0.25, 0.55, 1.00] & linear \\
-        $E$ & 12 & [5.00, 100.00] & logarithmic \\
-        $\cos(\theta)$ & 8 & [-1.00, 0.04] & linear \\    
-        \hline
-    \end{tabular}
-    \caption[Analysis binning]{Three dimensional binning used in the analysis. All variables are from the FLERCNN reconstruction explained in \refsec{reconstruction}.}
-    \labtab{analysis_binning}
+    \begin{tabular}{ llll }
+    \hline\hline    
+    \textbf{Variable} & \textbf{$N_\rm{bins}$} & \textbf{Edges} & \textbf{Spacing} \\     
+    \hline\hline    
+    $P_\nu$ & 3 & [0.00, 0.25, 0.55, 1.00] & linear \\
+    $E$ & 12 & [5.00, 100.00] & logarithmic \\
+    $\cos(\theta)$ & 8 & [-1.00, 0.04] & linear \\    
+    \hline
+\end{tabular}
+\caption[Analysis binning]{Three dimensional binning used in the analysis. All variables are from the FLERCNN reconstruction explained in \refsec{reconstruction}.}
+\labtab{analysis_binning}
 \end{table}
+Extending the binning towards lower energies or increasing the number of bins in energy or cosine of the zenith angle did not improve the HNL sensitivities significantly, because the dominant signal region is already covered with a sufficiently fine binning to observe the shape and magnitude of the HNL events on top of the SM background. This can be seen in the middle panel of \reffig{s_to_sqrt_b_1.0_GeV_0.1_mixing}, which shows the expected signal events divided by the square root of the expected background events for every bin used in the analysis. The signal expectation is using the \SI{1.0}{\gev} mass sample at a reference mixing of $0.1$, with the corresponding three dimensional histogram shown in \reffig{signal_1.0_GeV_0.1_mixing}. Both the nominal background expectation used to calculate the signal to square root of background ratio and the detector data can be seen in \reffig{background_and_data_3d_hist}.
 
 \begin{figure*}
-    \includegraphics[trim=7cm 0cm 12cm 1cm, clip]{figures/results/labeled_s_to_sqrt_b_1.0_GeV_combined_U_tau4_sq_0.1000_total.png}
-    \caption[]{}
+    \includegraphics{figures/results/3d_histograms/labeled_s_to_sqrt_b_1.0_GeV_combined_U_tau4_sq_0.1000_total.png}
+    \caption[Three dimensional signal over square root of background expectation]{Signal over square root of background expectation in \SI{9.28}{years} for the \SI{1.0}{\gev} mass sample at a mixing of $0.1$, while all other parameters are at their nominal values.}
     \labfig{s_to_sqrt_b_1.0_GeV_0.1_mixing}
 \end{figure*}
-\todo{fix caption (RED)}
-\todo{remake without the top row of masked bins? add label to cbar and remove from title (RED)}
+
+\begin{figure*}[h]
+    \includegraphics{figures/results/3d_histograms/all_background.png}
+    \includegraphics{figures/results/3d_histograms/all_data.png}
+    \caption[Three dimensional background expectation and observed data]{Background expectation in \SI{9.28}{years} for all other parameters are at their nominal values (top) and observed data (bottom).}
+    \labfig{background_and_data_3d_hist}
+\end{figure*}
+
+Some low energy bins in the cascade like region have very low MC expectations (<1 event) and are therefore not taken into account in the analysis, to prevent unwanted behavior in the fit. Those are shown in dark green in the three dimensional histograms, and both background and data histograms show a strong decrease of events towards low energies in the cascade like bin. This background expectation is not necessarily supposed to agree with the data, because this is the distributions assuming nominal parameter values, before performing the fit to find the parameters that describe the data best. All parameters used in the analysis are discussed in \refsec{analysis_parameters}, and post-fit data to MC comparisons are shown in \refsec{data_mc_agreement}.
 
 
 \section{Statistical Analysis} \labsec{analysis_principle}
@@ -125,7 +124,8 @@ The variable physics parameter in this analysis is the mixing between the HNL an
 
 \subsection{Nuisance Parameters}
 
-\textit{interlude ...}
+All systematic parameters introduced in \refsec{systematic_uncertainties} apart from the detector calibration uncertainties, are already parameterized in a continuous way and can be varied in the fit. To be able to do the same with the detector uncertainties, a novel method is applied that will briefly be introduced here before going into the selection of the free parameters.
+
 
 \subsubsection{Treatment of Detector Systematic Uncertainties} \labsec{ultrasurfaces}
 
@@ -151,19 +151,15 @@ where $N$ are the bin-wise event expectations and $\sigma$ are their MC uncertai
 
 \todo{add bin-wise pulls and pull distribution for selection of sets and rest to backup (RED)}
 
-\todo{SB:
-generally you are missing a lot of references, and I don't think its very nice to read all these ranges and so on in the text. Surely you can just have a table with the systematics you include, their allowed range and prior if applicable? You can choose whether or not you want to discuss some parameters in more detail here, but it should be a discussion of the physics and impact on the analysis. e.g. you can include some plots showing how a change in some of the nuisance parameters changes the event counts in the analysis binning (RED)
-}
-
 \subsubsection{Free Parameters} \labsec{analysis_systematics}
 
-\begin{marginfigure}
+\begin{marginfigure}[1cm]
     \includegraphics{figures/results/checks/08_systematics_impact_test_v3_results.pdf}
 	\caption[Nuisance parameter mis-modeling impact ranking]{Mis-modeling impact ranking of the systematic parameters. The mis-modeling is calculated as the fit metric difference between a fit with the parameter fixed at its nominal value and a fit with the parameter pulled up by $+1\sigma$. The test was performed using Asimov data of the \SI{1.0}{\gev} mass sample at a reference mixing of $0.1$.}
     \labfig{systematic_impact_test}
 \end{marginfigure}
 
-To decide which systematic uncertainties should be included in the fit, we test the potential impact they have on the TS if they are neglected. The test is performed by creating Asimov data using the BG simulation and the HNL simulation of the \SI{1.0}{\gev} mass sample at a mixing value of $0.1$, which is chosen as a benchmark physics parameter, but the explicit choice does not have a significant impact on the test. The systematic parameter of interest is set to a value above its nominal expectation, either pulled up by $+1\sigma$ or by an educated estimate for parameters without a well-defined uncertainty. A fit is performed fixing the systematic parameter of interest and leaving all additional parameters free. The resulting TS is the mis-modeling significance between this fit and a fit with all parameters free, which would result in a TS of 0.0 for this Asimov test. Parameters below a significance of \SI{0.1}{\sigma} are fixed, and the test is performed in an iterative manner until the final set of free parameters is found.
+To decide which systematic uncertainties should be included in the fit, we test the potential impact they have on the TS if they are neglected. The test is performed by creating Asimov data using the BG simulation and the HNL simulation of the \SI{1.0}{\gev} mass sample at a mixing value of $0.1$, which is chosen as a benchmark physics parameter, but the explicit choice does not have a significant impact on the test. The systematic parameter of interest is set to a value above its nominal expectation, either pulled up by $+1\sigma$ or by an educated estimate for parameters without a well-defined uncertainty. A fit is performed fixing the systematic parameter of interest and leaving all additional parameters free. The resulting TS is the fit metric difference between between this fit and a fit with all parameters free, which would result in a fit metric of 0.0 for this Asimov test. This difference is called mis-modeling significance and parameters below a significance of \SI{0.1}{\sigma} are fixed. The test is performed in an iterative manner until the final set of free parameters is found.
 
 \reffig{systematic_impact_test} shows the resulting significances of one of these tests. The parameters tested are the systematic parameters introduced in \refsec{systematic_uncertainties} and the atmospheric oscillation parameters mentioned in \refsec{analysis_samples}. In the final selection of free parameters the Barr $h_{\pi^+}$ parameter was also left free\todo{elaborate why this is also done to cover the whole energy range for the Pion production, referencing the Barr Block plot that I haven't included yet :D (RED)} and the ice absorption is still kept free, despite showing a small significance. This is done because the bulk ice parameters are not well constrained and are known to have a large impact, which might be concealed in this idealized test, due to correlations with the other parameters. In this test, the effect of correlations is challenging to consider, because only the impact of one parameter is tested at a time, using the overall mis-modeling significance as a measure. The mis-modeling could be reduced by a correlated parameter capturing the effect of the parameter of interest. For this reason a very conservative threshold of \SI{0.1}{\sigma} is chosen and some parameters below the threshold are still left free in the fit.
 
@@ -180,7 +176,8 @@ All the detector systematic uncertainties discussed in \refsec{detector_uncertai
 The two atmospheric neutrino oscillation parameters $\theta_{23}$ and $\Delta m^{2}_{31}$ are also included in the fit with nominal values of \SI{47.5}{\degree} and \SI{2.48e-3}{\electronvolt^2} \sidecite{flercnn_analysis_result}, respectively. Since they govern the shape and the strength of the tau neutrino flux, by defining the oscillation from $\nu_\mu$ to $\nu_\tau$, they are also relevant for the HNL signal shape.
 % Their ranges are set to [\SI{0.0}{\degree}, \SI{90.0}{\degree}] and [\SI{0.001}{\electronvolt^2}, \SI{0.004}{\electronvolt^2}].
 
-\todo{I should add some final level effects of some systematics on the 3D binning and maybe discuss how they are different from the signal shape, or so? (ORANGE)}
+
+\todo{I could add some final level effects of some systematics on the 3D binning and maybe discuss how they are different from the signal shape, or so? (ORANGE)}
 
 \begin{table}
     \begin{tabular}{ llll }
@@ -268,7 +265,7 @@ To estimate the GOF, pseudo-data is generated from the MC by injecting the BFP p
 \todo{fix dimension to fit them in one row! (RED)}
 
 
-\subsection{Data/MC Agreement}
+\subsection{Data/MC Agreement} \labsec{data_mc_agreement}
 
 At the BFP, the agreement between the data and simulation is probed by comparing the one dimensional analysis distributions for PID, energy, and cosine of the zenith angle. As an example, two distributions\todo{specify which they are, once I have them (RED)} for the \SI{0.6}{\gev} mass sample are shown in \reffig{data_mc_agreement_0.6_GeV}. The data is compared to the total MC expectation, which is also split up into the individual signal and background components for illustration. Good agreement can be observed in the pull distributions, and is quantified by a reduced $\chi^2$, which is close to \SI{1.0} for all distributions. The reduced $\chi^2$ for all investigated distributions is listed in \reftab{data_mc_agreement}, while the distributions themselves can be found in \refsec{data_mc_agreement_appendix}.
 
@@ -284,8 +281,6 @@ The resulting nuisance parameter values from the fits are illustrated in \reffig
 % , but the $\rm{Barr} \; h_{\pi^+}$ parameter is smaller and the $\rm{Barr} \; i_{\pi^+}$ is larger than expected, both being very close within the $+$\SI{1}{\sigma} and the $-$\SI{1}{\sigma} range, respectively. The $\rm{DIS}$ parameter fits to a smaller value than the nominal and all ice parameters, both $\rm{hole \, ice} \; p_0$, and $p_1$ as well as $\rm{bulk \, ice \, absorption}$, and $\rm{scattering}$ are found at values lower than the nominal.
 The effective ice model parameter, $N_\rm{bfr}$, prefers a value of $\sim$\SI{0.74}, indicating that the data fits better to an ice model that includes real birefringence effects.\todo{Cite (again)! (RED)} For completeness, the explicit results are listed in \reftab{best_fit_parameters}. There, the nominal values and the absolute differences to the best fit value are also presented.
 
-\todo{Compare here the best fit oscillation parameters to the FLERCNN results and try to quantify it, stating the pitfalls of the comparitions (satistically fully dependent) (RED)}
-
 \begin{figure*}[h]
     \includegraphics{figures/results/best_fit/hnl_analysis_best_fit_deltas_normed_dist_to_nominal_correct_0.6_fit_updated.png}
 	\caption[Best fit nuisance parameter distances to nominal]{Best fit nuisance parameter distances to the nominal values, normalized by the distance to the closest boundary. For parameters with a Gaussian prior, the $+$\SI{1}{\sigma} range is also shown.}
@@ -293,7 +288,6 @@ The effective ice model parameter, $N_\rm{bfr}$, prefers a value of $\sim$\SI{0.
 \end{figure*}
 
 \todo{Show best fit hole ice angular acceptance compared to nominal and flasher/in-situ fits, maybe? (YELLOW)}
-\todo{Discuss what it means that the parameters are at these values? Here, or somewhere else? (RED)}
 
 
 \subsection{Best Fit Parameters and Limits}
@@ -323,9 +317,9 @@ with their $+$\SI{1}{\sigma} uncertainty. All of them are compatible with the nu
 \reffig{brazil_bands} shows the observed TS profiles as a function of $|U_{\tau4}|^2$ for all three fits. The TS profile is the difference in $\chi^2_{\mathrm{mod}}$ between the free fit and a fit where the mixing is fixed to a specific value. Also shown is the expected TS profile, based on 100 pseudo-data trials, produced at the BFP and then fluctuated using both Poisson and Gaussian fluctuations, to include the data and the MC uncertainty as was explained in \refsec{pseudo_data_ensemble}. The Asimov expectation and the \SI{68}{\percent} and \SI{90}{\percent} bands are shown and the observed TS profiles lie within the \SI{68}{\percent} band for all three, confirming that they are compatible with statistical fluctuations of the observed data. For the \SI{0.3}{\gev} fit, the observed contour is slightly tighter than the Asimov expectation, meaning that the observed upper limits in $|U_{\tau4}|^2$ are slightly stronger than expected. For the \SI{0.6}{\gev} the opposite is the case and the observed upper limit is therefore slightly weaker than expected. For the \SI{1.0}{\gev} fit, the observed upper limit is very close to the Asimov expectation in the region where the \SI{68}{\percent} and \SI{90}{\percent} CLs thresholds are crossed. The observed upper limits are also shown in \reftab{best_fit_parameters_and_confidence_levels}.
 
 \begin{figure*}[h]
-    \includegraphics[width=0.52\linewidth]{figures/results/best_fit/brazil_band_with_asimov_0.3_GeV_updated_with_bfp_with_1sigma.png}
-    \includegraphics[width=0.52\linewidth]{figures/results/best_fit/brazil_band_with_asimov_0.6_GeV_updated_with_bfp_with_1sigma.png}
-    \includegraphics[width=0.52\linewidth]{figures/results/best_fit/brazil_band_with_asimov_1.0_GeV_updated_with_bfp_with_1sigma.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/best_fit/brazil_band_with_asimov_0.3_GeV_updated_with_bfp_with_1sigma.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/best_fit/brazil_band_with_asimov_0.6_GeV_updated_with_bfp_with_1sigma.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/best_fit/brazil_band_with_asimov_1.0_GeV_updated_with_bfp_with_1sigma.png}
 	\caption[Best fit point TS profiles]{Best fit point TS profiles as a function of $|U_{\tau4}|^2$ for the \SI{0.3}{\gev}, \SI{0.6}{\gev}, and \SI{1.0}{\gev} mass samples. Shown are the observed profiles, the Asimov expectation at the best fit point, and the \SI{68}{\percent} and \SI{90}{\percent} bands, based on 100 pseudo-data trials. Also indicated are the \SI{68}{\percent} and \SI{90}{\percent} CL levels assuming Wilks' theorem.}
     \labfig{brazil_bands}
 \end{figure*}
