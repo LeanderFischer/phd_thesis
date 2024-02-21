@@ -427,7 +427,15 @@ Neutrinos are produced in the decaying hadrons in CR air showers, spanning a lar
     \;.
     \labeq{mceq_flux_variations}
 \end{equation}
-Matching the work in \sidecite{Barr:2006it}, the parameter space is divided in regions of the primary energy $E_i$ and the energy fraction of the secondary meson $x_\rm{lab}$, with varying uncertainties, derived from fixed target experiment data\todo{add figure with Barr blocks? (RED)}. The Sibyll2.3c \sidecite{sibyll2.3d} HI model and the GSF CR flux \sidecite{cosmic_ray_composition_and_GSF} were used to calculate the related flux changes\sidenote{The choice of flux and HI model have minor impact on the variations.} for the different regions in $E_i$ and $x_\rm{lab}$, resulting in 17 variables, encoding the possible changes.
+Matching the work in \sidecite{Barr:2006it}, the parameter space is divided in regions of the primary energy, $E_i$, and the energy fraction of the secondary meson, $x_\rm{lab}$, with varying uncertainties, derived from fixed target experiment data. The Sibyll2.3c \sidecite{sibyll2.3d} HI model and the GSF CR flux \sidecite{cosmic_ray_composition_and_GSF} were used to calculate the related flux changes\sidenote{The choice of flux and HI model have minor impact on the variations.} for the different regions in $E_i$ and $x_\rm{lab}$, resulting in 17 variables, encoding the possible changes. \reffig{bar_blocks} shows the selected regions of the parameter space and the names given to the uncertainties. The variational term in \refeq{mceq_flux_variations} is applied for each of these parameters and the total variation is the sum of all individual variations.
+
+\begin{figure}[h]
+    \centering 
+    \includegraphics{figures/simulation_and_processing/flux/barr_blocks.png}
+    % \includegraphics{figures/simulation_and_processing/flux/barr_blocks_uncertainties.png}
+        \caption[Hadronic model flux uncertainty regions in hadron phase space]{Flux uncertainty regions of the hadronic interaction model in the phase space of the primary energy $E_i$ and the energy fraction of the secondary meson $x_\rm{lab}$. Taken from \cite{Barr:2006it}.}
+    \labfig{bar_blocks}
+\end{figure}
 
 
 \subsection{Cross-Section Uncertainties} \labsec{cross_section_uncertainties}
