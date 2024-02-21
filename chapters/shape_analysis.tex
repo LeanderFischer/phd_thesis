@@ -256,13 +256,12 @@ Without fluctuations the fit is expected to always recover the injected paramete
 To estimate the GOF, pseudo-data is generated from the MC by injecting the BFP parameters as true parameters and then fluctuating the expected bin counts to account for MC uncertainty and Poisson fluctuations in data. First, the expectation value of each bin is drawn from a Gaussian distribution centered at the nominal expectation value with a standard deviation corresponding to the MC uncertainty of the bin. Based on this sampled expectation value, each bin count is drawn from a Poisson distribution, independently, to get the final pseudo-data set. These pseudo-data sets are analyzed with the same analysis chain as the real data, resulting in a final fit metric value for each pseudo-data set. By comparing the distribution of fit metric values from this \textit{ensemble} of pseudo-data trials to the fit metric of the fit to real data, a p-value can be calculated. The p-value is the probability of finding a value of the fit metric at least as large as the one from the data fit. \reffig{pseudo_data_ensembles}\todo{Add 3D BFP-data pull distribution for one mass (they look the same, no?) (RED)} shows the distribution from the ensemble tests for the \SI{0.6}{\gev} mass sample and the observed value from the fit, resulting in a p-value of \SI{28.5}{\percent}. The p-values for the \SI{0.3}{\gev} and \SI{1.0}{\gev} are \SI{28.3}{\percent} and \SI{26.0}{\percent}, respectively, and the corresponding plots are shown in \refsec{pseudo_data_ensemble_appendix}. Based on this test, it is concluded that the fit result is compatible with the expectation from the ensemble of pseudo-data trials.
 
 \begin{figure*}[h]
-    \includegraphics[width=0.32\linewidth]{figures/results/blind_fits/full_blind_fit_0.3_GeV_gauss_plus_poisson_step_3_4-1.png}
-    \includegraphics[width=0.32\linewidth]{figures/results/blind_fits/full_blind_fit_0.6_GeV_gauss_plus_poisson_step_3_4-1.png}
-    \includegraphics[width=0.32\linewidth]{figures/results/blind_fits/full_blind_fit_1.0_GeV_gauss_plus_poisson_step_3_4-1.png}
-	\caption[Pseudo-data trials fit metric distribution (\SI{0.6}{\gev} mass)]{Observed fit metric and fit metric distribution from pseudo-data trials for the \SI{0.6}{\gev} mass sample.}
+    \includegraphics[width=0.32\linewidth]{figures/results/blind_fits/blind_fit_ensemble_comparison_0.3_GeV.pdf}
+    \includegraphics[width=0.32\linewidth]{figures/results/blind_fits/blind_fit_ensemble_comparison_0.6_GeV.pdf}
+    \includegraphics[width=0.32\linewidth]{figures/results/blind_fits/blind_fit_ensemble_comparison_1.0_GeV.pdf}
+	\caption[Pseudo-data trials fit metric distributions]{Observed fit metric (data fit) and fit metric distribution from pseudo-data ensemble generated around the best fit point. Shown are the results for all three mass samples, with the ensemble distribution on orange, the observed value in black, and the p-value in the legend.}
     \labfig{pseudo_data_ensembles}
 \end{figure*}
-\todo{fix dimension to fit them in one row! (RED)}
 
 
 \subsection{Data/MC Agreement} \labsec{data_mc_agreement}
