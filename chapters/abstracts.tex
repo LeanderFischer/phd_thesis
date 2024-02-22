@@ -1,26 +1,32 @@
-% Abstract page(s) are in two separate files to simplify word counting with e.g. ' wc abstract-ger.tex'
+% abstract page(s) are in two separate files to simplify word counting with e.g. ' wc abstract-ger.tex'
 
 \thispagestyle{plain}
-    \begin{center}
-        \begin{minipage}[c][0.48\textheight][b]{0.9\textwidth}
-            \small
-            \begin{center}
-            \normalsize
-            \textbf{Zusammenfassung}
-            \end{center}
-            \par
-            \vspace{\baselineskip}
-            \input{chapters/abstract-ger}
-        \end{minipage}\par
-        \vfill
-        \begin{minipage}[c][0.48\textheight][b]{0.9\textwidth}
-            \small
-            \begin{center}
-            \normalsize
-            \textbf{Abstract}
-            \end{center}
-            \par
-            \vspace{\baselineskip}
-            \input{chapters/abstract-eng}
-            \end{minipage}
-    \end{center}
+
+\begin{center}
+    \begin{minipage}[c][0.48\textheight][b]{0.9\textwidth}
+        % \begin{center}
+        \huge
+        \textbf{Abstract}
+        % \end{center}
+        \normalsize
+        \par
+        \vspace{1.0cm}
+        \input{chapters/abstract-eng}
+    \end{minipage}
+\end{center}
+
+\newpage
+\thispagestyle{plain}
+
+\begin{center}
+    \begin{minipage}[c][0.48\textheight][b]{0.9\textwidth}
+        % \begin{center}
+        \huge
+        \textbf{Zusammenfassung}
+        % \end{center}
+        \normalsize
+        \par
+        \vspace{1.0cm}
+        \input{chapters/abstract-ger}
+    \end{minipage}\par
+\end{center}
