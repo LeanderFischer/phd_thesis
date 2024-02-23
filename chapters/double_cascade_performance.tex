@@ -40,7 +40,7 @@ The simulation is processed up to Level 5 of the selection chain described in \r
 \begin{marginfigure}
 	\centering
     \includegraphics{figures/results/190605_reco_optimization/decay_length_seeding_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3_fix_y.png}
-    \caption[Decay length resolution to optimize fit routine]{Decay length resolution as a function of the true decay length, comparing the same fit routine seeded with just the seed decay length and seeded with a decay length of \SI{5}{\meter}, \SI{25}{\meter}, \SI{50}{\meter}, \SI{100}{\meter}, and \SI{200}{\meter} on the left. Only events that had more than \SI{3}{\gev} in both cascades are used, and the resolutions are unweighted.}
+    \caption[Decay length resolutions to optimize length seeding]{Decay length resolution as a function of the true decay length, comparing the same fit routine seeded with just the seed decay length and seeded with a decay length of \SI{5}{\meter}, \SI{25}{\meter}, \SI{50}{\meter}, \SI{100}{\meter}, and \SI{200}{\meter} on the left. Only events that had more than \SI{3}{\gev} in both cascades are used, and the resolutions are unweighted.}
     \labfig{fit_routine_optimization_decay_length_seeding}
 \end{marginfigure}
 \todo{Remake with better dimensions, so it fits in the margin, remove or make better title corresponding to the subsubsection titles (RED)}
@@ -66,7 +66,7 @@ Because the length seed showed to have such a large impact on the reconstruction
 \begin{marginfigure}
 	\centering
     \includegraphics{figures/results/190605_reco_optimization/minimizer_checks_median_decay_length_resolution_Good + L7 + reco E1,E2 above 3.png}
-    \caption[Decay length resolution to optimize fit routine]{Decay length resolution as a function of the true decay length, comparing the same fit routine performed with different minimizers. Only events that had more than \SI{3}{\gev} in both cascades are used, and the resolutions are unweighted.}
+    \caption[Decay length resolution to optimize minimizer settings]{Decay length resolution as a function of the true decay length, comparing the same fit routine performed with different minimizers. Only events that had more than \SI{3}{\gev} in both cascades are used, and the resolutions are unweighted.}
     \labfig{fit_routine_optimization_minimizer_checks}
 \end{marginfigure}
 \todo{Remake with better dimensions, so it fits in the margin, remove or make better title corresponding to the subsubsection titles (RED)}
@@ -135,14 +135,15 @@ The under-estimation at large true lengths is more puzzling, and it seems like t
 
 \subsubsection{Badly Reconstructed Cascade Population}
 
-\begin{figure*}[h]
-    \centering
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_in_step_contours.png}
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_out_step_contours.png}
+\begin{figure}[h]
+    % \centering
+    % \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_in_step_contours.png}
+    % \includegraphics[width=0.49\linewidth]{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_population_out_step_contours.png}
+    \includegraphics{figures/results/190607/second_population/190607_millipede_level_no_NaNs_NEW_flipped_reco_decayL_vs_true_decayL_reco_above3_step_contours_populations.png}
     \caption[]{}
     \labfig{true_energies_vs_true_length_populations_in_out}
-\end{figure*}
-\todo{remake plot: one figure, where the two selected regions are highlighted, no bin counts, blow up labels etc. margin possible? (RED)}
+\end{figure}
+\todo{remake plot: no bin counts, blow up labels etc. margin possible? (RED)}
 \todo{fix caption (RED)}
 
 To investigate the badly reconstructed population further, a rough separation was made to find out what the cause of the difference is. It was already established that a larger reconstructed energy in both cascades, which is related to a larger true energy in form of more deposited light, leads to a better reconstruction in more events. To select the two populations, only events with true decay length larger than \SI{80}{\meter} are used as shown in \reffig{true_energies_vs_true_length_populations_in_out}, and the populations are split by the reconstructed decay length being larger or smaller than \SI{80}{\meter}. To investigate the difference between the two populations, several variables were compared to find the reason(s) for the bad reconstruction. 

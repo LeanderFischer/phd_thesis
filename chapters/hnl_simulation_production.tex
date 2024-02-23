@@ -128,10 +128,6 @@ To estimate the HNL event expectation in IceCube DeepCore, depending on the spec
 
 In its standard version, the LI generator produces neutrino interactions by injecting a lepton and a hadronic cascade at the interaction vertex of the neutrino, where the lepton is the charged (neutral) particle produced in a CC (NC) interaction and the cascade is the hadronic cascade from the breaking nucleus. The hadronic cascade is stored as a specific object of type \textit{Hadrons}, which triggers the correct simulation of the shower development in the following simulation steps, identical to what will be described for SM neutrino simulation on \refsec{neutrino_generation}. The main differences to an EM cascade is that part of the energy will not be observed, because it goes into neutral particles, and that the spatial development of the shower is different. Both objects are injected with the same $(x,y,z,t)$ coordinates and the kinematics are sampled from the differential and total cross-sections that are one of the inputs to LI.
 
-\todo{JVS:
-    consider remaking figures at the native size so type size is consistent. Also, consider making the legend box semi-transparent so the lines do not obscure the text and markers. (ORANGE)
-}
-
 \begin{figure}[h]
     \includegraphics{hnl_simulation/decay_theory/branching_ratios_log_up_to_1.0_GeV.png}
     \caption[HNL branching ratios]{Branching ratios of the HNL within the mass range considered in this work, only considering $|U_{\tau4}^2| \neq 0$, calculated based on the results from \cite{Coloma:2020lgy}.}
@@ -146,8 +142,6 @@ The injection is done using the LI \textit{volume mode}, for the injection of th
 
 
 \subsubsection{Cross-Sections}
-
-\todo{Maybe decide if I want to handle git repo urls/references in a different way.. currently (without date+title) they look ugly in the margin, so I just state them as regular cites, but Cris gave me some other ideas on how to handle them.. (YELLOW)}
 
 The cross-sections are calculated using the \textsc{NuXSSplMkr} \cite{xsecmaker} software, which is a tool to calculate neutrino cross-sections from \textit{parton distribution functions (PDFs)} and then fit to an N-dimensional tensor-product B-spline surface \sidecite{photospline} to produce the splines that can be read and used with LI/LW. The tool was modified to produce the custom HNL cross-sections, where the main modification to calculate the cross-sections for the $\nu_\tau$-NC interaction into the new heavy mass state, is the addition of a kinematic condition to ensure that there is sufficient energy to produce the heavy mass state. It is the same condition fulfilled for the CC case, where the outgoing charged lepton mass is non-zero. Following \sidecite{Levy:2004rk} (equation 7), the condition
 \begin{equation}
