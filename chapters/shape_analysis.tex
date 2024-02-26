@@ -135,21 +135,15 @@ Since the variations related to the detector calibration uncertainties introduce
     \;,
     \labeq{bin_wise_pull}
 \end{equation}
-where $N$ are the bin-wise event expectations and $\sigma$ are their MC uncertainty. For the SM BG simulation, the performance was already investigated in \sidecite{ELohfink_phd} (section 7.4.4, appendix B5) and the re-weighted nominal MC was shown to be in agreement with the discrete systematic sets at a sufficient level. \reffig{ultrasurfaces_example_bin_wise_pulls} shows the bin-wise pulls for the \SI{1.0}{\gev} HNL mass sample at a mixing of $0.1$ for a selection of the discrete systematic samples, where the DOM efficiency and the bulk ice absorption was varied by $\pm10\%$. As expected, the pull distributions follow a standard normal distribution, without strong clustering or any systematic deviations. The spread of the distribution is slightly smaller than 1.0 and the center is close to 0.0. A similar performance is found for the additional systematic variations and the detailed figures can be found in \refsec{ultrasurfaces_appendix}.
+where $N$ are the bin-wise event expectations and $\sigma$ are their MC uncertainty. For the SM BG simulation, the performance was already investigated in \sidecite{ELohfink_phd} (section 7.4.4, appendix B5) and the re-weighted nominal MC was shown to be in agreement with the discrete systematic sets at a sufficient level. \reffig{ultrasurfaces_example_bin_wise_pulls} shows the bin-wise pulls for the \SI{1.0}{\gev} HNL mass sample at a mixing of $0.1$ for a selection of the discrete systematic samples, where the DOM efficiency and the bulk ice absorption was varied by $\pm10\%$. As expected, the pull distributions follow a standard normal distribution, without strong clustering or any systematic deviations. A similar performance is found for the additional systematic variations and the detailed figures can be found in \refsec{ultrasurfaces_appendix}.
 
+\begin{figure*}[h]
+    \includegraphics{figures/results/utlrasurfaces/oscNext_leptoninjector_1.0_GeV_knn_probs_neighbors_500_weighted_nfiles_extended_holeice_corrected_grads_poly_2_weighted_reference_weight_0.0100_thesis_style_subset_0-5.png}
+    \caption[Detector systematic uncertainty treatment bin-wise pulls example sets]{Three dimensional pulls and set-wise pull distributions between the nominal set and the specific systematic sets, after the nominal set was re-weighted to the correspoinding systematic parameter value.}
+    \labfig{hnl_ultrasurfaces_3d_pulls_selection0}
+\end{figure*}
+\todo{fix caption (add description of what specific set number means (RED))}
 
-% plot again for 0001, 0002, 0504, 0505 (DOMeff +-10% and abs +-10%) using analysis binning! (0.1 mixing, 1.0 GeV)
-% plot the rest for the backup..
-
-% \begin{figure*}[h]
-%     \includegraphics{figures/results/utlrasurfaces/}
-    % \caption[xx]{xx}
-    % Binwise pulls between the nominal set after re-weighting accord-ing to eq. 7.11 and the systematic MC sets 0001, 0002, 0003, and 0004 rep-resenting DOM efficiency values of 90%, 95%, 105%, and 110%, resepctively. The 1D histogram in each row shows the distribution of the pulls over all bins
-    % \labfig{ultrasurfaces_example_bin_wise_pulls}
-% \end{figure*}
-% \todo{fix caption(RED)}
-
-\todo{add bin-wise pulls and pull distribution for selection of sets and rest to backup (RED)}
 
 \subsubsection{Free Parameters} \labsec{analysis_systematics}
 
