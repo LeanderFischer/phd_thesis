@@ -41,8 +41,8 @@
 \frontmatter
 
 \include{auxiliary/titlepage}
-\cleardoublepage
 
+\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Abstract}
 \include{chapters/abstracts}
@@ -51,10 +51,7 @@
 \input{auxiliary/additional_information.tex}
 
 \listoftodos
-
 \tableofcontents
-\listoffigures
-\listoftables
 
 \mainmatter
 
@@ -62,17 +59,15 @@
 
 \include{chapters/sm_neutrinos_properties}
 
-\include{chapters/icecube}
+% \include{chapters/icecube}
 
-\include{chapters/hnl_simulation_production}
+% \include{chapters/hnl_simulation_production}
 
-\include{chapters/simulation_and_processing}
+% \include{chapters/simulation_and_processing}
 
-\include{chapters/double_cascade_performance}
+% \include{chapters/double_cascade_performance}
 
 \include{chapters/shape_analysis}
-
-\include{chapters/summary}
 
 \include{chapters/conclusion}
 
@@ -85,6 +80,17 @@
 \input{chapters/appendix}
 
 \backmatter
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Figures}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Tables}
+\listoftables
+
 \setchapterstyle{plain}
 
 \defbibnote{bibnote}{Here are the references in citation order.\par\bigskip}

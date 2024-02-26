@@ -135,10 +135,10 @@ Since the variations related to the detector calibration uncertainties introduce
     \;,
     \labeq{bin_wise_pull}
 \end{equation}
-where $N$ are the bin-wise event expectations and $\sigma$ are their MC uncertainty. For the SM BG simulation, the performance was already investigated in \sidecite{ELohfink_phd} (section 7.4.4, appendix B5) and the re-weighted nominal MC was shown to be in agreement with the discrete systematic sets at a sufficient level. \reffig{ultrasurfaces_example_bin_wise_pulls} shows the bin-wise pulls for the \SI{1.0}{\gev} HNL mass sample at a mixing of $0.1$ for a selection of the discrete systematic samples, where the DOM efficiency and the bulk ice absorption was varied by $\pm10\%$. The distributions should follow a standard normal distribution, and no strong clustering or systematic deviations. It can be seen that spread of the distribution is slightly larger than 1.0 and the center is close to 0.0 as expected. A similar performance is found for the additional systematic sets and can be found in \refsec{ultrasurfaces_appendix}.
+where $N$ are the bin-wise event expectations and $\sigma$ are their MC uncertainty. For the SM BG simulation, the performance was already investigated in \sidecite{ELohfink_phd} (section 7.4.4, appendix B5) and the re-weighted nominal MC was shown to be in agreement with the discrete systematic sets at a sufficient level. \reffig{ultrasurfaces_example_bin_wise_pulls} shows the bin-wise pulls for the \SI{1.0}{\gev} HNL mass sample at a mixing of $0.1$ for a selection of the discrete systematic samples, where the DOM efficiency and the bulk ice absorption was varied by $\pm10\%$. As expected, the pull distributions follow a standard normal distribution, without strong clustering or any systematic deviations. The spread of the distribution is slightly smaller than 1.0 and the center is close to 0.0. A similar performance is found for the additional systematic variations and the detailed figures can be found in \refsec{ultrasurfaces_appendix}.
 
 
-% plot again for 0001, 0002, 0504, 0505 (DOMeff +-10% and abs +-10%) using anallysis binning! (0.1 mixing, 1.0 GeV)
+% plot again for 0001, 0002, 0504, 0505 (DOMeff +-10% and abs +-10%) using analysis binning! (0.1 mixing, 1.0 GeV)
 % plot the rest for the backup..
 
 % \begin{figure*}[h]
@@ -312,6 +312,16 @@ with their $+$\SI{1}{\sigma} uncertainty. All of them are compatible with the nu
     \labfig{brazil_bands}
 \end{figure*}
 
+
+\subsection{Agreement with Standard Model Three-Flavor Oscillation Measurement}
+
+\todo{Compare here the best fit oscillation parameters to the FLERCNN results and try to quantify it, stating the pitfalls of the comparitions (satistically fully dependent) (RED)}
+
+\subsection{Comparison to Other Experiments}
+
+\todo{make summary plot (masses and mixing limits on one) and then discuss wrt to other experiments? (RED)}
+
+
 % \begin{figure}[h]
 %     \includegraphics{figures/results/best_fit/best_fit_results_and_limits.png}
 % 	\caption[xx]{xx}
@@ -322,7 +332,18 @@ with their $+$\SI{1}{\sigma} uncertainty. All of them are compatible with the nu
 % \todo{make plot with BFPs and limit, comparing to upper limits from other experiments, think about how to present it (RED)}
 
 
-% \subsection{Likelihood Coverage}
+\section{Outlook}
 
-% To find the CLs, the profile likelihood was evaluated by applying Wilks' theorem. It is not guaranteed however, that the theorem holds, and it is therefore important to check the \textit{coverage} of the likelihood. For a chosen CL, like the \SI{90}{\percent} CL, the coverage is tested by calculation the fraction of measurements with pseudo-data that fall within this region. The likelihood is said to be \textit{under-covering}, if fewer than \SI{90}{\percent} of the pseudo-data trials fall within the \SI{90}{\percent} CL contour. Oppositely, \textit{over-covering} means that more than \SI{90}{\percent} of the pseudo-data trials fall within the same contour. The coverage depends on the assumed true parameter values, and it is therefore checked at particular values that are interesting. For this analysis, the coverage is checked at several values of $|U_{\tau4}|^2$ between the BFP and the position of the \SI{90}{\percent} CL limit\todo{Does that make sense, do I need less, or even more? One mass sample, or all?}. Pseudo-data is generated at these points and two fits are run, one where the mixing is free and one where it is fixed to the true values. The coverage is assessed by counting the fraction of trials where the $\Delta\chi^2_{\mathrm{mod}}$ between the two fits is smaller than the threshold provided by Wilks' theorem. \reffig{coverage_0.6_GeV} shows the coverage for the \SI{0.6}{\gev} mass sample, where the coverage is found to be slightly under-covering/over-covering\todo{fix this with the real result}. The same is true for the other two mass samples and the corresponding plots can be found in \refsec{coverage_appendix}. This means that the CLs shown in \reftab{best_fit_parameters_and_confidence_levels} are slightly conservative/optimistic.
+\subsection{Shape Analysis Improvements}
 
+\begin{itemize}
+    \item estimate full contribution from cascade only events (underestimated due to limited sampling distributions)
+    \item include double cascade classifier into Binning
+    \item further optimize binning
+\end{itemize}
+
+\subsection{Test Coupling to Electron/Muon Flavor}
+
+\subsection{Test Additional Coupling Processes}
+
+\subsection{IceCube Upgrade}
