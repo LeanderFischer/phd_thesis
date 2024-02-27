@@ -211,7 +211,7 @@ In an initial step, each photon's absorption length is sampled from an exponenti
 
 The second part of simulating the IceCube detector is the DOM response. Whether a photon that reached a DOM produces a signal depends on the total efficiency and the angular acceptance curve of the specific DOM. The total efficiency includes effects of the DOM glass, PMT quantum and photo-electron collection efficiencies, and it is wavelength dependent. Additionally, there is another angle dependent effect called \textit{hole ice} \sidecite{Fiedlschuster:2019unl}. This effect is due to varied ice properties resulting from the re-freezing process of the water column inside the borehole after deployment of the string.
 % Due to bubble formation the ice is less transparent than the surrounding ice and an additional angular acceptance is added, which can increase or decrease the efficiency to detect photons.
-Accepted photons are converted into a so-called \textit{Monte Carlo photo-electron (MCPE)}. The amount of charge measured for each MCPE is determined by sampling from a mixture of two exponential distributions and a normal distribution. This \textit{single photo-electron (SPE)} distribution was tuned to match the observed distribution in each DOM in an \textit{in-situ} calibration study \sidecite{spe_respose_pmt}. \reffig{spe_distribution}\todo{Add SPE distribuiton plot (RED)} shows the distribution compared to a lab measurement. Based on the sampled charges and times of MCPEs, the voltage waveforms for the (two) different readout channels are simulated and passed on to the trigger simulation starting with \textit{WaveDeform}, which was already mentioned in \refsec{ice_and_DOMs}.
+Accepted photons are converted into a so-called \textit{Monte Carlo photo-electron (MCPE)}. The amount of charge measured for each MCPE is determined by sampling from a mixture of two exponential distributions and a normal distribution. This \textit{single photo-electron (SPE)} distribution was tuned to match the observed distribution in each DOM in an \textit{in-situ} calibration study \sidecite{spe_respose_pmt}. \reffig{spe_distribution} shows the distribution compared to a lab measurement. Based on the sampled charges and times of MCPEs, the voltage waveforms for the (two) different readout channels are simulated and passed on to the trigger simulation starting with \textit{WaveDeform}, which was already mentioned in \refsec{ice_and_DOMs}.
 
 \begin{margintable}
 \small
@@ -233,6 +233,12 @@ Accepted photons are converted into a so-called \textit{Monte Carlo photo-electr
 \caption[Vuvuzela noise simulation parameters]{Typical parameter values used in the vuvuzela noise simulation. Averaged over all DOMs.}
 \labtab{vuvuzela_parameters}
 \end{margintable}
+
+\begin{figure}[h]
+    \includegraphics[width=.9\textwidth]{figures/simulation_and_processing/SPE_TA003_2.pdf}
+	\caption[Single photo-electron charge distribution]{Single photo-electron charge distribution shown for a lab measurement in red (TA0003), various hardware configurations in black dashed, dotted, and solid lines, and the \SI{68}{\percent} and \SI{90}{\percent} spread of the measured charged templates for all DOMs. All curves are normalized to the same area. The figure is taken from \cite{spe_respose_pmt}.}
+    \labfig{spe_distribution}
+\end{figure}
 
 Besides the Cherenkov photons, IceCube also observes photons that are produced in radioactive decays inside the DOMs, both in the glass housing sphere and the PMT glass itself. To simulate this internal noise, the \emph{Vuvuzela} module \sidecite{MLarson_master, MLarson_phd} is used to create additional MCPEs that are fed into the same simulation chain described above. This module takes into account thermal and non-thermal components and their times are sampled using parameterizations of the measured distributions, where the thermal noise component is uncorrelated photons and the non-thermal component is from burst of photons. The noise hits are simulated by drawing the times from a constant rate Poisson process and the number of photons from a Poisson distribution. Then the time differences between the individual photons per hit is found, based on a Log-Normal distribution. The simulation is defined by 5 parameters that are calibrated for each DOM individually. \reftab{vuvuzela_parameters} shows the average values for these parameters.
 
@@ -481,7 +487,7 @@ Due to bubble formation in the re-freezing process of the boreholes, the hole ic
 
 \paragraph{Ice Model:}
 
-\todo{explain the BFR ice thingie (RED)}
+The ice model used in IceCube is continuously improved, and the recent models incorporate the birefringent polycriystalline microstructure \sidecite{bfr_ice_tc-18-75-2024} into the bulk ice properties. To account for the uncertainty, due to this un-modeled effect in the ice model used for the simulation production, an additional simulation sample is produced using the newer version of the ice model, that incorporates the \textit{birefringence (BFR)} effect. 
 
 
 \subsection{Muon Uncertainties}

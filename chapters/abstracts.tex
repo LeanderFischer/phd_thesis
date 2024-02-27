@@ -1,21 +1,23 @@
 % abstract page(s) are in two separate files to simplify word counting with e.g. ' wc abstract-ger.tex'
 
 \thispagestyle{plain}
+\begin{minipage}[c][0.4\textheight][b]{0.9\textwidth}
+    \huge
+    \textbf{Abstract}
+    \normalsize
+    \par
+    \vspace{1.0cm}
+    \input{chapters/abstract-eng}
+\end{minipage}
 
-\huge
-\textbf{Abstract}
-\normalsize
-\par
-\vspace{1.0cm}
-\input{chapters/abstract-eng}
+% \newpage
+% \thispagestyle{plain}
 
-
-\newpage
-\thispagestyle{plain}
-
-\huge
-\textbf{Zusammenfassung}
-\normalsize
-\par
-\vspace{1.0cm}
-\input{chapters/abstract-ger}
+\begin{minipage}[c][0.4\textheight][b]{0.9\textwidth}
+    \huge
+    \textbf{Zusammenfassung}
+    \normalsize
+    \par
+    \vspace{1.0cm}
+    \input{chapters/abstract-ger}
+\end{minipage}

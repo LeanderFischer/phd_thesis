@@ -8,6 +8,16 @@
 \todo{Write introduction (RED)}
 
 
+The observation of neutrino oscillations has established that neutrinos have non-zero masses. This phenomenon is not explained by the standard model of particle physics, but one viable explanation to this dilemma is the existence of \textit{heavy neutral leptons (HNLs)}, in the form of right-handed neutrinos with masses much larger than the observed neutrino masses ($\gg$\si{\electronvolt}). Depending on their mass and coupling to standard model neutrinos, these particles could also play an important role in solving further problems such as baryogenesis or serve as dark matter candidates.
+
+This work presents the first search for HNLs with the IceCube Neutrino Observatory. The standard three flavor neutrino model is extended by adding a fourth GeV-scale mass state and allowing mixing with the tau neutrino through the mixing parameter \ut4. The strength of this mixing is tested using atmospheric neutrinos as a source flux. Muon neutrinos that oscillated into tau neutrinos can produce HNLs through neutral current interactions, which then decay back to standard model particles. Both production and decay may produce observable light in the detector, leading to a unique signature of two cascades at low energies.
+
+The measurement is performed through a binned, maximum likelihood fit, comparing the observed data to the expected events from atmospheric neutrinos and HNLs. Three HNL mass values, $m_4$, of \SI{0.3}{\gev}, \SI{0.6}{\gev}, and \SI{1.0}{\gev} are tested using ten years of data, collected between 2011 and 2021. The fits constrain the mixing parameter to \ut4$ < 0.19\;(m_4 = \SI{0.3}{\gev})$, \ut4$ < 0.36\;(m_4 = \SI{0.6}{\gev})$, and \ut4$ < 0.40\;(m_4 = \SI{1.0}{\gev})$ at \SI{90}{\percent} confidence level. No significant signal of HNLs is observed for any of the tested masses, and the best fit mixing values obtained are consistent with the null hypothesis of no mixing.
+
+Additionally, a thorough investigation of the unique low energy double cascade signature of HNLs in IceCube is performed. A benchmark reconstruction performance is estimated using a well established IceCube reconstruction tool, after optimizing it for low energy double cascade events. The limitations of the detector to observe these events are identified, and their origins are discussed. This first analysis lays the fundamental groundwork for future searches for HNLs in IceCube.
+
+
+
 \paragraph{notes for the introduction}
 \begin{itemize}
     \item observation of non-zero neutrino masses indicates likely existence of new physics beyond the standard model
@@ -17,6 +27,27 @@
     \item In 1984 the PS191 [G. Bernardi et al., Phys. Lett. B 166, 479 (1986), G. Bernardi et al., Phys. Lett. B 203, 332 (1988)] experiment at CERN appears to have been the earliest beam dump to report HNL bounds from the direct production and decay.
     \item 
 \end{itemize}
+
+
+
+
+During my time at desy and in IceCube, I have been involved in several projects, which are not all directly related to the main analysis presented in this thesis. I will give a brief overview of my scientific contributions and how they are related to the main analysis.
+
+In close collaboration with a former colleague (Alex Trettin), we developed a novel method to treat detector uncertainty effects in IceCube, which we documented in a few author paper, and which is now one of the default method to incorporate detector uncertainties in atmospheric neutrino analyses in IceCube. This method will also be used in the main analysis of this thesis and is briefly introduced in \refsec{ultrasurfaces}.
+
+Throughout the last years, I was also involved in updating and maintaining the open source analysis framework PISA, which is used in many analyses.
+
+
+
+\textbf{Work related (what is my original work):}
+\begin{itemize}
+    % \item developed a method to treat detector uncertainty effects in close collaboration with former colleague (A. Trettin) which is well documented in a published paper and her thesis but will be introduced in \refsec{ultrasurfaces} and used in the main analysis of this work
+    % \item say something about my PISA contribution
+    \item the model independent simulation chain described in \refsec{model_independent_simulation} was developed exclusively by myself
+    \item for the model dependent generator presented in \refsec{model_dependent_simulation}, the skeletal structure was constructed by collaborators, before I took over and implemented the full model dependent simulation chain, including the correct decay widths calculations, custom cross-section, and the weighting scheme, continuously optimizing and testing it, before producing and processing the full samples for the main analysis
+    \item both the study on how well IceCube can detect low energy double cascades in \refch{double_cascade_performance} and the main analysis in \refch{shape_analysis} were developed and performed by myself independently and are original work
+\end{itemize}
+
 
 
 The neutrino was postulated by Wolfgang Pauli \sidecite{Pauli:1930pc} in 1930 to explain the continuous energy spectrum of electrons originating from beta decay.
