@@ -272,6 +272,37 @@ The effective ice model parameter, $N_\rm{bfr}$, prefers a value of $\sim$\SI{0.
 \todo{Show best fit hole ice angular acceptance compared to nominal and flasher/in-situ fits, maybe? (YELLOW)}
 
 
+\subsection{Agreement with Standard Model Three-Flavor Oscillation Measurement}
+
+{\renewcommand{\arraystretch}{1.1}
+\begin{margintable}
+    \footnotesize
+    \begin{tabular}{ ccc }
+        \hline\hline
+        \textbf{$m_4$} & \textbf{$\sin^2{\theta_{23}}$} & \textbf{$\Delta m^2_{32}\,[\si{\electronvolt^2}]$} \\
+        \hline\hline
+        \SI{0.3}{\gev} & 0.554 & $0.0238$ \\
+        \SI{0.6}{\gev} & 0.551 & $0.0238$ \\
+        \SI{1.0}{\gev} & 0.553 & $0.0238$ \\
+        \hline
+    \end{tabular}
+\caption[Best fit oscillation parameters]{Best fit oscillation parameters from the three mass sample fits. The values are compatible with the IceCube result within the uncertainties.}
+\labtab{hnl_oscilation_parameters}
+\end{margintable}
+}
+
+The recently performed atmospheric neutrino oscillation measurement by the IceCube collaboration resulted in a best fit point of $\sin^2{\theta_{23}} = 0.544^{+0.030}_{-0.096}$ and $\Delta m^2_{32} = 2.40^{+0.03}_{-0.06} \times 10^{-3}\si{\electronvolt^2}$ \sidecite{flercnn_analysis_result}. The result used the identical \SI{10}{years} of data at the same final level selection, assuming normal mass ordering. The differences to this analysis are the choice of fit metric and the use of the previous treatment of detector systematic uncertainties. Both the choice of the fit metric and the detector systematic uncertainty treatment should not influence the best fit values and a naive comparison of the results to the results from this work is done, to validate this is the case. The best fit values are listed in \reftab{hnl_oscilation_parameters} and are all compatible with the IceCube result within the uncertainties. Since they are statistically fully dependent, a more rigorous quantitative comparison would be more involved and is not performed here. The agreement is still interpreted as a first validation of the new detector systematics treatment. 
+
+% $\sin^2{\theta_{23}} = 0.554, 0.551, 0.553$ for $(0.3, 0.6, 1.0) \si{\gev}$
+
+% $\Delta m^2_{32} =(2.38, 2.38, 2.38 ) \times 10^{-3}\si{\electronvolt^2}$ for $(0.3, 0.6, 1.0) \si{\gev}$
+
+% dm21 = 7.41 * 10^-5 eV^2
+
+% $\theta_{23} [\si{\degree}]$ & 48.117185 & 47.918758 & 48.010986 \\
+% $\Delta m^{2}_{31} [\si{\electronvolt^2}]$ & 0.002454  & 0.002454  & 0.002455 \\
+
+
 \subsection{Best Fit Parameters and Limits}
 
 The fitted mixing values are
@@ -306,10 +337,6 @@ with their $+$\SI{1}{\sigma} uncertainty. All of them are compatible with the nu
     \labfig{brazil_bands}
 \end{figure*}
 
-
-\subsection{Agreement with Standard Model Three-Flavor Oscillation Measurement}
-
-\todo{Compare here the best fit oscillation parameters to the FLERCNN results and try to quantify it, stating the pitfalls of the comparitions (satistically fully dependent) (RED)}
 
 \subsection{Comparison to Other Experiments}
 
