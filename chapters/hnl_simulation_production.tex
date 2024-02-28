@@ -1,25 +1,24 @@
 \setchapterstyle{kao}
 \setchapterpreamble[u]{\margintoc}
 
-\chapter{Heavy Neutral Lepton Signal Simulation}
+\chapter{Heavy Neutral Lepton Event Generation}
 \labch{signal_simulation}
 
-% After the SM simulation generation and the default low energy event selection and processing chain were introduced in the previous \refch{simulation_and_processing}, the focus will now be on the central part of this thesis - the HNL signal simulation.
-The central part of this thesis is the HNL signal simulation itself. Since this is the first search for HNLs with IceCube DeepCore, there was no prior knowledge of the number of events expected per year nor of the expected performance in terms of reconstruction and classification accuracy which governs the \SI{90}{\percent} confidence level on estimating the $|U_{\tau4}|^2$ mixing matrix element. This is the first HNL simulation developed for IceCube DeepCore. Two avenues of simulation generation were pursued in parallel. The physically accurate, model dependent simulation is described in \refsec{model_specific_simulation} and a collection of model independent simulation samples was realized and is explained in \refsec{model_independent_simulation}. The latter is used for performance benchmarking and as a cross-check for the model dependent simulation. The SM simulation generation and the default low energy event selection and processing chain are introduced in \refch{simulation_and_processing} and everything but the generation is applied identically to both neutrinos and HNLs.
+The central part of this thesis is the HNL signal simulation itself. Since this is the first search for HNLs with IceCube DeepCore, there was no prior knowledge of the number of events expected per year nor of the expected performance in terms of reconstruction and classification accuracy. This chapter describes the first HNL event generation developed for IceCube DeepCore. Two avenues of generation were pursued in parallel. A collection of model-independent simulation samples is explained in \refsec{model_independent_simulation}. They were used for performance benchmarking and for cross-checks to validate the physically accurate, model-dependent simulation, which is described in \refsec{model_specific_simulation}. For completeness, the event generation for SM background events is briefly described in \refsec{sm_event_generation}. The default low-energy event selection and processing chain, which is applied identically to both background and signal, is introduced in \refch{simulation_and_processing}.
 
 \todo{JVS:
 I would describe simulation sets you produced in past rather than present tense (ORANGE)
 }
 
 
-\section{Model Independent Simulation} \labsec{model_independent_simulation}
+\section{Model-Independent Simulation} \labsec{model_independent_simulation}
 
-To investigate the potential of IceCube to detect HNLs by identifying the unique double cascade morphology explained in \refsec{double_cascade_morphology}, it is very valuable to have a simulation chain where the double cascade kinematics can be controlled directly. In a realistic model the decay kinematics and the absolute event expectation all depend on the specific model parameters chosen (see \refsec{hnl_theory}). To decouple the simulation from a specific parameter choice, a model independent double cascade generator was developed. Using this generator several simulation samples were produced to investigate the performance of IceCube DeepCore to detect low energetic double cascades, dependent on their properties. All samples are produced using a collection of custom generator functions \cite{cascade_generator_functions} that place two EM cascade vertices with variable energy and direction at choosable locations in the detector. The results of this study will be discussed in \refch{double_cascade_performance}.
+To investigate the potential of IceCube to detect HNLs by identifying the unique double cascade morphology explained in \refsec{double_cascade_morphology}, a model-independent double cascade generator was developed, where the kinematics of each cascade can be controlled directly. Using this generator, several simulation samples were produced to investigate the performance of IceCube DeepCore to detect low-energy double cascades, dependent on their properties. All samples are produced using a collection of custom generator functions \cite{cascade_generator_functions} that place two EM cascade vertices with variable energy and direction at configurable locations in the detector.
 
 
 % \subsection{Generator Functions}
 
-% In order to produce the model independent simulation a series of generator functions was implemented in \textsc{Python} \sidecite{python}. The collection of functions can be found in \href{https://github.com/LeanderFischer/icetray_double_cascade_generator_functions}{this public repository}. A few independent functions are needed to perform the sampling based on a random variable between \SIrange[range-phrase={~and~}]{0}{1}{} as input. There is a simple function to return a random sign ($+1/-1$) and two functions to sample from a power law and an exponential distribution. The inputs are the wanted sampling range and the power law index or the exponential decay constant, respectively. They both apply the inverse transformation method.
+% In order to produce the model-independent simulation a series of generator functions was implemented in \textsc{Python} \sidecite{python}. The collection of functions can be found in \href{https://github.com/LeanderFischer/icetray_double_cascade_generator_functions}{this public repository}. A few independent functions are needed to perform the sampling based on a random variable between \SIrange[range-phrase={~and~}]{0}{1}{} as input. There is a simple function to return a random sign ($+1/-1$) and two functions to sample from a power law and an exponential distribution. The inputs are the wanted sampling range and the power law index or the exponential decay constant, respectively. They both apply the inverse transformation method.
 
 % Additionally, there are some functions that are IceCube specific. Two functions are implemented to transform a direction from IceCube zenith/azimuth angles to a direction vector and vice versa. There is a function to create an EM cascade particle from position, direction, energy, and time and another to produce an arbitrary list of EM cascades, with the previous function, given the list of input parameters, and then adding it to the current IceCube event. Based on these functions, any specific simulation sample can be produced by choosing the sampling distributions and number of cascades to be placed in each event and then calling the generator functions with the input parameters based on these sampling distributions.
 % \begin{kaobox}[frametitle=IceCube software framework]
@@ -38,7 +37,7 @@ To investigate the potential of IceCube to detect HNLs by identifying the unique
     \labfig{deepcore_distances}
 \end{figure}
 
-To investigate some idealistic double cascade event scenarios, two samples are produced for straight up-going events that are centered on a string and horizontal events located inside DeepCore.
+To investigate the best-case and the worst-case double cascade event scenarios, two samples are produced in the DeepCore volume: straight up-going events ($\cos(\theta)=-1$) that are centered on a string and horizontal events ($\cos(\theta)=0$).
 
 \begin{table}
     \small
@@ -63,33 +62,32 @@ To investigate some idealistic double cascade event scenarios, two samples are p
         & $z$ position & fixed & \SI{-330.0}{\metre} \\
         \hline
         \end{tabular}
-    \caption[Simplified model independent simulation sampling distributions]{Generation level sampling distributions and ranges/values of up-going and horizontal model independent simulation.}
+    \caption[Simplified model-independent simulation sampling distributions]{Generation level sampling distributions and ranges/values of up-going and horizontal model-independent simulation.}
     \labtab{hnl_simplified_sampling_distributions}
 \end{table}
 
-The first sample is used to investigate one of the most promising scenarios to detect a double cascade, where both cascade centers are located on a DeepCore string (namely string 81) and the directions are directly up-going. The horizontal positions and distances of all DeepCore fiducial volume strings are shown in \reffig{deepcore_distances} and string 81 is at a medium distance of $\sim\SI{70}{\metre}$ to its neighboring strings. As already mentioned in \refsec{deepcore}, DeepCore strings have higher quantum efficiency DOMs and a denser vertical spacing, making them better to detect low energetic events that produce little light. To produce the events, the $x,y$ position of the cascades is fixed to the center of string 81 while the $z$ positions are each sampled uniformly along the axis of the string. Note here that this will therefore not produce a uniform length distribution between the cascades. The positions are defined in the IceCube coordinate system that was already introduced in \refsec{icecube}. The energies are sampled uniformly between \SIrange[range-phrase={~and~}]{0.0}{60.0}{\gev}. The specific sampling distributions/values for the cascades are listed in \reftab{hnl_simplified_sampling_distributions}. The order of the cascades is chosen such that the lower one is first ($t_0=\SI{0.0}{\nano\second}$) and the upper one is second ($t_1=L/c$), assuming the speed of light $c$ as speed of the heavy mass state, traveling between the two cascades.
-% The generation level distributions of the up-going sample are shown in \reffig{upgoing_string81_gen_distris}.
+The first sample is used to investigate one of the most promising scenarios to detect a double cascade, where both cascade centers are located on a DeepCore string and the directions are directly up-going. From the DeepCore strings, string 81 was randomly chosen as the $x$-$y$ coordinate for this sample. The horizontal positions and distances of all DeepCore fiducial volume strings are shown in \reffig{deepcore_distances} and string 81 is at a medium distance of $\sim\SI{70}{\metre}$ to its neighboring strings. As already mentioned in \refsec{deepcore}, DeepCore strings have higher quantum efficiency DOMs and a denser vertical spacing, making them better to detect low-energy events that produce little light. To produce the events, the $x,y$ position of the cascades is fixed to the center of string 81 while the $z$ positions are each sampled uniformly along the axis of the string. Note that this will therefore not produce a uniform length distribution between the cascades. The positions are defined in the IceCube coordinate system that was introduced in \refsec{icecube}. The energies are sampled uniformly between \SIrange[range-phrase={~and~}]{0.0}{60.0}{\gev}, to generously cover the region where $\nu_\mu\rightarrow\nu_\tau$ appearance is maximized. The specific sampling distributions/values for the cascades are listed in \reftab{hnl_simplified_sampling_distributions}. The time of the lower cascade is set to $t_0=\SI{0.0}{\nano\second}$ and for the upper one to $t_1=L/c$, assuming the HNL travels at the speed of light, $c$.
 
 \begin{figure*}[h]
     \centering
     \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/1_d_distr_energies_clipped.png}
     \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/1_d_distr_true_decay_length_clipped.png}
-    \caption[Simplified model independent simulation generation level distributions]{Generation level distributions of the simplistic simulation samples. Cascade and total energies (left) and decay lengths (right) of both samples are shown.}
+    \caption[Simplified model-independent simulation generation level distributions]{Generation level distributions of the simplistic simulation samples. Cascade and total energies (left) and decay lengths (right) of both samples are shown.}
     \labfig{simplified_gen_distris}
 \end{figure*}
 
 \todo{Re-make plot with all energies (cascades and total, both samples (they are the same)) (RED)}
 \todo{Re-make plot with all decay lengths (both samples) (RED)}
 
-The second sample is used to investigate the reconstruction performance for horizontal events, where the spacing between DOMs is much larger. The cascades are placed uniformly on a circle centered in DeepCore. The direction is always horizontal and azimuth is defined by the connecting vector of both cascade positions. The energies are again sampled uniformly between \SIrange[range-phrase={~and~}]{0.0}{60.0}{\gev} and the detailed sampling distributions/values are also listed in \reftab{hnl_simplified_sampling_distributions}. Some examples of the generation level distributions of the simplified samples are shown in \reffig{simplified_gen_distris}\todo{describe why these are shown to highlight some key aspect (uniformity in both energies to sample the whole space, decay length as a result of the z sampling etc..), also add this shortly to the caption (RED)}, while further distributions can be found in \reffig{simplified_gen_distris_appendix}.
+The second sample is used to investigate the reconstruction performance for horizontal events, where the spacing between DOMs is much larger. The cascades are placed uniformly on a circle with radius of $r=\SI{150}{\meter}$ centered in DeepCore at the depth of $z=\SI{-330}{\meter}$. The direction is always horizontal and azimuth is defined by the connecting vector of both cascade positions. The energies are again sampled uniformly between \SIrange[range-phrase={~and~}]{0.0}{60.0}{\gev} and the detailed sampling distributions/values are also listed in \reftab{hnl_simplified_sampling_distributions}. Some examples of the generation level distributions of the simplified samples are shown in \reffig{simplified_gen_distris}\todo{describe why these are shown to highlight some key aspect (uniformity in both energies to sample the whole space, decay length as a result of the z sampling etc..), also add this shortly to the caption (RED)}, while further distributions can be found in \reffig{simplified_gen_distris_appendix}.
 % The variables that are uniformly sampled or fixed to a certain value are not presented.
 
 
 \subsection{Realistic Sample} \labsec{realistic_sample}
 
-To thoroughly investigate the potential of IceCube DeepCore to detect double cascade events, a more realistic simulation sample is produced that aims to be as close as possible to the expected signal simulation explained in \refsec{model_specific_simulation}, while still allowing additional freedom to control the double cascade kinematics. For this purpose the total energy is sampled from an $E^{-2}$ power law, mimicking the energy spectrum of the primary neutrinos as stated in \refsec{neutrino_generation}.
+To thoroughly investigate the potential of IceCube DeepCore to detect double cascade events, a more realistic simulation sample is produced that aims to be as close as possible to the expected signal simulation explained in \refsec{model_specific_simulation}, while still allowing additional freedom to control the double cascade kinematics. This sample is particularly useful for validating the model-dependent HNL simulation described in \refsec{model_specific_simulation}. For this purpose the total energy is sampled from an $E^{-2}$ power law, mimicking the energy spectrum of the primary neutrinos as stated in \refsec{neutrino_generation}.
 % Although in the realistic process described in \refsec{model_specific_simulation} the energy is distributed in a more complex way into the two cascades and secondary particles, it is a good approximation to simply
-The total energy is divided into two parts, by assigning a fraction between \SIrange[range-phrase={~and~}]{0}{100}{\percent} to one cascade and the remaining part to the other cascade. This is a generic approximation of the realistic process described in \refsec{model_specific_simulation}, and chosen such that the whole sample covers various cases of energy distributions between the two cascades. To efficiently generate events in a way that produces distributions similar to what would be observed with DeepCore, one of the cascade positions is sampled inside the DeepCore volume by choosing its coordinates uniformly on a cylinder that is centered in DeepCore. This is similar to a trigger condition of one cascade always being inside the DeepCore fiducial volume. By choosing the direction of the event by sampling zenith and azimuth uniformly between \SIrange[range-phrase={~and~}]{70}{180}{\degree} and \SIrange[range-phrase={~and~}]{0}{360}{\degree}, respectively, the position of the other cascade can be inferred for a given decay length, assuming a travel speed of $c$, and choosing whether the cascade position that was sampled is the first cascade or the second with a \SI{50}{\percent} chance. The decay length is sampled from an exponential distribution, as expected for a decaying heavy mass state.
+The total energy is divided into two parts, by assigning a fraction between \SIrange[range-phrase={~and~}]{0}{100}{\percent} to one cascade and the remaining part to the other cascade. This is a generic approximation of the realistic process described in \refsec{model_specific_simulation}, and chosen such that the whole sample covers various cases of energy distributions between the two cascades. To efficiently generate events in a way that produces distributions similar to what would be observed with DeepCore, one of the cascade positions is sampled inside the DeepCore volume by choosing its coordinates uniformly on a cylinder that is centered in DeepCore. This is similar to a trigger condition of one cascade always being inside the DeepCore fiducial volume. Choosing the direction of the event by sampling zenith and azimuth uniformly between \SIrange[range-phrase={~and~}]{70}{180}{\degree} and \SIrange[range-phrase={~and~}]{0}{360}{\degree}, respectively, the position of the other cascade can be inferred for a given decay length, assuming a travel speed of $c$, and choosing whether the cascade position that was sampled is the first cascade or the second with a \SI{50}{\percent} chance. The zenith angle is chosen between straight up-going (zenith of \SI{180}{\degree}) and slightly down-going from above the horizon (\SI{70}{\degree}) to mimic an event selection that reduces atmospheric muons by rejecting events coming from above the horizon, but still incorporates some down-going events. The decay length is sampled from an exponential distribution, as expected for a decaying heavy mass state.
 % Based on the direction and the decay length, the position of the other cascade is found, assuming a travel speed of $c$ and randomly choosing whether the cascade position that was sampled is the first cascade or the second and then assigning the other cascade position accordingly.
 The sampling distributions/values are listed in \reftab{hnl_realistic_sample_sampling_distributions}. Example distributions of the generation level variables are shown in \reffig{realistic_gen_distris}\todo{again, describe what is shown and why this is interesting (e.g. energy distribution between the cascades, realistic exponential decay length distribtuion..) also add this to the captions shortly (RED)}, while further distributions can be found in \reffig{realistic_gen_distris_appendix}.
 
@@ -107,26 +105,26 @@ The sampling distributions/values are listed in \reftab{hnl_realistic_sample_sam
         $z$ (one cascade) & uniform & \SIrange{-480.0}{-180.0}{\metre}\\
         \hline
         \end{tabular}
-        \caption[Realistic model independent simulation sampling distributions]{Generation level sampling distributions and ranges/values of the realistic model independent simulation.}
+        \caption[Realistic model-independent simulation sampling distributions]{Generation level sampling distributions and ranges/values of the realistic model-independent simulation.}
     \labtab{hnl_realistic_sample_sampling_distributions}
 \end{table}
 
 \begin{figure*}
         \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_all_energies_clipped.png}
         \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_true_decay_length_clipped.png}
-    \caption[Realistic model independent simulation generation level distributions]{Generation level distributions of the simplistic realistic sample. Shown are the cascade and total energies (left) and decay lengths (right).}
+    \caption[Realistic model-independent simulation generation level distributions]{Generation level distributions of the simplistic realistic sample. Shown are the cascade and total energies (left) and decay lengths (right).}
     \labfig{realistic_gen_distris}
 \end{figure*}
 
 
-\section{Model Dependent Simulation} \labsec{model_specific_simulation}
+\section{Model-Dependent Simulation} \labsec{model_specific_simulation}
 
-To estimate the HNL event expectation in IceCube DeepCore, depending on the specific model parameters, a generator was developed that is based on the HNL theory introduced in \refsec{hnl_theory}. For this work, only the interaction with the $\tau$-sector was taken into account ($|U_{\alpha4}^2|=0$, $\alpha=e,\mu$), which reduces the physics parameters of interest and relevent for the simulation to the fourth heavy lepton mass, $m_4$, and the mixing, $|U_{\tau4}^2|$. The generator uses a customized \textit{\textsc{LeptonInjector} (LI)} version to create the events and \textit{\textsc{LeptonWeighter} (LW)} to weight them \sidecite{IceCube:2020tcq}. The modified LI and the essential components needed for the HNL simulation are described in the next sections, followed by the description of the weighting scheme and the sampling distributions chosen for the simulation generation.
+To estimate the HNL event expectation in IceCube DeepCore, depending on the specific model parameters, a generator was developed that is based on the HNL theory introduced in \refsec{hnl_theory}. For this work, only the interaction with the $\tau$-sector was taken into account ($|U_{\alpha4}^2|=0$, $\alpha=e,\mu$), which reduces the physics parameters of interest and relevent for the simulation to the fourth heavy lepton mass, $m_4$, and the mixing, $|U_{\tau4}^2|$. The generator uses a customized \textit{\textsc{LeptonInjector} (LI)} version to create the events and \textit{\textsc{LeptonWeighter} (LW)} to weight them \sidecite{IceCube:2020tcq}. The modified LI and the essential components needed for the HNL simulation are described in the next sections, followed by the description of the weighting scheme and the sampling distributions chosen for the generation.
 
 
 \subsection{Custom LeptonInjector} \labsec{custom_leptoninjector}
 
-In its standard version, the LI generator produces neutrino interactions by injecting a lepton and a hadronic cascade at the interaction vertex of the neutrino, where the lepton is the charged (neutral) particle produced in a CC (NC) interaction and the cascade is the hadronic cascade from the breaking nucleus. The hadronic cascade is stored as a specific object of type \textit{Hadrons}, which triggers the correct simulation of the shower development in the following simulation steps, identical to what will be described for SM neutrino simulation on \refsec{neutrino_generation}. The main differences to an EM cascade is that part of the energy will not be observed, because it goes into neutral particles, and that the spatial development of the shower is different. Both objects are injected with the same $(x,y,z,t)$ coordinates and the kinematics are sampled from the differential and total cross-sections that are one of the inputs to LI.
+In its standard version, the LI generator produces neutrino interactions by injecting a lepton and a hadronic cascade at the interaction vertex of the neutrino, where the lepton is the charged (neutral) particle produced in a CC (NC) interaction and the cascade is the hadronic cascade from the breaking nucleus. The hadronic cascade is stored as a specific object of type \textit{Hadrons}, which triggers the correct simulation of the shower development in the following simulation steps, identical to what is described for neutrinos in \refsec{neutrino_generation}. The main differences to an EM cascade is that part of the energy will not be observed, because it goes into neutral particles, and that the spatial development of the shower is different as discussed in \refsec{hadronic_showers}. Both objects are injected with the same $(x,y,z,t)$ coordinates and the kinematics are sampled from the differential and total cross-sections that are one of the inputs to LI.
 
 \begin{figure}[h]
     \includegraphics{hnl_simulation/decay_theory/branching_ratios_log_up_to_1.0_GeV.png}
@@ -134,9 +132,9 @@ In its standard version, the LI generator produces neutrino interactions by inje
     \labfig{hnl_branching_ratios}
 \end{figure}
 
-In the modified version, the SM lepton at the interaction vertex is replaced by the new HNL particle, where the interaction cross-sections are replaced by custom, mass dependent HNL cross-sections. The HNL is forced to decay after a chosen distance\sidenote{The explicit sampling distributions and ranges can be found in \refsec{hnl_sampling_distributions}.} to produce secondary SM particles, where the decay mode is chosen with a probability given by the mass dependent branching ratios from the kinematically accessible decay modes shown in \reffig{hnl_branching_ratios}. The cross-section and decay width calculations were implemented for this purpose and will be explained in more detail in the following. Another needed addition to LI is that the decay products of the HNL are also added to the list of MC particles in each event. They are injected with the correctly displaced position and delayed time from the interaction vertex, given the HNL decay length. These HNL daughter particles form the second cascade, not as a single hadronic cascade object, but as the explicit particles forming the shower. The kinematics of the two-body decays are computed analytically, while the three-body decay kinematics are calculated with \textsc{MadGraph} \sidecite{madgraph}, which will also be explained further below. Independent of the number of particles in the final state of the HNL decay, the kinematics are calculated/simulated at rest and then boosted along the HNL momentum. 
+In the modified version, the SM lepton at the interaction vertex is replaced by the new HNL particle, where the interaction cross-sections are replaced by custom, mass dependent HNL cross-sections. The HNL is forced to decay after a chosen distance\sidenote{The explicit sampling distributions and ranges can be found in \refsec{hnl_sampling_distributions}.} to produce secondary SM particles, where the decay mode is chosen with a probability given by the mass dependent branching ratios from the kinematically accessible decay modes shown in \reffig{hnl_branching_ratios}. The cross-section and decay width calculations were implemented for this purpose and will be explained in more detail in the following. Another addition to LI is that the decay products of the HNL are also stored. These HNL daughter particles form the second cascade, not as a single hadronic cascade object, but as the explicit particles forming the shower. They are injected with the correctly displaced position and delayed time from the interaction vertex, given the HNL decay length. The kinematics of the two-body decays are computed analytically, while the three-body decay kinematics are calculated with \textsc{MadGraph} \sidecite{madgraph}, which will also be explained further below. Independent of the number of particles in the final state of the HNL decay, the kinematics are calculated/simulated at rest and then boosted along the HNL momentum. 
 
-The injection is done using the LI \textit{volume mode}, for the injection of the primary particle on a cylindrical volume, adding \SI{50}{\percent} of the events with $\nu_\tau$ and the other half with $\bar{\nu}_\tau$ as primary particle types. The generator takes the custom double-differential/total cross-section splines described below and the parameters defining the sampling distributions as inputs.
+The injection is done using the LI \textit{volume mode}, for the uniform injection of the primary particle on a cylindrical volume, adding \SI{50}{\percent} of the events with $\nu_\tau$ and the other half with $\bar{\nu}_\tau$ as primary particle types. The generator takes the custom double-differential/total cross-section splines described below and the parameters defining the sampling distributions as inputs.
 
 % For each frame \textit{OneWeight} and a reference weight are also calculated and stored using the \href{https://github.com/LeanderFischer/LeptonInjector-HNL/blob/main/LeptonInjector/python/hnl_weighting.py}{weighting functions} and a baseline atmospheric $\nu_\tau$ flux + oscillation spline. The weight will later be calculated inside of the analysis framework \href{https://github.com/icecube/pisa}{PISA}, based on the input OneWeight. In addition to the i3 file itself, a LeptonInjector configuration file is written which stores the needed information to produce event weights using LeptonWeighter. Optionally the script can also produce an hdf5 file with the same name in the same location. This will store a fixed set of keys, extracted from the i3 file.
 
@@ -160,7 +158,7 @@ is implemented for the NC case in the NuXSSplMkr code. Here
     \;,
     \labeq{hnl_kinematic_condition_variables}
 \end{align}
-with $x$ and $y$ being the Bjorken variables, $m_4$ and $M$ the mass of the heavy state and the target nucleon, respectively, and $s$ the center of mass energy squared. The custom version was made part of the open source NuXSSplMkr software and can thus be found in \cite{xsecmaker}. The result of this kinematic condition is that events cannot be produced for energy, $x$, $y$ combinations that don't have sufficient energy going into the outgoing, massive lepton. This results in a reduction of the cross-section towards lower energies, which scales with the assumed mass of the HNL. This effect can clearly be seen in \reffig{custom_hnl_cross_sections}.
+with $x$ and $y$ being the Bjorken variables, $m_4$ and $M$ the mass of the heavy state and the target nucleon, respectively, and $s$ the center of mass energy squared. The custom version was made part of the open source NuXSSplMkr software and can thus be found in \cite{xsecmaker}. The result of this kinematic condition is that events cannot be produced for energy, $x$, $y$ combinations that do not have sufficient energy to produce the outgoing, massive lepton. This results in a reduction of the cross-section towards lower energies, which scales with the assumed mass of the HNL. This effect can be seen in \reffig{custom_hnl_cross_sections}.
 
 \begin{figure*}[h]
     \includegraphics[width=.49\linewidth]{figures/hnl_simulation/cross_sections/custom_HNL_xsecs_final_SUM_flavorwise_total_xsecs_sigma-nutau-N-nc.png}
@@ -171,7 +169,7 @@ with $x$ and $y$ being the Bjorken variables, $m_4$ and $M$ the mass of the heav
 \end{figure*}
 \todo{Re-make plot with 3 target masses and better labels/legends etc. (RED)}
 
-The GRV98LO PDFs were added to the cross-section spline maker and used to create the HNL cross-sections for consistency with the SM neutrino simulation that will be explained in \refsec{neutrino_generation}. The double-differential ($\rm{d}\sigma\rm{d}x\rm{d}y$) and total ($\sigma$) cross-sections were produced for the chosen target HNL masses and then splined in energy, $x$, and $y$ and just in the energy, respectively. The produced cross-section are added to the custom LI version and used for the simulation generation and weighting. \reffig{custom_hnl_cross_sections} shows the total cross-sections that were produced compared to the cross-section used for the production of the SM $\nu_\tau/\bar{\nu}_\tau$ NC background simulation. They agree above a certain energy ($\sim\SI{200}{\GeV}$), where the modification should not have any effect on the cross-sections, which is the desired result of using the identical input PDFs and confirms that the unmodified cross-sections produced with NuXSSplMkr agree with the GENIE cross-sections, which were used to generate the SM background MC.
+The GRV98LO PDFs were added to the cross-section spline maker and used to create the HNL cross-sections for consistency with the neutrino simulation explained in \refsec{neutrino_generation}. The double-differential ($\rm{d}^2\sigma/\rm{d}x\rm{d}y$) and total ($\sigma$) cross-sections were produced for the chosen target HNL masses and then splined in energy, $x$, and $y$ for $\rm{d}^2\sigma/\rm{d}x\rm{d}y$ and $\sigma$ in the energy. \reffig{custom_hnl_cross_sections} shows the total cross-sections that were produced compared to the cross-section used for the production of the SM $\nu_\tau/\bar{\nu}_\tau$ NC background simulation. They agree above $\sim\SI{200}{\GeV}$, where the modification should not have any effect on the cross-sections. This is the desired result of using the identical input PDFs, and confirms that the unmodified cross-sections produced with NuXSSplMkr agree with the GENIE cross-sections.
 
 \todo{SB:
 emphasize the cut-off/suppression (ORANGE)
@@ -312,9 +310,9 @@ The specific MadGraph version used to produce the 3-body decay kinematics is \te
 
 \subsection{Sampling Distributions} \labsec{hnl_sampling_distributions}
 
-In principle, the generation level sampling distributions should be chosen such that at final level of the selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Initial distributions insufficiently covering the phase space leads to an underestimate of the expected rates, because part of the events that would pass the selection are not produced. This limits the expected analysis potential.
+In principle, the generation level sampling distributions should be chosen such that at the final level of the event selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Initial distributions insufficiently covering the phase space leads to an underestimation of the expected rates, because some of the events that would pass the selection are not produced. This limits the expected analysis potential.
 % This would still be correct as in being the more conservative estimate, but it would limit the analysis potential.
-Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV}, \SI{0.6}{\GeV}, and \SI{1.0}{\GeV}. Because during development it became clear that the low lengths component is crucial to get a reasonable event estimate, each sample consists of a part that is generated for very short decay lengths and one for long decay lengths. The remaining sampling distributions are identical for all samples and are listed in \reftab{model_dendent_sample_sampling_distributions}. The target number of events for each sample was \SI{2.5e9}. \reffig{hnl_gen_distris} shows some selected generation level distributions. Additional distributions can be found in \reffig{hnl_gen_distris_appendix}.\todo{What is the message of these plots? Make it clear in the text and also in the captions. Potentially cut down to one or two and leave the rest or move them to the appendix. (RED)}
+Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV}, \SI{0.6}{\GeV}, and \SI{1.0}{\GeV}. During development of the analysis it became clear that short decay lengths were undersampled at the final selection level. Therefore, each discrete mass sample consists of a part that is generated for very short decay lengths and one for long decay lengths. The remaining sampling distributions are identical for all samples and are listed in \reftab{model_dendent_sample_sampling_distributions}. The target number of events for each sample was \SI{2.5e9}{} at generation to result in sufficient MC statistics at final level. \reffig{hnl_gen_distris} shows some selected generation level distributions. Additional distributions can be found in \reffig{hnl_gen_distris_appendix}.\todo{What is the message of these plots? Make it clear in the text and also in the captions. Potentially cut down to one or two and leave the rest or move them to the appendix. (RED)}
 
 \begin{table}[h]
     \centering
@@ -331,7 +329,7 @@ Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV
         $L_\mathrm{decay}$ & $L^{-1}$ & [0.0004, 1000]\,\si{\metre} \\
         \hline
     \end{tabular}
-    \caption[Model dependent simulation sampling distributions]{Generation level sampling distributions and ranges/values of the model dependent simulation samples.}
+    \caption[Model-dependent simulation sampling distributions]{Generation level sampling distributions and ranges/values of the model-dependent simulation samples.}
     \labtab{model_dendent_sample_sampling_distributions}
 \end{table}
 
@@ -355,7 +353,7 @@ Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV
         \includegraphics{figures/hnl_simulation/generation/1_d_distr_casc1_true_energy_gen_level_unweighted.png}
         \caption{Second cascade energy}
     \end{subfigure}
-    \caption[Model dependent simulation generation level distributions]{Generation level distributions of the model dependent simulation.}
+    \caption[Model-dependent simulation generation level distributions]{Generation level distributions of the model-dependent simulation.}
     \labfig{hnl_gen_distris}
 \end{figure*}
 
@@ -367,7 +365,7 @@ Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV
 }
 
 To produce physically correct event distributions based on the simplified generation sampling distributions for the HNL simulation, the forward folding method that was already introduced for the SM simulation in \refsec{sm_event_generation} is also used.
-% The weighting scheme that will be explained in the following is implemented in a custom stage\sidenote{An analysis in PISA is a collection of functions that are written in so-called \textit{stages}. The stages can be combined in a \textit{pipeline} and are executed in a specific order. This particular stage is located in \texttt{pisa$/$stages$/$aeff$/$weight\_hnl.py}.} in the IceCube low energy analysis framework PISA \cite{pisa_software} \sidecite{pisa_paper}, which will be discussed in \refsec{analysis_framework}.
+% The weighting scheme that will be explained in the following is implemented in a custom stage\sidenote{An analysis in PISA is a collection of functions that are written in so-called \textit{stages}. The stages can be combined in a \textit{pipeline} and are executed in a specific order. This particular stage is located in \texttt{pisa$/$stages$/$aeff$/$weight\_hnl.py}.} in the IceCube low-energy analysis framework PISA \cite{pisa_software} \sidecite{pisa_paper}, which will be discussed in \refsec{analysis_framework}.
 % The custom weighting scheme is implemented in \href{https://github.com/icecube/pisa/blob/master/pisa/stages/aeff/weight_hnl.py}{this custom stage}.
 The only required input is the mixing strength $|U_{\tau4}|^2$, which is the variable physics parameter in this analysis.
 % This weighting is needed to go from the used decay length sampling distribution (inverse $1/L$ with fixed range in lab frame) to the target distribution (exponential defined by proper lifetime of the HNL).
@@ -418,3 +416,162 @@ Adding another factor of $|U_{\tau4}|^2$ to account for the mixing at the intera
     \labeq{weight_full}
 \end{equation}
 If this additional weighting factor is multiplied to a generation weight with units \si{\meter^2} (like in \refeq{neutrino_generation_weight}), the livetime in \si{\second}, and the oscillated primary neutrino flux in \si{\meter^{-2}\second^{-1}}, it results in the number of expected events in the detector for this particular MC event for a chosen mixing (and mass).
+
+
+\section{Background Simulation} \labsec{sm_event_generation}
+
+The MC is used in the analysis by applying a method called \textit{forward folding}, where a very large number of events (signal and background) is produced using sampling distribution that are tuned to have a large selection efficiency. Those distributions don't have to be physically correct distributions, but they need to cover the full parameter space of interest for the analysis. To produce a physical distribution, the events are weighted given a specific choice of physics and nuisance parameters. The large number of raw MC events ensures a good estimation of the expected numbers and weighted distributions. 
+
+The analysis itself is then performed by comparing the weighted MC distributions to the observed data. This is done by binning them as described in \refch{analysis} and calculating a loss function comparing the bin expectations to the data. The physics and nuisance parameters that best correspond to the observed data are estimated by minimizing this loss function. In order to achieve a reliable result with this method the MC needs to be precise and as close to the data as possible (at least at the final event selection). 
+
+
+\subsection{Neutrinos} \labsec{neutrino_generation}
+
+Due to the very low interaction rate of neutrinos, the event generation is performed in a way that forces every event to interact in a chosen sampling volume. The weight of each event is then calculated as the inverse of the simulated neutrino fluence
+\begin{equation}
+    w_\rm{gen} = \frac{1}{F_{\mathrm{sim}}} \frac{1}{N_{\mathrm{sim}}}
+    \;,
+    \labeq{neutrino_generation_weight}
+\end{equation}
+where $F_{\rm{sim}}$ is the number of neutrino events per energy, time, area, and solid angle and $N_{\rm{sim}}$ is the number of simulated events. If this weight is multiplied by the livetime and the theoretically expected neutrino flux for a given physical model, it results in the number of expected events in the detector for this particular MC event. The baseline neutrino flux used in this thesis, computed for the South Pole, is taken from Honda \textit{et al.} \sidecite{PhysRevD.92.023004_Honda_Flux}.
+
+The simulation volume is a cylinder centered in DeepCore with radius and height chosen such that all events possibly producing a signal are contained. The different sizes, chosen depending on energy and neutrino flavor, are shown in \reftab{genie_sampling_cylinder}.
+\begin{table}
+    \begin{center}
+        % \small
+        \footnotesize
+        % \begin{tabular}{ p{1.0cm} p{1.8cm} p{1.3cm} p{1.3cm} p{1.4cm} p{0.6cm} }
+        \begin{tabular}{ l l l l l l }
+
+            \hline\hline
+
+            \textbf{Flavor} & \textbf{Energy [\si{\gev}]} & \textbf{Radius [\si{\metre}]} & \textbf{Length [\si{\metre}]} & \textbf{Events/File}  & \textbf{Files}\\ 
+
+            \hline\hline
+
+            \multirow{4}{*}[-1.em]{ $\nu_e+\bar{\nu_e}$ }
+            & 1-4
+            & \multirow{1}{*}[-1.em]{ 250 }
+            & \multirow{1}{*}[-1.em]{ 500 }
+            & 450000
+            & \multirow{4}{*}[-1.em] {650} \\
+
+            \cmidrule{2-2}
+            \cmidrule{5-5}
+            
+            & 4-12
+            & 
+            & 
+            & \multirow{1}{*}[-1.em] { 100000 }
+            & \\
+
+            \cmidrule{2-4}
+
+            & 12-100
+            & 350
+            & 600
+            & 
+            & \\
+
+            \cmidrule{2-5}
+
+            & 100-10000
+            & 550
+            & 1000
+            & 57500
+            & \\
+
+            \hline
+            \hline
+
+            \multirow{4}{*}[-1.em]{ $\nu_\mu+\bar{\nu_\mu}$ }
+            & 1-5
+            & 250
+            & 500
+            & 408000
+            & \multirow{4}{*}[-1.em] {1550} \\
+
+            \cmidrule{2-5}
+            
+            & 5-80
+            & 400
+            & 900
+            & 440000
+            & \\
+
+            \cmidrule{2-5}
+
+            & 80-1000
+            & 450
+            & \multirow{1}{*}[-1.em] { 1500 }
+            & 57500
+            & \\
+
+            \cmidrule{2-3}
+            \cmidrule{5-5}
+
+            & 1000-10000
+            & 550
+            &
+            & 6700
+            & \\
+
+            \hline
+            \hline
+
+            \multirow{4}{*}[-1.em]{ $\nu_\tau+\bar{\nu_\tau}$ }
+            & 1-4
+            & \multirow{1}{*}[-1.em]{ 250 }
+            & \multirow{1}{*}[-1.em]{ 500 }
+            & 1500000
+            & \multirow{4}{*}[-1.75em] {350} \\
+
+            \cmidrule{2-2}
+            \cmidrule{5-5}
+            
+            & 4-10
+            & 
+            & 
+            & 300000
+            & \\
+
+            \cmidrule{2-5}
+
+            & 10-50
+            & 350
+            & 600
+            & 375000
+            & \\
+
+            \cmidrule{2-5}
+
+            & 50-1000
+            & 450
+            & 800
+            & 200000
+            & \\
+
+            \cmidrule{2-5}
+
+            & 1000-10000
+            & 550
+            & 1500
+            & 26000
+            & \\
+
+            \hline
+
+        \end{tabular}
+    \end{center}
+    \caption[GENIE generation cylinder volumes]{Cylinder volumes used for GENIE neutrino simulation generation. Cylinder is always centered in DeepCore at $(x,y,z) = (46.29,-34.88,-330.00)$ \si{\metre}.}\labtab{genie_sampling_cylinder}
+\end{table}
+The directions of the neutrinos are sampled isotropically and the energies are sampled from an $E^{-2}$ power law. The number of simulated events is chosen such that the livetime is more than \SI{70}{years} for each flavor. Neutrinos and antineutrinos are simulated with ratios of 70\% and 30\%, respectively.
+
+To simulate the neutrino interaction with the ice, the \textsc{Genie} event generator \sidecite{genie} (version 2.12.8) is used, resulting in the secondary particles and the kinematic and cross-section parameters. As input, the outdated \href{https://internal.dunescience.org/doxygen/classgenie_1_1GRV89LO.html}{GRV98LO} \sidecite{grv98_pdf} \textit{parton distribution functions (PDFs)} was used, because it was the only option that could incorporate extrapolations to lower $Q^2$ \sidecite{grv98_effective_low_q2}. Muons produced in these interactions are propagated using \textsc{Proposal} \sidecite{proposal}, also simulating their Cherenkov light output. The shower development of gamma rays, electrons, and positrons below \SI{100}{\mega\electronvolt} and hadronic showers below \SI{30}{\gev} is simulated using Geant4 \sidecite{geant4} while for higher energies an analytical approximation from \sidecite{raedel_wiebusch_cherenkov_yield} is used.
+
+
+\subsection{Muons}
+
+Atmospheric muons are generated on a cylinder surface enclosing the full IceCube detector array. The cylinder has a height of \SI{1600}{\meter} and a radius of \SI{800}{\meter}. The energy is sampled from an $E^{-3}$ power law while the other sampling distributions (position, direction) are found from parameterizations based on \sidecite{muon_parameterization}. This work uses full \textsc{Corsika} \sidecite{corsika} simulations of muons to tailor the parameterizations, starting from \textit{cosmic ray (CR)} interactions with atmospheric nuclei using the CR flux model from \sidecite{gaisser_cosmic_ray} and producing the muons applying the \textit{hadronic interaction (HI)} model SIBYLL 2.1 \sidecite{sibyll_hadronic}. After the generation, they are propagated through the ice with PROPOSAL producing photons, treating them exactly like the muons produced in neutrino interactions.
+
+Since the offline processing and selection steps described in \refsec{event_selection} and \refsec{reconstruction} reduce the muon contamination to an almost negligible level, the statistical uncertainty on the number of expected muon events at the final selection level is large and therefore two separate sets of muon simulation are produced. \textbf{A first set} including all events resulting from the above described generation to tune the lower level selection (up to L4) and \textbf{a second set} to estimate the muon contamination at higher levels (above L5), which only accepts muon events if they pass through a smaller cylinder centered in DeepCore (height of \SI{400}{\meter} and radius of \SI{180}{\meter}) and rejects events based on a KDE estimated muon density at L5 (in energy and zenith) increasing the simulation efficiency at L5 significantly \todo{put a number on this significant increase? (YELLOW)}.

@@ -17,7 +17,7 @@ The analysis presented in this thesis is highly dependent on an efficient event 
     \item[]{\textbf{Step 2 Detector Simulation:}} The particles from the first step are propagated through the ice, producing Cherenkov photons, which are then propagated further until they reach a DOM or are absorbed. If they hit a DOM the detector response (acceptance and PMT) is simulated.
     \vspace{0.2cm} 
         
-    \item[]{\textbf{Step 3 Processing:}} Starting from the PMT output, both real data and simulation are processed through the in-ice trigger, the online filter and processing, and the low energy event selection to produce a neutrino dominated sample.
+    \item[]{\textbf{Step 3 Processing:}} Starting from the PMT output, both real data and simulation are processed through the in-ice trigger, the online filter and processing, and the low-energy event selection to produce a neutrino dominated sample.
     \vspace{0.2cm} 
 
     \item[]{\textbf{Step 4 Reconstruction:}} Once the sample is small enough for more sophisticated reconstruction techniques to be feasible to run, the events are reconstructed using a CNN and some high level variables are computed. Based on these variables the final event selection is applied.
@@ -25,165 +25,6 @@ The analysis presented in this thesis is highly dependent on an efficient event 
 \end{enumerate}
 
 This chapter only describes the event generation for the SM background simulation (neutrinos and muons), while the signal simulation is described in \refch{signal_simulation}. The detector simulation is identical for both signal and background events while processing and reconstruction are applied to all simulation and data in the same way. Splitting the simulation steps has the advantage of reusing the outputs of for example the generation step to propagate the particles with different ice model, in order to estimate the systematic impacts of uncertainties of the ice properties. Similar approach can be taken for varying detector response and through this a more efficient (reduced) use of computing resources can be achieved. The following sections describe the different steps in more detail and the last section, \refsec{systematic_uncertainties}, describes the related systematic uncertainties considered for this work.
-
-
-\section{Event Generation} \labsec{sm_event_generation}
-
-The MC is used in the analysis by applying a method called \textit{forward folding}, where a very large number of events (signal and background) is produced using sampling distribution that are tuned to have a large selection efficiency. Those distributions don't have to be physically correct distributions, but they need to cover the full parameter space of interest for the analysis. To produce a physical distribution, the events are weighted given a specific choice of physics and nuisance parameters. The large number of raw MC events ensures a good estimation of the expected numbers and weighted distributions. 
-
-The analysis itself is then performed by comparing the weighted MC distributions to the observed data. This is done by binning them as described in \refch{analysis} and calculating a loss function comparing the bin expectations to the data. The physics and nuisance parameters that best correspond to the observed data are estimated by minimizing this loss function. In order to achieve a reliable result with this method the MC needs to be precise and as close to the data as possible (at least at the final event selection). 
-
-
-\subsection{Neutrinos} \labsec{neutrino_generation}
-
-Due to the very low interaction rate of neutrinos, the event generation is performed in a way that forces every event to interact in a chosen sampling volume. The weight of each event is then calculated as the inverse of the simulated neutrino fluence
-\begin{equation}
-    w_\rm{gen} = \frac{1}{F_{\mathrm{sim}}} \frac{1}{N_{\mathrm{sim}}}
-    \;,
-    \labeq{neutrino_generation_weight}
-\end{equation}
-where $F_{\rm{sim}}$ is the number of neutrino events per energy, time, area, and solid angle and $N_{\rm{sim}}$ is the number of simulated events. If this weight is multiplied by the livetime and the theoretically expected neutrino flux for a given physical model, it results in the number of expected events in the detector for this particular MC event. The baseline neutrino flux used in this thesis, computed for the South Pole, is taken from Honda \textit{et al.} \sidecite{PhysRevD.92.023004_Honda_Flux}.
-
-The simulation volume is a cylinder centered in DeepCore with radius and height chosen such that all events possibly producing a signal are contained. The different sizes, chosen depending on energy and neutrino flavor, are shown in \reftab{genie_sampling_cylinder}.
-\begin{table}
-    \begin{center}
-        % \small
-        \footnotesize
-        % \begin{tabular}{ p{1.0cm} p{1.8cm} p{1.3cm} p{1.3cm} p{1.4cm} p{0.6cm} }
-        \begin{tabular}{ l l l l l l }
-
-            \hline\hline
-
-            \textbf{Flavor} & \textbf{Energy [\si{\gev}]} & \textbf{Radius [\si{\metre}]} & \textbf{Length [\si{\metre}]} & \textbf{Events/File}  & \textbf{Files}\\ 
-
-            \hline\hline
-
-            \multirow{4}{*}[-1.em]{ $\nu_e+\bar{\nu_e}$ }
-            & 1-4
-            & \multirow{1}{*}[-1.em]{ 250 }
-            & \multirow{1}{*}[-1.em]{ 500 }
-            & 450000
-            & \multirow{4}{*}[-1.em] {650} \\
-
-            \cmidrule{2-2}
-            \cmidrule{5-5}
-            
-            & 4-12
-            & 
-            & 
-            & \multirow{1}{*}[-1.em] { 100000 }
-            & \\
-
-            \cmidrule{2-4}
-
-            & 12-100
-            & 350
-            & 600
-            & 
-            & \\
-
-            \cmidrule{2-5}
-
-            & 100-10000
-            & 550
-            & 1000
-            & 57500
-            & \\
-
-            \hline
-            \hline
-
-            \multirow{4}{*}[-1.em]{ $\nu_\mu+\bar{\nu_\mu}$ }
-            & 1-5
-            & 250
-            & 500
-            & 408000
-            & \multirow{4}{*}[-1.em] {1550} \\
-
-            \cmidrule{2-5}
-            
-            & 5-80
-            & 400
-            & 900
-            & 440000
-            & \\
-
-            \cmidrule{2-5}
-
-            & 80-1000
-            & 450
-            & \multirow{1}{*}[-1.em] { 1500 }
-            & 57500
-            & \\
-
-            \cmidrule{2-3}
-            \cmidrule{5-5}
-
-            & 1000-10000
-            & 550
-            &
-            & 6700
-            & \\
-
-            \hline
-            \hline
-
-            \multirow{4}{*}[-1.em]{ $\nu_\tau+\bar{\nu_\tau}$ }
-            & 1-4
-            & \multirow{1}{*}[-1.em]{ 250 }
-            & \multirow{1}{*}[-1.em]{ 500 }
-            & 1500000
-            & \multirow{4}{*}[-1.75em] {350} \\
-
-            \cmidrule{2-2}
-            \cmidrule{5-5}
-            
-            & 4-10
-            & 
-            & 
-            & 300000
-            & \\
-
-            \cmidrule{2-5}
-
-            & 10-50
-            & 350
-            & 600
-            & 375000
-            & \\
-
-            \cmidrule{2-5}
-
-            & 50-1000
-            & 450
-            & 800
-            & 200000
-            & \\
-
-            \cmidrule{2-5}
-
-            & 1000-10000
-            & 550
-            & 1500
-            & 26000
-            & \\
-
-            \hline
-
-        \end{tabular}
-    \end{center}
-    \caption[GENIE generation cylinder volumes]{Cylinder volumes used for GENIE neutrino simulation generation. Cylinder is always centered in DeepCore at $(x,y,z) = (46.29,-34.88,-330.00)$ \si{\metre}.}\labtab{genie_sampling_cylinder}
-\end{table}
-The directions of the neutrinos are sampled isotropically and the energies are sampled from an $E^{-2}$ power law. The number of simulated events is chosen such that the livetime is more than \SI{70}{years} for each flavor. Neutrinos and antineutrinos are simulated with ratios of 70\% and 30\%, respectively.
-
-To simulate the neutrino interaction with the ice, the \textsc{Genie} event generator \sidecite{genie} (version 2.12.8) is used, resulting in the secondary particles and the kinematic and cross-section parameters. As input, the outdated \href{https://internal.dunescience.org/doxygen/classgenie_1_1GRV89LO.html}{GRV98LO} \sidecite{grv98_pdf} \textit{parton distribution functions (PDFs)} was used, because it was the only option that could incorporate extrapolations to lower $Q^2$ \sidecite{grv98_effective_low_q2}. Muons produced in these interactions are propagated using \textsc{Proposal} \sidecite{proposal}, also simulating their Cherenkov light output. The shower development of gamma rays, electrons, and positrons below \SI{100}{\mega\electronvolt} and hadronic showers below \SI{30}{\gev} is simulated using Geant4 \sidecite{geant4} while for higher energies an analytical approximation from \sidecite{raedel_wiebusch_cherenkov_yield} is used.
-
-
-\subsection{Muons}
-
-Atmospheric muons are generated on a cylinder surface enclosing the full IceCube detector array. The cylinder has a height of \SI{1600}{\meter} and a radius of \SI{800}{\meter}. The energy is sampled from an $E^{-3}$ power law while the other sampling distributions (position, direction) are found from parameterizations based on \sidecite{muon_parameterization}. This work uses full \textsc{Corsika} \sidecite{corsika} simulations of muons to tailor the parameterizations, starting from \textit{cosmic ray (CR)} interactions with atmospheric nuclei using the CR flux model from \sidecite{gaisser_cosmic_ray} and producing the muons applying the \textit{hadronic interaction (HI)} model SIBYLL 2.1 \sidecite{sibyll_hadronic}. After the generation, they are propagated through the ice with PROPOSAL producing photons, treating them exactly like the muons produced in neutrino interactions.
-
-Since the offline processing and selection steps described in \refsec{event_selection} and \refsec{reconstruction} reduce the muon contamination to an almost negligible level, the statistical uncertainty on the number of expected muon events at the final selection level is large and therefore two separate sets of muon simulation are produced. \textbf{A first set} including all events resulting from the above described generation to tune the lower level selection (up to L4) and \textbf{a second set} to estimate the muon contamination at higher levels (above L5), which only accepts muon events if they pass through a smaller cylinder centered in DeepCore (height of \SI{400}{\meter} and radius of \SI{180}{\meter}) and rejects events based on a KDE estimated muon density at L5 (in energy and zenith) increasing the simulation efficiency at L5 significantly \todo{put a number on this significant increase? (YELLOW)}.
 
 
 \section{Detector Simulation}
@@ -323,11 +164,11 @@ In the energy range most relevant for this work, between \SIrange[range-phrase={
 sub-sample of the DeepCore sample \sidecite{OVS_PRD}. The algorithm used in this work on the other hand, is a newer method that applies a \textit{convolutional neural network (CNN)} to reconstruct the events and determine some discriminating quantities. The latest muon neutrino disappearance result from IceCube \sidecite{flercnn_analysis_result} is based on this reconstruction.
 
 
-\subsection{Fast Low Energy Reconstruction using Convolutional Neural Networks} \labsec{flercnn_reconstruction}
+\subsection{Fast Low-Energy Reconstruction using Convolutional Neural Networks} \labsec{flercnn_reconstruction}
 
-As the name \textit{Fast Low Energy Reconstruction using Convolutional Neural Networks (FLERCNN)} already indicates, the FLERCNN reconstruction \sidecite{flercnn_proceedings, flercnn} is a CNN optimized to reconstruct IceCube events at low energies ($<$\SI{100}{\gev}) in a fast and efficient manner, by leveraging the approximate translational invariance of event patterns within the detector.
+As the name \textit{Fast Low-Energy Reconstruction using Convolutional Neural Networks (FLERCNN)} already indicates, the FLERCNN reconstruction \sidecite{flercnn_proceedings, flercnn} is a CNN optimized to reconstruct IceCube events at low energies ($<$\SI{100}{\gev}) in a fast and efficient manner, by leveraging the approximate translational invariance of event patterns within the detector.
 % The network is trained to find the connection between the hit pattern and the events properties by identifying patterns similar to how CNNs are applied effectively in image classification.\todo{add references for CNN image classification?} The patterns are an imprint of the neutrino interactions that can happen anywhere in the detector, which should result in translational invariance of the events. CNNs were shown to have very good performance in identifying patterns in images, independent of their location. By combining several layers of filters of different dimensions, a map of spatial features is created from the input data and more complex features can be reconstructed.
-The architecture of the network is very similar to the preexisting IceCube CNN event reconstruction \sidecite{dnn_reco_mirco}, but optimized on low energy events and specifically tailored to include the DeepCore sub-array. Only the eight DeepCore strings and the central 19 IceCube strings are used for the reconstruction (compare to \reffig{icecube_top_view}). Because of the different z-positions of the DeepCore and IceCube DOMs, they are divided into two networks that are combined in the final layer of the network. The full architecture is shown in \reffig{flercnn_network_structure}. The first dimension of the network is the string index, while the second dimension is the order of the DOMs along the vertical axis. The horizontal position of the DOMs is not used, since the strings are arranged in an irregular pattern. The information from the DOM hits is summarized into five charge and time variables, which make up the last dimension of the input layer. The variables are the total summed charge, the time of the first hit, the charge weighted mean time of the hits, the time of the last hit, and the charge weighted standard deviation of the hit times.
+The architecture of the network is very similar to the preexisting IceCube CNN event reconstruction \sidecite{dnn_reco_mirco}, but optimized on low-energy events and specifically tailored to include the DeepCore sub-array. Only the eight DeepCore strings and the central 19 IceCube strings are used for the reconstruction (compare to \reffig{icecube_top_view}). Because of the different z-positions of the DeepCore and IceCube DOMs, they are divided into two networks that are combined in the final layer of the network. The full architecture is shown in \reffig{flercnn_network_structure}. The first dimension of the network is the string index, while the second dimension is the order of the DOMs along the vertical axis. The horizontal position of the DOMs is not used, since the strings are arranged in an irregular pattern. The information from the DOM hits is summarized into five charge and time variables, which make up the last dimension of the input layer. The variables are the total summed charge, the time of the first hit, the charge weighted mean time of the hits, the time of the last hit, and the charge weighted standard deviation of the hit times.
 
 \todo{add image with selected strings used for flercnn IC and DC (YELLOW)}
 
