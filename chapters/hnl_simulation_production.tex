@@ -20,16 +20,28 @@ To investigate the potential of IceCube to detect HNLs by identifying the unique
 
 \todo{add/move event views to here? or draw a schematic of these events? (ORANGE)}
 
-\begin{figure}[h]
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{figures/icecube_deepcore/deepcore_surface_distances.jpg}
+%     \caption[DeepCore string spacing]{Horizontal positions and distances between DeepCore strings. Red strings are instrumented more densely (vertically) and partially have higher quantum efficiency (HQE) DOMs.}
+%     \labfig{deepcore_distances}
+% \end{figure}
+
+To investigate the best-case and the worst-case double cascade event scenarios, two samples are produced in the DeepCore volume: straight up-going events ($\cos(\theta)=-1$) that are centered on a string and horizontal events ($\cos(\theta)=0$). The first sample is used to investigate one of the most promising scenarios to detect a double cascade, where both cascade centers are located on a DeepCore string and the directions are directly up-going. One of the DeepCore strings was randomly chosen as the $x$-$y$ coordinate for this sample. 
+% The horizontal positions and distances of all DeepCore fiducial volume strings are shown in \reffig{deepcore_distances} and string 81 is at a medium distance of $\sim\SI{70}{\metre}$ to its neighboring strings.
+As already mentioned in \refsec{deepcore}, DeepCore strings have higher quantum efficiency DOMs and a denser vertical spacing, making them better to detect low-energy events that produce little light. To produce the events, the $x,y$ position of the cascades is fixed to the center of the string while the $z$ positions are each sampled uniformly along the axis of the string. Note that this will therefore not produce a uniform length distribution between the cascades. The positions are defined in the IceCube coordinate system that was introduced in \refsec{icecube}. The energies are sampled uniformly between \SIrange[range-phrase={~and~}]{0.0}{60.0}{\gev}, to generously cover the region where $\nu_\mu\rightarrow\nu_\tau$ appearance is maximized. The time of the lower cascade is set to $t_0=\SI{0.0}{\nano\second}$ and for the upper one to $t_1=L/c$, assuming the HNL travels at the speed of light, $c$. \reffig{simplified_gen_distris} shows the resulting energy distributions and the decay length distribution, where it can be seen how the uniform cascade energies sum into a non-uniform total energy, and the decay length distribution is also non-uniform due to the uniform $z$ sampling of both cascades, which sets the distance between them.
+
+\begin{figure*}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/icecube_deepcore/deepcore_surface_distances.jpg}
-    \caption[DeepCore string spacing]{Horizontal positions and distances between DeepCore strings. Red strings are instrumented more densely (vertically) and partially have higher quantum efficiency (HQE) DOMs.}
-    \labfig{deepcore_distances}
-\end{figure}
+    \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/simplistic_1_d_distr_all_energies.png}
+    \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/simplistic_1_d_distr_true_decay_length.png}
+    \caption[Simplified model-independent simulation generation level distributions]{Generation level distributions of the simplistic simulation samples. Cascade and total energies (left) and decay lengths (right) of both samples are shown.}
+    \labfig{simplified_gen_distris}
+\end{figure*}
 
-To investigate the best-case and the worst-case double cascade event scenarios, two samples are produced in the DeepCore volume: straight up-going events ($\cos(\theta)=-1$) that are centered on a string and horizontal events ($\cos(\theta)=0$).
+The second sample is used to investigate the reconstruction performance for horizontal events, where the spacing between DOMs is much larger. The cascades are placed uniformly on a circle with radius of $r=\SI{150}{\meter}$ centered in DeepCore at the depth of $z=\SI{-330}{\meter}$. The direction is always horizontal and azimuth is defined by the connecting vector of both cascade positions. The energies are again sampled uniformly between \SIrange[range-phrase={~and~}]{0.0}{60.0}{\gev}. The specific sampling distributions/values for the cascades are listed in \reftab{hnl_simplified_sampling_distributions}, for both samples and for completeness, all distributions are shown in \reffig{realistic_gen_distris_appendix}.
 
-\begin{table}
+\begin{table}[h]
     \small
         \begin{tabular}{ llll }
         \hline\hline
@@ -56,29 +68,24 @@ To investigate the best-case and the worst-case double cascade event scenarios, 
     \labtab{hnl_simplified_sampling_distributions}
 \end{table}
 
-The first sample is used to investigate one of the most promising scenarios to detect a double cascade, where both cascade centers are located on a DeepCore string and the directions are directly up-going. From the DeepCore strings, string 81 was randomly chosen as the $x$-$y$ coordinate for this sample. The horizontal positions and distances of all DeepCore fiducial volume strings are shown in \reffig{deepcore_distances} and string 81 is at a medium distance of $\sim\SI{70}{\metre}$ to its neighboring strings. As already mentioned in \refsec{deepcore}, DeepCore strings have higher quantum efficiency DOMs and a denser vertical spacing, making them better to detect low-energy events that produce little light. To produce the events, the $x,y$ position of the cascades is fixed to the center of string 81 while the $z$ positions are each sampled uniformly along the axis of the string. Note that this will therefore not produce a uniform length distribution between the cascades. The positions are defined in the IceCube coordinate system that was introduced in \refsec{icecube}. The energies are sampled uniformly between \SIrange[range-phrase={~and~}]{0.0}{60.0}{\gev}, to generously cover the region where $\nu_\mu\rightarrow\nu_\tau$ appearance is maximized. The specific sampling distributions/values for the cascades are listed in \reftab{hnl_simplified_sampling_distributions}. The time of the lower cascade is set to $t_0=\SI{0.0}{\nano\second}$ and for the upper one to $t_1=L/c$, assuming the HNL travels at the speed of light, $c$.
-
-\begin{figure*}[h]
-    \centering
-    \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/1_d_distr_energies_clipped.png}
-    \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/1_d_distr_true_decay_length_clipped.png}
-    \caption[Simplified model-independent simulation generation level distributions]{Generation level distributions of the simplistic simulation samples. Cascade and total energies (left) and decay lengths (right) of both samples are shown.}
-    \labfig{simplified_gen_distris}
-\end{figure*}
-
-\todo{Re-make plot with all energies (cascades and total, both samples (they are the same)) (RED)}
-\todo{Re-make plot with all decay lengths (both samples) (RED)}
-\todo{Re-make energy with better y-axis limits (RED)}
-\todo{don't add overflow and/or mention it in the caption? (RED)}
-
-The second sample is used to investigate the reconstruction performance for horizontal events, where the spacing between DOMs is much larger. The cascades are placed uniformly on a circle with radius of $r=\SI{150}{\meter}$ centered in DeepCore at the depth of $z=\SI{-330}{\meter}$. The direction is always horizontal and azimuth is defined by the connecting vector of both cascade positions. The energies are again sampled uniformly between \SIrange[range-phrase={~and~}]{0.0}{60.0}{\gev} and the detailed sampling distributions/values are also listed in \reftab{hnl_simplified_sampling_distributions}. Some examples of the generation level distributions of the simplified samples are shown in \reffig{simplified_gen_distris}\todo{describe why these are shown to highlight some key aspect (uniformity in both energies to sample the whole space, decay length as a result of the z sampling etc..), also add this shortly to the caption (RED)}, while further distributions can be found in \reffig{simplified_gen_distris_appendix}.
 
 
 \subsection{Realistic Sample} \labsec{realistic_sample}
 
-To thoroughly investigate the potential of IceCube DeepCore to detect double cascade events, a more realistic simulation sample is produced that aims to be as close as possible to the expected signal simulation explained in \refsec{model_specific_simulation}, while still allowing additional freedom to control the double cascade kinematics. This sample is particularly useful for validating the model-dependent HNL simulation described in \refsec{model_specific_simulation}. For this purpose the total energy is sampled from an $E^{-2}$ power law, mimicking the energy spectrum of the primary neutrinos as stated in \refsec{neutrino_generation}. The total energy is divided into two parts, by assigning a fraction between \SIrange[range-phrase={~and~}]{0}{100}{\percent} to one cascade and the remaining part to the other cascade. This is a generic approximation of the realistic process described in \refsec{model_specific_simulation}, and chosen such that the whole sample covers various cases of energy distributions between the two cascades. To efficiently generate events in a way that produces distributions similar to what would be observed with DeepCore, one of the cascade positions is sampled inside the DeepCore volume by choosing its coordinates uniformly on a cylinder that is centered in DeepCore. This is similar to a trigger condition of one cascade always being inside the DeepCore fiducial volume. Choosing the direction of the event by sampling zenith and azimuth uniformly between \SIrange[range-phrase={~and~}]{70}{180}{\degree} and \SIrange[range-phrase={~and~}]{0}{360}{\degree}, respectively, the position of the other cascade can be inferred for a given decay length, assuming a travel speed of $c$, and choosing whether the cascade position that was sampled is the first cascade or the second with a \SI{50}{\percent} chance. The zenith angle is chosen between straight up-going (zenith of \SI{180}{\degree}) and slightly down-going from above the horizon (\SI{70}{\degree}) to mimic an event selection that reduces atmospheric muons by rejecting events coming from above the horizon, but still incorporates some down-going events. The decay length is sampled from an exponential distribution, as expected for a decaying heavy mass state. The sampling distributions/values are listed in \reftab{hnl_realistic_sample_sampling_distributions}. Example distributions of the generation level variables are shown in \reffig{realistic_gen_distris}\todo{again, describe what is shown and why this is interesting (e.g. energy distribution between the cascades, realistic exponential decay length distribtuion..) also add this to the captions shortly (RED)}, while further distributions can be found in \reffig{realistic_gen_distris_appendix}.
+To thoroughly investigate the potential of IceCube DeepCore to detect double cascade events, a more realistic simulation sample is produced that aims to be as close as possible to the expected signal simulation explained in \refsec{model_specific_simulation}, while still allowing additional freedom to control the double cascade kinematics. This sample is particularly useful for validating the model-dependent HNL simulation described in \refsec{model_specific_simulation}.
 
-\begin{table}
+For this purpose the total energy is sampled from an $E^{-2}$ power law, mimicking the energy spectrum of the primary neutrinos as stated in \refsec{neutrino_generation}. The total energy is divided into two parts, by assigning a fraction between \SIrange[range-phrase={~and~}]{0}{100}{\percent} to one cascade and the remaining part to the other cascade. This is a generic approximation of the realistic process described in \refsec{model_specific_simulation}, and chosen such that the whole sample covers various cases of energy distributions between the two cascades. The decay length is sampled from an exponential distribution, as expected for a decaying heavy mass state. The resulting energy distributions and the decay length distribution are shown in \reffig{realistic_gen_distris}, where it can be seen that the individual cascade energies can be very small, due to splitting the total energy, and the decay lengths spans across several orders of magnitude.
+
+\begin{figure*}[h]
+    \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_all_energies.png}
+    \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_true_decay_length.png}
+    \caption[Realistic model-independent simulation generation level distributions]{Generation level distributions of the realistic sample. Shown are the individual cascade energies and total energy (left) and decay lengths (right). It can be seen how the cascade energies can get very small, and the decay length follows a more realistic distribution spanning across several orders of magnitude.}
+    \labfig{realistic_gen_distris}
+\end{figure*}
+
+To efficiently generate events in a way that produces distributions similar to what would be observed with DeepCore, one of the cascade positions is sampled inside the DeepCore volume by choosing its coordinates uniformly on a cylinder that is centered in DeepCore. This is similar to a trigger condition of one cascade always being inside the DeepCore fiducial volume. Choosing the direction of the event by sampling zenith and azimuth uniformly between \SIrange[range-phrase={~and~}]{70}{180}{\degree} and \SIrange[range-phrase={~and~}]{0}{360}{\degree}, respectively, the position of the other cascade can be inferred for a given decay length, assuming a travel speed of $c$, and choosing whether the cascade position that was sampled is the first cascade or the second with a \SI{50}{\percent} chance. The zenith angle is chosen between straight up-going (zenith of \SI{180}{\degree}) and slightly down-going from above the horizon (\SI{70}{\degree}) to mimic an event selection that reduces atmospheric muons by rejecting events coming from above the horizon, but still incorporates some down-going events. All distributions are shown in \reffig{realistic_gen_distris_appendix}, and the sampling distributions/values are listed in \reftab{hnl_realistic_sample_sampling_distributions}.
+
+\begin{table}[h]
     \small
         \begin{tabular}{ llll }
         \hline\hline
@@ -95,13 +102,6 @@ To thoroughly investigate the potential of IceCube DeepCore to detect double cas
         \caption[Realistic model-independent simulation sampling distributions]{Generation level sampling distributions and ranges/values of the realistic model-independent simulation.}
     \labtab{hnl_realistic_sample_sampling_distributions}
 \end{table}
-
-\begin{figure*}
-        \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_all_energies_clipped.png}
-        \includegraphics[width=.49\linewidth]{figures/model_independent_simulation/gen_level/194603_gen_level_1_d_distr_true_decay_length_clipped.png}
-    \caption[Realistic model-independent simulation generation level distributions]{Generation level distributions of the simplistic realistic sample. Shown are the cascade and total energies (left) and decay lengths (right).}
-    \labfig{realistic_gen_distris}
-\end{figure*}
 
 
 \section{Model-Dependent Simulation} \labsec{model_specific_simulation}
@@ -160,7 +160,7 @@ The GRV98LO PDFs were added to the cross-section spline maker and used to create
 The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the decay channels considered are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. The individual decay widths $\Gamma_i$ are computed using the state-of-the-art calculations from \sidecite{Coloma:2020lgy}, which are described in the following.
 
 \begin{margintable}
-    \footnotesize
+    % \footnotesize
     \begin{tabular} { lr }
         \hline\hline 
         \textbf{Channel} & \textbf{Opens}  \\
@@ -255,19 +255,31 @@ and
 \end{equation}
 
 
-\subsubsection{2-Body Decay Kinematics}
-\todo{JVS:
-consider also writing down the (trivial) 2-body decay kinematics for completeness and consistency. This transition is a bit jarring as it is (RED)
-}
+\subsubsection{Analytical 2-Body Decay Kinematics}
 
-\subsubsection{3-Body Decay Kinematics with MadGraph}
+Following the review of \sidecite{PDG_review_2022}, the 4-vector defining the kinematics of a particle is $p=(E,\vec{p})$, with its energy, $E$, and 3-momentum, $\vec{p}$. Squaring it gives the mass, $p^2=E^2-\vec{p}^2=m^2$, while the velocity is $\vec{\beta}=\vec{p}/E$. If the HNL with mass $m_4$ decays into two particles with masses $m_1$ and $m_2$, their 3-momenta in the rest frame of the HNL are given by
+\begin{equation}
+    |\vec{p}_1| = |\vec{p}_2| = \frac{\lambda^{1/2}(m_4^2,m_1^2,m_2^2)}{2m_4}
+    \;,
+    \labeq{2body_momenta}
+\end{equation}
+where $\lambda(x,y,z)=x^2+y^2+z^2-2xy-2xz-2yz$. The energy of the particles is then given by
+\begin{equation}
+    E_1 = \frac{m_4^2+m_1^2-m_2^2}{2m_4}
+    \;,
+    \labeq{2body_energies}
+\end{equation}
+and equivalently for $E_2$. The 4-vectors of the particle are then boosted to the lab frame, where the HNL is moving with velocity $\vec{\beta}$.
+
+
+\subsubsection{Simulated 3-Body Decay Kinematics}
 
 The 3-body decay kinematics cannot be computed analytically, instead, we employ \textsc{MadGraph4} (v3.4.0) \cite{madgraph4} for this purpose. MadGraph is a tool to simulate particle collisions and decay processes, and is widely used in the high-energy physics community. The 3-body decay kinematics are calculated in the rest frame of the HNL, using decay diagrams calculated with \textsc{FeynRules 2.0} \sidecite{feynrules2} and the Lagrangians derived in \sidecite{Coloma:2020lgy} as input. The \textit{Universal FeynRules Output (UFO)} from \textsc{effective\_HeavyN\_Majorana\_v103} were used for our calculation. For each mass and corresponding decay channels, we produce \SI{1e06} decay kinematic variations in the rest frame and store those in a text file. During event generation, we uniformly select an event from that list, to simulate the decay kinematics of a 3-body decay.
 
 
 \subsection{Sampling Distributions} \labsec{hnl_sampling_distributions}
 
-\begin{table}[h]
+\begin{table}[H]
     \centering
     \begin{tabular} { lll }
         \hline \hline 
@@ -288,7 +300,7 @@ The 3-body decay kinematics cannot be computed analytically, instead, we employ 
 
 In principle, the generation level sampling distributions should be chosen such that at the final level of the event selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Initial distributions insufficiently covering the phase space leads to an underestimation of the expected rates, because some of the events that would pass the selection are not produced. This limits the expected analysis potential. Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV}, \SI{0.6}{\GeV}, and \SI{1.0}{\GeV}. During development of the analysis it became clear that short decay lengths were undersampled at the final selection level. Therefore, each discrete mass sample consists of a part that is generated for very short decay lengths and one for long decay lengths. The remaining sampling distributions are identical for all samples and are listed in \reftab{model_dendent_sample_sampling_distributions}. The target number of events for each sample was \SI{2.5e9}{} at generation to result in sufficient MC statistics at final level. \reffig{hnl_gen_distris} shows some selected generation level distributions. Additional distributions can be found in \reffig{hnl_gen_distris_appendix}.\todo{What is the message of these plots? Make it clear in the text and also in the captions. Potentially cut down to one or two and leave the rest or move them to the appendix. (RED)}
 
-\begin{figure*}[h!]
+\begin{figure*}[h]
     \centering
     \begin{subfigure}{0.49\linewidth}
         \includegraphics{figures/hnl_simulation/generation/1_d_distr_HNL_true_energy_gen_level_unweighted.png}
