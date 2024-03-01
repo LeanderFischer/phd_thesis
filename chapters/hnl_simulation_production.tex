@@ -114,7 +114,7 @@ To estimate the HNL event expectation in IceCube DeepCore, depending on the spec
 In its standard version, the LI generator produces neutrino interactions by injecting a lepton and a hadronic cascade at the interaction vertex of the neutrino, where the lepton is the charged (neutral) particle produced in a CC (NC) interaction and the cascade is the hadronic cascade from the breaking nucleus. The hadronic cascade is stored as a specific object of type \textit{Hadrons}, which triggers the correct simulation of the shower development in the following simulation steps, identical to what is described for neutrinos in \refsec{neutrino_generation}. Below \SI{30}{\gev} the individual hadrons are simulated using \textsc{Geant4} \sidecite{geant4} while for higher energies an analytical approximation from \sidecite{raedel_wiebusch_cherenkov_yield} is used. The main differences to an EM cascade is that part of the energy will not be observed, because it goes into neutral particles, and that the spatial development of the shower is different as discussed in \refsec{hadronic_showers}. Both objects are injected with the same $(x,y,z,t)$ coordinates and the kinematics are sampled from the differential and total cross-sections that are one of the inputs to LI.
 
 \begin{figure}[h]
-    \includegraphics{hnl_simulation/decay_theory/branching_ratios_log_up_to_1.0_GeV.png}
+    \includegraphics{hnl_simulation/decay_theory/branching_ratios_linear_up_to_1.0_GeV.png}
     \caption[HNL branching ratios]{Branching ratios of the HNL within the mass range considered in this work, only considering $|U_{\tau4}^2| \neq 0$, calculated based on the results from \cite{Coloma:2020lgy}.}
     \labfig{hnl_branching_ratios}
 \end{figure}
@@ -178,6 +178,13 @@ The accessible decay channels are dependent on the mass of the HNL and the allow
     \caption[HNL mass dependent decay channels]{Possible decay channels of the HNL, considering only $|U_{\tau4}|^2 \neq 0$, and the mass at which each channel opens.}
     \labtab{hnl_decay_channels}
 \end{margintable}
+
+\begin{figure}[h]
+    \includegraphics{figures/hnl_simulation/decay_theory/hnl_decay_widths_up_to_1.0_GeV_linear.png}
+    \caption[HNL decay widths]{Decay widths of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
+    \labfig{hnl_decay_modes_log_decay_width}
+\end{figure}
+\todo{say something about the decay widht plot, mention it in the text.. (RED)}
 
 
 \paragraph{2-Body Decay Widths}
