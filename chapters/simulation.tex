@@ -296,7 +296,7 @@ The 3-body decay kinematics cannot be computed analytically, instead, we employ 
         energy & $E^{-2}$ & [\SI{2}{\GeV}, \SI{1e4}{\GeV}] \\
         zenith & uniform (in $\cos(\theta)$) & [\SI{80}{\degree}, \SI{180}{\degree}] \\
         azimuth & uniform & [\SI{0}{\degree}, \SI{360}{\degree}] \\
-        vertex $x,y$ & uniform & $r$=\SI{600}{\metre} \\
+        vertex $x,y$ & uniform (on circle) & $r$=\SI{600}{\metre} \\
         vertex $z$ & uniform & \SIrange{-600}{0}{\metre} \\
         $m_\mathrm{4}$ & fixed & [0.3, 0.6, 1.0]\,\si{\GeV} \\
         $L_\mathrm{decay}$ & $L^{-1}$ & [0.0004, 1000]\,\si{\metre} \\
@@ -306,27 +306,11 @@ The 3-body decay kinematics cannot be computed analytically, instead, we employ 
     \labtab{model_dendent_sample_sampling_distributions}
 \end{table}
 
-In principle, the generation level sampling distributions should be chosen such that at the final level of the event selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Initial distributions insufficiently covering the phase space leads to an underestimation of the expected rates, because some of the events that would pass the selection are not produced. This limits the expected analysis potential. Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV}, \SI{0.6}{\GeV}, and \SI{1.0}{\GeV}. During development of the analysis it became clear that short decay lengths were undersampled at the final selection level. Therefore, each discrete mass sample consists of a part that is generated for very short decay lengths and one for long decay lengths. The remaining sampling distributions are identical for all samples and are listed in \reftab{model_dendent_sample_sampling_distributions}. The target number of events for each sample was \SI{2.5e9}{} at generation to result in sufficient MC statistics at final level. \reffig{hnl_gen_distris} shows some selected generation level distributions. Additional distributions can be found in \reffig{hnl_gen_distris_appendix}.\todo{What is the message of these plots? Make it clear in the text and also in the captions. Potentially cut down to one or two and leave the rest or move them to the appendix. (RED)}
-
+In principle, the generation level sampling distributions should be chosen such that at the final level of the event selection chain the phase space relevant for the analysis is covered with sufficient statistics to make a reasonable estimate of the event expectation. Initial distributions insufficiently covering the phase space lead to an underestimation of the expected rates, because some of the events that would pass the selection are not produced. This limits the expected analysis potential. Three discrete simulation samples were produced with HNL masses of \SI{0.3}{\GeV}, \SI{0.6}{\GeV}, and \SI{1.0}{\GeV}. The remaining sampling distributions are identical for all samples and are listed in \reftab{model_dendent_sample_sampling_distributions}. The target number of events for each sample was \SI{2.5e9}{} at generation to result in sufficient MC statistics at final level. \reffig{hnl_gen_distris} shows the true cascade energies, which result from the custom interaction cross-sections and the decays discussed above. Note here that these are the full true energies going into the cascades. For the first cascade some energy goes into invisible particles produced in the hadronic shower development and for the HNL decay, there always is at least one invisible neutrino. Additional sampling distributions can be found in \reffig{hnl_gen_distris_appendix}.
 \begin{figure*}[h]
-    \centering
-    \begin{subfigure}{0.49\linewidth}
-        \includegraphics{figures/hnl_simulation/generation/1_d_distr_HNL_true_energy_gen_level_unweighted.png}
-        \caption{HNL energy}
-    \end{subfigure}
-    \begin{subfigure}{0.49\linewidth}
-        \includegraphics{figures/hnl_simulation/generation/1_d_distr_distance_gen_level_unweighted.png}
-        \caption{Decay length}
-    \end{subfigure}
-    \begin{subfigure}{0.49\linewidth}
-        \includegraphics{figures/hnl_simulation/generation/1_d_distr_casc0_true_energy_gen_level_unweighted.png}
-        \caption{First cascade energy}
-    \end{subfigure}
-    \begin{subfigure}{0.49\linewidth}
-        \includegraphics{figures/hnl_simulation/generation/1_d_distr_casc1_true_energy_gen_level_unweighted.png}
-        \caption{Second cascade energy}
-    \end{subfigure}
-    \caption[Model-dependent simulation generation level distributions]{Generation level distributions of the model-dependent simulation.}
+    \includegraphics[width=0.49\linewidth]{figures/hnl_simulation/generation/1_d_distr_casc0_true_energy_gen_level_unweighted.png}
+    \includegraphics[width=0.49\linewidth]{figures/hnl_simulation/generation/1_d_distr_casc1_true_energy_gen_level_unweighted.png}
+    \caption[Model-dependent simulation generation level distributions]{Generation level distributions of the model-dependent simulation. Shown are the true energies of both cascades including the energy that goes into invisible particles.}
     \labfig{hnl_gen_distris}
 \end{figure*}
 
@@ -554,9 +538,7 @@ In an initial step, each photon's absorption length is sampled from an exponenti
 
 \subsection{Detector Responses}
 
-The second part of simulating the IceCube detector is the DOM response. For a photon that reaches a DOM, the probability to produce a signal depends on the total efficiency and the angular acceptance of the specific DOM. The total efficiency includes effects of the DOM glass, PMT quantum and photo-electron collection efficiencies, and it is wavelength dependent. Additionally, there is another angle dependent effect called \textit{hole ice} \sidecite{Fiedlschuster:2019unl}. This effect is due to varied ice properties resulting from the re-freezing process of the water column inside the borehole after deployment of the string. Accepted photons are converted into a so-called \textit{Monte Carlo photo-electron (MCPE)}. The amount of charge measured for each MCPE is determined by sampling
-% from a mixture of two exponential distributions and a normal distribution. This
-from the so-called \textit{single photo-electron (SPE)} distribution, which was tuned to match the observed distribution in each DOM in an \textit{in-situ} calibration study \sidecite{spe_respose_pmt}. \reffig{spe_distribution} shows the spread of the distribution measured over all DOMs compared to lab measurements of a specific PMT type. Based on the sampled charges and times of MCPEs, the voltage waveforms for the (two) different readout channels are simulated and passed on to the trigger simulation starting with \textit{WaveDeform} (see \refsec{ice_and_DOMs}).
+The second part of simulating the IceCube detector is the DOM response. For a photon that reaches a DOM, the probability to produce a signal depends on the total efficiency and the angular acceptance of the specific DOM. The total efficiency includes effects of the DOM glass, PMT quantum and photo-electron collection efficiencies, and it is wavelength dependent. Additionally, there is another angle dependent effect called \textit{hole ice} \sidecite{Fiedlschuster:2019unl}. This effect is due to varied ice properties resulting from the re-freezing process of the water column inside the borehole after deployment of the string. Accepted photons are converted into a so-called \textit{Monte Carlo photo-electron (MCPE)}. The amount of charge measured for each MCPE is determined by sampling from the so-called \textit{single photo-electron (SPE)} distribution, which was tuned to match the observed distribution in each DOM in an \textit{in-situ} calibration study \sidecite{spe_respose_pmt}. \reffig{spe_distribution} shows the spread of the distribution measured over all DOMs compared to lab measurements of a specific PMT type. Based on the sampled charges and times of MCPEs, the voltage waveforms for the (two) different readout channels are simulated and passed on to the trigger simulation starting with \textit{WaveDeform} (see \refsec{ice_and_DOMs}).
 
 \begin{margintable}
 \small
@@ -585,6 +567,4 @@ from the so-called \textit{single photo-electron (SPE)} distribution, which was 
     \labfig{spe_distribution}
 \end{figure}
 
-Besides the Cherenkov photons, IceCube also observes photons that are produced in radioactive decays inside the DOMs, both in the glass housing sphere and the PMT glass itself. To simulate this internal noise, the \emph{Vuvuzela} module \sidecite{MLarson_master, MLarson_phd} is used to create additional MCPEs that are fed into the same simulation chain described above. 
-% This module takes into account thermal and non-thermal components and their times are sampled using parameterizations of the measured distributions, where the thermal noise component is uncorrelated photons and the non-thermal component is from burst of photons.
-The noise hits are simulated by drawing the times from a constant rate Poisson process and the number of photons from a Poisson distribution. Then the time differences between the individual photons per hit is found, based on a Log-Normal distribution. The simulation is defined by 5 parameters that are calibrated for each DOM individually. \reftab{vuvuzela_parameters} shows the average values for these parameters.
+Besides the Cherenkov photons, IceCube also observes photons that are produced in radioactive decays inside the DOMs, both in the glass housing sphere and the PMT glass itself. To simulate this internal noise, the \emph{Vuvuzela} module \sidecite{MLarson_master, MLarson_phd} is used to create additional MCPEs that are fed into the same simulation chain described above. The noise hits are simulated by drawing the times from a constant rate Poisson process and the number of photons from a Poisson distribution. Then the time differences between the individual photons per hit is found, based on a Log-Normal distribution. The simulation is defined by 5 parameters that are calibrated for each DOM individually. \reftab{vuvuzela_parameters} shows the average values for these parameters.
