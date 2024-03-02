@@ -158,10 +158,9 @@ The GRV98LO PDFs were added to the cross-section spline maker and used to create
 
 \subsubsection{Decay Channels}
 
-The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the decay channels considered are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. The individual decay widths $\Gamma_i$ are computed using the state-of-the-art calculations from \sidecite{Coloma:2020lgy}, which are described in the following.
+The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the decay channels considered are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. They can be seen in \reffig{hnl_decay_modes_log_decay_width}, where the individual decay widths $\Gamma_i$ are shown, which are computed using an implementation of the state-of-the-art calculations from \sidecite{Coloma:2020lgy}. The formulae for these calcuations are explicitly listed in the following.
 
 \begin{margintable}
-    % \footnotesize
     \begin{tabular} { lr }
         \hline\hline 
         \textbf{Channel} & \textbf{Opens}  \\
@@ -185,7 +184,6 @@ The accessible decay channels are dependent on the mass of the HNL and the allow
     \caption[HNL decay widths]{Decay widths of the HNL within the mass range considered, calculated based on the results from \cite{Coloma:2020lgy}. Given the existing constraints on $|U_{e4}|^{2}$ and $|U_{\mu4}|^{2}$, we consider that the corresponding decay modes are negligible.}
     \labfig{hnl_decay_modes_log_decay_width}
 \end{figure}
-\todo{say something about the decay widht plot, mention it in the text.. (RED)}
 
 
 \paragraph{2-Body Decay Widths}
@@ -525,7 +523,7 @@ The detector simulation is performed after the event generation, where the initi
 % For any Cherenkov detector, but especially for ice-Cherenkov detectors, like IceCube, the propagation of the photons is a crucial part of the detector simulation.
 Any photon that was produced in the event generation is individually traced through the ice, simulating scattering and absorption processes.
 % , taking into account the local ice properties, estimated with a chosen ice model.
-The propagation is done using \textsc{clsim} \cite{clsim} which is an implementation of the \textit{Photon Propagation Code (\textsc{PPC})} \sidecite{ppc} in \textsc{OpenCL}. It is optimized to be run efficiently on GPUs. The ice is modeled as a set of \SI{10}{\meter} thick, almost horizontal layers with specific absorption and scattering lengths. The \textit{South Pole ice (SPICE)} model \sidecite{spice_ice_model} accounts for the layers being tilted by a small amount\todo{add half sentence why this is (RED)} and the absorption and scattering lengths having a non-uniformity with respect to the azimuth direction. \reffig{simulation_ice_model} shows the values of this model for the different depths, indicating the location of IceCube, DeepCore, and the dust layer.
+The propagation is done using \textsc{clsim} \cite{clsim} which is an implementation of the \textit{Photon Propagation Code (\textsc{PPC})} \sidecite{ppc} in \textsc{OpenCL}. It is optimized to be run efficiently on GPUs. The ice is modeled as a set of \SI{10}{\meter} thick, almost horizontal layers with specific absorption and scattering lengths. The \textit{South Pole ice (SPICE)} model \sidecite{spice_ice_model} accounts for the layers being tilted by a small amount, due to the uneven surface of the bedrock below the glacier, and the absorption and scattering lengths having a non-uniformity with respect to the azimuth direction. \reffig{simulation_ice_model} shows the values of this model for the different depths, indicating the location of IceCube, DeepCore, and the dust layer.
 
 \begin{figure}
     \input{figures/icecube_deepcore/spice_3.2.1.tex}
