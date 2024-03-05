@@ -4,79 +4,18 @@
 \chapter{Introduction}
 \labch{intro}
 
+The neutrino was postulated in 1930 by Wolfgang Pauli \sidecite{Pauli:1930pc}, in order to explain the observed continuous energy spectrum of electrons originating from beta decays. In 1956, Cowan and Reines confirmed this prediction of a neutral, light particle through the measurement of the electron neutrino via the inverse beta decay \sidecite{Cowan103}. With the discovery of the muon neutrino in 1962 \sidecite{PhysRevLett.9.36}, and the observation of tau neutrino interactions in 2001 \sidecite{KODAMA2001218}, the current three-flavor neutrino picture of the standard model was established. In this description, neutrinos are purely left-handed chiral particles that only interact via the weak force and are predicted to be massless.
 
-\todo{Write introduction (RED)}
+However, experimental observations of neutrino flavor transitions started to appear in the 1960s \sidecite{homestake}, which can only be explained by the mixing between different neutrino states and the existence of non-zero mass differences. This means that at least two of the three neutrinos must have a non-zero mass. Extending the standard model, to describe the three neutrino flavor eigenstates as a superposition of three neutrino mass eigenstates, allows the description of the observed phenomenon of neutrino oscillations. To date, a variety of experiments are observing neutrino oscillations and have measured the neutrino mixing parameters and the mass differences with high precision. But the origin of the neutrino masses remains unknown.
 
+A possible resolution to this problem is the existence of right-handed neutrinos and additional heavy mass states. Through a small mixing with the standard model neutrinos, these could explain the observed neutrino masses and their smallness. With masses $\gg$\si{\electronvolt} they are called heavy neutral leptons and could also play an important role in explaining further problems such as the baryon asymmetry of the universe or serve as dark matter candidates. While they are almost sterile, the small mixing to the standard model neutrinos allows them to participate in weak interactions, which makes experimental searches for these particles possible.
 
-The observation of neutrino oscillations has established that neutrinos have non-zero masses. This phenomenon is not explained by the standard model of particle physics, but one viable explanation to this dilemma is the existence of \textit{heavy neutral leptons (HNLs)}, in the form of right-handed neutrinos with masses much larger than the observed neutrino masses ($\gg$\si{\electronvolt}). Depending on their mass and coupling to standard model neutrinos, these particles could also play an important role in solving further problems such as baryogenesis or serve as dark matter candidates.
+This work presents the first search for heavy neutral leptons using atmospheric neutrinos. The data is collected by the IceCube Neutrino Observatory, which is a cubic kilometer Cherenkov neutrino detector that was constructed between 2004 and 2010 at the geographic South Pole \sidecite{2017JInst..12P3012A_Instrumentation_Systems}. It consists of 5160 optical sensors attached to 86 strings, drilled vertically into the Antarctic glacial ice to a maximum depth of $\sim$\SI{2500}{\meter}. Neutrinos are detected via the Cherenkov light that is emitted by secondary particles produced in neutrino-nucleon scattering interactions in the ice.
 
-This work presents the first search for HNLs with the IceCube Neutrino Observatory. The standard three flavor neutrino model is extended by adding a fourth GeV-scale mass state and allowing mixing with the tau neutrino through the mixing parameter \ut4. The strength of this mixing is tested using atmospheric neutrinos as a source flux. Muon neutrinos that oscillated into tau neutrinos can produce HNLs through neutral current interactions, which then decay back to standard model particles. Both production and decay may produce observable light in the detector, leading to a unique signature of two cascades at low energies.
+For this search, the standard three flavor neutrino model is extended by adding a fourth GeV-scale mass state and allowing mixing with the tau neutrino through the mixing parameter \ut4. The strength of this mixing is tested using atmospheric neutrinos as a source flux. Muon neutrinos that oscillated into tau neutrinos can produce heavy neutral leptons through neutral current interactions, which then decay back to standard model particles. Both production and decay may deposit light in the detector, leading to a unique signature of two cascades at low energies.
 
-The measurement is performed through a binned, maximum likelihood fit, comparing the observed data to the expected events from atmospheric neutrinos and HNLs. Three HNL mass values, $m_4$, of \SI{0.3}{\gev}, \SI{0.6}{\gev}, and \SI{1.0}{\gev} are tested using ten years of data, collected between 2011 and 2021. The fits constrain the mixing parameter to \ut4$ < 0.19\;(m_4 = \SI{0.3}{\gev})$, \ut4$ < 0.36\;(m_4 = \SI{0.6}{\gev})$, and \ut4$ < 0.40\;(m_4 = \SI{1.0}{\gev})$ at \SI{90}{\percent} confidence level. No significant signal of HNLs is observed for any of the tested masses, and the best fit mixing values obtained are consistent with the null hypothesis of no mixing.
+A thorough investigation of this unique low-energy double cascade signature of heavy neutral leptons in IceCube is performed. A benchmark reconstruction performance is estimated using a well established IceCube reconstruction tool, after optimizing it for low-energy double cascade events. The limitations of the detector to observe these events are identified, and their origins are discussed. Since identifying the low-energy double cascade signature proved to be very challenging, an analysis is performed by searching for the shape imprint of events from heavy neutral leptons on top of the standard model neutrino sample. The measurement is performed through a binned, maximum likelihood fit, comparing the observed data to the expected events from atmospheric neutrinos and heavy neutral leptons. Three discrete heavy neutral lepton mass values, $m_4$, of \SI{0.3}{\gev}, \SI{0.6}{\gev}, and \SI{1.0}{\gev} are tested using ten years of data, collected between 2011 and 2021. The fits constrain the mixing parameter to \ut4$ < 0.19\;(m_4 = \SI{0.3}{\gev})$, \ut4$ < 0.36\;(m_4 = \SI{0.6}{\gev})$, and \ut4$ < 0.40\;(m_4 = \SI{1.0}{\gev})$ at \SI{90}{\percent} confidence level. No significant signal of heavy neutral leptons is observed for any of the tested masses, and the best fit mixing values obtained are consistent with the null hypothesis of no mixing. This first analysis lays the fundamental groundwork for future searches for heavy neutral leptons in IceCube.
 
-Additionally, a thorough investigation of the unique low energy double cascade signature of HNLs in IceCube is performed. A benchmark reconstruction performance is estimated using a well established IceCube reconstruction tool, after optimizing it for low energy double cascade events. The limitations of the detector to observe these events are identified, and their origins are discussed. This first analysis lays the fundamental groundwork for future searches for HNLs in IceCube.
+The author was also involved in several projects, which are not directly related to the main analysis presented in this thesis. In close collaboration with a former colleague (Alex Trettin), a novel method to treat detector uncertainty effects in IceCube was developed. It was documented in a few author paper, and is now one of the default methods to incorporate detector uncertainties in atmospheric neutrino analyses in IceCube. This method will also be used in the main analysis of this thesis. Throughout the last years, the author was strongly involved in updating and maintaining the open source analysis framework PISA, which is used in many analyses using the IceCube atmospheric neutrino samples.
 
-
-
-\paragraph{notes for the introduction}
-\begin{itemize}
-    \item observation of non-zero neutrino masses indicates likely existence of new physics beyond the standard model
-    \item multiple SM neutral fermions (right handed) could explain the neutrino masses and their smallness
-    \item if they are heavy enough to not be produced in oscillations, they are called heavy neutral laptons
-    \item 
-    \item In 1984 the PS191 [G. Bernardi et al., Phys. Lett. B 166, 479 (1986), G. Bernardi et al., Phys. Lett. B 203, 332 (1988)] experiment at CERN appears to have been the earliest beam dump to report HNL bounds from the direct production and decay.
-    \item 
-\end{itemize}
-
-
-
-
-During my time at desy and in IceCube, I have been involved in several projects, which are not all directly related to the main analysis presented in this thesis. I will give a brief overview of my scientific contributions and how they are related to the main analysis.
-
-In close collaboration with a former colleague (Alex Trettin), we developed a novel method to treat detector uncertainty effects in IceCube, which we documented in a few author paper, and which is now one of the default method to incorporate detector uncertainties in atmospheric neutrino analyses in IceCube. This method will also be used in the main analysis of this thesis and is briefly introduced in \refsec{ultrasurfaces}.
-
-Throughout the last years, I was also involved in updating and maintaining the open source analysis framework PISA, which is used in many analyses.
-
-
-
-\textbf{Work related (what is my original work):}
-\begin{itemize}
-    % \item developed a method to treat detector uncertainty effects in close collaboration with former colleague (A. Trettin) which is well documented in a published paper and her thesis but will be introduced in \refsec{ultrasurfaces} and used in the main analysis of this work
-    % \item say something about my PISA contribution
-    \item the model independent simulation chain described in \refsec{model_independent_simulation} was developed exclusively by myself
-    \item for the model dependent generator presented in \refsec{model_dependent_simulation}, the skeletal structure was constructed by collaborators, before I took over and implemented the full model dependent simulation chain, including the correct decay widths calculations, custom cross-section, and the weighting scheme, continuously optimizing and testing it, before producing and processing the full samples for the main analysis
-    \item both the study on how well IceCube can detect low energy double cascades in \refch{double_cascade_performance} and the main analysis in \refch{shape_analysis} were developed and performed by myself independently and are original work
-\end{itemize}
-
-
-
-The neutrino was postulated by Wolfgang Pauli \sidecite{Pauli:1930pc} in 1930 to explain the continuous energy spectrum of electrons originating from beta decay.
-Cowan and Reines confirmed this prediction of a light, neutral particle in 1956 when they discovered the electron neutrino using inverse beta decay \sidecite{Cowan103}.
-Two additional neutrino flavors were found in the following years, and with the discovery of the muon neutrino in 1962 \sidecite{PhysRevLett.9.36} and the tau neutrino in 2001 \sidecite{KODAMA2001218}, the current theory of neutrinos in the standard model (SM) was established.
-
-Although neutrinos were first believed to be massless, experimental evidence showing the existence of mixed neutrino states started to appear in the 1960s \sidecite{homestake}.
-Mixing between different physical representations of neutrinos is proof for differences in their masses.
-The resulting phenomenon of neutrino oscillations can be incorporated into the standard model by extending it to include massive neutrinos.
-How massive they are and how strong is the mixing between neutrino states has to be obtained from measurement.
-Today there are a variety of precision oscillation experiments using solar, reactor and atmospheric neutrinos to tighten the constraints on the neutrino oscillation parameters.
-IceCube is one of those leading experiments probing the oscillation theory with atmospheric neutrinos.
-
-The IceCube Neutrino Observatory \sidecite{2017JInst..12P3012A_Instrumentation_Systems} was constructed between 2004 and 2010 at the geographic South Pole.
-It is the first cubic kilometer Cherenkov neutrino detector and consists of 5160 optical sensors attached to 86 strings, drilled down to a maximum depth of $\sim2500$\,m into the Antarctic ice.
-Neutrinos are detected by the Cherenkov light that is emitted by secondary particles produced in neutrino-nucleon scattering interactions in the ice.
-With DeepCore, a more densely instrumented sub-array of IceCube, the neutrino detection energy threshold can be lowered to approximately 5\,GeV.
-
-At these energies, the similarity in event signatures poses difficulties in identifying different neutrino flavor interactions.
-Muon neutrino charged-current interactions produce light tracks as opposed to charged-current interactions of electron and tau neutrinos as well as neutral-current interactions of all neutrinos that produce light cascades.
-The sparse instrumentation of IceCube makes it more challenging to separate track- and cascade-like events.
-In this thesis, a novel method to distinguish those two event types is developed.
-In contrast to previously used univariate separation techniques, the multivariate machine learning method applied here maximizes the use of information from the detector response.
-Through the use of a Gradient Tree Boosting algorithm the separation of events in track and cascade is improved.
-As a result of the improved separation, the uncertainty to the atmospheric neutrino oscillation parameters $\Delta \mathrm{m}^{2}_{32}$ and $\theta_{23}$ is significantly reduced.
-
-% This thesis is structured as follows.
-% Chapter~\ref{chap:theoretical_background} starts with an introduction to neutrino properties and their SM interactions followed by the description of atmospheric neutrinos and the formulation of standard oscillations.
-% Chapter~\ref{chap:neutrino_detection} introduces the IceCube Neutrino Observatory, its detection principle along with the observed event signatures and the reconstruction method used for this work.
-% Chapter~\ref{chap:improving_pid} describes the machine learning technique that was utilized to develop a novel particle identification variable.
-% Chapter~\ref{chap:oscillation_parameter_measurement} applies this method to achieve improved sensitivities in the measurement of atmospheric neutrino oscillations.
-% Finally, Chapter~\ref{chap:summary} gives a concluding summary and a short outlook.
+This thesis is structured as follows. After introducing the standard model and the extensions to include heavy neutral leptons in \refch{sm_neutrinos_properties}, the IceCube Neutrino Observatory and its detection principle are described in \refch{icecube}. \refch{signal_simulation} explains two avenues to simulate the heavy neutral lepton signal in IceCube. A model-independent event generator was developed exclusively by the author, to benchmark the reconstruction performance and cross-check the model-dependent simulation. For the latter, a skeletal structure was constructed by collaborators, before the author took over and implemented the full model-dependent simulation chain, continuously optimizing and testing it, before producing and processing the full samples for the main analysis. Both the study of the performance of IceCube to reconstruct and identify heavy neutral lepton events presented in \refch{simulation_and_processing}, and the main analysis discussed in \refch{shape_analysis} were developed and performed independently and are original work of the author.
