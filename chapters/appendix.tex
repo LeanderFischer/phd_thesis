@@ -2,8 +2,8 @@
 \labch{appendix}
 
 \setchapterstyle{lines}
-\chapter{Heavy Neutral Lepton Event Generation}
-\labch{signal_simulation_appenix}
+\chapter{Double Cascade Event Generation}
+\labch{signal_simulation_appendix}
 
 
 \section{Model-Independent Simulation Distributions} \labsec{model_independent_simulation_appendix}
@@ -50,33 +50,18 @@
 \end{figure*}
 
 
-% \setchapterstyle{lines}
-% \chapter{Analysis Checks}
-% \labch{analysis_checks}
+\setchapterstyle{lines}
+\chapter{Double Cascade Classification}
+\labch{dc_classification_appendix}
 
+\section{Double Cascade Classifier Features} \labsec{dc_classifier_features_appendix}
 
-% \section{Minimization Robustness} \labsec{asimov_inject_recover_appendix}
-
-% \reffig{asimov_inject_recover_appendix} shows additional Asimov inject/recover tests for the \SI{0.3}{\gev} and the \SI{1.0}{\gev} mass sets. The tests were described in \refsec{asimov_inject_recover}.
-
-% \begin{figure*}[h]
-%     \includegraphics[width=0.49\linewidth]{figures/results/checks/asimov_scan_0.3_GeV-01.png}
-%     \includegraphics[width=0.49\linewidth]{figures/results/checks/asimov_scan_1.0_GeV-01.png}
-% 	\caption[Asimov inject/recover test (\SI{0.3}{\gev}, \SI{1.0}{\gev})]{Asimov inject/recover test for the \SI{0.3}{\gev} (left) and the \SI{1.0}{\gev} (right) mass sets. Mixing values between $10^{-3}$ and $10^{0}$ are injected and fit back with the full analysis chain. The injected parameter is always recovered within the statistical uncertainty.}
-%     \labfig{asimov_inject_recover_appendix}
-% \end{figure*}
-
-
-% \section{Sensitivities}
-
-% \begin{figure}[h]
-%     \includegraphics[width=0.49\linewidth]{figures/results/checks/sensitivity_scan_0.3_GeV-1.png}
-%     \includegraphics[width=0.49\linewidth]{figures/results/checks/sensitivity_scan_1.0_GeV-1.png}
-% 	\caption[Sensitivity scan (\SI{0.3}{\gev}, \SI{1.0}{\gev})]{Sensitivity scan for the \SI{0.3}{\gev} (left) and the \SI{1.0}{\gev} (right) mass sets.}
-%     \labfig{sensitivity_scans_appendix}
-% \end{figure}
-
-
+\begin{figure*}[h]
+    \includegraphics[width=0.8\linewidth]{figures/results/190607/classification/track_feature_importance.png}
+    \includegraphics[width=0.8\linewidth]{figures/results/190607/classification/cascade_feature_importance.png}
+    \caption[Double cascade classifiers feature importances]{Feature importances of the  classifiers trained to distinguish double cascades from tracks (top) and from cascades (bottom).}
+    \labfig{track_classifier_features}
+\end{figure*}
 
 \setchapterstyle{lines}
 \chapter{Analysis Results}
@@ -141,5 +126,3 @@
 \caption[Best fit nuisance parameters values]{Best fit nuisance parameters for the three mass samples. Also shown is the nominal value and the difference between the nominal and the best fit.}
 \labtab{best_fit_parameters}
 \end{table*}
-\todo{fix design + significant digits to show (ORANGE)}
-\todo{maybe show range/prior and then deviation in sigma, or absolute for the ones without prior}

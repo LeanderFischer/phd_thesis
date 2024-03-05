@@ -24,8 +24,6 @@ Before the data can be sent to the North, the initial signal coming from the PMT
 
 \subsubsection{In-ice Trigger} \labsec{trigger}
 
-\todo{Include some low level plots like the trigger efficiency for the HNL simulation (RED)}
-
 \begin{marginfigure}
     \includegraphics{figures/simulation_and_processing/trigger/trigger_efficiency.jpg}
 	\caption[IceCube trigger efficiencies]{Efficiencies of different IceCube and DeepCore triggers, taken from \cite{DeepCore_design_Abbasi2012615}.}
@@ -34,7 +32,7 @@ Before the data can be sent to the North, the initial signal coming from the PMT
 
 The trigger is applied inside the DOM in the ice before sending the information to the ICL on the surface. The time dependent voltage curves are captured if a pre-defined threshold value is exceeded. Once the threshold, set to the equivalent of \SI{0.25}{PE}, is crossed, \SI{6.4}{\micro\second} of the waveform are coarsely digitized by a \textit{Fast Analog-to-Digital Converter (FADC)} with a sampling rate of \SI{40}{\mega\hertz}. Additionally, the first \SI{427}{\nano\second} are digitized using an \textit{Analog Transient Waveform Recorder (ATWD)} with a sampling rate of \SI{300}{\mega\hertz} \sidecite{ABBASI2009294_data_acquisition}, but only if some trigger condition is met, because this readout frequency is too high to be sampled directly and requires some buffering. For DeepCore, the HLC condition already mentioned in \refsec{ice_and_DOMs} has to be met for three DOMs inside the fiducial volume within a time window of \SI{5}{\micro\second}. If this is the case, all waveforms that crossed the threshold within a \SI{20}{\micro\second} time window around the trigger are digitized and sent to the ICL for further processing. This trigger is called DeepCore \textit{Simple Multiplicity Trigger 3 (SMT-3)}. The DOM hits that are read out in this process, but do not meet the HLC condition, are called \textit{soft local coincidence (SLC)} hits. The rate of the DeepCore SMT-3 trigger is $\sim$\SI{250}{\hertz} \sidecite{2017JInst..12P3012A_Instrumentation_Systems}, accepting $\sim$\SI{70}{\percent} of $\nu_\mu$-CC events at \SI{10}{\gev} and $\sim$\SI{90}{\percent} at \SI{100}{\gev} \sidecite{DeepCore_design_Abbasi2012615}. The trigger efficiencies for different SMT triggers, including the DeepCore SMT-3, are shown in \reffig{trigger_efficiencies}.
 
-\todo{get trigger efficiency for HNL (somehow..)}
+\todo{get trigger efficiency (SMT-3) for HNL as a plot or just the number? (RED)}
 
 
 \subsubsection{Online Filter} \labsec{online_filter}
@@ -84,8 +82,7 @@ After the total rate was reduced by the simple selection criteria at L3 and the 
 
 Level 5 is the final selection level, before event reconstructions are applied. This level aims to reduce the remaining atmospheric muon rate below the rate of neutrinos. Muons not rejected by the earlier levels are those that produced little or no light in the veto regions. One possible reason is that they passed through one of the uninstrumented regions between the strings called \textit{corridors}. To reject those, special corridor selection criteria are applied, which are based on the number of hits the event produced close to a potential corridor it passed through. The potential corridor in questions is identified based on a simple infinite track fit. In addition to the corridor selection, starting containment conditions are applied to reject events that start at the edge of the fiducial volume. Events with more than seven hits in the outermost strings of the detector or those that have a down-going direction in the uppermost region are rejected. This further reduces the fraction of muons by \SI{96}{\percent} while keeping \SI{48}{\percent} of neutrinos. The rates after this level are \SI{1}{\milli\hertz} and \SI{2}{\milli\hertz} for neutrinos and muons, respectively, making it a neutrino dominated sample.
 
-\todo{add table with rates per level (split in flavor) - maybe better in analysis chapter to also show signal? (RED)}
-\todo{get estimate of HNL efficiency across the levels.. (RED)}
+\todo{add table with selection efficiencies SM (in flavors) and HNL (RED)}
 
 
 \section{Double Cascade Reconstruction} \labsec{dc_reconstruction}
@@ -268,8 +265,7 @@ To get an estimate of what minimum energies are necessary for the reconstruction
 
 To assess the efficiency of the low-energy event selection introduced in \refsec{processing_chain}, the energy and length distributions are shown across the different selection levels in \reffig{realistic_selection}. \reftab{realistic_selection_efficiency} shows the total efficiency of the selection, where it can be seen that at level xx it is reduced the most and only xx\% of the events pass the selection to level 5.
 
-\todo{Plot energy (true total) and true decay length across the different levels (RED)}
-\todo{get efficiencies across the different level (using realistic model-independent sample) (RED}
+\todo{Plot energy (true total) and true decay length across the different levels (take efficiencies from this) (RED)}
 
 
 \subsubsection{Model-Dependent Simulation}
@@ -324,18 +320,19 @@ Despite the failure of the reconstruction for events with low energy depositions
 
 Additionally, some requirements on the true energies and decay length were applied for the signal, which are a minimum true energy of both cascades of \SI{5}{\gev}, and a true decay length between \SIrange[range-phrase={~and~}]{40}{150}{\meter}. These were chosen to make sure the HNL events were theoretically double cascade like and at a sensible length scale inside DeepCore. \reffig{classifier_cuts_length_2d_hist} shows the reconstructed decay length versus the true decay length after the selection was applied.
 
-The classifier used was a \textit{Boosted Decision Tree (BDT)} from the \textit{\textsc{scikit-learn} (sklearn)} package \sidecite{sklearn} and the input features are taken from the double cascade reconstruction explained in \refsec{dc_reconstruction} as well as some additional variables from earlier levels of the processing explained in \refsec{processing_chain}\todo{put list with all features in the appendix for all three classifiers (RED)}\todo{list hyperparameter settings in the appendix (RED)}. \reffig{example_BDT_features} shows the distributions of two example input features, where the left plot shows the output probability of the classifier trained to distinguish track from cascade like events, which is used in the oscillation analysis, and the right plot shows the reconstructed decay length from the double cascade reconstruction. Shown are the distributions for the signal, the individual background components, and the total background. 
+The classifier used was a \textit{Boosted Decision Tree (BDT)} from the \textit{\textsc{scikit-learn} (sklearn)} package \sidecite{sklearn} and the input features are taken from the double cascade reconstruction explained in \refsec{dc_reconstruction} as well as some additional variables from earlier levels of the processing explained in \refsec{processing_chain}. \reffig{example_BDT_features} shows the distributions of two example input features, where the left plot shows the output probability of the classifier trained to distinguish track from single cascade like events, which is used in the oscillation analysis, and the right plot shows the reconstructed decay length from the double cascade reconstruction. Shown are the distributions for the signal, the individual track and cascade background components, and the total background. The distributions are normalized to the same area to show their shapes and it can be seen that the signal and total background distributions look very similar, while there is some differences to the background split in track and single cascade component. For completeness, the selected features and their importances for the results presented in the following are shown in \refsec{dc_classifier_features_appendix}.
 
 \begin{figure*}[h]
 	\centering
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/classification/1_d_distr_L7_PIDClassifier_FullSky_ProbTrack_with_ratio_unweighted.png}
-    \includegraphics[width=0.49\linewidth]{figures/results/190607/classification/1_d_distr_reco_decayL_with_ratio_unweighted.png}
-    \caption[Double cascade classification example features]{Example features used for the double cascade classification. Shown is the output probability of the classifier trained to distinguish track from cascade like events (left) and the reconstructed decay length from the double cascade reconstruction (right) for all background flavors and the signal. Distributions are normalized to show their shapes.}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/classification/1_d_distr_L7_PIDClassifier_FullSky_ProbTrack_unweighted.png}
+    \includegraphics[width=0.49\linewidth]{figures/results/190607/classification/1_d_distr_reco_decayL_unweighted.png}
+    \caption[Double cascade classification example features]{Example features used for the double cascade classification. Shown is the output probability of the classifier trained to distinguish track from cascade like events (left) and the reconstructed decay length from the double cascade reconstruction (right) for the different background signatures, the total background, and the signal. Distributions are normalized to.}
     \labfig{example_BDT_features}
 \end{figure*}
-\todo{re-plot, normalized.. (RED)}
 
-A \textit{single-classifier} and \textit{double-classifier} approach were tested. For the single-classifier, one BDT classifier was trained to distinguish between signal events and all background events at once. For the double-classifier, two classifiers were trained separately, one to distinguish signal from track like background, and the other to distinguish signal from cascade like background. Since the SM neutrino events at these energies are either track like or cascade like, the latter approach was expected to perform better. Despite the fact that several combinations of features and classifier hyperparameters were tested, it was not possible to identify a pure double cascade region with a single classifier.
+A \textit{single-classifier} and \textit{double-classifier} approach were tested. For the single-classifier, one BDT classifier was trained to distinguish between signal events and all background events at once. For the double-classifier, two classifiers were trained separately, one to distinguish signal from track like background, and the other to distinguish signal from cascade like background. The classifiers were trained with uniform weights, but scaled so that the summed weights for signal and background were equal. Since the SM neutrino events at these energies are either track like or cascade like, the double-classifier approach performed better and will be discussed here. Despite the fact that several combinations of features were tested, it was not possible to identify a pure double cascade region with a single classifier. Since the results did not show a strong classification power,
+tuning the hyperparameters quickly lead to overtraining and the results here are using the defaul settings of the BDT classifier.
+
 
 \begin{figure*}[h]
 	\centering
