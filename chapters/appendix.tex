@@ -88,18 +88,28 @@
 
 \section{Treatment of Detector Systematic Uncertainties} \labsec{ultrasurfaces_appendix}
 
-\todo{add description of what specific set number means (RED)}
+Shown is the performance of the detector systematic uncertainty treatment. The systematic set 0001 and 0004 have the DOM efficiency varied by $\pm10\%$, while set 0504 and 0505 have the ice absorption varied by $\pm10\%$. Set 0506 and 0507 have the ice scattering varied by $\pm10\%$, and set 1122 is the set with the new ice model, including the birefringence effect. The sets 0301, 0309, 190, 1901, 1902, and 1903 have variations of the hole ice p0 and p1 parameters, covering a wide range.
 
 \begin{figure}[h]
     \includegraphics[width=0.9\textwidth]{figures/results/utlrasurfaces/oscNext_leptoninjector_1.0_GeV_knn_probs_neighbors_500_weighted_nfiles_extended_holeice_corrected_grads_poly_2_weighted_reference_weight_0.0100_thesis_style-2.png}
-    \caption[Detector systematic uncertainty treatment overall performance]{Overall performance of the detector systematic uncertainty treatment. Shown are the pull distributions of the three dimensional pulls shown in \reffig{hnl_ultrasurfaces_3d_pulls_selection0} and \reffig{hnl_ultrasurfaces_3d_pulls_selection1} between the nominal set and the specific systematic set, after the nominal set was re-weighted to the correspoinding systematic parameter value.}
+    \caption[Detector systematic uncertainty treatment overall performance]{Overall performance of the detector systematic uncertainty treatment. Shown are the pull distributions of the three dimensional pulls shown in \reffig{hnl_ultrasurfaces_3d_pulls_selection0} and \reffig{hnl_ultrasurfaces_3d_pulls_selection1} between the nominal set and the specific systematic set, after the nominal set was re-weighted to the corresponding systematic parameter value.}
     \labfig{hnl_ultrasurfaces_all_pull_distributions}
 \end{figure}
 
 \begin{figure*}[h]
     \includegraphics{figures/results/utlrasurfaces/oscNext_leptoninjector_1.0_GeV_knn_probs_neighbors_500_weighted_nfiles_extended_holeice_corrected_grads_poly_2_weighted_reference_weight_0.0100_thesis_style_subset_1-5.png}
-    \caption[Detector systematic uncertainty treatment bin-wise pulls additional sets]{Three dimensional pulls and set-wise pull distributions between the nominal set and the specific systematic sets, after the nominal set was re-weighted to the correspoinding systematic parameter value.}
+    \caption[Detector systematic uncertainty treatment bin-wise pulls additional sets]{Three dimensional pulls and set-wise pull distributions between the nominal set and the specific systematic sets, after the nominal set was re-weighted to the corresponding systematic parameter value.}
     \labfig{hnl_ultrasurfaces_3d_pulls_selection1}
+\end{figure*}
+
+
+\section{Data/MC Agreement} \labsec{data_mc_agreement_appendix}
+
+\begin{figure*}[h]
+    \includegraphics[width=0.7\linewidth]{figures/results/best_fit/pid_data_mc_agreement.png}
+    \includegraphics[width=0.7\linewidth]{figures/results/best_fit/reco_coszen_data_mc_agreement.png}
+	\caption[PID and cosine of the zenith angle data/MC comparison]{Data/MC comparison of the PID (top) and cosine of the zenith angle (bottom) for the \SI{0.6}{\gev} mass sample. The data is compared to the total MC expectation, which is also split up into individual components for illustration. The HNL events are shown as part of the $\nu_\mathrm{NC}$ component.}
+    \labfig{1_d_data_mc_bfp_1.0_GeV_pid_cosz}
 \end{figure*}
 
 

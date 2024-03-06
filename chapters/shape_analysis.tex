@@ -339,15 +339,18 @@ To estimate the GOF, pseudo-data is generated from the MC by injecting the BFP p
 
 \subsection{Data/MC Agreement} \labsec{data_mc_agreement}
 
-At the BFP, the agreement between the data and simulation is probed by comparing both the one-dimensional analysis distributions for PID, energy, and cosine of the zenith angle as well as the full three-dimensional distributions. \reffig{3_d_bfp_pull_0.6_GeV} shows the three-dimensional pull distribution between data and the total MC expectation for the \SI{0.6}{\gev} mass sample at the BFP. The pulls are evenly spaced and show no strong clustering. In \reffig{data_mc_agreement_0.6_GeV}, two examples of the one-dimensional distributions for the energy and cosine of the zenith angle are shown for the \SI{0.6}{\gev} mass sample. The data is compared to the total MC expectation, which is also split up into the individual signal and background components for illustration. Good agreement can be observed in the pull distributions, and is quantified by a reduced $\chi^2$, which is close to \SI{1.0} for all distributions. The reduced $\chi^2$ for all investigated distributions is listed in \reftab{data_mc_agreement}, while the distributions themselves can be found in \refsec{data_mc_agreement_appendix}.
-
-\todo{add 1-d data/mc agreement for example mass sample (0.6?) and all 3 analysis variables (RED)}
-\todo{add table with reduced chi2 for all 1-d distributions (RED)}
-
 \begin{figure}[h]
     \includegraphics{figures/results/checks/bfp_3d_binwise_pull_0.6_GeV.pdf}
 	\caption[Best fit three-dimensional bin-wise pulls (\SI{0.6}{\gev})]{Three-dimensional bin-wise pulls between data and simulation at the best fit point of the \SI{0.6}{\gev} mass sample fit.}
     \labfig{3_d_bfp_pull_0.6_GeV}
+\end{figure}
+
+At the BFP, the agreement between the data and simulation is probed by comparing both the one-dimensional analysis distributions for PID, energy, and cosine of the zenith angle as well as the full three-dimensional distributions. \reffig{3_d_bfp_pull_0.6_GeV} shows the three-dimensional pull distribution between data and the total MC expectation for the \SI{0.6}{\gev} mass sample at the BFP. The pulls are evenly spaced and show no strong clustering. In \reffig{1_d_data_mc_bfp_1.0_GeV_energy} the reconstructed energy distributions is shown for the \SI{0.6}{\gev} mass sample. The data is compared to the total MC expectation, which is also split up into individual components for illustration. Note here that the HNL events are shown as part of the $\nu_\mathrm{NC}$, since they originate from the $\nu_\tau$-NC flux. Good agreement can be observed between the distributions, which was quantified by a reduced $\chi^2$, which is close to \SI{1.0}. The distributions of the other two analysis variables are shown in \refsec{data_mc_agreement_appendix}. 
+
+\begin{figure}[h]
+    \includegraphics{figures/results/best_fit/reco_energy_data_mc_agreement.png}
+	\caption[Reconstructed energy data/MC comparison]{Data/MC comparison of the reconstructed energy for the \SI{0.6}{\gev} mass sample. The data is compared to the total MC expectation, which is also split up into individual components for illustration. The HNL events are shown as part of the $\nu_\mathrm{NC}$ component.}
+    \labfig{1_d_data_mc_bfp_1.0_GeV_energy}
 \end{figure}
 
 
