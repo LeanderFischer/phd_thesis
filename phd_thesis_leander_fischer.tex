@@ -3,9 +3,6 @@
 % LaTeX Class
 % Version 0.9.8 (2021/08/23)
 %
-% This template originates from:
-% https://www.LaTeXTemplates.com
-%
 % For the latest template development version and to make contributions:
 % https://github.com/fmarotta/kaobook
 %
@@ -13,7 +10,6 @@
 % Federico Marotta (federicomarotta@mail.com)
 % Based on the doctoral thesis of Ken Arroyo Ohori (https://3d.bk.tudelft.nl/ken/en)
 % and on the Tufte-LaTeX class.
-% Modified for LaTeX Templates by Vel (vel@latextemplates.com)
 %
 % License:
 % LPPL (see included MANIFEST.md file)
@@ -42,36 +38,34 @@
 
 \include{auxiliary/titlepage}
 
-% \cleardoublepage
+\cleardoublepage
 % \phantomsection
 % \addcontentsline{toc}{chapter}{Foreword}
-% \input{auxiliary/additional_information.tex}
+\input{auxiliary/additional_information.tex}
 
-% \cleardoublepage
-% \phantomsection
-% \addcontentsline{toc}{chapter}{Abstract}
-% \include{chapters/abstracts}
-% \cleardoublepage
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abstract}
+\include{chapters/abstracts}
+\cleardoublepage
 
-
-\listoftodos
 \tableofcontents
 
 \mainmatter
 
-% \include{chapters/introduction}
+\include{chapters/introduction}
 
-% \include{chapters/theory}
+\include{chapters/theory}
 
-% \include{chapters/icecube}
+\include{chapters/icecube}
 
-% \include{chapters/simulation}
+\include{chapters/simulation}
 
-% \include{chapters/processing_and_reconstruction}
+\include{chapters/processing_and_reconstruction}
 
 \include{chapters/shape_analysis}
 
-% \include{chapters/conclusion}
+\include{chapters/conclusion}
 
 \cleardoublepage
 
@@ -83,15 +77,15 @@
 
 \backmatter
 
-% \cleardoublepage
-% \phantomsection
-% \addcontentsline{toc}{chapter}{Figures}
-% \listoffigures
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Figures}
+\listoffigures
 
-% \cleardoublepage
-% \phantomsection
-% \addcontentsline{toc}{chapter}{Tables}
-% \listoftables
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Tables}
+\listoftables
 
 \setchapterstyle{plain}
 
