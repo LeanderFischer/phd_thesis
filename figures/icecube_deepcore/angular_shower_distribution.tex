@@ -2,9 +2,7 @@
 \begin{tikzpicture}
 
 \definecolor{darkgray176}{RGB}{176,176,176}
-\definecolor{darkorange25512714}{RGB}{255,127,14}
 \definecolor{lightgray204}{RGB}{204,204,204}
-\definecolor{steelblue31119180}{RGB}{31,119,180}
 
 \begin{axis}[
 height=0.8\linewidth,
@@ -57,7 +55,7 @@ yticklabels={
 ]
 % \addlegendimage{empty legend}
 % \addlegendentry{\hspace{-.6cm}\(\scriptstyle Primary particle\)}
-\addplot [very thick, steelblue31119180]
+\addplot [very thick, tab_blue]
 table {%
 -1 0.00270979570996691
 -0.989949748743719 0.00274568176844791
@@ -261,7 +259,7 @@ table {%
 1 0.0813815420878193
 };
 \addlegendentry{\(\scriptstyle e^-\)}
-\addplot [very thick, darkorange25512714]
+\addplot [very thick, tab_orange]
 table {%
 -1 0.00789216051649666
 -0.989949748743719 0.00794087635636688
