@@ -56,7 +56,6 @@ The second sample is used to investigate the reconstruction performance for hori
 \end{table}
 
 
-
 \subsection{Realistic Sample} \labsec{realistic_sample}
 
 To thoroughly investigate the potential of IceCube DeepCore to detect double cascade events, a more realistic simulation sample is produced that aims to be as close as possible to the expected signal simulation explained in \refsec{model_specific_simulation}, while still allowing additional freedom to control the double cascade kinematics. This sample is particularly useful for validating the model-dependent HNL simulation described in \refsec{model_specific_simulation}.
@@ -156,7 +155,7 @@ The GRV98LO PDFs were added to the cross-section spline maker and used to create
 
 \subsubsection{Decay Channels}
 
-The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the decay channels considered are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. They can be seen in \reffig{hnl_decay_modes_log_decay_width}, where the individual decay widths $\Gamma_i$ are shown, which are computed using an implementation of the state-of-the-art calculations from \sidecite{Coloma:2020lgy}. The formulae for these calcuations are explicitly listed in the following.
+The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the decay channels considered are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. They can be seen in \reffig{hnl_decay_modes_log_decay_width}, where the individual decay widths $\Gamma_i$ are shown, which are computed using an implementation of the state-of-the-art calculations from \sidecite{Coloma:2020lgy}. The formulae for these calculations are explicitly listed in the following.
 
 \begin{margintable}
     \begin{tabular} { lr }
@@ -313,44 +312,46 @@ In principle, the generation level sampling distributions should be chosen such 
 
 \subsection{Weighting Scheme} \labsec{hnl_weighting_scheme}
 
-\todo{JVS:
-    The build-up of the weight expression is hard to follow without knowing where it’s going. It may be better to start with the fact that the importance sampling weight is the ratio of PDFs, then write down each pdf, then drill down into each of the terms (basically, the standard “tell me what you’re going to tell me, then tell me, then tell me what you told me” scheme). (RED)
-}
+Since the lab frame decay lengths/lifetimes of the events were sampled from an inverse distribution instead of an exponential, as it would be expected from a particle decay, we have to re-weight accordingly to achieve the correct decay length distribution. The re-weighting factor is calculated as the ratio of the \textit{probability density functions (PDFs)} of the desired exponential distribution and the inverse distribution that was sampled from as $\frac{\mathrm{PDF}_\mathrm{exp}}{\mathrm{PDF}_\mathrm{inv}}$.
 
-To produce physically correct event distributions based on the simplified generation sampling distributions, each event has to be re-weighted. The only required input is the mixing strength $|U_{\tau4}|^2$, which is the variable physics parameter in this analysis. For each event the gamma factor
+The inverse distribution in the rest frame of the HNL is given by
+\begin{equation}
+    \mathrm{PDF}_\mathrm{inv} = \frac{1}{\tau \cdot (\ln(\tau_\mathrm{max}) - \ln(\tau_\mathrm{min}))}
+    \;,
+    \labeq{pdf_inverse}
+\end{equation}
+where $\tau$ is the rest frame lifetime and $\tau_\mathrm{min/max}$ are the minimum and maximum values of the lifetime sampling range. Since the generation range is chosen in the lab frame, the rest frame lifetime range $[\tau_\mathrm{min},\tau_\mathrm{max}]$ is defined by the lab frame decay length range $[s_\mathrm{min},s_\mathrm{max}]$ as
+\begin{equation}
+    \tau_\mathrm{min/max} = \frac{s_\mathrm{min/max}}{v\cdot\gamma}.
+\end{equation}
+Here, the gamma factor is calculated for each event as
 \begin{equation}
     \gamma = \frac{\sqrt{E_\mathrm{kin}^2+m_4^2}}{m_4}
     \;,
     \labeq{gamma_factor}
 \end{equation}
-is calculated, with the HNL mass $m_4$, and its kinetic energy $E_\mathrm{kin}$. The speed of the HNL is calculated as
+with the HNL mass, $m_4$, and its kinetic energy, $E_\mathrm{kin}$, while $v$ is the speed of the HNL which is calculated as
 \begin{equation}
     v = c \cdot \sqrt{1 - \frac{1}{\gamma^2}}
     \;,
     \labeq{lorentz_speed}
 \end{equation}
-where $c$ is the speed of light. With these, the lab frame decay length range $[s_\mathrm{min},s_\mathrm{max}]$ can be converted into the rest frame lifetime range $[\tau_\mathrm{min},\tau_\mathrm{max}]$ for each event
-\begin{equation}
-    \tau_\mathrm{min/max} = \frac{s_\mathrm{min/max}}{v\cdot\gamma}.
-\end{equation}
-The proper lifetime of each HNL event can be calculated using the total decay width $\Gamma_\mathrm{total}$ from \refsec{custom_leptoninjector} and the chosen mixing strength $|U_{\tau4}|^2$ as
-\begin{equation}
-    \tau_\mathrm{proper} = \frac{\hbar}{\Gamma_\mathrm{total}(m_4) \cdot |U_{\tau4}|^2}
-    \;,
-    \labeq{proper_lifetime}
-\end{equation}
-where $\hbar$ is the reduced Planck constant. Since the decay lengths or lifetimes of the events are sampled from an inverse distribution instead of an exponential, as it would be expected from a particle decay, we have to re-weight accordingly to achieve the correct decay lengths or lifetimes distribution. This is done by using the desired exponential distribution
+where $c$ is the speed of light.
+
+The desired exponential distribution of the rest frame lifetime is given by
 \begin{equation}
     \mathrm{PDF}_\mathrm{exp} = \frac{1}{\tau_\mathrm{proper}} \cdot e^{\frac{-\tau}{\tau_\mathrm{proper}}}
     \;,
     \labeq{pdf_exponential}
 \end{equation}
-and the inverse distribution that was sampled from
+where $\tau_\mathrm{proper}$ is the proper lifetime of each HNL event that is calculated using the total decay width, $\Gamma_\mathrm{total}$, and the chosen mixing strength $|U_{\tau4}|^2$ as
 \begin{equation}
-    \mathrm{PDF}_\mathrm{inv} = \frac{1}{\tau \cdot (\ln(\tau_\mathrm{max}) - \ln(\tau_\mathrm{min}))}
-    \;.
-    \labeq{pdf_inverse}
+    \tau_\mathrm{proper} = \frac{\hbar}{\Gamma_\mathrm{total}(m_4) \cdot |U_{\tau4}|^2}
+    \;,
+    \labeq{proper_lifetime}
 \end{equation}
+where $\hbar$ is the reduced Planck constant.
+
 This re-weighting factor is then calculated as
 \begin{equation}
     w_\mathrm{lifetime} = \frac{\mathrm{PDF}_\mathrm{exp}}{\mathrm{PDF}_\mathrm{inv}} = \frac{\Gamma_\mathrm{total}(m_4) \cdot |U_{\tau4}|^2}{\hbar} \cdot \tau \cdot (\ln(\tau_\mathrm{max}) - \ln(\tau_\mathrm{min})) \cdot e^{\frac{-\tau}{\tau_\mathrm{proper}}}
@@ -363,7 +364,7 @@ Adding another factor of $|U_{\tau4}|^2$ to account for the mixing at the intera
     \;.
     \labeq{weight_full}
 \end{equation}
-If this additional weighting factor is multiplied to the generation weight from \refeq{neutrino_generation_weight} with units \si{\meter^2}, the livetime in \si{\second}, and the oscillated primary neutrino flux in \si{\meter^{-2}\second^{-1}}, it results in the number of expected events in the detector for this particular MC event for a chosen mixing (and mass).
+If this additional weighting factor is multiplied to the generation weight introduced in \refsec{model_specific_simulation} (in \si{\meter^2}), the livetime (in \si{\second}), and the oscillated primary neutrino flux (in \si{\meter^{-2}\second^{-1}}) it results in the number of expected events in the detector for this particular MC event for a specific mixing (and mass). The only required input is therefore the mixing strength $|U_{\tau4}|^2$, since the mass is fixed for each sample. This re-weighting scheme allows to continuously vary the mixing strength and to estimate the expected event rate for, which will be crucial for the analysis performed in \refch{analysis}.
 
 
 \section{Standard Model Event Generation} \labsec{sm_event_generation}
