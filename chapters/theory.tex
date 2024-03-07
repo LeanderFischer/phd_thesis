@@ -7,13 +7,13 @@
 
 \section{The Standard Model}
 
-The \textit{standard model (SM)} of particle physics is a Yang-Mills theory \sidecite[1.5cm]{yang_mills} providing very accurate predictions of weak, strong, and \textit{electromagnetic (EM)} interactions. It is a relativistic quantum field theory that relies on gauge invariance, where all matter is made up of fermions, which are divided into quarks and leptons, and bosons describe the interactions between the fermions that have to fulfil the overall symmetry of the theory. Leptons are excitations of Dirac-type fermion fields.
+The \textit{standard model (SM)} of particle physics is a Yang-Mills theory~\sidecite[1.5cm]{yang_mills} providing very accurate predictions of weak, strong, and \textit{electromagnetic (EM)} interactions. It is a relativistic quantum field theory that relies on gauge invariance, where all matter is made up of fermions, which are divided into quarks and leptons. Bosons describe the interactions between the fermions that have to fulfil the overall symmetry of the theory.
 
-The initial idea of the theory is associated with the works of Weinberg \sidecite{weinberg}, Glashow \sidecite{Glashow}, and Salam \cite{Salam}, that proposed a unified description of EM and weak interactions as a theory of a spontaneously broken SU(2) x U(1) symmetry for leptons, predicting a neutral massive vector boson $Z^0$, a massive charged vector boson $W^\pm$, and a massless photon $\gamma$ as the gauge bosons. The Higgs mechanism \sidecite{higgs}, describing the breaking of the symmetry, predicts the existence of an additional scalar particle, the Higgs boson, giving the $W^\pm$ and $Z^0$ bosons their mass. The Higgs boson was discovered in 2012 at the LHC \sidecite{higgs_discovery_cms, higgs_discovery_atlas}.
+The initial idea of the theory is associated with the works of Weinberg, Glashow, and Salam~\sidecite{weinberg, Glashow, Salam}, that proposed a unified description of EM and weak interactions as a theory of a spontaneously broken SU(2) x U(1) symmetry for leptons, predicting a neutral massive vector boson $Z^0$, a massive charged vector boson $W^\pm$, and a massless photon $\gamma$ as the gauge bosons. The Higgs mechanism~\sidecite{higgs}, describing the breaking of the symmetry, predicts the existence of an additional scalar particle, the Higgs boson, giving the $W^\pm$ and $Z^0$ bosons their mass. The Higgs boson was discovered in 2012 at the LHC~\cite{higgs_discovery_cms, higgs_discovery_atlas}.
 
-Gell-Mann and Zweig proposed the quark model in 1964 \sidecite{gellmann, zweig}, which was completed by the discovery of non-abelian gauge theories \cite{non_abel_gauge} to form the SU(3) symmetry of the strong interaction called \textit{quantum chromodynamics (QCD)}. QCD describes the interaction between quarks and gluons which completed the full picture of the SM in the mid-1970s. Together with the electroweak theory, the SM is a SU(3)$_C$ x SU(2)$_L$ x U(1)$_Y$ local gauge symmetry, with the conserved quantities \textit{color} ($C$), \textit{left-handed chirality} ($L$), and \textit{weak hypercharge} ($Y$).
+Gell-Mann and Zweig proposed the quark model in 1964~\sidecite{gellmann, zweig}, which was completed by the discovery of non-abelian gauge theories~\cite{non_abel_gauge} to form the SU(3) symmetry of the strong interaction called \textit{quantum chromodynamics (QCD)}. QCD describes the interaction between quarks and gluons which completed the full picture of the SM in the mid-1970s. Together with the electroweak theory, the SM is a SU(3)$_C$ x SU(2)$_L$ x U(1)$_Y$ local gauge symmetry, with the conserved quantities \textit{color} ($C$), \textit{left-handed chirality} ($L$), and \textit{weak hypercharge} ($Y$).
 
-In the following, the basic properties of the SM are described, following the derivations of \sidecite{giunti, schwartz}.
+In the following, the basic properties of neutrinos in the SM are described, following the derivations of~\sidecite{giunti, schwartz}.
 
 
 \subsection{Fundamental Fields}
@@ -55,7 +55,7 @@ and its conserved quantity is the EM charge $Q$, which depends on the weak hyper
 \labtab{fermions}
 \end{margintable}
 
-Fermions are divided into six quarks and six leptons, which are listed in \reftab{fermions}. The quarks interact vie the weak, the strong, and the EM force, and they are always found in bound form as baryons or mesons. Leptons do not participate in the strong interaction and only the electrically charged leptons are massive and are effected by the EM force, while neutrinos only interact via the weak force and are predicted to be massless in this original form of the SM. Each charged lepton has an associated neutrino, which it interacts with in \textit{charged-current (CC)} weak interactions, that will be explained in more detail in \refsec{weak_interactions}. For the massive fermion a LH and a RH component exist ($e_L$, $e_R$), while the neutrinos only have a LH component ($\nu_{eL}$). Both LH fields of one generation form a doublet under SU(2)$_L$, $L_L = (\nu_{eL}, e_L)^T$, while the RH fields are singlets under SU(2)$_L$, $e_R$.
+Fermions are divided into six quarks and six leptons, which are listed in \reftab{fermions}. The quarks interact vie the weak, the strong, and the EM force, and they are always found in bound form as baryons or mesons. Leptons do not participate in the strong interaction and only the electrically charged leptons are massive and are effected by the EM force, while neutrinos only interact via the weak force and are predicted to be massless in this original form of the SM. Each charged lepton has an associated neutrino, which it interacts with in charged-current weak interactions, that will be explained in more detail in \refsec{weak_interactions}. For the massive fermion a LH and a RH component exist ($e_L$, $e_R$), while the neutrinos only have a LH component ($\nu_{eL}$). Both LH fields of one generation form a doublet under SU(2)$_L$, $L_L = (\nu_{eL}, e_L)^T$, while the RH fields are singlets under SU(2)$_L$, $e_R$.
 
 
 \subsection{Electroweak Symmetry Breaking}
@@ -100,7 +100,7 @@ composed of the product of LH and RH Weyl spinors $\Psi_{L/R}$. This term is not
     \;,
     \labeq{up_type_yukawa_lagrangian}
 \end{equation}
-coupling the fermion fields $e_R$ to the Higgs field $\Phi$, recovers the invariance and gives the fermions their masses. Here, $Y^e$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{Y^e v}{\sqrt{2}}$. With $\tilde{\Phi} = i \sigma_2 \Phi^*$, a similar Yukawa term can be written as $-Y^u \bar{L}_L \tilde{\Phi} u_R + h.c.$, which leads to the masses of the up-type quark fields $u_R$.
+coupling the fermion fields, $e_R$, to the Higgs field, $\Phi$, recovers the invariance and gives the fermions their masses. Here, $Y^e$ is the Yukawa coupling constant and $\bar{L}_L$ is the SU(2)$_L$ doublet. With the vev, this results in the mass term for the charged leptons and down-type quarks of the form $-m_e(\bar{e}_L e_R + \bar{e}_R e_L)$ with $m_e = \frac{Y^e v}{\sqrt{2}}$. With $\tilde{\Phi} = i \sigma_2 \Phi^*$, a similar Yukawa term can be written as $-Y^u \bar{L}_L \tilde{\Phi} u_R + h.c.$, which leads to the masses of the up-type quark fields $u_R$.
 
 
 \subsection{Leptonic Weak Interactions after Symmetry Breaking} \labsec{weak_interactions}
@@ -145,7 +145,7 @@ coupling the fermion fields $e_R$ to the Higgs field $\Phi$, recovers the invari
             \end{feynman}
         \end{tikzpicture}
     
-    \caption[Feynman diagrams of neutrino weak interactions]{Feynman diagrams of charged-current (top) and neutral-current (bottom) neutrino weak interactions, modified from \cite{ATrettin_phd}.}
+    \caption[Feynman diagrams of neutrino/antineutrino weak interactions]{Feynman diagrams of charged-current (top) and neutral-current (bottom) neutrino/antineutrino weak interactions, modified from~\cite{ATrettin_phd}.}
     \labfig{weak_interactions}
 \end{marginfigure}
 
@@ -164,16 +164,16 @@ where $c_w \equiv \cos \theta _w$, $s_w \equiv \sin \theta _w$, $P_L$ and $P_R$ 
 
 The fundamentals of the SM described above \textbf{are not} enough to explain all observed phenomena. The SM is unable to account for gravity, as it is incompatible with general relativity. Similarly, it fails to explain some cosmological observations like \textit{dark matter (DM)}, and the matter-antimatter asymmetry in the universe. But most importantly, the SM does not predict neutrinos to have mass, which on the contrary is experimentally proven by to observation of neutrino oscillations, so some extension to the SM is needed to complete the full picture.
 
-The standard cosmological model $\Lambda$CDM \sidecite{relativity_in_modern_physics}, includes a non-baryonic matter species referred to as \textit{cold dark matter (CDM)} that is responsible for the observed large-scale structure of the universe and accounts for \SI{84.4}{\percent} of the total matter density in the universe \sidecite{PDG_review_2022}. Despite its effects being observed at several cosmological scales, from the size of small galaxies \sidecite{faint_galaxy_dm_2019ARA&A..57..375S} to groups of galaxies \sidecite{galaxy_clusters_2011ARA&A..49..409A}, the nature of CDM is still unknown.
+The standard cosmological model $\Lambda$CDM~\sidecite{relativity_in_modern_physics}, includes a non-baryonic matter species referred to as \textit{cold dark matter (CDM)} that is responsible for the observed large-scale structure of the universe and accounts for \SI{84.4}{\percent} of the total matter density in the universe~\sidecite{PDG_review_2022}. Despite its effects being observed at several cosmological scales, from the size of small galaxies~\sidecite{faint_galaxy_dm_2019ARA&A..57..375S} to the size of galaxy clusters~\sidecite{galaxy_clusters_2011ARA&A..49..409A}, the nature of CDM is still unknown.
 
 $\Lambda$CDM also assumes that equal amounts of matter and anti-matter were produced in the early universe. However, the universe today is dominantly made up of matter. This \textit{baryon asymmetry of the universe (BAU)} can be measured by the difference between the number densities of baryons and anti-baryons normalized to the number density of photons as
 \begin{equation}
     \eta_B = \frac{n_B - n_{\bar{B}}}{n_\gamma}
     \;,
 \end{equation}
-where $n_B$, $n_{\bar{B}}$, and $n_\gamma$ are the number densities of baryons, anti-baryons, and photons, respectively. Baryons are the dominant component with  $\eta_B$ being observed to be at the order of $10^{-9}$ \cite{PDG_review_2022}. Leptogenesis and EW baryogenesis are scenarios that could explain this phenomenon, where the former could be realized by the existence of heavy RH neutrinos \sidecite{baryogenesis_FUKUGITA198645}.
+where $n_B$, $n_{\bar{B}}$, and $n_\gamma$ are the number densities of baryons, anti-baryons, and photons, respectively. Baryons are the dominant component with  $\eta_B$ being observed to be at the order of $10^{-9}$~\cite{PDG_review_2022}. Leptogenesis and EW baryogenesis are scenarios that could explain this phenomenon, where the former could be realized by the existence of heavy RH neutrinos~\sidecite{baryogenesis_FUKUGITA198645}.
 
-The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments \sidecite{homestake, super_k_atm_osc, snolab_flavor_conv} is the strongest evidence for physics \textit{beyond the standard model (BSM)} measured in laboratories to date. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. From those measurements we know the mass differences are very small as compared to the lepton masses, but neither their existence, nor their smallness is predicted by the SM. There are upper limits on the sum of all neutrino masses from cosmological observations at \SI{1.2}{\electronvolt} \sidecite{BOS_nu_masses, planck_nu_mass} and at \SI{0.8}{\electronvolt} from the KATRIN experiment \sidecite{katrin_nu_mass}. Adding RH neutrino states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments.
+The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments~\sidecite{homestake, super_k_atm_osc, snolab_flavor_conv} is the strongest evidence for physics \textit{beyond the standard model (BSM)} measured in laboratories to date. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. From those measurements we know the mass differences are very small as compared to the lepton masses, but neither their existence, nor their smallness is predicted by the SM. There are upper limits on the sum of all neutrino masses from cosmological observations at \SI{1.2}{\electronvolt}~\cite{BOS_nu_masses}~\sidecite{planck_nu_mass} and at \SI{0.8}{\electronvolt} from the KATRIN experiment~\sidecite{katrin_nu_mass}. Adding RH neutrino states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments.
 
 
 \subsection{Mass Mechanisms} \labsec{mass_mechanisms}
@@ -243,9 +243,9 @@ with the weak flavor states $\ket{\nu_\alpha}$, $\alpha=e,\mu,\tau$, and the mas
 \end{equation}
 which will be the basis for the discussion of neutrino oscillations in \refsec{neutrino_oscillations}.
 
-This however is not enough to explain the neutrino masses observed in oscillation experiments. The most minimal model required to give rise to two non-zero active neutrino masses, is an additional two RH neutrinos, assuming the mass of the lightest SM neutrino is zero. If the additional neutrino states have masses $\gg$\si{\electronvolt} they are referred to as \textit{heavy neutral leptons (HNLs)}, which are almost sterile, with a small mass mixing with the active neutrinos.
+However, this is not enough to explain the neutrino masses observed in oscillation experiments. The most minimal model required to give rise to two non-zero active neutrino masses, is an additional two RH neutrinos, assuming the mass of the lightest SM neutrino is zero. If the additional neutrino states have masses $\gg$\si{\electronvolt} they are referred to as \textit{heavy neutral leptons (HNLs)}, which are almost sterile, with a small mass mixing with the active neutrinos.
 
-But the SM also fails to explain additional observations of physics beyond the standard model (BAU, DM), which could be solved by the \textit{neutrino minimal standard model ($\nu$MSM)} \sidecite{mu_msm_dm_nu_mass, mu_msm_dm_baryon_asymmetry}. In the $\nu$MSM, three RH neutrinos are added, where two of them are heavy, to explain the observed neutrino masses and oscillations, and a third one is light and serves as a DM candidate. The DM production occurs in this model through a mixing between the the sterile state and the active neutrinos, with a large lepton asymmetry, while the BAU is generated through processes that do not conserve the fermion number \sidecite{fermion_non_conservation_Rubakov:1996vz, mumsm_DM_and_BAU_Canetti:2012vf}. The mixing between mass and flavor eigenstates is then described by an extended 6x6 mixing matrix as
+But the SM also fails to explain additional observations of physics beyond the standard model (BAU, DM), which could be solved by the \textit{neutrino minimal standard model ($\nu$MSM)}~\sidecite{mu_msm_dm_nu_mass, mu_msm_dm_baryon_asymmetry}. In the $\nu$MSM, three RH neutrinos are added, where two of them are heavy, to explain the observed neutrino masses and oscillations, and a third one is light and serves as a DM candidate. The DM production occurs in this model through a mixing between the sterile state and the active neutrinos, with a large lepton asymmetry, while the BAU is generated through processes that do not conserve the fermion number~\sidecite{fermion_non_conservation_Rubakov:1996vz, mumsm_DM_and_BAU_Canetti:2012vf}. The mixing between mass and flavor eigenstates is then described by an extended 6x6 mixing matrix as
 \begin{equation}
     \begin{pmatrix}
     \nu_e \\
@@ -274,7 +274,7 @@ But the SM also fails to explain additional observations of physics beyond the s
     \;,
     \labeq{6_by_6_pmns_matrix}
 \end{equation}
-where $N_i$ and $\nu_{i+3}$ ($i \in {1,2,3}$) are the sterile flavor states and the additional RH mass states, respectively. In the $\nu$MSM, the two heavy RH neutrinos generate the active neutrino masses through the type I seesaw mechanism \sidecite{Minkowski_1977PhLB...67..421M, Yanagida_seesaw_10.1143/PTP.64.1103, seesaw_Glashow:1979nm, seesaw_Gell-Mann:1979vob, seesaw_PhysRevLett.44.912}. This refers to a model, where the HNLs are assumed to be SM scalars and get their mass trough coupling to the Higgs as in \refsec{mass_mechanisms}. Naturally, more complex theories also exist, but are beyond the scope of this thesis and will not be discussed further.
+where $N_i$ and $\nu_{i+3}$ ($i \in {1,2,3}$) are the sterile flavor states and the additional RH mass states, respectively. In the $\nu$MSM, the two heavy RH neutrinos generate the active neutrino masses through the type I seesaw mechanism~\sidecite{Minkowski_1977PhLB...67..421M, Yanagida_seesaw_10.1143/PTP.64.1103, seesaw_Glashow:1979nm, seesaw_Gell-Mann:1979vob, seesaw_PhysRevLett.44.912}. This refers to a model, where the HNLs are assumed to be SM scalars and get their mass trough coupling to the Higgs as in \refsec{mass_mechanisms}. Naturally, more complex theories also exist, but are beyond the scope of this thesis and will not be discussed further.
 
 With this extension, the leptonic part of the EW Lagrangian from \refeq{leptonic_ew_lagrangian} now reads
 \begin{equation}
@@ -307,56 +307,56 @@ are present. Those are the CC and NC interactions between the HNL and the SM neu
 
 \subsection{Observational Avenues for Right-Handed Neutrinos}
 
-If the RH neutrinos have masses at the \si{\electronvolt} scale, they can be observed through distortion effects in measurements of neutrino oscillation experiments. Several analyses looking for these so-called light sterile neutrinos exist in \textit{IceCube}, where \sidecite{meows_short} is using atmospheric neutrinos in the higher energy range of \SIrange{500}{10000}{\gev} and \sidecite{ATrettin_phd} is using the lower energy region of \SIrange{6}{156}{\gev}. The latter work includes a detailed description of the expected oscillation effects and the various anomalies observed in oscillation experiments that could be explained by the existence of a light sterile neutrino, which is not covered in this work.
+If the RH neutrinos have masses at the \si{\electronvolt} scale, they can be observed through distortion effects in measurements of neutrino oscillation experiments. Several analyses looking for these so-called light sterile neutrinos exist in \textit{IceCube}, where~\sidecite{meows_short} is using atmospheric neutrinos in the higher energy range of \SIrange{500}{10000}{\gev} and~\sidecite{ATrettin_phd} is using the lower energy region of \SIrange{6}{156}{\gev}. The latter work includes a detailed description of the expected oscillation effects and the various anomalies observed in oscillation experiments that could be explained by the existence of a light sterile neutrino, which is not covered in this work.
 
-Here, the focus will be on heavy RH neutrinos, interchangeably also called heavy sterile neutrinos, or HNLs. A defining property is that they are too massive to be produced in oscillations and to be observed as distortions thereof. Several ways to observe HNLs are possible through direct production and decay experiments, which will be discussed in the following. Most of the existing searches assume the minimal model, where only one coupling between the new mass states and the SM neutrinos is non-zero, and the coupling is just through mass mixing in a type I seesaw scenario, but more complex scenarios are of course also possible and might produce various additional signatures, or stronger signals.
+Here, the focus will be on heavy RH neutrinos, interchangeably also called heavy sterile neutrinos, or HNLs. A defining property is that they are too massive to be produced in oscillations and to be observed as distortions thereof. Several ways to observe HNLs are possible through direct production and decay experiments. Most of the existing searches assume the minimal model, where only one coupling between the new mass states and the SM neutrinos is non-zero, and the coupling is just through mass mixing in a type I seesaw scenario, but more complex scenarios are of course also possible and might produce various additional signatures.
 
-In general, the constraints discussed in the following are based on models, where only the coupling between the HNL and one SM flavor is non-zero. While this is the straight forward approach to test the mixing parameters individually, this might make the constraints stronger than they would be in a more complex scenario, where the HNLs couple to more than one SM flavor as was show in \sidecite{Tastet:2021vwp} for collider bounds.
+In general, the constraints discussed in the following are based on models, where only the coupling between the HNL and one SM flavor is non-zero. While this is the straight forward approach to test the mixing parameters individually, this might make the constraints stronger than they would be in a more complex scenario, where the HNLs couple to more than one SM flavor as was shown in~\sidecite{Tastet:2021vwp} for collider bounds.
+
+\begin{figure*}[h]
+    \includegraphics{figures/hnl_simulation/theory/UeN_majorana.png}
+    \caption[Current leading $|U_{e4}^2|-m_4$ upper limits]{Current leading $|U_{e4}^2|-m_4$ upper limits from PIENU~\cite{pienu_Bryman:2019bjg, PIENU:2017wbj}, BOREXINO~\cite{Borexino:2013bot}, KENU~\cite{pienu_Bryman:2019bjg}, TRIUMF~\cite{triumf_ue4_Britton1992ImprovedSF}, NA62~\cite{NA62:2022pyf}, T2K~\cite{T2K:2019jwa}, DELPHI~\cite{DELPHI:1996qcc}, BEBC~\cite{Barouki:2022bkt}, Belle~\cite{Belle:2013ytx}, L3~\cite{L3:2001zfe}, CHARM~\cite{CHARM:1983ayi}, ATLAS~\cite{ATLAS:2019kpx, atlas_2022_HNL_PhysRevLett.131.061803}, CMS~\cite{CMS:2018iaf, CMS:2022fut}, and NuTeV~\cite{NuTeV:1999kej}. Modified from~\cite{hoster_limitFernandez-Martinez:2023phj}.}
+    \labfig{boundsUe}
+\end{figure*}
 
 
 \subsubsection{Extracted Beamline Searches}
 
-\begin{figure*}[h]
-    \includegraphics{figures/hnl_simulation/theory/UeN_majorana.png}
-      \caption[Current leading $|U_{e4}^2|-m_4$ upper limits]{Current leading $|U_{e4}^2|-m_4$ upper limits from PIENU \cite{pienu_Bryman:2019bjg, PIENU:2017wbj}, BOREXINO \cite{Borexino:2013bot}, KENU \cite{pienu_Bryman:2019bjg}, TRIUMF \cite{triumf_ue4_Britton1992ImprovedSF}, NA62 \cite{NA62:2022pyf}, T2K \cite{T2K:2019jwa}, DELPHI \cite{DELPHI:1996qcc}, BEBC \cite{Barouki:2022bkt}, Belle \cite{Belle:2013ytx}, L3 \cite{L3:2001zfe}, CHARM \cite{CHARM:1983ayi}, ATLAS \cite{ATLAS:2019kpx, atlas_2022_HNL_PhysRevLett.131.061803}, CMS \cite{CMS:2018iaf, CMS:2022fut}, and NuTeV \cite{NuTeV:1999kej}. Modified from \cite{hoster_limitFernandez-Martinez:2023phj}.}
-    \labfig{boundsUe}
-\end{figure*}
+Protons interacting with a target or a beam dump can produce pions, kaons, and heavy-quark hadrons, whose subsequent decays would also produce HNLs. Depending on the HNL lifetime in the specific model, the mass of the HNLs produced in beam dump experiments would be between \SI{1}{\mega\electronvolt} and \SI{4}{\gev} and they could decay at distances across several orders of magnitude. Experiments along the extracted beamline, which are using a spectrometer with particle identification, can search for unique decay signatures at displaced vertices. Example signatures\sidenote{The explicit channels and their decay width calculations used in this thesis are explained in detail in \refsec{custom_leptoninjector}.} are $\nu_4 \rightarrow l_\alpha \pi^+$, $\nu_4 \rightarrow \nu_\alpha l^+_\beta l^-_\beta$, or $\nu_4 \rightarrow \nu_\alpha \pi^0$ (or other neutral mesons) that cannot be explained by SM neutrinos. Here, $\nu_\alpha$ and $l_\alpha$ are the SM neutrino and charged lepton of flavor $\alpha \in \{e,\mu,\tau\}$, which is defined by the allowed HNL coupling. $l^-_\beta$/$l^+_\beta$ is a charged lepton/antilepton pair of any flavor $\beta \in \{e,\mu,\tau\}$. Depending on the decay channel, a specific mixing can be probed. The other way of searching for HNLs with these interactions is to look for peaks in the missing mass spectrum, measured around the production vertex at the target, which is usually not possible for beam dumps, as the beam dump region is not calorimetrically instrumented. The HNL searches were pioneered by experiments at extracted beamlines, with \textit{PS191}~\sidecite{Bernardi:1985ny} and \textit{CHARM}~\sidecite{CHARM:1983ayi} establishing upper limits on \ue4, \um4, and combinations of them, at masses from \SIrange{10}{500}{\mega\electronvolt} at orders of $10^{-3}$ to $10^{-6}$. Since then, there has been a large activity of searches for HNLs at extracted beamlines and at the lower mass end, the strongest bounds on \ue4 are set by \textit{PIENU}~\sidecite{pienu_Bryman:2019bjg} at $\sim10^{-4}$ around \SI{2}{\mega\electronvolt}, and at the higher mass end, the strongest bounds are set by \textit{NA62}~\sidecite{NA62:2022pyf}, reaching down to $\sim10^{-9}$ at \SI{0.3}{\gev}. For \um4, the strongest bounds up to \SI{10}{\gev} are set by \textit{PSI}~\sidecite{PSI_Daum:1987bg} at $\sim10^{-5}$, and reach down to $\sim10^{-9}$ at \SI{0.3}{\gev}, by \textit{BNL-E949}~\sidecite{BNL_E949:2014gsn}. The current strongest bounds on \ue4 and \um4 are shown in \reffig{boundsUe} and \reffig{boundsUm}, where bounds from other type of experiments are also presented. Those will be discussed in the following.
 
-Protons interacting with a target or a beam dump can produce pions, kaons, and heavy-quark hadrons, whose subsequent decays would also produce HNLs. Depending on the HNL lifetime in the specific model, the mass of the HNLs produced in beam dump experiments would be between \SI{1}{\mega\electronvolt} and \SI{4}{\gev} and they could decay at distances across several orders of magnitude, Experiments along the extracted beamline, which are using a spectrometer with particle identification, can search for unique decay signatures at displaced vertices. Example signatures\sidenote{The explicit channels and their decay width calculations used in this thesis are explained in detail in \refsec{custom_leptoninjector}.} are $\nu_4 \rightarrow l_\alpha \pi^+$, $\nu_4 \rightarrow \nu_\alpha l^+_\beta l^-_\beta$, or $\nu_4 \rightarrow \nu_\alpha \pi^0$ (or other neutral mesons) that cannot be explained by SM neutrinos. Here, $\nu_\alpha$ and $l_\alpha$ are the SM neutrino and charged lepton of flavor $\alpha \in \{e,\mu,\tau\}$, defined by which flavor the HNL couples to. $l^-_\beta$/$l^+_\beta$ is a charged lepton/antilepton pair of any flavor $\beta \in \{e,\mu,\tau\}$. Depending on the decay channel, a specific mixing can be probed. The other way of searching for HNLs with these interactions is to look for peaks in the missing mass spectrum, measured around the production vertex at the target, which usually is not possible for beam dumps, as the beam dump region is not calorimetrically instrumented. The HNL searches were pioneered by experiments at extracted beamlines, with \textit{PS191} \sidecite{Bernardi:1985ny} and \textit{CHARM} \sidecite{CHARM:1983ayi} establishing upper limits on \ue4, \um4, and combinations of them, at masses from \SIrange{10}{500}{\mega\electronvolt} at orders of $10^{-3}$ to $10^{-6}$. Since then, there has been and still is a large activity of searches for HNLs at extracted beamlines and at the lower mass end, the strongest bounds on \ue4 are set by \textit{PIENU} \sidecite{pienu_Bryman:2019bjg} at $\sim(10^{-4})$ around \SI{2}{\mega\electronvolt}, and at the higher mass end, the strongest bounds are set by \textit{NA62} \sidecite{NA62:2022pyf}, reaching down to $\sim10^{-9}$ at \SI{0.3}{\gev}. For \um4, the strongest bounds up to \SI{10}{\gev} are set by \textit{PSI} \sidecite{PSI_Daum:1987bg} at $\sim10^{-5}$, and reach down to $\sim(10^{-9})$ at \SI{0.3}{\gev}, by \textit{BNL-E949} \sidecite{BNL_E949:2014gsn}. The current strongest bounds are shown in \reffig{boundsUe} and \reffig{boundsUm}, where bounds from other type of experiments are also presented. Those will be discussed in the following.
-
-Especially noteworthy are the results of analyses probing the mixing with the third lepton generation, \ut4, from \textit{NOMAD} \sidecite{NOMAD:2001eyx} and reinterpretations of the CHARM results and the BEBC results in the context of the mixing \ut4, where the latter places the most stringent limits from $10^{-3}$ to $10^{-6}$ in the \SIrange{0.1}{2}{\gev} range \sidecite{Orloff:2002de, Boiarska:2021yho, Barouki:2022bkt}. In \reffig{boundsUt} the current strongest bounds on \ut4 are shown.
+Especially noteworthy are the results of analyses probing the mixing with the third lepton generation, \ut4, from \textit{NOMAD}~\sidecite{NOMAD:2001eyx} and reinterpretations of the CHARM results and the BEBC results in the context of the mixing \ut4, where the latter places the most stringent limits from $10^{-3}$ to $10^{-6}$ in the \SIrange{0.1}{2}{\gev} range~\sidecite{Orloff:2002de, Boiarska:2021yho, Barouki:2022bkt}. In \reffig{boundsUt} the current strongest bounds on \ut4 are shown.
 
 
 \subsubsection{Collider Searches}
 
 \begin{figure*}[t]
     \includegraphics{figures/hnl_simulation/theory/UmuN_majorana.png}
-      \caption[Current leading $|U_{\mu4}^2|-m_4$ upper limits]{Current leading $|U_{\mu4}^2|-m_4$ upper limits from PSI \cite{PSI_Daum:1987bg}, $\mu$BooNE \cite{MicroBooNE:2023eef}, PIENU \cite{pienu_Bryman:2019bjg}, LSND \cite{lsnd_Ema:2023buz}, BNL-E949 \cite{BNL_E949:2014gsn}, NA62 \cite{NA62:2022pyf}, T2K \cite{T2K:2019jwa}, BEBC \cite{BEBC_OG_COOPERSARKAR1985207},
-      ATLAS \cite{ATLAS:2019kpx, atlas_2022_HNL_PhysRevLett.131.061803}, CMS \cite{CMS:2018iaf, CMS:2022fut}, NuTeV \cite{NuTeV:1999kej}, and NA3 \cite{NA3:1986ahv}. Modified from \cite{hoster_limitFernandez-Martinez:2023phj}.}
+      \caption[Current leading $|U_{\mu4}^2|-m_4$ upper limits]{Current leading $|U_{\mu4}^2|-m_4$ upper limits from PSI~\cite{PSI_Daum:1987bg}, $\mu$BooNE~\cite{MicroBooNE:2023eef}, PIENU~\cite{pienu_Bryman:2019bjg}, LSND~\cite{lsnd_Ema:2023buz}, BNL-E949~\cite{BNL_E949:2014gsn}, NA62~\cite{NA62:2022pyf}, T2K~\cite{T2K:2019jwa}, BEBC~\cite{BEBC_OG_COOPERSARKAR1985207},
+      ATLAS~\cite{ATLAS:2019kpx, atlas_2022_HNL_PhysRevLett.131.061803}, CMS~\cite{CMS:2018iaf, CMS:2022fut}, NuTeV~\cite{NuTeV:1999kej}, and NA3~\cite{NA3:1986ahv}. Modified from~\cite{hoster_limitFernandez-Martinez:2023phj}.}
     \labfig{boundsUm}
 \end{figure*}
 
 
-So far, collider searches have been conducted at the \textit{large electron positron collider (LEP)} and at the \textit{large hadron collider (LHC)} in proton-proton mode. Strongest results are from the \textit{ATLAS} and \textit{CMS} experiments, which are nearly hermetic, general purpose detectors around the interaction point, and from the \textit{DELPHI} and the \textit{LHCb} experiments, which are forward detectors that can be used to search for new particles in decays of heavy particles produced. In the minimal model, HNLs in the \si{\gev} mass range can be produced through mass mixing in decays of heavy mesons, tau leptons, Z/W bosons, H bosons, or top quarks originating from the collisions. Depending on the Dirac or Majorana nature of the HNL, they can decay to lepton number conserving or lepton number violating channels.
+So far, collider searches have been conducted at the \textit{large electron positron collider (LEP)} and at the \textit{large hadron collider (LHC)} in proton-proton mode. Strongest results are from the \textit{ATLAS} and \textit{CMS} experiments, which are nearly hermetic, general purpose detectors around the interaction point, and from the \textit{DELPHI} and the \textit{LHCb} experiments, which are forward detectors that can be used to search for new particles in decays of heavy particles. In the minimal model, HNLs in the \si{\gev} mass range can be produced through mass mixing in decays of heavy mesons, tau leptons, Z/W bosons, H bosons, or top quarks originating from the collisions. Depending on the Dirac or Majorana nature of the HNL, they can decay to LNC or LNV channels.
 
-Using prompt and displaced decays of the HNL, both ATLAS and CMS have set constraints on \ue4 and \um4 at the level of $10^{-4}$ to $10^{-6}$ in the mass range between \SIrange{1}{100}{\gev} \sidecite{ATLAS:2019kpx, atlas_2022_HNL_PhysRevLett.131.061803, CMS:2018iaf, CMS:2022fut}. The LHCb experiment has HNL search results at HNL masses below and above the W boson mass, where the low mass searches are using the decay channel $B^- \rightarrow \pi^+ \mu^- \mu^-$, setting limits at the $10^{-3}$ level for \um4 in the mass range of \SIrange{0.5}{3.5}{\gev} \sidecite{Shuve:2016muy}. At high masses, the $W^+ \rightarrow \mu^- \mu^\pm$jet channel is used to set limits at the order of $10^{-3}$ to $10^{-2}$ for \um4 in the mass range of \SIrange{5}{50}{\gev} in the LNC channel and at the order of $10^{-4}$ to $10^{-3}$ in the LNV channel \sidecite{LHCb:2020wxx}. Using hadronic $Z^0$ decays, searches for short- and long-lived HNLs have been conducted with the \textit{DELPHI} detector setting upper limits of the order of $10^{-5}$ for mixing to any SM flavor in the mass range from \SIrange{3.5}{50}{\gev} \sidecite{DELPHI:1996qcc}. 
+Using prompt and displaced decays of the HNL, both ATLAS and CMS have set constraints on \ue4 and \um4 at the level of $10^{-4}$ to $10^{-6}$ in the mass range between \SIrange{1}{100}{\gev}~\sidecite{ATLAS:2019kpx, atlas_2022_HNL_PhysRevLett.131.061803, CMS:2018iaf, CMS:2022fut}. The LHCb experiment has HNL search results at HNL masses below and above the W boson mass, where the low mass searches are using the decay channel $B^- \rightarrow \pi^+ \mu^- \mu^-$, setting limits at the $10^{-3}$ level for \um4 in the mass range of \SIrange{0.5}{3.5}{\gev}~\sidecite{Shuve:2016muy}. At high masses, the $W^+ \rightarrow \mu^- \mu^\pm$jet channel is used to set limits at the order of $10^{-3}$ to $10^{-2}$ for \um4 in the mass range of \SIrange{5}{50}{\gev} in the LNC channel and at the order of $10^{-4}$ to $10^{-3}$ in the LNV channel~\sidecite{LHCb:2020wxx}. Using hadronic $Z^0$ decays, searches for short- and long-lived HNLs have been conducted with the DELPHI detector setting upper limits of the order of $10^{-5}$ for mixing to any SM flavor in the mass range from \SIrange{3.5}{50}{\gev}~\sidecite{DELPHI:1996qcc}. 
 
 
 \subsubsection{Nuclear Decays Measurements}
 
 \begin{figure*}[t]
     \includegraphics{figures/hnl_simulation/theory/UtauN_majorana.png}
-      \caption[Current leading $|U_{\tau4}^2|-m_4$ upper limits]{Current leading $|U_{\tau4}^2|-m_4$ upper limits from BOREXINO \cite{Plestid:2020vqf}, CHARM \cite{Orloff:2002de, Boiarska:2021yho}, DELPHI \cite{DELPHI:1996qcc}, and BEBC \cite{Barouki:2022bkt}. Modified from \cite{hoster_limitFernandez-Martinez:2023phj}.}
+      \caption[Current leading $|U_{\tau4}^2|-m_4$ upper limits]{Current leading $|U_{\tau4}^2|-m_4$ upper limits from BOREXINO~\cite{Plestid:2020vqf}, CHARM~\cite{Orloff:2002de, Boiarska:2021yho}, DELPHI~\cite{DELPHI:1996qcc}, and BEBC~\cite{Barouki:2022bkt}. Modified from~\cite{hoster_limitFernandez-Martinez:2023phj}.}
     \labfig{boundsUt}
 \end{figure*}
 
 A novel approach of searching for irregularities in energy-momentum conservation measurements in nuclear reactions might be a viable way of searching for HNLs, as they could be interpreted as constraints on \ue4 and $m_4$.
 
-Kinks in \textbf{beta decay} spectra would show up at $Q-m_4c^2$, where the HNL mass, $m_4$, can be measured between the lower energy detection threshold and the energy released in the decay, which is called $Q$ value. Analyses using the tritium decay, with $Q=\SI{18.6}{\kilo\electronvolt}$, are planned in \textit{KATRIN} \sidecite{KATRIN:2001ttj} and \textit{TRISTAN} \sidecite{Mertens_2019} in the \SIrange{1}{18}{\kilo\electronvolt} range. Their projected statistical limits are around $10^{-7}$ for \ue4, but will require further detector upgrades \cite{Mertens_2019}. A first result from KATRIN measurements during commissioning sets limits at the order of $10^{-2}$ to $10^{-3}$ in the mass range of \SIrange{0.1}{1.6}{\kilo\electronvolt} \sidecite{KATRIN:2022spi}. \textit{DUNE} is planning to measure the ionization charge of atmospheric argon decays, with $Q=\SI{565}{\kilo\electronvolt}$, to probe \ue4 at in the \SIrange{20}{450}{\kilo\electronvolt} mass range. The projected sensitivity is at the $10^{-5}$ level, and might improve to $10^{-7}$ with additional detector improvements \sidecite{DUNE:2020ypp}.
+Kinks in \textbf{beta decay} spectra would show up at $Q-m_4c^2$, where the HNL mass, $m_4$, can be measured between the lower energy detection threshold and the energy released in the decay, which is called $Q$ value. Analyses using the tritium decay, with $Q=\SI{18.6}{\kilo\electronvolt}$, are planned in \textit{KATRIN}~\sidecite{KATRIN:2001ttj} and \textit{TRISTAN}~\sidecite{Mertens_2019} in the \SIrange{1}{18}{\kilo\electronvolt} range. Their projected statistical limits are around $10^{-7}$ for \ue4, but will require further detector upgrades~\cite{Mertens_2019}. A first result from KATRIN measurements during commissioning sets limits at the order of $10^{-2}$ to $10^{-3}$ in the mass range of \SIrange{0.1}{1.6}{\kilo\electronvolt}~\sidecite{KATRIN:2022spi}. \textit{DUNE} is planning to measure the ionization charge of atmospheric argon decays, with $Q=\SI{565}{\kilo\electronvolt}$, to probe \ue4 at in the \SIrange{20}{450}{\kilo\electronvolt} mass range. The projected sensitivity is at the $10^{-5}$ level, and might improve to $10^{-7}$ with additional detector improvements~\sidecite{DUNE:2020ypp}.
 
-To test for the existence of HNLs using \textbf{electron capture} measurements, total energy-momentum reconstruction of all non-neutrino final states is needed. Electron capture is a pure two-body decay process, where the recoiling atom and the electron neutrino are the only final state particles, but additional energy is carried away by the de-excitation x-ray or auger electron. The energy-momentum conservation can be probed by measuring the atom and the associated de-excitation products. The mixing \ue4 can be probed by looking for a separated non-zero missing mass peak. The \textit{BeEST} experiment has set limits at the $10^{-4}$ level in the \SIrange{100}{850}{\kilo\electronvolt} mass range, using berillium-7, which has a $Q$ value of \SI{862}{\kilo\electronvolt}. After planned upgrades to the experiment, the sensitivity is expected to improve to the $10^{-7}$ level \sidecite{BeEST_Friedrich:2020nze}.
+To test for the existence of HNLs using \textbf{electron capture} measurements, total energy-momentum reconstruction of all non-neutrino final states is needed. Electron capture is a pure two-body decay process, where the recoiling atom and the electron neutrino are the only final state particles, but additional energy is carried away by the de-excitation x-ray or auger electron. The energy-momentum conservation can be probed by measuring the atom and the associated de-excitation products. The mixing \ue4 can be probed by looking for a separated non-zero missing mass peak. The \textit{BeEST} experiment has set limits at the $10^{-4}$ level in the \SIrange{100}{850}{\kilo\electronvolt} mass range, using berillium-7, which has a $Q$ value of \SI{862}{\kilo\electronvolt}. After planned upgrades to the experiment, the sensitivity is expected to improve to the $10^{-7}$ level~\sidecite{BeEST_Friedrich:2020nze}.
 
-\textbf{Reactor searches} up to \SI{12}{\mega\electronvolt} in mass are possible at short baseline experiments using commercial or research reactors, which are a strong source of electron antineutrinos and could therefore also produce HNLs if \ue4 is non-zero. Visible decay channels at these energies are $\nu_4 \rightarrow \nu_e e^+ e^-$, $\nu_4 \rightarrow \nu \gamma$, and $\nu_4 \rightarrow \nu \gamma \gamma$, where the first dominates. The first analysis in this field, reports limits at the $10^{-4}$ level in the \SIrange{2}{7}{\mega\electronvolt} mass range \sidecite{de59e8a4525048378bfd5f3973e2d6ad}.
+\textbf{Reactor searches} up to \SI{12}{\mega\electronvolt} in mass are possible at short baseline experiments using commercial or research reactors, which are a strong source of electron antineutrinos and could therefore also produce HNLs if \ue4 is non-zero. Visible decay channels at these energies are $\nu_4 \rightarrow \nu_e e^+ e^-$, $\nu_4 \rightarrow \nu \gamma$, and $\nu_4 \rightarrow \nu \gamma \gamma$, where the first dominates. The first analysis in this field, reports limits at the $10^{-4}$ level in the \SIrange{2}{7}{\mega\electronvolt} mass range~\sidecite{de59e8a4525048378bfd5f3973e2d6ad}.
 
 
 \subsubsection{Atmospheric and Solar Neutrinos}
@@ -365,21 +365,21 @@ Natural sources of neutrinos are provided up to \SI{20}{\mega\electronvolt} by t
 
 So far, only very few analyses exist, which are performed by the experimental collaborations themselves. Several external theoretical groups have predicted the expected sensitivities to HNLs, produced from solar or atmospheric neutrinos, based on various coupling scenarios and decay lengths. A selection of the potential analyses will be discussed in the following.
 
-For very long-lived particles, \textbf{production inside the sun} can be used as a source to search for HNLs in detectors on earth. This will only allow production through non-zero \ue4, because the initial solar neutrino flux is only $\nu_e$. By searching for HNL decays to a SM neutrino and an electron positron pair $\nu_4 \rightarrow \nu_e e^+ e^-$ and comparing to the expected inter planetery positron flux, \textit{Borexino} has placed the strongest limits on the mixing \ue4 at the order of $10^{-5}$ in the few \si{\mega\electronvolt} mass range \sidecite{Borexino:2013bot}.
+For very long-lived particles, \textbf{production inside the sun} can be used as a source to search for HNLs in detectors on earth. This will only allow production through non-zero \ue4, because the initial solar neutrino flux is only $\nu_e$. By searching for HNL decays to a SM neutrino and an electron positron pair $\nu_4 \rightarrow \nu_e e^+ e^-$ and comparing to the expected inter planetary positron flux, \textit{Borexino} has placed the strongest limits on the mixing \ue4 at the order of $10^{-5}$ in the few \si{\mega\electronvolt} mass range~\sidecite{Borexino:2013bot}.
 
-For HNL decay length scales of the order of the Earth's diameter, HNL \textbf{up-scattering outside the detector} is possible, where a neutrino from the solar or the atmospheric neutrino flux scatters in the Earth and transfers some kinetic energy to the HNL, which can then later decay inside the detector. For HNL masses below \SI{18}{\mega\electronvolt} produced from solar neutrinos, limits were derived using the Borexino data for purely tau coupling through mass mixing \sidecite{Plestid:2020vqf} and for all flavor coupling through the dipole portal \sidecite{Plestid:2020ssy}. At similar decay length scales, the HNL could also be produced directly in the atmosphere, but neither this channel, nor the production anywhere in the Earth from atmospheric neutrinos has been investigated yet.
+For HNL decay length scales of the order of the Earth's diameter, HNL \textbf{up-scattering outside the detector} is possible, where a neutrino from the solar or the atmospheric neutrino flux scatters in the Earth and transfers some kinetic energy to the HNL, which can later decay inside the detector. For HNL masses below \SI{18}{\mega\electronvolt} produced from solar neutrinos, limits were derived using the Borexino data for purely tau coupling through mass mixing~\sidecite{Plestid:2020vqf} and for all flavor coupling through the dipole portal~\sidecite{Plestid:2020ssy}. At similar decay length scales, the HNL could also be produced directly in the atmosphere, but neither this channel, nor the production anywhere in the Earth from atmospheric neutrinos has been investigated yet.
 
-If the HNL decay lengths are sufficiently short, \textbf{production and decay in the detector} can happen and the observation of two vertices could be used to constrain the mixing parameters. In principle, this could be possible with any neutrino flavor produced in the sun or the atmosphere, but so far only theoretical studies have been performed for mass-mixing and dipole-portal couplings for the atmospheric neutrino detectors IceCube \sidecite{Coloma:2017ppo,Coloma:2019qqj} and \textit{Super-K}, \textit{Hyper-K}, and Dune \sidecite{Atkinson:2021rnp, Coloma:2020lgy}. Due to the high complexity of these experiments, several simplified assumptions were made in the studies, which might not hold in reality, and the results should be taken with caution. For reliable sensitivity estimates and limits the collaborations should perform their own analyses.
+If the HNL decay lengths are sufficiently short, \textbf{production and decay in the detector} can happen and the observation of two vertices could be used to constrain the mixing parameters. In principle, this could be possible with any neutrino flavor produced in the sun or the atmosphere, but so far only theoretical studies have been performed for mass-mixing and dipole-portal couplings for the atmospheric neutrino detectors IceCube~\sidecite{Coloma:2017ppo,Coloma:2019qqj} and \textit{Super-K}, \textit{Hyper-K}, and Dune~\sidecite{Atkinson:2021rnp, Coloma:2020lgy}. Due to the high complexity of these experiments, several simplified assumptions were made in the studies, which might not hold in reality, and the results should be taken with caution. For reliable sensitivity estimates and limits the collaborations should perform their own analyses.
 
 
 \section{Atmospheric Neutrinos as Source of Heavy Neutral Leptons} \labsec{hnl_theory}
 
-This work focuses on the search for HNLs using atmospheric neutrinos as source for the production and decay inside the IceCube detector. The following sections will give a brief overview of the production of neutrinos in the atmosphere and the oscillations they undergo, before discussing the expected signatures of HNLs in the detector, where they are produced from the incoming neutrinos and subsequently decay.
+This work focuses on the search for HNLs using atmospheric neutrinos as source for the production and decay inside the IceCube detector. The following sections will give a brief overview of the production of neutrinos in the atmosphere and the oscillations they undergo, before discussing the expected signatures of HNLs in the detector.
 
 
 \subsection{Production of Neutrinos in the Atmosphere}
 
-The analysis performed in this work is based on the sample of neutrinos observed in IceCube DeepCore at energies below \SI{100}{\gev}. At these energies, the flux exclusively originates in the Earth's atmosphere. Highly relativistic cosmic rays (protons and heavier nuclei \sidecite{PhysRevD.98.030001}) interact in the upper atmosphere, producing showers of secondary particles. Neutrinos are produced in decays of charged pions and kaons ($\pi$ and $K$ mesons) present in those showers, where the dominant contribution comes from the decay chain
+The analysis performed in this work is based on the sample of neutrinos observed in IceCube DeepCore at energies below \SI{100}{\gev}. At these energies, the flux exclusively originates in the Earth's atmosphere. Highly relativistic cosmic rays (protons and heavier nuclei~\sidecite{PhysRevD.98.030001}) interact in the upper atmosphere, producing showers of secondary particles. Neutrinos are produced in decays of charged pions and kaons ($\pi$ and $K$ mesons) present in those showers, where the dominant contribution comes from the decay chain
 \begin{equation}
     \begin{split}   
         \pi^\pm &\rightarrow \mu^\pm + \nu_\mu(\bar{\nu}_\mu)\;, \\
@@ -393,13 +393,13 @@ where muon neutrinos $\nu_\mu$ and muons $\mu^\pm$ are produced in the first dec
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/neutrinos_properties/Honda_alldir-spl_copy.pdf}
-    \caption[Atmospheric neutrino fluxes]{The atmospheric fluxes of different neutrino flavors as a function of energy (left) and the ratios between muon neutrinos and electron neutrinos as well as the ratios between neutrinos and antineutrinos for both those flavors (right). Results from the calculations performed for the geographic South Pole, taken from \cite{PhysRevD.92.023004_Honda_Flux}.}
+    \caption[Atmospheric neutrino fluxes]{The atmospheric fluxes of different neutrino flavors as a function of energy (left) and the ratios between muon neutrinos and electron neutrinos as well as the ratios between neutrinos and antineutrinos for both those flavors (right). Results from the calculations performed for the geographic South Pole, taken from~\cite{PhysRevD.92.023004_Honda_Flux}.}
     \labfig{honda_flux}
 \end{figure}
 
 The different atmospheric flux components are shown in \reffig{honda_flux} (left), for a much broader energy range than relevant for this work. Both neutrinos and antineutrino fluxes are shown for electron  and muon neutrinos and all fluxes are the directionally averaged expectation calculated at the South Pole. Muon neutrinos are dominating the flux and from \refeq{pion_decay} the naive assumption would be that the ratio between muon and electron neutrinos is $(\nu_\mu+\bar{\nu}_\mu)/(\nu_e+\bar{\nu}_e)=2$. This is roughly true at energies below \SI{1}{\gev}, where all muons decay in flight, but at larger energies muons can reach the detector before decaying, which increases the ratio to approximately 10:1 at around \SI{100}{\gev}. Additionally, kaon decays start to contribute which also increases the number of muons and muon neutrinos. The increasing ratio can be seen in \reffig{honda_flux} (right), which also shows the ratio between neutrinos and antineutrinos for both flavors.
 
-Charged mesons heavier than the tau can also be produced in cosmic ray interactions. Their decays to tau neutrinos or direct production of taus in cosmic ray interactions lead to the production of tau neutrinos. At the energies relevant for this work however, the resulting tau neutrino flux is negligible as compared to the muon neutrino flux \sidecite{2015EPJWC..9908001F_lepton_fluxes} and is not considered in the analysis. This is because both charged mesons and tau particles are much heavier than pions and kaons and therefore their production is suppressed at high energies.
+Charged mesons heavier than the tau can also be produced in cosmic ray interactions. Their decays to tau neutrinos or direct production of taus in cosmic ray interactions lead to the production of tau neutrinos. At the energies relevant for this work however, the resulting tau neutrino flux is negligible as compared to the muon neutrino flux~\sidecite{2015EPJWC..9908001F_lepton_fluxes} and is not considered in the analysis.
 
 
 \subsection{Neutrino Oscillations} \labsec{neutrino_oscillations}
@@ -412,7 +412,7 @@ The neutrino propagation in vacuum can be expressed by applying a plane wave app
     \;.
     \labeq{flavor_time_evol}
 \end{equation}
-The energy of the mass eigenstate $\ket{\nu_k}$ is $E_k=\sqrt{\vec{p}^2c^2+m_k^2c^4}$, with momentum $\vec{p}$ and mass $m_k$, $\hbar$ is the reduced Planck constant, and c is the speed of light in vacuum. A neutrino is produced as a flavor eigenstate $\ket{\nu_\alpha}$ in a CC weak interaction, but its propagation happens as the individual mass states it is composed of. The probability of finding the neutrino with initial flavor $\ket{\nu_\alpha}$ in the flavor state $\ket{\nu_\beta}$ after the time $t$ is calculated as
+The energy of the mass eigenstate $\ket{\nu_k}$ is $E_k=\sqrt{\vec{p}^2c^2+m_k^2c^4}$, with momentum, $\vec{p}$, mass, $m_k$, $\hbar$ is the reduced Planck constant, and c is the speed of light in vacuum. A neutrino is produced as a flavor eigenstate $\ket{\nu_\alpha}$ in a CC weak interaction, but its propagation happens as the individual mass states it is composed of. The probability of finding the neutrino with initial flavor $\ket{\nu_\alpha}$ in the flavor state $\ket{\nu_\beta}$ after the time $t$ is calculated as
 \begin{equation}
     P_{\nu_\alpha \rightarrow \nu_\beta}(t)
     =
@@ -420,7 +420,7 @@ The energy of the mass eigenstate $\ket{\nu_k}$ is $E_k=\sqrt{\vec{p}^2c^2+m_k^2
     \;,
     \labeq{fermis_golden_rule}
 \end{equation}
-by applying Fermi's Golden Rule \sidecite{1927RSPSA.114..243D}, which defines the transition rate from one eigenstate to another by the strength of the coupling between them. This coupling strength is the square of the matrix element and using the fact that the mixing matrix is unitary ($U^{-1}=U^\dagger$) to describe the mass eigenstates as flavor eigenstates, we find the time evolution of the flavor state $\ket{\nu_\alpha(t)}$, which can be inserted into \refeq{fermis_golden_rule} to find the probability as
+by applying Fermi's Golden Rule~\sidecite{1927RSPSA.114..243D}, which defines the transition rate from one eigenstate to another by the strength of the coupling between them. This coupling strength is the square of the matrix element and using the fact that the mixing matrix is unitary ($U^{-1}=U^\dagger$) to describe the mass eigenstates as flavor eigenstates, we find the time evolution of the flavor state $\ket{\nu_\alpha(t)}$, which can be inserted into \refeq{fermis_golden_rule} to find the probability as
 \begin{equation}
     P_{\nu_\alpha \rightarrow \nu_\beta}(t)
     =
@@ -468,12 +468,12 @@ which is called the survival probability if $\alpha=\beta$, and the transition p
     $\delta_{CP}$ [\si{\degree}] & $197^{+42}_{-25}$ \\
     \hline
     \end{tabular}
-\caption[Global fit neutrino mixing parameter results]{Results from the latest global fit of neutrino mixing parameters from \cite{nufit_5.2}.}
+\caption[Global fit neutrino mixing parameter results]{Results from the latest global fit of neutrino mixing parameters from~\cite{nufit_5.2}.}
 \labtab{nufit_5.2}
 \end{margintable}
 }
 
-The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
+The mixing matrix can be parameterized as~\sidecite{PhysRevD.98.030001}
 \begin{equation}
     U=\left( 
     \begin{matrix}
@@ -499,7 +499,7 @@ The mixing matrix can be parameterized as \sidecite{PhysRevD.98.030001}
     \;,
     \labeq{parameterized_PMNS_matrix}
 \end{equation}
-where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates $i$ and $j$, and $\delta_{CP}$ is the neutrino CP-violating phase. Experiments are sensitive to different mixing parameters, depending on the observed energy range, neutrino flavor, and the distance between the source and the detector $L$, commonly referred to as \textit{baseline}. To be able to resolve oscillations the argument
+where $c_{ij}=\cos\theta_{ij}$ and $s_{ij}=\sin\theta_{ij}$ are cosine and sine of the mixing angle $\theta_{ij}$, that defines the strength of the mixing between the mass eigenstates $i$ and $j$, and $\delta_{CP}$ is the neutrino \textit{charge-parity (CP)} violating phase. Experiments are sensitive to different mixing parameters, depending on the observed energy range, neutrino flavor, and the distance between the source and the detector $L$, commonly referred to as \textit{baseline}. To be able to resolve oscillations the argument
 \begin{equation}
     \frac{\Delta m^2L}{4E}
     \labeq{oscillation_argument}
@@ -529,7 +529,7 @@ while the tau neutrino appearance probability is
     \end{split}
     \labeq{probability_tau_appearance}
 \end{equation}
-The latest global fit \sidecite{nufit_5.2} of all the parameters is shown in \reftab{nufit_5.2}.
+The latest global fit~\sidecite{nufit_5.2} of all the parameters is shown in \reftab{nufit_5.2}.
 
 
 \subsection{Neutrino Interactions with Nuclei} \labsec{neutrino_interactions}
@@ -538,16 +538,15 @@ The neutrino detection principle of IceCube DeepCore is explained in \refch{icec
 \begin{equation}
     \begin{split}
         \nu_\alpha + N \rightarrow l^-_\alpha + X \;, \\
-        \bar{\nu}_\alpha + N \rightarrow l^+_\alpha + X \;, \\
-        \;,
+        \bar{\nu}_\alpha + N \rightarrow l^+_\alpha + X \;,
     \end{split}
     \labeq{dis_cc}
 \end{equation}
-where $\nu_\alpha$/$\bar{\nu}_\alpha$ and $l^-_\alpha$/$l^+_\alpha$ are the neutrino/antineutrino and its corresponding lepton/antilepton for $\alpha=e,\mu,\tau$.$N$ is the nucleon and $X$ stands for any set of final state hadrons. The NC DIS interactions are
+where $\nu_\alpha$/$\bar{\nu}_\alpha$ and $l^-_\alpha$/$l^+_\alpha$ are the neutrino/antineutrino and its corresponding lepton/antilepton for $\alpha=e,\mu,\tau$. $N$ is the nucleon and $X$ stands for any set of final state hadrons. The NC DIS interactions are
 \begin{equation}
     \begin{split}
     \nu_\alpha + N & \rightarrow \nu_\alpha + X \; \rm{and} \\
-    \bar{\nu}_\alpha + N & \rightarrow \bar{\nu}_\alpha + X \;. \\
+    \bar{\nu}_\alpha + N & \rightarrow \bar{\nu}_\alpha + X \;.
     \end{split}
     \labeq{dis_nc}
 \end{equation}
@@ -558,7 +557,7 @@ DIS interactions have a roughly linear energy dependent cross-section above $\si
     \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_CC_nu_new.pdf}
     \hspace{0.8cm}
     \includegraphics[width=0.4\linewidth]{figures/neutrinos_properties/feynman_DIS_NC_nu_new.pdf}
-    \caption[Neutrino-nucleon deep inelastic scattering]{Feynman diagrams for deep inelastic scattering of a neutrino with a nucleon via charged-current (left) and neutral current (right) interactions. $\boldsymbol{p}_{\nu_i}$, $\boldsymbol{p}_{N}$ and $\boldsymbol{p}_{\nu_f}$, $\boldsymbol{p}_{l}$, $\boldsymbol{p}_{N}$ are the input and output four-momenta, while $\boldsymbol{q}$ is the momentum transfer. Taken from \cite{ATerliuk}.}
+    \caption[Neutrino-nucleon deep inelastic scattering]{Feynman diagrams for deep inelastic scattering of a neutrino with a nucleon via charged-current (left) and neutral current (right) interactions. $\boldsymbol{p}_{\nu_i}$, $\boldsymbol{p}_{N}$ and $\boldsymbol{p}_{\nu_f}$, $\boldsymbol{p}_{l}$, $\boldsymbol{p}_{N}$ are the input and output four-momenta, while $\boldsymbol{q}$ is the momentum transfer. Taken from~\cite{ATerliuk}.}
     \labfig{dis_feynman}
 \end{figure}
 
@@ -569,7 +568,7 @@ At energies below \SI{5}{\gev}, \textbf{\textit{quasi-elastic scattering (QE)}} 
     \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nu.pdf}
     \includegraphics[width=0.495\linewidth]{figures/neutrinos_properties/cc_inclusive_nubar.pdf}
 	\caption[Total inclusive neutrino-nucleon cross-sections]{Total neutrino (left) and antineutrino (right) per nucleon cross-section divided by neutrino energy plotted against energy.
-    The three main scattering processes quasi-elastic scattering (QE), resonant scattering (RES), and deep-inelastic scattering (DIS) are shown. Taken from \cite{Formaggio_Cross_Sections}.}
+    The three main scattering processes quasi-elastic scattering (QE), resonant scattering (RES), and deep-inelastic scattering (DIS) are shown. Taken from~\cite{Formaggio_Cross_Sections}.}
     \labfig{neutrino_cross_sections}
 \end{figure*}
 
@@ -577,7 +576,7 @@ At energies below \SI{5}{\gev}, \textbf{\textit{quasi-elastic scattering (QE)}} 
 \subsection{Heavy Neutral Lepton Production and Decay} \labsec{double_cascade_morphology}
 
 
-For the search conducted in this work, both production and decay of the HNL are assumed to happen inside the detector, therefore probing decay lengths ranges at the scale of the detector size, which is below \SI{1000}{\meter}. Since the mixing with the first two generations of leptons is already strongly constrained as was discussed in \refsec{hnl_theory}, only the mixing with the tau neutrino will be considered in the following. Due to the effect of oscillations, described in \refsec{neutrino_oscillations}, the initial atmospheric muon neutrino flux provides a sizable tau neutrino flux at the detector.
+For the search conducted in this work, both production and decay of the HNL are assumed to happen inside the detector, therefore probing decay length ranges at the scale of the detector size, which is below \SI{1000}{\meter}. Since the mixing with the first two generations of leptons is already strongly constrained as was discussed in \refsec{hnl_theory}, only the mixing with the tau neutrino will be considered in the following. Due to the effect of oscillations, described in \refsec{neutrino_oscillations}, the initial atmospheric muon neutrino flux provides a sizable tau neutrino flux at the detector.
 
 \begin{figure}[h]
     \includegraphics[width=0.5\textwidth]{figures/hnl_simulation/theory/feyn_diags_production.png}
@@ -585,7 +584,7 @@ For the search conducted in this work, both production and decay of the HNL are 
     \labfig{HNL_production}
 \end{figure}
 
-For a non-zero \ut4, the HNL can be produced through \textbf{up-scattering in the ice}. An incoming tau neutrinos scatters on an ice nucleus and transfers some of its kinetic energy to the heavy neutrino. The Feynman diagram of this process is shown in \reffig{HNL_production}. The custom NC cross-sections calculated for this purpose are explained in more detail in \refsec{custom_leptoninjector}, but are similar to the SM tau neutrino NC cross-sections, with a reduction scaling with the mixing \ut4 and energy dependent reductions, due to kinematic constraints because of the heavy neutrino mass. The scattering process produces a hadronic cascade, which will produce light in the detector.
+For a non-zero \ut4, the HNL can be produced through \textbf{up-scattering in the ice}. An incoming tau neutrinos scatters on an ice nucleus and transfers some of its kinetic energy to the heavy neutrino. The Feynman diagram of this process is shown in \reffig{HNL_production}. The custom NC cross-sections calculated for this purpose are explained in more detail in \refsec{custom_leptoninjector}, but are similar to the SM tau neutrino NC cross-sections, with a reduction, scaling with the mixing \ut4, and energy dependent reductions, due to kinematic constraints because of the heavy neutrino mass. The scattering process produces a hadronic cascade, which will produce light in the detector.
 
 \begin{figure}[h]
     \includegraphics{figures/hnl_simulation/theory/feyn_diags_decay.png}
@@ -605,7 +604,7 @@ where $\hbar$ is the reduced Planck constant, $\Gamma_\mathrm{total}(m_4)$ is th
     \;,
     \labeq{decay_length}
 \end{equation}
-where $\gamma$ is the Lorentz factor of the HNL, defined by the kinetic energy. This will be further discussed on \refsec{custom_leptoninjector}. \reffig{hnl_decay_lengths} shows the mean decay lengths for an example mass of $m_4=\SI{0.6}{\gev}$ and several mixing values.
+where $\gamma$ is the Lorentz factor of the HNL, defined by the kinetic energy. This will be further discussed in \refsec{custom_leptoninjector}. \reffig{hnl_decay_lengths} shows the mean decay length for an example mass of $m_4=\SI{0.6}{\gev}$ and several mixing values.
 
 \begin{figure}[h]
     \includegraphics{figures/hnl_simulation/theory/decay_length_vs_energy_m4_6e-01.png}
