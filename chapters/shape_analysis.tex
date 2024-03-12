@@ -149,7 +149,7 @@ The selected sample of atmospheric neutrinos lies around energies of up to \SI{1
     \;,
     \labeq{power_law_flux_uncertainty}
 \end{equation}
-where $E^\star$ is the pivot energy and $\Delta\gamma$ is the correction to the power law exponent. This modification propagates into the neutrino flux, which is therefore corrected in the same way. $E^\star$ was chosen to be \SI{24}{\gev} as to minimize the dependence of the overall flux scale on $\Delta\gamma$~\sidecite{OVS_PRD}.
+where $E^\star$ is the pivot energy and $\Delta\gamma$ is the correction to the power law exponent. This modification propagates into the neutrino flux, which is therefore corrected in the same way. $E^\star$ was chosen to be \SI{24}{\gev} as to minimize the dependence of the overall flux scale on $\Delta\gamma$~\cite{OVS_PRD}.
 
 
 \paragraph{Hadronic interaction model:}
@@ -225,19 +225,21 @@ The ice model used in IceCube is continuously improved, and the recent models in
 
 \paragraph{Treatment of Detector Systematic Uncertainties:} \labsec{ultrasurfaces}
 
-Since the variations related to the detector calibration uncertainties are estimated by simulating MC at discrete values of the systematic parameters, a method to derive continuous variations is needed to perform the fit. The method applied here was initially introduced in~\sidecite{Fischer_2023} and first used in the low energy sterile neutrino search in~\sidecite{ATrettin_phd} (section 7.4.3). Using a \textit{likelihood-free inference} technique, re-weighting factors are found for every event in the nominal MC sample, given a specific choice of detector systematic parameters. These factors quantify how much more or less likely the event would be for the corresponding change in detector response from the nominal parameters. Without going into the details of the method, which were already exhaustively discussed in~\cite{Fischer_2023} and~\cite{ATrettin_phd}, the performance is assessed here for the HNL signal simulation. In order to do so, the weights are applied to the nominal MC samples, choosing the detector systematic values used to produce the discrete samples and the resulting event expectations are compared to the expectations from the individual, discrete MC samples. The bin counts are compared by calculating the pull defined as
-\begin{equation}
-    p = \frac{N_{\rm{reweighted}}-N_{{\rm sys}}}{\sqrt{\sigma^2_\rm{reweighted}+\sigma^2_{\rm sys}}}
-    \;,
-    \labeq{bin_wise_pull}
-\end{equation}
-where $N$ are the bin-wise event expectations and $\sigma$ are their MC uncertainty. For the SM BG simulation, the performance was already investigated in~\sidecite{ELohfink_phd} (section 7.4.4, appendix B5) and the re-weighted nominal MC was shown to be in agreement with the discrete systematic sets at a sufficient level. \reffig{hnl_ultrasurfaces_3d_pulls_selection0} shows the bin-wise pulls for the \SI{1.0}{\gev} HNL mass sample at a mixing of $0.1$ for a selection of the discrete systematic samples, where the DOM efficiency and the ice absorption were varied by $\pm10\%$. As expected, the pull distributions follow a standard normal distribution, without strong clustering or any systematic deviations. A similar performance is found for the additional systematic variations and the detailed figures can be found in \refsec{ultrasurfaces_appendix}.
+Since the variations related to the detector calibration uncertainties are estimated by simulating MC at discrete values of the systematic parameters, a method to derive continuous variations is needed to perform the fit. The method applied here was initially introduced in~\sidecite{Fischer_2023} and first used in the low energy sterile neutrino search in~\sidecite{ATrettin_phd} (section 7.4.3). Using a \textit{likelihood-free inference} technique, re-weighting factors are found for every event in the nominal MC sample, given a specific choice of detector systematic parameters. These factors quantify how much more or less likely the event would be for the corresponding change in detector response from the nominal parameters.
 
 \begin{figure*}[h]
     \includegraphics[width=0.9\linewidth]{figures/results/utlrasurfaces/oscNext_leptoninjector_1.0_GeV_knn_probs_neighbors_500_weighted_nfiles_extended_holeice_corrected_grads_poly_2_weighted_reference_weight_0.0100_thesis_style_subset_0-5.png}
     \caption[Detector systematic uncertainty treatment bin-wise pulls example sets]{Three-dimensional pulls and set-wise pull distributions between the nominal set and the specific systematic sets, after the nominal set was re-weighted to the corresponding systematic parameter value. Set 0001 and 0004 have the DOM efficiency varied by $\pm10\%$, while set 0504 and 0505 have the ice absorption varied by $\pm10\%$.}
     \labfig{hnl_ultrasurfaces_3d_pulls_selection0}
 \end{figure*}
+
+Without going into the details of the method, which were already exhaustively discussed in~\cite{Fischer_2023} and~\cite{ATrettin_phd}, the performance is assessed here for the HNL signal simulation. In order to do so, the weights are applied to the nominal MC samples, choosing the detector systematic values used to produce the discrete samples and the resulting event expectations are compared to the expectations from the individual, discrete MC samples. The bin counts are compared by calculating the pull defined as
+\begin{equation}
+    p = \frac{N_{\rm{reweighted}}-N_{{\rm sys}}}{\sqrt{\sigma^2_\rm{reweighted}+\sigma^2_{\rm sys}}}
+    \;,
+    \labeq{bin_wise_pull}
+\end{equation}
+where $N$ are the bin-wise event expectations and $\sigma$ are their MC uncertainty. For the SM BG simulation, the performance was already investigated in~\sidecite{ELohfink_phd} (section 7.4.4, appendix B5) and the re-weighted nominal MC was shown to be in agreement with the discrete systematic sets at a sufficient level. \reffig{hnl_ultrasurfaces_3d_pulls_selection0} shows the bin-wise pulls for the \SI{1.0}{\gev} HNL mass sample at a mixing of $0.1$ for a selection of the discrete systematic samples, where the DOM efficiency and the ice absorption were varied by $\pm10\%$. As expected, the pull distributions follow a standard normal distribution, without strong clustering or any systematic deviations. A similar performance is found for the additional systematic variations and the detailed figures can be found in \refsec{ultrasurfaces_appendix}.
 
 
 \subsubsection{Muon Uncertainties}

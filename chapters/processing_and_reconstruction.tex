@@ -223,8 +223,6 @@ The under-estimation at large true decay lengths is more puzzling. It seems like
 
 \paragraph{Resolution Benchmarks:}
 
-The left part of \reffig{median_resolutions_energy_length} shows the median resolutions of the decay length as a function of the true decay length. It falls below \SI{65}{\percent} above a true decay length of $\sim$\SI{10}{\meter}, and starts to increase again with increasing true length around \SI{100}{\meter}, where it is at \SI{40}{\percent}. For larger true decay length, where the badly reconstructed population dominates, the resolution is large, stabilizing at around \SI{90}{\percent} at \SI{200}{\meter}. This is a significantly worse behavior than the performance found for the best-case event types shown in the left part of \reffig{idealistic_length_resolutions}. The total energy resolution versus the true total energy is shown in the right part of \reffig{median_resolutions_energy_length}. Above \SI{4}{\gev} it is good and constantly improving with the true total energy. It falls below \SI{30}{\percent} at \SI{10}{\gev} and reaches \SI{15}{\percent} at \SI{100}{\gev}.
-
 \begin{figure*}[h]
 	\centering
     \includegraphics[width=0.45\linewidth]{figures/model_independent_simulation/results/realistic/resolutions/194603_median_decay_length_resolution_goodfit_log_unweighted.png}
@@ -233,7 +231,7 @@ The left part of \reffig{median_resolutions_energy_length} shows the median reso
     \labfig{median_resolutions_energy_length}
 \end{figure*}
 
-To get an estimate of what minimum energies are necessary for the reconstruction to perform reasonably well, the fractional decay length resolution is shown as a function of the total true energy and the minimum energy of both individual cascades in \reffig{decay_length_bias_vs_energies}. In the left part it can be seen that the median of the decay length resolution stabilizes around 0 for a total energy above \SI{20}{\gev}, but the spread of the distribution is still quite large with a \SI{68}{\percent} band of \SIrange{80}{100}{\percent}, decreasing down to $\sim$\SI{60}{\percent} at \SI{100}{\gev}. The right part of the figure shows the decay length resolution as a function of the minimum true energy of the cascades. The decay length resolution starts to be unbiased for a minimum energy of any cascade of \SI{7}{\gev}, with an equivalently large spread. A rough takeaway from this is that the decay length reconstruction is not reliable for events with one cascade energy below \SI{7}{\gev} and with a total energy below \SI{20}{\gev}. Above these values the median resolution is roughly unbiased, but the spread is still large, decreasing with increasing energy.
+The left part of \reffig{median_resolutions_energy_length} shows the median resolutions of the decay length as a function of the true decay length. It falls below \SI{65}{\percent} above a true decay length of $\sim$\SI{10}{\meter}, and starts to increase again with increasing true length around \SI{100}{\meter}, where it is at \SI{40}{\percent}. For larger true decay length, where the badly reconstructed population dominates, the resolution is large, stabilizing at around \SI{90}{\percent} at \SI{200}{\meter}. This is a significantly worse behavior than the performance found for the best-case event types shown in the left part of \reffig{idealistic_length_resolutions}. The total energy resolution versus the true total energy is shown in the right part of \reffig{median_resolutions_energy_length}. Above \SI{4}{\gev} it is good and constantly improving with the true total energy. It falls below \SI{30}{\percent} at \SI{10}{\gev} and reaches \SI{15}{\percent} at \SI{100}{\gev}.
 
 \begin{figure*}[h]
 	\centering
@@ -243,10 +241,8 @@ To get an estimate of what minimum energies are necessary for the reconstruction
     \labfig{decay_length_bias_vs_energies}
 \end{figure*}
 
+To get an estimate of what minimum energies are necessary for the reconstruction to perform reasonably well, the fractional decay length resolution is shown as a function of the total true energy and the minimum energy of both individual cascades in \reffig{decay_length_bias_vs_energies}. In the left part it can be seen that the median of the decay length resolution stabilizes around 0 for a total energy above \SI{20}{\gev}, but the spread of the distribution is still quite large with a \SI{68}{\percent} band of \SIrange{80}{100}{\percent}, decreasing down to $\sim$\SI{60}{\percent} at \SI{100}{\gev}. The right part of the figure shows the decay length resolution as a function of the minimum true energy of the cascades. The decay length resolution starts to be unbiased for a minimum energy of any cascade of \SI{7}{\gev}, with an equivalently large spread. A rough takeaway from this is that the decay length reconstruction is not reliable for events with one cascade energy below \SI{7}{\gev} and with a total energy below \SI{20}{\gev}. Above these values the median resolution is roughly unbiased, but the spread is still large, decreasing with increasing energy.
 
-\paragraph{Selection Efficiency:}
-
-To assess the efficiency of the low-energy event selection for double-cascade events, the true energy and true decay length distributions are shown across the different selection levels in \reffig{realistic_selection_efficiency}. The two detector simulation steps explained in \refsec{detector_simulation} are also included, where the application of the detector response simulation (Det), reduces the events significantly at low energies, because only events with sufficient photons observed in the DOMs are kept. The L3 selection, which includes the DeepCore SMT-3 trigger, reduced both the low-energy region further, while also affecting the high-energy region. L4 and L5 reduce the overall number of events, without showing a specific energy dependence. The full selection appears to be independent of the true decay length, as the distributions reduces uniformly across the decay length range. Similar to the efficiency for SM neutrinos, the total selection efficiency from the online filter to L5 is around \SI{40}{\percent}.
 
 \begin{figure*}[h]
 	\centering
@@ -257,11 +253,18 @@ To assess the efficiency of the low-energy event selection for double-cascade ev
 \end{figure*}
 
 
+\paragraph{Selection Efficiency:}
+
+To assess the efficiency of the low-energy event selection for double-cascade events, the true energy and true decay length distributions are shown across the different selection levels in \reffig{realistic_selection_efficiency}. The two detector simulation steps explained in \refsec{detector_simulation} are also included, where the application of the detector response simulation (Det), reduces the events significantly at low energies, because only events with sufficient photons observed in the DOMs are kept. The L3 selection, which includes the DeepCore SMT-3 trigger, reduced both the low-energy region further, while also affecting the high-energy region. L4 and L5 reduce the overall number of events, without showing a specific energy dependence. The full selection appears to be independent of the true decay length, as the distributions reduces uniformly across the decay length range. Similar to the efficiency for SM neutrinos, the total selection efficiency from the online filter to L5 is around \SI{40}{\percent}.
+
+
+
+
 \subsubsection{Model-Dependent Sample}
 
 After optimizing the double-cascade reconstruction and benchmarking how it performs using the model-independent sample, the resolutions are investigated with the model-dependent HNL simulation. A preliminary sample of HNL events is used which contains masses between \SIrange[range-phrase=~and~]{0.1}{3.0}{\gev} and lab frame decay lengths in the range from \SIrange{1}{1000}{\meter}, sampled from an inverse distribution.
 
-\begin{figure*}[h]
+\begin{figure*}[h!]
 	\centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/casc0_reco_energy_vs_casc0_true_energy_final_level_good_step_contours.png}
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/casc1_reco_energy_vs_casc1_true_energy_final_level_good_step_contours.png}
@@ -279,7 +282,7 @@ The reconstructed energy versus the true energy is shown in \reffig{selected_rou
 
 Apart from this expected bias, the behavior is similar to the results observed for the realistic, model-independent sample shown in \reffig{cascade_energy_2dhists}. The performance appears to be worse for the second cascade, but for this sample, the energy distributions of the cascades are very different. Due to the kinematics of HNL production and decay introduced in \refsec{double_cascade_morphology}, the energy distribution of the second cascade is shifted to lower energies with respect to the energy distribution of the first cascade. \reffig{190607_true_energies_final_level} shows the energy distributions of both cascades for the same events shown in \reffig{selected_routine_2d_energy_results}. The energies of the first cascade peak around \SI{10}{\gev} and the lowest values are at the order of \SI{0.3}{\gev}, while for the second cascade, the peak of the distribution at $\sim$\SI{4}{\gev} and the lower end of the distribution extends multiple orders of magnitude below that. Note here, that these are again the true, total energies of the cascades, including the contributions that go into invisible particles. The true deposited energies are therefore lower.
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \includegraphics[width=0.8\textwidth]{figures/results/190607/resolutions/reco_decayL_vs_true_decayL_final_level_good_step_contours.png}
     \caption[Reconstructed decay length resolution versus true decay length - preliminary model-dependent sample]{Reconstructed decay length versus true decay length for a preliminary version of the model-dependent sample, where the color scale is normalized per vertical slice and the median and \SI{68}{\percent} band are shown in red.}
 \labfig{190607_reco_decay_l_vs_true_decay_l}
@@ -362,8 +365,8 @@ Five different networks are trained using this architecture. Three networks do t
 After the FLERCNN reconstruction is applied, a BDT classifier is used to further reduce the muon background for the final sample. The BDT is trained on five high level variables, where three are FLERCNN reconstruction variables (vertex $z$, $\rho_{36}$\sidenote{A radial variable that is often used in IceCube, is the horizontal distance to string 36 called $\rho_{36}$, which is basically the distance to the center of IceCube.}, and muon probability), and two are lower level variables (L4 muon classifier output and L5 corridor cut variable). To train the BDT, the FLERCNN nominal simulation set is used, only using events with $\cos(\theta)\leq 0.3$. The output of the BDT is the neutrino probability and a cut at 0.8 is applied to reject events with a high probability of being a muon. \reffig{muon_bdt_id} shows the output of the BDT classifier, where the neutrinos in both training and testing sets are gathered at 1 and muons are around 0, which shows great classification power. Since the probabilities for training and test sets are very similar, the BDT is not overtrained. The rate of neutrinos and muons as a function of the muon classifier probability threshold is shown in the right plot of \reffig{muon_bdt_id}, where it can be seen that at the chosen value of 0.8, the neutrino rate is two orders of magnitude above the muon rate.
 
 \begin{figure*}
-\includegraphics[width=0.49\linewidth]{figures/simulation_and_processing/flercnn/flercnn_muon_classifier.png}
-\includegraphics[width=0.49\linewidth]{figures/simulation_and_processing/flercnn/flercnn_muon_classifier_rate_vs_threshold.png}
+\includegraphics[width=0.44\linewidth]{figures/simulation_and_processing/flercnn/flercnn_muon_classifier.png}
+\includegraphics[width=0.44\linewidth]{figures/simulation_and_processing/flercnn/flercnn_muon_classifier_rate_vs_threshold.png}
 \caption[FLERCNN muon classifier probability distributions]{FLERCNN muon classifier output score (left) and rate of neutrinos and muons as function of muon classifier cut (right).}
 \labfig{muon_bdt_id}
 \end{figure*}
@@ -372,26 +375,21 @@ To get the final, pure sample of well reconstructed neutrinos a final selection 
 
 Parts of this selection are applied to make sure the agreement between data and MC is good. To remove coincident muon and neutrino events, the number of hits in the top 15 layers of IceCube DOMs and the number of hits in the outermost IceCube strings are required to be above 0.5 and 7.5, respectively. Coincident random noise events are removed by requiring more than three hit DOMs from direct photons\sidenote{\textit{Direct photons} are photons that were not scattered on their way from the interaction vertex to the DOM.}~\cite{low_energy_reco_IC}. Neither of the two coincident event types are simulated, which can be seen as bad agreement between data and MC. Lastly, the cosine of the reconstructed zenith angle is required to be smaller than 0.04 to reject down-going muons.
 
-\begin{table}
+\begin{table}[h]
     \small
         \begin{tabular}{ lll }
-        \hline\hline
-    
-        \textbf{Variable} & \textbf{Threshold} & \textbf{Removed} \\ 
-    
-        \hline\hline
-    
+        \hline\hline    
+        \textbf{Variable} & \textbf{Threshold} & \textbf{Removed} \\     
+        \hline\hline    
         Number of hit DOMs & $\geq 7$ & \SI{1.05}{\percent} \\
         Radial distance & < \SI{200}{\meter} & \SI{0.09}{\percent} \\
         Vertical position & \SI{-495}{\meter} < z < \SI{-225}{\meter} & \SI{5.48}{\percent} \\
-        Energy & \SI{5}{\gev} < E < \SI{100}{\gev} & \SI{20.70}{\percent} \\
-    
+        Energy & \SI{5}{\gev} < E < \SI{100}{\gev} & \SI{20.70}{\percent} \\    
         Cosine of zenith angle & < 0.04 & \SI{19.66}{\percent} \\
         Number of direct hits & > 2.5 & \SI{10.50}{\percent} \\
         Number of hits in top layers & < 0.5 & \SI{0.03}{\percent} \\
         Number of hits in outer layer & < 7.5 & \SI{0.001}{\percent} \\
         Muon classifier score & $\geq 0.8$ & \SI{23.90}{\percent} \\
-
         \hline
         \end{tabular}
     \caption[Final analysis selection criteria]{Selection criteria for the final analysis sample. They are partly aiming to increase the data/MC agreement, while others are rejecting events with poor reconstruction quality.}

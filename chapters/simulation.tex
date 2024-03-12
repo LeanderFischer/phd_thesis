@@ -157,7 +157,7 @@ The GRV98LO~\sidecite{grv98_pdf} PDFs were added to the cross-section spline mak
 
 The accessible decay channels are dependent on the mass of the HNL and the allowed mixing. For this analysis, where only $|U_{\tau4}|^2 \neq 0$, the decay channels considered are listed in \reftab{hnl_decay_channels} and the corresponding branching ratios are shown in \reffig{hnl_branching_ratios}. The individual branching ratio for a specific mass is calculated as $\mathrm{BR}_i(m_4)=\Gamma_i(m_4)/\Gamma_\mathrm{total}(m_4)$, where $\Gamma_\mathrm{total}(m_4)=\sum\Gamma_i(m_4)$. They can be seen in \reffig{hnl_decay_modes_log_decay_width}, where the individual decay widths $\Gamma_i$ are shown, which are computed using an implementation of the state-of-the-art calculations from~\cite{Coloma:2020lgy}. The formulae for these calculations are explicitly listed in the following.
 
-\begin{margintable}
+\begin{margintable}[-1cm]
     \begin{tabular} { lr }
         \hline\hline 
         \textbf{Channel} & \textbf{Opens}  \\
@@ -237,14 +237,9 @@ with the constants defined as
 \end{align} 
 the functions as
 \begin{equation}
-    f_1(x_\alpha) = (1-14x_\alpha-2x_\alpha^2-12x_\alpha^3)\sqrt{1-4x_\alpha}+12x_\alpha^2(x_\alpha^2-1)L(x_\alpha)
-    \;,
-    \labeq{gamma_nu_ll_f1}
-\end{equation}
-\begin{equation}
-    f_2(x_\alpha) = 4[x_\alpha(2+10x_\alpha-12x_\alpha^2)\sqrt{1-4x_\alpha}+6x_\alpha^2(1-2x_\alpha+2x_\alpha^2)L(x_\alpha)]
-    \;,
-    \labeq{gamma_nu_ll_f2}
+    f_1(x_\alpha) = (1-14x_\alpha-2x_\alpha^2-12x_\alpha^3)\sqrt{1-4x_\alpha}+12x_\alpha^2(x_\alpha^2-1)L(x_\alpha) \;, \\
+    f_2(x_\alpha) = 4[x_\alpha(2+10x_\alpha-12x_\alpha^2)\sqrt{1-4x_\alpha}+6x_\alpha^2(1-2x_\alpha+2x_\alpha^2)L(x_\alpha)] \;,
+    \labeq{gamma_nu_ll_f1_f2}
 \end{equation}
 and
 \begin{equation}
@@ -517,7 +512,7 @@ The detector simulation is performed after the event generation, where the initi
 
 Any photon that was produced in the event generation is individually traced through the ice, simulating scattering and absorption processes. The propagation is done using \textsc{clsim}~\cite{clsim} which is an implementation of the \textit{Photon Propagation Code (\textsc{PPC})}~\sidecite{ppc} in \textsc{OpenCL}. It is optimized to be run efficiently on GPUs. The ice is modeled as a set of \SI{10}{\meter} thick, almost horizontal layers with specific absorption and scattering lengths. The \textit{South Pole ice (SPICE)} model~\sidecite{spice_ice_model} accounts for the layers being tilted by a small amount, due to the uneven surface of the bedrock below the glacier, and the absorption and scattering lengths having a non-uniformity with respect to the azimuth direction. \reffig{simulation_ice_model} shows the values of this model for the different depths, indicating the location of IceCube, DeepCore, and the dust layer.
 
-\begin{figure}
+\begin{figure}[h]
     \input{figures/icecube_deepcore/spice_3.2.1.tex}
 	\caption[Depth dependent scattering and absorption lengths]{Scattering and absorption lengths as a function of depth in the SPICE model used for simulation. Modified from~\cite{ATrettin_phd}.}
     \labfig{simulation_ice_model}
