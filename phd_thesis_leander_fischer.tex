@@ -15,12 +15,28 @@
 % LPPL (see included MANIFEST.md file)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+% % We need to set the minor version of the PDF to 7. This is required for PDF/A
+% % compliance. 
+% \directlua{pdf.setminorversion(7)}
+
+\begin{filecontents*}[overwrite]{\jobname.xmpdata}
+    \Keywords{heavy\sep neutral\sep leptons\sep neutrinos\sep sterile\sep icecube\sep deepcore}
+    \Title{First Search for Heavy Neutral Leptons with IceCube DeepCore}
+    \Author{Leander Fischer}
+    \Language{en-US}
+    \Subject{Physics}
+    \Doi{10.18452/29182}
+\end{filecontents*}
+\RequirePackage{fix-cm}
+
 \documentclass[
     a4paper, % page size
     fontsize=10pt, % font size
     twoside=true, % layouts for even and odd pages (in particular, if twoside=true, the margin column will be always on the outside)
 	numbers=noenddot, % dots after chapter numbers (option are: enddot, noenddot and auto)
 	fontmethod=tex, % "modern" with XeLaTeX or LuaTex; "tex" is the default for PdfLaTex
+    pdfa  % PDF/A compliant hyperrefs (otherwise missing F flag)
 ]{kaobook}
 
 \input{auxiliary/packages_and_formatting.tex}
@@ -85,6 +101,6 @@
 
 \include{auxiliary/acknowledgements}
 
-\input{auxiliary/declaration.tex}
+% \input{auxiliary/declaration.tex}
 
 \end{document}

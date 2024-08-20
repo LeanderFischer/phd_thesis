@@ -117,7 +117,7 @@ The full 9 dimensional likelihood space is very complex and can have many local 
     \labfig{fit_routine_optimization_decay_length_seeding}
 \end{marginfigure}
 
-From the seed values of the reconstruction, especially the length between the two cascades was found to have a very strong impact on whether the global minimum was found during the minimization. To mitigate this effect, multiple fits are performed, seeding with variations of the input length at different orders of magnitude. The best result is used, selected based on the total likelihood value of the best fit parameter set. A small improvement in the decay length resolution can be found by using this approach as compared to a single length seed. The resolutions for the differnt approaches are shown in \reffig{fit_routine_optimization_decay_length_seeding}.
+From the seed values of the reconstruction, especially the length between the two cascades was found to have a very strong impact on whether the global minimum was found during the minimization. To mitigate this effect, multiple fits are performed, seeding with variations of the input length at different orders of magnitude. The best result is used, selected based on the total likelihood value of the best fit parameter set. A small improvement in the decay length resolution can be found by using this approach as compared to a single length seed. The resolutions for the different approaches are shown in \reffig{fit_routine_optimization_decay_length_seeding}.
 
 
 \subsubsection{Minimizer Settings}
@@ -192,7 +192,7 @@ The sample of HNL events introduced in \refsec{realistic_sample}, which is a mor
 
 \paragraph{Energy Resolutions:}
 
-The energy resolutions are inspected by looking at the two-dimensional distributions of reconstructed energy versus the true energy. The results for the energies of the individual cascades are shown in \reffig{cascade_energy_2dhists}, where the color scale is again normalized per vertical slice, and the median and \SI{68}{\percent} band are shown in red. For both cascades the reconstruction performs well above around \SIrange{5}{7}{\gev}, with the median being on top of the diagonal and the spread being small. Below this energy, the reconstruction is over-estimating the true energy. This is because, on average, those low-energy events, passing the event selection, interact closer to the DOMs and have an over fluctuation in their light deposition. This results in the observed energy bias. Interestingly, the second cascade energy reconstruction performs slightly worse, although they have the same energy ranges for this sample. This could hint at an asymmetry in the reconstruction process, which might be related to how the two cascades are parameterized, or be due to the different positions and the dominantly up-going direction used in the sampling combined with the DOMs looking down. Towards the higher energies, the statistics are decreasing, wich is due to the underlying energy distribution of the sample, which were shown in \reffig{realistic_gen_distris}.
+The energy resolutions are inspected by looking at the two-dimensional distributions of reconstructed energy versus the true energy. The results for the energies of the individual cascades are shown in \reffig{cascade_energy_2dhists}, where the color scale is again normalized per vertical slice, and the median and \SI{68}{\percent} band are shown in red. For both cascades the reconstruction performs well above around \SIrange{5}{7}{\gev}, with the median being on top of the diagonal and the spread being small. Below this energy, the reconstruction is over-estimating the true energy. This is because, on average, those low-energy events, passing the event selection, interact closer to the DOMs and have an over fluctuation in their light deposition. This results in the observed energy bias. Interestingly, the second cascade energy reconstruction performs slightly worse, although they have the same energy ranges for this sample. This could hint at an asymmetry in the reconstruction process, which might be related to how the two cascades are parameterized, or be due to the different positions and the dominantly up-going direction used in the sampling combined with the DOMs looking down. Towards the higher energies, the statistics are decreasing, which is due to the underlying energy distribution of the sample, which were shown in \reffig{realistic_gen_distris}.
 
 
 \begin{figure*}[h]
@@ -258,8 +258,6 @@ To get an estimate of what minimum energies are necessary for the reconstruction
 To assess the efficiency of the low-energy event selection for double-cascade events, the true energy and true decay length distributions are shown across the different selection levels in \reffig{realistic_selection_efficiency}. The two detector simulation steps explained in \refsec{detector_simulation} are also included, where the application of the detector response simulation (Det), reduces the events significantly at low energies, because only events with sufficient photons observed in the DOMs are kept. The L3 selection, which includes the DeepCore SMT-3 trigger, reduced both the low-energy region further, while also affecting the high-energy region. L4 and L5 reduce the overall number of events, without showing a specific energy dependence. The full selection appears to be independent of the true decay length, as the distributions reduces uniformly across the decay length range. Similar to the efficiency for SM neutrinos, the total selection efficiency from the online filter to L5 is around \SI{40}{\percent}.
 
 
-
-
 \subsubsection{Model-Dependent Sample}
 
 After optimizing the double-cascade reconstruction and benchmarking how it performs using the model-independent sample, the resolutions are investigated with the model-dependent HNL simulation. A preliminary sample of HNL events is used which contains masses between \SIrange[range-phrase=~and~]{0.1}{3.0}{\gev} and lab frame decay lengths in the range from \SIrange{1}{1000}{\meter}, sampled from an inverse distribution.
@@ -268,7 +266,7 @@ After optimizing the double-cascade reconstruction and benchmarking how it perfo
 	\centering
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/casc0_reco_energy_vs_casc0_true_energy_final_level_good_step_contours.png}
     \includegraphics[width=0.49\linewidth]{figures/results/190607/resolutions/casc1_reco_energy_vs_casc1_true_energy_final_level_good_step_contours.png}
-    \caption[Reconstructed cascade energies versus true energies - preliminary model-dependent sample]{Reconstructed (EM) energy versus true energy (full) energy for the first cascade (left) and second cascade (right) for a preliminary version of the model-dependent sample, where the color scale is normalized per vertical slice and the median and \SI{68}{\percent} band are shown in red.}
+    \caption[Reconstructed cascade energies versus true energies - preliminary model-dependent sample]{Reconstructed (EM) energy versus true (full) energy for the first cascade (left) and second cascade (right) for a preliminary version of the model-dependent sample, where the color scale is normalized per vertical slice and the median and \SI{68}{\percent} band are shown in red.}
     \labfig{selected_routine_2d_energy_results}
 \end{figure*}
 
@@ -287,6 +285,7 @@ Apart from this expected bias, the behavior is similar to the results observed f
     \caption[Reconstructed decay length resolution versus true decay length - preliminary model-dependent sample]{Reconstructed decay length versus true decay length for a preliminary version of the model-dependent sample, where the color scale is normalized per vertical slice and the median and \SI{68}{\percent} band are shown in red.}
 \labfig{190607_reco_decay_l_vs_true_decay_l}
 \end{figure}
+
 The reconstructed decay length versus the true decay length is shown in \reffig{190607_reco_decay_l_vs_true_decay_l}. The same behavior as observed for the realistic, model-independent sample shown in \reffig{realistic_sample_decay_length_2dhists} is seen. For short true decay lengths the reconstruction is over-estimating the length, while for long true decay lengths the reconstruction is strongly under-estimating the length and a population of badly reconstructed events is dominating at long true decay lengths.
 
 
@@ -321,7 +320,6 @@ The classifier used was a BDT from the \textit{\textsc{scikit-learn} (sklearn)} 
 \end{figure*}
 
 A \textit{single-classifier} and \textit{double-classifier} approach were tested. For the single-classifier, one BDT classifier was trained to distinguish between signal events and all background events at once. For the double-classifier, two classifiers were trained separately, one to distinguish signal from track-like background, and the other to distinguish signal from cascade-like background. The classifiers were trained with uniform weights, but scaled so that the summed weights for signal and background were equal. Since the SM neutrino events at these energies are either track-like or cascade-like, the double-classifier approach performed better and will be discussed here. Despite the fact that several combinations of features were tested, it was not possible to identify a pure double-cascade region with a single classifier. Since the results did not show a strong classification power, tuning the hyperparameters quickly lead to overtraining and the results here are using the default settings of the BDT classifier.
-
 
 \begin{figure*}[h]
 	\centering

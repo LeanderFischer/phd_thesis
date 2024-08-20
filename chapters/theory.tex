@@ -115,8 +115,8 @@ coupling the fermion fields, $e_R$, to the Higgs field, $\Phi$, recovers the inv
     
             % in order to get the [dot] to work, we need to add the empty braces
             \vertex (v1) [dot] at (0, \boslen) {};
-            \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) {\({\nu}_\mathcal{l}\) (\(\bar{\nu}_\mathcal{l}\))};
-            \vertex (f1) at ($(v1) + (\fangle:\flen)$) {{\(\mathcal{l}^{-}\)} ({\(\mathcal{l}^{+}\)})};
+            \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) { {\(\nu_{\mathcal{l}}\)} ( {\(\bar{\nu}_{\mathcal{l}}\)} ) };
+            \vertex (f1) at ($(v1) + (\fangle:\flen)$) { {\(\mathcal{l}^{-}\)} ( {\(\mathcal{l}^{+}\)} ) };
             \vertex (v2) at (0, 0);
     
             \diagram* {
@@ -134,8 +134,8 @@ coupling the fermion fields, $e_R$, to the Higgs field, $\Phi$, recovers the inv
     
             % in order to get the [dot] to work, we need to add the empty braces
             \vertex (v1) [dot] at (0, \boslen) {};
-            \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) {\({\nu}_\mathcal{l}\) (\(\bar{\nu}_\mathcal{l}\))};
-            \vertex (f1) at ($(v1) + (\fangle:\flen)$) {\({\nu}_\mathcal{l}\) (\(\bar{\nu}_\mathcal{l}\))};
+            \vertex (i1) at ($(v1) + (180-\fangle:\flen)$) {\(\nu_{\mathcal{l}}\) (\(\bar{\nu}_{\mathcal{l}}\))};
+            \vertex (f1) at ($(v1) + (\fangle:\flen)$) {\(\nu_{\mathcal{l}}\) (\(\bar{\nu}_{\mathcal{l}}\))};
             \vertex (v2) at (0, 0);
     
             \diagram* {
@@ -173,7 +173,7 @@ $\Lambda$CDM also assumes that equal amounts of matter and anti-matter were prod
 \end{equation}
 where $n_B$, $n_{\bar{B}}$, and $n_\gamma$ are the number densities of baryons, anti-baryons, and photons, respectively. Baryons are the dominant component with  $\eta_B$ being observed to be at the order of $10^{-9}$~\cite{PDG_review_2022}. Leptogenesis and EW baryogenesis are scenarios that could explain this phenomenon, where the former could be realized by the existence of heavy RH neutrinos~\sidecite{baryogenesis_FUKUGITA198645}.
 
-The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments~\sidecite{homestake, super_k_atm_osc, snolab_flavor_conv} is the strongest evidence for physics \textit{beyond the standard model (BSM)} measured in laboratories to date. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. From those measurements we know the mass differences are very small as compared to the lepton masses, but neither their existence, nor their smallness is predicted by the SM. There are upper limits on the sum of all neutrino masses from cosmological observations at \SI{1.2}{\electronvolt}~\cite{BOS_nu_masses}~\sidecite{planck_nu_mass} and at \SI{0.8}{\electronvolt} from the KATRIN experiment~\sidecite{katrin_nu_mass}. Adding RH neutrino states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments.
+The observation of neutrino flavor conversions and neutrino oscillations in a multitude of experiments~\sidecite{homestake, super_k_atm_osc, snolab_flavor_conv} is the strongest evidence for physics \textit{beyond the standard model (BSM)} measured in laboratories to date. The observation that neutrinos change their flavor while they propagate through space can only be explained, if at least two neutrinos have a non-zero mass. From those measurements we know the mass differences are very small as compared to the lepton masses, but neither their existence, nor their smallness is predicted by the SM. There are upper limits on the sum of all neutrino masses from cosmological observations at \SI{0.12}{\electronvolt}~\cite{BOS_nu_masses}~\sidecite{planck_nu_mass} and at \SI{0.8}{\electronvolt} from the KATRIN experiment~\sidecite{katrin_nu_mass}. Adding RH neutrino states to the theory could explain the origin of the observed non-zero neutrino masses and could be tested for by searching for corresponding signatures in experiments.
 
 
 \subsection{Mass Mechanisms} \labsec{mass_mechanisms}
@@ -186,7 +186,7 @@ Since there are no RH neutrinos in the SM, the mass mechanism described in \refs
 \end{equation}
 with indices $i, j$ running over the three generations of leptons, $e$, $\mu$, and $\tau$, and $Y^e$ and $Y^\nu$ being the Yukawa coupling matrices. Diagonalizing the Yukawa coupling matrices through unitary transformations $U^e$ and $U^\nu$ leads to the \textbf{Dirac mass term} in the mass basis as
 \begin{equation}
-    \mathcal{L}^\rm{mass}_\rm{Dirac} = \frac{v}{\sqrt{2}} \left( \bar{e}_L M_e e_R - \bar{\nu}_L M_\nu \nu_R \right)
+    \mathcal{L}^\rm{mass}_\rm{Dirac} = \frac{1}{\sqrt{2}} \left( \bar{e}_L M_e e_R - \bar{\nu}_L M_\nu \nu_R \right)
     \;,
     \labeq{dirac_mass_lagrangian}
 \end{equation}
@@ -220,10 +220,10 @@ and the mass matrix is given by
 \end{equation}
 On top of explaining the origin of neutrino masses itself, a combined Dirac and Majorana mass term could also solve the question of their smallness. If the mass of the RH neutrinos is very large, the masses of the active neutrino flavors are suppressed, which is known as \textit{see-saw mechanism}.
 
-Depending on the neutrino mass generation mechanism, they are either Dirac or Majorana particles. In the Dirac case, the mass Lagrangian \textit{conserves lepton number (LNC)}, while in the Majorana case, the mass Lagrangian \textit{violates lepton number (LNV)} by two units. Majorana neutrinos satisfy the condition $\nu=\nu^c=\mathcal{C}\bar{\nu}^T$, where $\mathcal{C}$ is the charge conjugation operator. They are effectively indistinguishable from their antiparticles. Whether neutrinos are Majorana or Dirac particles another unsolved question in the neutrino sector.
+Depending on the neutrino mass generation mechanism, they are either Dirac or Majorana particles. In the Dirac case, the mass Lagrangian \textit{conserves lepton number (LNC)}, while in the Majorana case, the mass Lagrangian \textit{violates lepton number (LNV)} by two units. Majorana neutrinos satisfy the condition $\nu=\nu^c=\mathcal{C}\bar{\nu}^T$, where $\mathcal{C}$ is the charge conjugation operator. They are effectively indistinguishable from their antiparticles. Whether neutrinos are Majorana or Dirac particles is another unsolved question in the neutrino sector.
 
 
-\subsection{Minimal Extensions and the $\nu$MSM} \labsec{minimal_model_extensions}
+\subsection{Minimal Extensions and the \texorpdfstring{$\nu$}{nu}MSM} \labsec{minimal_model_extensions}
 
 So far we have described neutrinos in their flavor eigenstates, which are relevant for weak interactions, where the three weak flavor states $\nu_e, \nu_\mu$, and $\nu_\tau$ are related to the charged leptons they interact with in CC interactions. In order to \textit{just} explain the three oscillating flavor eigenstates, three mass states are needed, which are related to the flavor eigenstates by the unitary, 3x3 \textit{Pontecorvo-Maki-Nakagawa-Sakata (PMNS)} mixing matrix $U$, where the flavor states are a superposition of the mass states as
 \begin{equation}
@@ -292,7 +292,7 @@ with
 \end{equation}
 and the indices $\alpha$ and $i$ now summing over all $(3+n)$ flavor and mass states, respectively. If only mixing between one SM flavor, $\alpha$, and one RH neutrino mass state, $i$, is non-zero $C_{ii} = |U_{\alpha i}|^2 \neq 0$, coupling terms of the form
 \begin{equation}
-    \mathcal{L}^{\ell}_\mathrm{ext. EW} \supset \frac{g}{\sqrt{2}}W^+ |U_{\alpha i}|^2 {\bar{\nu}}_{i}\gamma ^\mu P_L \ell _\alpha
+    \mathcal{L}^{\ell}_\mathrm{ext. EW} \supset \frac{g}{\sqrt{2}}W^+ U_{\alpha i}^* {\bar{\nu}}_{i}\gamma ^\mu P_L \ell _\alpha
     \;,
     \labeq{coupling_to_hnl_cc}
 \end{equation}
@@ -352,7 +352,7 @@ Using prompt and displaced decays of the HNL, both ATLAS and CMS have set constr
 
 A novel approach of searching for irregularities in energy-momentum conservation measurements in nuclear reactions might be a viable way of searching for HNLs, as they could be interpreted as constraints on \ue4 and $m_4$.
 
-Kinks in \textbf{beta decay} spectra would show up at $Q-m_4c^2$, where the HNL mass, $m_4$, can be measured between the lower energy detection threshold and the energy released in the decay, which is called $Q$ value. Analyses using the tritium decay, with $Q=\SI{18.6}{\kilo\electronvolt}$, are planned in \textit{KATRIN}~cite{KATRIN:2001ttj} and \textit{TRISTAN}~\sidecite{Mertens_2019} in the \SIrange{1}{18}{\kilo\electronvolt} range. Their projected statistical limits are around $10^{-7}$ for \ue4, but will require further detector upgrades~\cite{Mertens_2019}. A first result from KATRIN measurements during commissioning sets limits at the order of $10^{-2}$ to $10^{-3}$ in the mass range of \SIrange{0.1}{1.6}{\kilo\electronvolt}~\sidecite{KATRIN:2022spi}. \textit{DUNE} is planning to measure the ionization charge of atmospheric argon decays, with $Q=\SI{565}{\kilo\electronvolt}$, to probe \ue4 at in the \SIrange{20}{450}{\kilo\electronvolt} mass range. The projected sensitivity is at the $10^{-5}$ level, and might improve to $10^{-7}$ with additional detector improvements~\sidecite{DUNE:2020ypp}.
+Kinks in \textbf{beta decay} spectra would show up at $Q-m_4c^2$, where the HNL mass, $m_4$, can be measured between the lower energy detection threshold and the energy released in the decay, which is called $Q$ value. Analyses using the tritium decay, with $Q=\SI{18.6}{\kilo\electronvolt}$, are planned in \textit{KATRIN}~\cite{KATRIN:2001ttj} and \textit{TRISTAN}~\sidecite{Mertens_2019} in the \SIrange{1}{18}{\kilo\electronvolt} range. Their projected statistical limits are around $10^{-7}$ for \ue4, but will require further detector upgrades~\cite{Mertens_2019}. A first result from KATRIN measurements during commissioning sets limits at the order of $10^{-2}$ to $10^{-3}$ in the mass range of \SIrange{0.1}{1.6}{\kilo\electronvolt}~\sidecite{KATRIN:2022spi}. \textit{DUNE} is planning to measure the ionization charge of atmospheric argon decays, with $Q=\SI{565}{\kilo\electronvolt}$, to probe \ue4 at in the \SIrange{20}{450}{\kilo\electronvolt} mass range. The projected sensitivity is at the $10^{-5}$ level, and might improve to $10^{-7}$ with additional detector improvements~\sidecite{DUNE:2020ypp}.
 
 To test for the existence of HNLs using \textbf{electron capture} measurements, total energy-momentum reconstruction of all non-neutrino final states is needed. Electron capture is a pure two-body decay process, where the recoiling atom and the electron neutrino are the only final state particles, but additional energy is carried away by the de-excitation x-ray or auger electron. The energy-momentum conservation can be probed by measuring the atom and the associated de-excitation products. The mixing \ue4 can be probed by looking for a separated non-zero missing mass peak. The \textit{BeEST} experiment has set limits at the $10^{-4}$ level in the \SIrange{100}{850}{\kilo\electronvolt} mass range, using berillium-7, which has a $Q$ value of \SI{862}{\kilo\electronvolt}. After planned upgrades to the experiment, the sensitivity is expected to improve to the $10^{-7}$ level~\sidecite{BeEST_Friedrich:2020nze}.
 

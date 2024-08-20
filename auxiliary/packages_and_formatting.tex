@@ -9,6 +9,8 @@
 \fi
 \usepackage[english=american]{csquotes}	% English quotes
 
+\hyphenation{Baryonen-asymmetrie}
+
 \usepackage{enumitem}
 
 \usepackage{longtable}
@@ -206,3 +208,10 @@
     draw=lightgray204,
     fill=white
 ]
+
+% Additional setup to conform to PDF/A standard
+\usepackage{colorprofiles}
+\usepackage{luatex85}
+% \usepackage{fontspec}
+\usepackage[a-2b,mathxmp]{pdfx}[2018/12/22]
+\hypersetup{pdfstartview=} % Fix for PDF/A

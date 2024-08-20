@@ -218,12 +218,12 @@ Absorption and scattering length are the most important properties that govern t
 Due to bubble formation in the re-freezing process of the boreholes, the hole ice is less transparent in the center of the columns~\sidecite{rongen_drilling_epj}. This effectively decreases the chance of photons hitting the DOMs directly from below, which can be described as an additional angular modification of the DOM acceptance. The modification is parameterized by a two-dimensional, normalized\sidenote{The hole ice angular acceptance modification is normalized so that it does not affect the total charge.} function, where the two dominant of the parameters ($p_0, p_1$), dictating its form, are enough to describe all past and the current hole ice models from both \textit{in-situ} and laboratory measurements. \reffig{hole_ice_variations} shows the acceptance modification as a function of the incident photon angle $\cos(\eta)$. The current baseline model, the variations achieved through modifying $p_0$ and $p_1$, and a laboratory measurement can be seen.
 
 
-\paragraph{Ice Model:}
+\paragraph{Ice model:}
 
 The ice model used in IceCube is continuously improved, and the recent models incorporate the birefringent polycriystalline microstructure~\sidecite{bfr_ice_tc-18-75-2024} into the ice properties. To account for the uncertainty, due to this un-modeled effect in the ice model used for the simulation production, an additional simulation sample is produced using the newer version of the ice model, that incorporates the \textit{birefringence (BFR)} effect. 
 
 
-\paragraph{Treatment of Detector Systematic Uncertainties:} \labsec{ultrasurfaces}
+\paragraph{Treatment of detector systematic uncertainties:} \labsec{ultrasurfaces}
 
 Since the variations related to the detector calibration uncertainties are estimated by simulating MC at discrete values of the systematic parameters, a method to derive continuous variations is needed to perform the fit. The method applied here was initially introduced in~\sidecite{Fischer_2023} and first used in the low energy sterile neutrino search described in~\sidecite{ATrettin_phd}. Using a \textit{likelihood-free inference} technique, re-weighting factors are found for every event in the nominal MC sample, given a specific choice of detector systematic parameters. These factors quantify how much more or less likely the event would be for the corresponding change in detector response from the nominal parameters.
 
